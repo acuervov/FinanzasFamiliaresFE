@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Route } from 'react-router-dom';
 
-import AppTopBar from './AppTopbar';
+import AppTopbar from './AppTopbar';
 import AppFooter from './AppFooter';
 import AppConfig from './AppConfig';
 import AppMenu from './AppMenu';
@@ -434,8 +434,8 @@ const App = () => {
     return (
         <div className={containerClassName} data-theme={colorScheme} onClick={onDocumentClick}>
             <div className="layout-content-wrapper">
-                <AppTopBar routers={routers} topbarNotificationMenuActive={topbarNotificationMenuActive} topbarUserMenuActive={topbarUserMenuActive} onMenuButtonClick={onMenuButtonClick} onSearchClick={toggleSearch}
-                    onTopbarNotification={onTopbarNotificationMenuButtonClick} onTopbarUserMenu={onTopbarUserMenuButtonClick} onRightMenuClick={onRightMenuButtonClick} onRightMenuButtonClick={onRightMenuButtonClick}></AppTopBar>
+                <AppTopbar routers={routers} topbarNotificationMenuActive={topbarNotificationMenuActive} topbarUserMenuActive={topbarUserMenuActive} onMenuButtonClick={onMenuButtonClick} onSearchClick={toggleSearch}
+                    onTopbarNotification={onTopbarNotificationMenuButtonClick} onTopbarUserMenu={onTopbarUserMenuButtonClick} onRightMenuClick={onRightMenuButtonClick} onRightMenuButtonClick={onRightMenuButtonClick}></AppTopbar>
 
                 <div className="layout-content">
                     {
