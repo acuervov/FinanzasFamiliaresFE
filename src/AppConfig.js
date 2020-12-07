@@ -288,7 +288,7 @@ const AppConfig = (props) => {
                     <label htmlFor="input_outlined">Outlined</label>
                 </div>
                 <div className="p-field-radiobutton">
-                    <RadioButton inputIid="input_filled" name="inputstyle" value="filled" checked={props.inputStyle === 'filled'} onChange={(e) => props.onInputStyleChange(e.value)} />
+                    <RadioButton inputId="input_filled" name="inputstyle" value="filled" checked={props.inputStyle === 'filled'} onChange={(e) => props.onInputStyleChange(e.value)} />
                     <label htmlFor="input_filled">Filled</label>
                 </div>
 
