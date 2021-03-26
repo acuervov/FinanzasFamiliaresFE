@@ -4,5 +4,5 @@
 ###### * Brings support to PrimeReact 6.x
 
 **Migration Guide**
-- Update App*.js files (App.js, AppConfig.js, AppFooter.js and AppSubmenu.js)
+- Update App*.js files (App.js, AppFooter.js and AppSubmenu.js)
 - Update theme and layout css files.
