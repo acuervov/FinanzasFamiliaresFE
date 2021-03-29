@@ -28,7 +28,7 @@ export const TableDemo = () => {
         const productService = new ProductService();
         productService.getProductsWithOrdersSmall().then(data => setProducts(data));
         customerService.getCustomersMedium().then(data => { setCustomer1(data); setLoading1(false) });
-        customerService.getCustomersLarge().then(data => { setCustomer2(data); setLoading2(false) });
+        customerService.getCustomersMedium().then(data => { setCustomer2(data); setLoading2(false) });
         customerService.getCustomersMedium().then(data => setCustomer3(data));
     }, []);
 
