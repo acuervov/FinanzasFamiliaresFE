@@ -12,7 +12,7 @@ export const Login = () => {
                     <img src="assets/layout/images/logo-dark.svg" className="logo" alt="diamond-layout" />
 
                     <div className="login-form">
-                        <h2>Create Your Free Account</h2>
+                        <h2>Login</h2>
                         <p>Already have an account? <a href="/">Login</a></p>
                         <InputText placeholder="Full Name" />
                         <InputText placeholder="Email" />

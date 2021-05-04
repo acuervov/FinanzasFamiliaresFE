@@ -21,7 +21,7 @@ export const Help = () => {
             <div className="p-col-12 p-lg-6">
                 <div className="card">
                     <h4>General</h4>
-                    <Accordion>
+                    <Accordion activeIndex={0}>
                         <AccordionTab header="Header I">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                             ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -40,7 +40,7 @@ export const Help = () => {
                     </Accordion>
 
                     <h4>FAQ</h4>
-                    <Accordion>
+                    <Accordion activeIndex={0}>
                         <AccordionTab header="FAQ I">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                             ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.

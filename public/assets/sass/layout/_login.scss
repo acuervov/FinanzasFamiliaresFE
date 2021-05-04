@@ -36,6 +36,16 @@
                     }
                 }
 
+                > .p-password {
+                    width: 85%;
+                    max-width: 310px;
+                    margin-bottom: 20px;
+
+                    .p-password-input {
+                        width: 100%;
+                    }
+                }
+
                 > input {
                     width: 85%;
                     max-width: 310px;

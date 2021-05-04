@@ -15,21 +15,21 @@ export const TypographyDemo = () => {
                 </div>
 
                 <div className="card">
-                    <h5>Blockquote</h5>
+                    <h4>Blockquote</h4>
                     <blockquote>Libero voluptatum atque exercitationem praesentium provident odit aperiam.</blockquote>
                 </div>
             </div>
 
             <div className="p-col-12 p-md-6">
                 <div className="card">
-                    <h5>Paragraph</h5>
+                    <h4>Paragraph</h4>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero voluptatum atque
                     exercitationem praesentium provident odit aperiam, vitae fugit
 					dolores nostrum laborum accusamus quia iste facere possimus minus itaque error unde.</p>
                 </div>
 
                 <div className="card">
-                    <h5>Text Styles</h5>
+                    <h4>Text Styles</h4>
                     <p><mark>Highlight</mark> text.</p>
                     <p><del>Deleted text.</del></p>
                     <p><u>Underlined Text</u></p>

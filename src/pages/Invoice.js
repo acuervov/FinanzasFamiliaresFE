@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'primereact/button';
 
-export const Invoice = () => {
+export const Invoice = (props) => {
 
     const print = () => {
         window.print();
@@ -18,7 +18,7 @@ export const Invoice = () => {
                             <div className="invoice">
                                 <div className="invoice-header">
                                     <div className="invoice-company">
-                                        <img id="invoice-logo" className="logo-image" src="assets/layout/images/logo-dark.svg" alt="diamond-layout" />
+                                        <img id="invoice-logo" className="logo-image" src={props.logoUrl} alt="diamond-layout" />
                                         <div className="company-name">YOUR COMPANY</div>
                                         <div>9137 3rd Lane California City</div>
                                         <div>CA 93504, U.S.A.</div>

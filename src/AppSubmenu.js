@@ -66,7 +66,7 @@ const AppSubmenu = (props) => {
         );
         const commonLinkProps = {
             'style': item.style,
-            'className': classNames(item.class, 'p-ripple', { 'p-disabled': item.disabled, 'p-link': !item.to }),
+            'className': classNames(item.className, 'p-ripple', { 'p-disabled': item.disabled, 'p-link': !item.to }),
             'target': item.target,
             'onClick': (e) => onMenuItemClick(e, item, index),
             'onMouseEnter': () => onMenuItemMouseEnter(index)

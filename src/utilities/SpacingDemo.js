@@ -10,7 +10,7 @@ export const SpacingDemo = () => {
         <div className="p-grid spacing-demo">
             <div className="p-col-12">
                 <div className="card">
-                    <h3>Spacing</h3>
+                    <h4>Spacing</h4>
                     <p><Link to="grid">PrimeFlex</Link> provides various spacing utilities to modify
                     an element's layout.</p>
 

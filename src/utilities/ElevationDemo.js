@@ -5,11 +5,10 @@ export const ElevationDemo = () => {
 
     for (let i = 1; i < 25; i++) {
         let col = (
-            <div key={i} className="p-col">
-                <div className={`box p-shadow-${i}`}>
-                    p-shadow-{i}
-                </div>
+            <div key={i} className={`box p-shadow-${i}`}>
+                p-shadow-{i}
             </div>
+
         );
 
         cols.push(col);
@@ -21,8 +20,7 @@ export const ElevationDemo = () => {
                 <div className="card">
                     <h4>Shadow</h4>
                     <p>Elevation is used to specify the separation between surfaces and elements along the z-axis. There are 24 style classes (<mark>.p-shadow-{`{level}`}</mark>) to define the elevation layers.</p>
-
-                    <div className="shadow-container">
+                    <div className="p-grid">
                         {cols}
                     </div>
                 </div>

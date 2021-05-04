@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { RadioButton } from 'primereact/radiobutton';
 import { InputSwitch } from 'primereact/inputswitch';
+import { Button } from 'primereact/button';
 
 const AppConfig = (props) => {
 
-    const [logoColor, setLogoColor] = useState('white');
 
     const menuThemes = [
         {
             name: "white",
             color: "#ffffff",
             logoColor: "dark",
-            componentTheme: null,
+            componentTheme: props.componentTheme,
         },
         {
             name: "darkgray",
             color: "#343a40",
             logoColor: "white",
-            componentTheme: null,
+            componentTheme: props.componentTheme,
         },
         {
             name: "blue",
@@ -101,105 +101,10 @@ const AppConfig = (props) => {
         { name: "teal", color: "#26A69A" },
     ];
 
-    const changeComponentTheme = (theme) => {
-        changeStyleSheetUrl('theme-css', theme, 3);
-    };
 
     const onConfigButtonClick = (event) => {
         props.onConfigButtonClick(event);
         event.preventDefault();
-    };
-
-    const changeMenuTheme = (name, logoColor, componentTheme) => {
-        props.onMenuThemeChange(name);
-        changeStyleSheetUrl('theme-css', componentTheme, 2);
-
-        const appLogoLink = document.getElementById('app-logo');
-        const appLogoUrl = `assets/layout/images/logo-${logoColor === 'dark' ? 'dark' : 'white'}.svg`;
-
-        if (appLogoLink) {
-            appLogoLink.src = appLogoUrl;
-        }
-        setLogoColor(logoColor);
-    };
-
-    const changeColorScheme = (e) => {
-        props.onColorSchemeChange(e);
-
-        const scheme = e.value;
-        changeStyleSheetUrl('layout-css', 'layout-' + scheme + '.css', 1);
-        changeStyleSheetUrl('theme-css', 'theme-' + scheme + '.css', 1);
-        changeLogo(scheme);
-    };
-
-    const changeStyleSheetUrl = (id, value, from) => {
-        const element = document.getElementById(id);
-        const urlTokens = element.getAttribute('href').split('/');
-
-        if (from === 1) {
-            // which function invoked this function
-            urlTokens[urlTokens.length - 1] = value;
-        } else if (from === 2) {
-            // which function invoked this function
-            if (value !== null) {
-                urlTokens[urlTokens.length - 2] = value;
-            }
-        } else if (from === 3) {
-            // which function invoked this function
-            urlTokens[urlTokens.length - 2] = value;
-        }
-
-        const newURL = urlTokens.join('/');
-
-        replaceLink(element, newURL);
-    };
-
-    const changeLogo = (scheme) => {
-        const appLogoLink = document.getElementById("app-logo");
-        const mobileLogoLink = document.getElementById("logo-mobile");
-        const invoiceLogoLink = document.getElementById("invoice-logo");
-        const footerLogoLink = document.getElementById("footer-logo");
-        const logoUrl = `assets/layout/images/logo-${scheme === 'light' ? 'dark' : 'white'}.svg`;
-
-        if (appLogoLink) {
-            appLogoLink.src = `assets/layout/images/logo-${scheme === 'light' ? logoColor : 'white'}.svg`;
-        }
-
-        if (mobileLogoLink) {
-            mobileLogoLink.src = logoUrl;
-        }
-
-        if (invoiceLogoLink) {
-            invoiceLogoLink.src = logoUrl;
-        }
-
-        if (footerLogoLink) {
-            footerLogoLink.src = logoUrl;
-        }
-    };
-
-    const replaceLink = (linkElement, href) => {
-        if (isIE()) {
-            linkElement.setAttribute("href", href);
-        }
-        else {
-            const id = linkElement.getAttribute("id");
-            const cloneLinkElement = linkElement.cloneNode(true);
-
-            cloneLinkElement.setAttribute("href", href);
-            cloneLinkElement.setAttribute("id", id + "-clone");
-
-            linkElement.parentNode.insertBefore(cloneLinkElement, linkElement.nextSibling);
-
-            cloneLinkElement.addEventListener("load", () => {
-                linkElement.remove();
-                cloneLinkElement.setAttribute("id", id);
-            });
-        }
-    };
-
-    const isIE = () => {
-        return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
     };
 
     const getMenuThemes = () => {
@@ -208,9 +113,14 @@ const AppConfig = (props) => {
                 <div className="layout-themes">
                     {
                         menuThemes.map(theme => {
+                            const checkStyle = theme.name === 'white' ? 'black' : 'white';
                             return (
                                 <div key={theme.name}>
-                                    <button type="button" className="p-link" style={{ cursor: 'pointer', 'backgroundColor': theme.color }} onClick={() => changeMenuTheme(theme.name, theme.logoColor, theme.componentTheme)} title={theme.name}></button>
+                                    <button type="button" className="p-link" style={{ cursor: 'pointer', 'backgroundColor': theme.color }} onClick={() => props.changeMenuTheme(theme.name, theme.logoColor, theme.componentTheme)} title={theme.name}>
+                                        {props.menuTheme === 'layout-sidebar-' + theme.name && <span className="check p-d-flex p-ai-center p-jc-center">
+                                            <i className="pi pi-check" style={{ color: checkStyle}}></i>
+                                        </span>}
+                                    </button>
                                 </div>
                             )
                         })
@@ -233,7 +143,11 @@ const AppConfig = (props) => {
                     componentThemes.map(theme => {
                         return (
                             <div key={theme.name}>
-                                <button type="button" className="p-link" style={{ cursor: 'pointer', 'backgroundColor': theme.color }} onClick={() => changeComponentTheme(theme.name)} title={theme.name}></button>
+                                <button type="button" className="p-link" style={{ cursor: 'pointer', 'backgroundColor': theme.color }} onClick={() => props.changeComponentTheme(theme.name)} title={theme.name}>
+                                    {props.componentTheme === theme.name && <span className="check p-d-flex p-ai-center p-jc-center">
+                                        <i className="pi pi-check" style={{ color: 'white' }}></i>
+                                    </span>}
+                                </button>
                             </div>
                         )
                     })
@@ -247,9 +161,7 @@ const AppConfig = (props) => {
     const configClassName = classNames('layout-config', { 'layout-config-active': props.configActive })
     return (
         <div id="layout-config">
-            <button type="button" id="layout-config-button" className="layout-config-button p-link" onClick={onConfigButtonClick}>
-                <i className="pi pi-cog"></i>
-            </button>
+        <Button className="layout-config-button" icon="pi pi-cog p-button-icon" type="button" onClick={onConfigButtonClick}></Button>
             <div className={configClassName} onClick={props.onConfigClick}>
                 <h5>Menu Type</h5>
                 <div className="p-field-radiobutton">
@@ -268,15 +180,15 @@ const AppConfig = (props) => {
 
                 <h5>Color Scheme</h5>
                 <div className="p-field-radiobutton">
-                    <RadioButton name="colorScheme" value="dark" checked={props.colorScheme === 'dark'} inputId="theme1" onChange={changeColorScheme}></RadioButton>
+                    <RadioButton name="colorScheme" value="dark" checked={props.colorScheme === 'dark'} inputId="theme1" onChange={props.changeColorScheme}></RadioButton>
                     <label htmlFor="theme1">Dark</label>
                 </div>
                 <div className="p-field-radiobutton">
-                    <RadioButton name="colorScheme" value="dim" checked={props.colorScheme === 'dim'} inputId="theme2" onChange={changeColorScheme}></RadioButton>
+                    <RadioButton name="colorScheme" value="dim" checked={props.colorScheme === 'dim'} inputId="theme2" onChange={props.changeColorScheme}></RadioButton>
                     <label htmlFor="theme2">Dim</label>
                 </div>
                 <div className="p-field-radiobutton">
-                    <RadioButton name="colorScheme" value="light" checked={props.colorScheme === 'light'} inputId="theme3" onChange={changeColorScheme}></RadioButton>
+                    <RadioButton name="colorScheme" value="light" checked={props.colorScheme === 'light'} inputId="theme3" onChange={props.changeColorScheme}></RadioButton>
                     <label htmlFor="theme3">Light</label>
                 </div>
 
