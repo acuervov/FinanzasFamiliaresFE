@@ -108,7 +108,7 @@ const AppConfig = (props) => {
     };
 
     const getMenuThemes = () => {
-        if (props.colorScheme === 'light') {
+        if (props.colorScheme === 'light' && props.menuMode !== 'horizontal') {
             return (
                 <div className="layout-themes">
                     {
@@ -131,7 +131,7 @@ const AppConfig = (props) => {
 
         return (
             <div>
-                <p>Menu themes are only available in light mode by design as large surfaces can emit too much brightness in dark mode.</p>
+                <p>Menu themes are only available in light mode and static, slim, overlay menu modes by design as large surfaces can emit too much brightness in dark mode.</p>
             </div>
         );
     };
@@ -175,6 +175,10 @@ const AppConfig = (props) => {
                 <div className="p-field-radiobutton">
                     <RadioButton name="menuMode" value="slim" checked={props.menuMode === 'slim'} inputId="mode3" onChange={props.onMenuModeChange}></RadioButton>
                     <label htmlFor="mode3">Slim</label>
+                </div>
+                <div className="p-field-radiobutton">
+                    <RadioButton name="menuMode" value="horizontal" checked={props.menuMode === 'horizontal'} inputId="mode4" onChange={props.onMenuModeChange}></RadioButton>
+                    <label htmlFor="mode4">Horizontal</label>
                 </div>
                 <hr />
 

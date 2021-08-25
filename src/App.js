@@ -5,9 +5,9 @@ import { Route } from 'react-router-dom';
 import AppTopbar from './AppTopbar';
 import AppFooter from './AppFooter';
 import AppConfig from './AppConfig';
-import AppMenu from './AppMenu';
 import AppSearch from './AppSearch';
 import AppRightMenu from './AppRightMenu';
+import AppBreadcrumb from './AppBreadcrumb';
 
 import { Dashboard } from './components/Dashboard';
 import { FormLayoutDemo } from './components/FormLayoutDemo';
@@ -67,6 +67,7 @@ const App = () => {
     const [inputStyle, setInputStyle] = useState('outlined');
     const [ripple, setRipple] = useState(false);
     const [logoColor, setLogoColor] = useState('white');
+    const [menuColor, setMenuColor] = useState('darkgray');
     const [componentTheme, setComponentTheme] = useState('blue');
     const [logoUrl, setLogoUrl] = useState('assets/layout/images/logo-dark.svg')
 
@@ -258,6 +259,7 @@ const App = () => {
             appLogoLink.src = appLogoUrl;
         }
         setLogoColor(logoColor);
+        setMenuColor(name);
     };
 
     const changeComponentTheme = (theme) => {
@@ -271,6 +273,30 @@ const App = () => {
         const scheme = e.value;
         changeStyleSheetUrl('layout-css', 'layout-' + scheme + '.css', 1);
         changeStyleSheetUrl('theme-css', 'theme-' + scheme + '.css', 1);
+
+        const appLogoLink = document.getElementById('app-logo');
+        const horizontalLogoLink = document.getElementById('logo-horizontal');
+
+        if (scheme === 'light') {
+            if (menuMode === 'horizontal') {
+                setMenuTheme('layout-sidebar-white');
+                appLogoLink.src = 'assets/layout/images/logo-dark.svg';
+                horizontalLogoLink.src = 'assets/layout/images/logo-dark.svg';
+            }
+            else {
+                if (logoColor === 'white') {
+                    appLogoLink.src = 'assets/layout/images/logo-white.svg';
+                }
+                else {
+                    appLogoLink.src = 'assets/layout/images/logo-dark.svg';
+                }
+            }
+        }
+        else {
+            appLogoLink.src = 'assets/layout/images/logo-white.svg';
+            horizontalLogoLink.src = 'assets/layout/images/logo-white.svg';
+        }
+
         changeLogo(scheme);
     };
 
@@ -369,7 +395,7 @@ const App = () => {
         }
 
         if (!menuClick) {
-            if (isSlim()) {
+            if (isSlim() || isHorizontal()) {
                 setMenuActive(false);
             }
 
@@ -420,7 +446,7 @@ const App = () => {
         if (!event.item.items) {
             hideOverlayMenu();
 
-            if (isSlim()) {
+            if (isSlim() || isHorizontal()) {
                 setMenuActive(false);
             }
         }
@@ -438,6 +464,37 @@ const App = () => {
         setMenuMode(e.value);
         if(e.value === 'static') {
             setStaticMenuDesktopInactive(false)
+        }
+
+        const appLogoLink = document.getElementById('app-logo');
+        const horizontalLogoLink = document.getElementById('logo-horizontal');
+
+        if (e.value === 'horizontal') {
+            if (colorScheme === 'light') {
+                setMenuTheme('layout-sidebar-white');
+                appLogoLink.src = 'assets/layout/images/logo-dark.svg';
+                horizontalLogoLink.src = 'assets/layout/images/logo-dark.svg';
+            }
+            else {
+                setMenuTheme('layout-sidebar-' + colorScheme);
+                appLogoLink.src = 'assets/layout/images/logo-white.svg';
+                horizontalLogoLink.src = 'assets/layout/images/logo-white.svg';
+            }
+        }
+        else {
+            setMenuTheme('layout-sidebar-' + menuColor);
+            if(colorScheme !== 'light') {
+                appLogoLink.src = 'assets/layout/images/logo-white.svg';
+                horizontalLogoLink.src = 'assets/layout/images/logo-white.svg';
+            }
+            else {
+                if (logoColor === 'white') {
+                    appLogoLink.src = 'assets/layout/images/logo-white.svg';
+                }
+                else {
+                    appLogoLink.src = 'assets/layout/images/logo-dark.svg';
+                }
+            }
         }
     };
 
@@ -523,12 +580,16 @@ const App = () => {
         return menuMode === "slim";
     };
 
+    const isHorizontal = () => {
+        return menuMode === "horizontal";
+    };
+
     const isOverlay = () => {
         return menuMode === "overlay";
     };
 
     const isDesktop = () => {
-        return window.innerWidth > 991;
+        return window.innerWidth > 1091;
     };
 
     const containerClassName = classNames('layout-wrapper',
@@ -536,6 +597,7 @@ const App = () => {
             'layout-overlay': menuMode === "overlay",
             'layout-static': menuMode === "static",
             'layout-slim': menuMode === "slim",
+            'layout-horizontal': menuMode === "horizontal",
             'layout-sidebar-dim': colorScheme === "dim",
             'layout-sidebar-dark': colorScheme === "dark",
             'layout-overlay-active': overlayMenuActive,
@@ -549,10 +611,17 @@ const App = () => {
     return (
         <div className={containerClassName} data-theme={colorScheme} onClick={onDocumentClick}>
             <div className="layout-content-wrapper">
-                <AppTopbar routers={routers} topbarNotificationMenuActive={topbarNotificationMenuActive} topbarUserMenuActive={topbarUserMenuActive} onMenuButtonClick={onMenuButtonClick} onSearchClick={toggleSearch}
-                    onTopbarNotification={onTopbarNotificationMenuButtonClick} onTopbarUserMenu={onTopbarUserMenuButtonClick} onRightMenuClick={onRightMenuButtonClick} onRightMenuButtonClick={onRightMenuButtonClick}></AppTopbar>
+                <AppTopbar routers={routers} topbarNotificationMenuActive={topbarNotificationMenuActive} topbarUserMenuActive={topbarUserMenuActive}
+                           onMenuButtonClick={onMenuButtonClick} onSearchClick={toggleSearch} onTopbarNotification={onTopbarNotificationMenuButtonClick}
+                           onTopbarUserMenu={onTopbarUserMenuButtonClick} onRightMenuClick={onRightMenuButtonClick} onRightMenuButtonClick={onRightMenuButtonClick}
+                           menu={menu} menuMode={menuMode} menuActive={menuActive} staticMenuMobileActive={staticMenuMobileActive} onMenuClick={onMenuClick}
+                           onMenuitemClick={onMenuitemClick} onRootMenuitemClick={onRootMenuitemClick}></AppTopbar>
 
                 <div className="layout-content">
+                    <div className="layout-breadcrumb viewname" style={{ textTransform: 'uppercase' }}>
+                        <AppBreadcrumb routers={routers} />
+                    </div>
+
                     {
                         routers.map((router, index) => {
                             if (router.exact) {
@@ -567,17 +636,14 @@ const App = () => {
                 <AppFooter />
             </div>
 
-            <AppMenu model={menu} menuMode={menuMode} active={menuActive} mobileMenuActive={staticMenuMobileActive} onMenuClick={onMenuClick} onMenuitemClick={onMenuitemClick} onRootMenuitemClick={onRootMenuitemClick}></AppMenu>
-
             <AppRightMenu rightMenuActive={rightMenuActive} onRightMenuClick={onRightMenuClick}></AppRightMenu>
 
-            <AppConfig configActive={configActive} menuMode={menuMode} onMenuModeChange={onMenuModeChange} colorScheme={colorScheme} changeColorScheme={changeColorScheme} menuTheme={menuTheme} changeMenuTheme={changeMenuTheme}
-                componentTheme={componentTheme} changeComponentTheme={changeComponentTheme} onConfigClick={onConfigClick} onConfigButtonClick={onConfigButtonClick}
-                rippleActive={ripple} onRippleChange={onRippleChange} inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}></AppConfig>
+            <AppConfig configActive={configActive} menuMode={menuMode} onMenuModeChange={onMenuModeChange} colorScheme={colorScheme}
+                       changeColorScheme={changeColorScheme} menuTheme={menuTheme} changeMenuTheme={changeMenuTheme}
+                       componentTheme={componentTheme} changeComponentTheme={changeComponentTheme} onConfigClick={onConfigClick} onConfigButtonClick={onConfigButtonClick}
+                       rippleActive={ripple} onRippleChange={onRippleChange} inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}></AppConfig>
 
             <AppSearch searchActive={searchActive} onSearchClick={onSearchClick} onSearchHide={onSearchHide} />
-
-            <div className="layout-mask modal-in"></div>
         </div>
     );
 }

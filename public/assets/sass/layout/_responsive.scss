@@ -1,6 +1,11 @@
 @media screen and (min-width: $tabletBreakpoint + 1) {
     .layout-wrapper {
         &.layout-static {
+            .layout-topbar {
+                width: calc(100% - 16rem);
+                margin-left: $sidebarWidth;
+            }
+
             .layout-content-wrapper {
                 margin-left: $sidebarWidth;
             }
@@ -19,6 +24,11 @@
                 transform: translateX(-100%);
             }
 
+            .layout-topbar {
+                width: 100%;
+                margin-left: 0;
+            }
+
             .layout-content-wrapper {
                 margin-left: 0;
             }
@@ -31,6 +41,11 @@
                         content: "\e901";
                     }
                 }
+            }
+
+            .layout-topbar {
+                width: 100%;
+                margin-left: 0;
             }
 
             .layout-content-wrapper {
@@ -66,7 +81,6 @@
             left: 0;
             top: 0;
             width: 100%;
-            z-index: 998;
             box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 
             .topbar-left {
@@ -74,6 +88,10 @@
                 padding: .5rem 0;
                 @include flex-justify-between();
                 border-bottom: 1px solid $dividerColor;
+
+                .horizontal-logo {
+                    display: none;
+                }
 
                 .topbar-separator {
                     display: none;
@@ -138,6 +156,10 @@
         .layout-content-wrapper {
             margin-left: 0;
             padding-top: 7.125rem;
+
+            .layout-content {
+                padding-top: 2rem;
+            }
         }
 
         .layout-sidebar {

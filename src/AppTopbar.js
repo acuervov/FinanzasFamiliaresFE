@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import AppBreadcrumb from './AppBreadcrumb';
+import AppMenu from './AppMenu';
 
 const AppTopbar = (props) => {
 
@@ -13,6 +15,11 @@ const AppTopbar = (props) => {
                 <button type="button" className="menu-button p-link" onClick={props.onMenuButtonClick}>
                     <i className="pi pi-chevron-left"></i>
                 </button>
+
+                <Link to="/">
+                    <img id="logo-horizontal" className="horizontal-logo" src="assets/layout/images/logo-dark.svg" alt="diamond-layout" />
+                </Link>
+
                 <span className="topbar-separator"></span>
 
                 <div className="layout-breadcrumb viewname" style={{ textTransform: 'uppercase' }}>
@@ -21,6 +28,11 @@ const AppTopbar = (props) => {
 
                 <img id="logo-mobile" className="mobile-logo" src="assets/layout/images/logo-dark.svg" alt="diamond-layout" />
             </div>
+
+            <AppMenu model={props.menu} menuMode={props.menuMode} active={props.menuActive} mobileMenuActive={props.staticMenuMobileActive}
+                     onMenuClick={props.onMenuClick} onMenuitemClick={props.onMenuitemClick} onRootMenuitemClick={props.onRootMenuitemClick}></AppMenu>
+
+            <div className="layout-mask modal-in"></div>
 
             <div className="topbar-right">
                 <ul className="topbar-menu">

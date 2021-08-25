@@ -3,14 +3,24 @@
     height: 4rem;
     padding: 0 2rem;
     border-bottom: $topbarBottomBorder;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 997;
     @include flex();
     @include flex-align-center();
     @include flex-justify-between();
     color: $topbarTextColor;
+    transition: margin-left $animationDuration $animationTimingFunction;
 
     .topbar-left {
         @include flex();
         @include flex-align-center();
+
+        .horizontal-logo {
+            display: none;
+        }
     }
 
     .menu-button {

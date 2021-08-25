@@ -37,7 +37,7 @@ const AppSubmenu = (props) => {
     };
 
     const onMenuItemMouseEnter = (index) => {
-        if (props.root && props.menuActive && props.menuMode === "slim" && !isMobile()) {
+        if (props.root && props.menuActive && (props.menuMode === "slim" || props.menuMode === "horizontal") && !isMobile()) {
             setActiveIndex(index);
         }
     };
@@ -47,11 +47,15 @@ const AppSubmenu = (props) => {
     };
 
     const isMobile = () => {
-        return window.innerWidth <= 991;
+        return window.innerWidth <= 1091;
     };
 
     const isSlim = useCallback(() => {
         return props.menuMode === 'slim';
+    }, [props.menuMode])
+
+    const isHorizontal = useCallback(() => {
+        return props.menuMode === 'horizontal';
     }, [props.menuMode])
 
     const getLink = (item, index) => {
@@ -123,6 +127,12 @@ const AppSubmenu = (props) => {
             setActiveIndex(null);
         }
     }, [props.menuActive, isSlim]);
+
+    useEffect(() => {
+        if (!props.menuActive && isHorizontal()) {
+            setActiveIndex(null);
+        }
+    }, [props.menuActive, isHorizontal]);
 
     if (!props.items) {
         return null;
