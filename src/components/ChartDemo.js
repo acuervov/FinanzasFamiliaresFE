@@ -8,13 +8,16 @@ const lineData = {
             label: 'First Dataset',
             data: [65, 59, 80, 81, 56, 55, 40],
             fill: false,
-            borderColor: '#b944d6'
+            borderColor: '#b944d6',
+            tension: .4
+
         },
         {
             label: 'Second Dataset',
             data: [28, 48, 40, 19, 86, 27, 90],
             fill: false,
-            borderColor: '#0F97C7'
+            borderColor: '#0F97C7',
+            tension: .4
         }
     ]
 };
@@ -30,7 +33,8 @@ const pieData = {
                 '#e2841a',
                 '#10b163'
             ]
-        }]
+        }
+    ]
 };
 
 const polarData = {
@@ -76,7 +80,7 @@ const barData = {
 };
 
 const doughnutData = {
-    labels: ['A','B','C'],
+    labels: ['A', 'B', 'C'],
     datasets: [
         {
             data: [300, 50, 100],
@@ -90,7 +94,8 @@ const doughnutData = {
                 "#6fc0dd",
                 "#6fd0a1"
             ]
-        }]
+        }
+    ]
 };
 
 const radarData = {
@@ -131,12 +136,16 @@ export const ChartDemo = () => {
 
                 <div className="card">
                     <h5 className="centerText">Pie Chart</h5>
-                    <Chart type="pie" data={pieData} />
+                    <div className="p-d-flex p-jc-center">
+                        <Chart style={{ position: 'relative', width: '50%' }} type="pie" data={pieData} />
+                    </div>
                 </div>
 
                 <div className="card">
                     <h5 className="centerText">Polar Area Chart</h5>
-                    <Chart type="polarArea" data={polarData} />
+                    <div className="p-d-flex p-jc-center">
+                        <Chart style={{ position: 'relative', width: '50%' }} type="polarArea" data={polarData} />
+                    </div>
                 </div>
             </div>
             <div className="p-col-12 p-lg-6">
@@ -147,12 +156,16 @@ export const ChartDemo = () => {
 
                 <div className="card">
                     <h5 className="centerText">Doughnut Chart</h5>
-                    <Chart type="doughnut" data={doughnutData} />
+                    <div className="p-d-flex p-jc-center">
+                        <Chart style={{ position: 'relative', width: '50%' }} type="doughnut" data={doughnutData} />
+                    </div>
                 </div>
 
                 <div className="card">
                     <h5 className="centerText">Radar Chart</h5>
-                    <Chart type="radar" data={radarData} />
+                    <div className="p-d-flex p-jc-center">
+                        <Chart style={{ position: 'relative', width: '50%' }} type="radar" data={radarData} />
+                    </div>
                 </div>
             </div>
         </div>

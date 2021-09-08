@@ -9,28 +9,35 @@ import ProductService from '../service/ProductService';
 
 const ordersChart = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-        {
-            label: 'New',
-            data: [2, 7, 20, 9, 16, 9, 5],
-            backgroundColor: ['rgba(100, 181, 246, 0.2)'],
-            borderColor: ['#64B5F6'],
-            borderWidth: 3,
-            fill: true
-        }
-    ]
+    datasets: [{
+        label: 'New',
+        data: [2, 7, 20, 9, 16, 9, 5],
+        backgroundColor: [
+            'rgba(100, 181, 246, 0.2)',
+        ],
+        borderColor: [
+            '#64B5F6',
+        ],
+        borderWidth: 3,
+        fill: true,
+        tension: .4
+    }]
 };
 
 const ordersChartOptions = {
-    legend: {
-        display: true,
+    maintainAspectRatio: false,
+    aspectRatio: .8,
+    plugins: {
+        legend: {
+            display: true,
+        }
     },
     responsive: true,
     hover: {
         mode: 'index',
     },
     scales: {
-        yAxes: [
+        y: [
             {
                 ticks: {
                     min: 0,
@@ -114,7 +121,7 @@ export const Dashboard = () => {
     };
 
     const refreshDataset = (event) => {
-        chartRef.current.refresh(event);
+        chartRef.current.reinit(event);
     };
 
     const formatCurrency = (value) => {
@@ -406,7 +413,9 @@ export const Dashboard = () => {
                         <h4>Revenue Stream</h4>
                         <p>Comparison of your revenue sources.</p>
                         <div className="revenue-chart-container">
-                            <Chart type="pie" id="revenue-chart" data={revenueChart}></Chart>
+                            <div className="p-d-flex p-jc-center">
+                                <Chart style={{ position: 'relative', width: '50%' }} type="pie" id="revenue-chart" data={revenueChart}></Chart>
+                            </div>
                         </div>
                     </div>
 
