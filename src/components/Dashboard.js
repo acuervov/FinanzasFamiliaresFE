@@ -37,14 +37,12 @@ const ordersChartOptions = {
         mode: 'index',
     },
     scales: {
-        y: [
-            {
-                ticks: {
-                    min: 0,
-                    max: 20
-                }
+        y: {
+            ticks: {
+                min: 0,
+                max: 20
             }
-        ]
+        }
     }
 };
 
