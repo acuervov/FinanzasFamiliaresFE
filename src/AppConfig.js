@@ -108,7 +108,7 @@ const AppConfig = (props) => {
     };
 
     const getMenuThemes = () => {
-        if (props.colorScheme === 'light' && props.menuMode !== 'horizontal') {
+        if (props.colorScheme === 'light') {
             return (
                 <div className="layout-themes">
                     {

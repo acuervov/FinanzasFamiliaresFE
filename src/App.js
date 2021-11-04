@@ -254,9 +254,14 @@ const App = () => {
 
         const appLogoLink = document.getElementById('app-logo');
         const appLogoUrl = `assets/layout/images/logo-${logoColor === 'dark' ? 'dark' : 'white'}.svg`;
+        const horizontalLogoLink = document.getElementById('logo-horizontal');
+        const horizontalLogoUrl = `assets/layout/images/logo-${logoColor === 'dark' ? 'dark' : 'white'}.svg`;
 
         if (appLogoLink) {
             appLogoLink.src = appLogoUrl;
+        }
+        if (horizontalLogoLink) {
+            horizontalLogoLink.src = horizontalLogoUrl;
         }
         setLogoColor(logoColor);
         setMenuColor(name);
@@ -273,29 +278,6 @@ const App = () => {
         const scheme = e.value;
         changeStyleSheetUrl('layout-css', 'layout-' + scheme + '.css', 1);
         changeStyleSheetUrl('theme-css', 'theme-' + scheme + '.css', 1);
-
-        const appLogoLink = document.getElementById('app-logo');
-        const horizontalLogoLink = document.getElementById('logo-horizontal');
-
-        if (scheme === 'light') {
-            if (menuMode === 'horizontal') {
-                setMenuTheme('layout-sidebar-white');
-                appLogoLink.src = 'assets/layout/images/logo-dark.svg';
-                horizontalLogoLink.src = 'assets/layout/images/logo-dark.svg';
-            }
-            else {
-                if (logoColor === 'white') {
-                    appLogoLink.src = 'assets/layout/images/logo-white.svg';
-                }
-                else {
-                    appLogoLink.src = 'assets/layout/images/logo-dark.svg';
-                }
-            }
-        }
-        else {
-            appLogoLink.src = 'assets/layout/images/logo-white.svg';
-            horizontalLogoLink.src = 'assets/layout/images/logo-white.svg';
-        }
 
         changeLogo(scheme);
     };
@@ -465,39 +447,7 @@ const App = () => {
         if(e.value === 'static') {
             setStaticMenuDesktopInactive(false)
         }
-
-        const appLogoLink = document.getElementById('app-logo');
-        const horizontalLogoLink = document.getElementById('logo-horizontal');
-
-        if (e.value === 'horizontal') {
-            if (colorScheme === 'light') {
-                setMenuTheme('layout-sidebar-white');
-                appLogoLink.src = 'assets/layout/images/logo-dark.svg';
-                horizontalLogoLink.src = 'assets/layout/images/logo-dark.svg';
-            }
-            else {
-                setMenuTheme('layout-sidebar-' + colorScheme);
-                appLogoLink.src = 'assets/layout/images/logo-white.svg';
-                horizontalLogoLink.src = 'assets/layout/images/logo-white.svg';
-            }
-        }
-        else {
-            setMenuTheme('layout-sidebar-' + menuColor);
-            if(colorScheme !== 'light') {
-                appLogoLink.src = 'assets/layout/images/logo-white.svg';
-                horizontalLogoLink.src = 'assets/layout/images/logo-white.svg';
-            }
-            else {
-                if (logoColor === 'white') {
-                    appLogoLink.src = 'assets/layout/images/logo-white.svg';
-                }
-                else {
-                    appLogoLink.src = 'assets/layout/images/logo-dark.svg';
-                }
-            }
-        }
     };
-
 
     const onTopbarUserMenuButtonClick = (event) => {
         userMenuClick = true;

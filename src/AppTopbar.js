@@ -17,7 +17,7 @@ const AppTopbar = (props) => {
                 </button>
 
                 <Link to="/">
-                    <img id="logo-horizontal" className="horizontal-logo" src="assets/layout/images/logo-dark.svg" alt="diamond-layout" />
+                    <img id="logo-horizontal" className="horizontal-logo" src="assets/layout/images/logo-white.svg" alt="diamond-layout" />
                 </Link>
 
                 <span className="topbar-separator"></span>
