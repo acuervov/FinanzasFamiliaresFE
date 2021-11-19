@@ -67,7 +67,6 @@ const App = () => {
     const [inputStyle, setInputStyle] = useState('outlined');
     const [ripple, setRipple] = useState(false);
     const [logoColor, setLogoColor] = useState('white');
-    const [menuColor, setMenuColor] = useState('darkgray');
     const [componentTheme, setComponentTheme] = useState('blue');
     const [logoUrl, setLogoUrl] = useState('assets/layout/images/logo-dark.svg')
 
@@ -264,7 +263,6 @@ const App = () => {
             horizontalLogoLink.src = horizontalLogoUrl;
         }
         setLogoColor(logoColor);
-        setMenuColor(name);
     };
 
     const changeComponentTheme = (theme) => {
@@ -309,10 +307,15 @@ const App = () => {
         const mobileLogoLink = document.getElementById("logo-mobile");
         const invoiceLogoLink = document.getElementById("invoice-logo");
         const footerLogoLink = document.getElementById("footer-logo");
+        const horizontalLogoLink = document.getElementById('logo-horizontal');
         setLogoUrl(`assets/layout/images/logo-${scheme === 'light' ? 'dark' : 'white'}.svg`);
 
         if (appLogoLink) {
             appLogoLink.src = `assets/layout/images/logo-${scheme === 'light' ? logoColor : 'white'}.svg`;
+        }
+
+        if (horizontalLogoLink) {
+            horizontalLogoLink.src = `assets/layout/images/logo-${scheme === 'light' ? logoColor : 'white'}.svg`;
         }
 
         if (mobileLogoLink) {
