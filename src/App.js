@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
-import { Route } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { classNames } from 'primereact/utils';
+import { Route, useLocation } from 'react-router-dom';
 
 import AppTopbar from './AppTopbar';
 import AppFooter from './AppFooter';
@@ -9,46 +9,40 @@ import AppSearch from './AppSearch';
 import AppRightMenu from './AppRightMenu';
 import AppBreadcrumb from './AppBreadcrumb';
 
-import { Dashboard } from './components/Dashboard';
-import { FormLayoutDemo } from './components/FormLayoutDemo';
-import { InputDemo } from './components/InputDemo';
-import { FloatLabelDemo } from './components/FloatLabelDemo';
-import { ButtonDemo } from './components/ButtonDemo';
-import { TableDemo } from './components/TableDemo';
-import { ListDemo } from './components/ListDemo';
-import { TreeDemo } from './components/TreeDemo';
-import { PanelDemo } from './components/PanelDemo';
-import { OverlayDemo } from './components/OverlayDemo';
-import { MediaDemo } from './components/MediaDemo';
-import { MenuDemo } from './components/MenuDemo';
-import { MessagesDemo } from './components/MessagesDemo';
-import { FileDemo } from './components/FileDemo';
-import { ChartDemo } from './components/ChartDemo';
-import { MiscDemo } from './components/MiscDemo';
-import { Documentation } from './components/Documentation';
-import { IconsDemo } from './utilities/IconsDemo';
-import { Widgets } from './utilities/Widgets';
-import { GridDemo } from './utilities/GridDemo';
-import { SpacingDemo } from './utilities/SpacingDemo';
-import { ElevationDemo } from './utilities/ElevationDemo';
-import { TextDemo } from './utilities/TextDemo';
-import { TypographyDemo } from './utilities/TypographyDemo';
-import { DisplayDemo } from './utilities/DisplayDemo';
-import { FlexBoxDemo } from './utilities/FlexBoxDemo';
-import { CrudDemo } from './pages/CrudDemo';
-import { CalendarDemo } from './pages/CalendarDemo';
-import { Invoice } from './pages/Invoice';
-import { Help } from './pages/Help';
-import { EmptyPage } from './pages/EmptyPage';
+import Dashboard from './components/Dashboard';
+import FormLayoutDemo from './components/FormLayoutDemo';
+import InputDemo from './components/InputDemo';
+import FloatLabelDemo from './components/FloatLabelDemo';
+import ButtonDemo from './components/ButtonDemo';
+import TableDemo from './components/TableDemo';
+import ListDemo from './components/ListDemo';
+import TreeDemo from './components/TreeDemo';
+import PanelDemo from './components/PanelDemo';
+import OverlayDemo from './components/OverlayDemo';
+import MediaDemo from './components/MediaDemo';
+import MenuDemo from './components/MenuDemo';
+import MessagesDemo from './components/MessagesDemo';
+import FileDemo from './components/FileDemo';
+import ChartDemo from './components/ChartDemo';
+import MiscDemo from './components/MiscDemo';
+import Documentation from './components/Documentation';
+import IconsDemo from './utilities/IconsDemo';
+import CrudDemo from './pages/CrudDemo';
+import CalendarDemo from './pages/CalendarDemo';
+import Invoice from './pages/Invoice';
+import Help from './pages/Help';
+import EmptyPage from './pages/EmptyPage';
+import InvalidStateDemo from './components/InvalidStateDemo';
+import TimelineDemo from './pages/TimelineDemo';
 
 import PrimeReact from 'primereact/api';
+import { Tooltip } from "primereact/tooltip";
 
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './App.scss';
-import { InvalidStateDemo } from './components/InvalidStateDemo';
-import { TimelineDemo } from './pages/TimelineDemo';
+
 
 const App = () => {
 
@@ -67,9 +61,10 @@ const App = () => {
     const [inputStyle, setInputStyle] = useState('outlined');
     const [ripple, setRipple] = useState(false);
     const [logoColor, setLogoColor] = useState('white');
-    const [menuColor, setMenuColor] = useState('darkgray');
     const [componentTheme, setComponentTheme] = useState('blue');
-    const [logoUrl, setLogoUrl] = useState('assets/layout/images/logo-dark.svg')
+    const [logoUrl, setLogoUrl] = useState('assets/layout/images/logo-dark.svg');
+    const copyTooltipRef = useRef();
+    const location = useLocation();
 
 
     let menuClick = false;
@@ -110,20 +105,20 @@ const App = () => {
         },
         { separator: true },
         {
-            label: "Utilities", icon: "pi pi-fw pi-desktop",
+            label: "PrimeBlocks", icon: "pi pi-fw pi-prime",
             items: [
-                { label: "Display", icon: "pi pi-fw pi-desktop", to: "/display" },
-                { label: "Elevation", icon: "pi pi-fw pi-external-link", to: "/elevation" },
-                { label: "Flexbox", icon: "pi pi-fw pi-directions", to: "/flexbox" },
-                { label: "Icons", icon: "pi pi-fw pi-search", to: "/icons" },
-                { label: "Text", icon: "pi pi-fw pi-pencil", to: "/text" },
-                { label: "Widgets", icon: "pi pi-fw pi-star-o", to: "/widgets" },
-                { label: "Grid System", icon: "pi pi-fw pi-th-large", to: "/grid" },
-                { label: "Spacing", icon: "pi pi-fw pi-arrow-right", to: "/spacing" },
-                { label: "Typography", icon: "pi pi-fw pi-align-center", to: "/typography" }
+                { label: "Free Blocks", icon: "pi pi-fw pi-eye", to: "/blocks", badge: "NEW", badgeStyle: { width: '40px' } },
+                { label: "All Blocks", icon: "pi pi-fw pi-globe", url: "https://www.primefaces.org/primeblocks-react", target: "_blank" }
             ]
         },
         { separator: true },
+        {
+            label: 'Utilities', icon: 'pi pi-fw pi-compass',
+            items: [
+                { label: 'Icons', icon: 'pi pi-fw pi-prime', to: '/icons' },
+                { label: "PrimeFlex", icon: "pi pi-fw pi-desktop", url: "https://www.primefaces.org/primeflex", target: "_blank" }
+            ]
+        },
         {
             label: "Pages", icon: "pi pi-fw pi-pencil",
             items: [
@@ -209,25 +204,21 @@ const App = () => {
         { path: '/menu', component: MenuDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Menu' }] } },
         { path: '/messages', component: MessagesDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Messages' }] } },
         { path: '/file', component: FileDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'File' }] } },
-        { path: '/chart', component: ChartDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Charts' }] } },
+        { path: '/chart', render: () => <ChartDemo colorMode={colorScheme} location={location} />, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Charts' }] } },
         { path: '/misc', component: MiscDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Misc' }] } },
         { path: '/icons', component: IconsDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Icons' }] } },
-        { path: '/widgets', component: Widgets, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Widgets' }] } },
-        { path: '/grid', component: GridDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Grid System' }] } },
-        { path: '/spacing', component: SpacingDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Spacing' }] } },
-        { path: '/elevation', component: ElevationDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Elevation' }] } },
-        { path: '/typography', component: TypographyDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Typography' }] } },
-        { path: '/display', component: DisplayDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Display' }] } },
-        { path: '/flexbox', component: FlexBoxDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Flexbox' }] } },
-        { path: '/text', component: TextDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Text' }] } },
         { path: '/crud', component: CrudDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Crud' }] } },
         { path: '/calendar', component: CalendarDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Calendar' }] } },
         { path: '/timeline', component: TimelineDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Timeline' }] } },
-        { path: '/invoice', component: () => <Invoice logoUrl={logoUrl} />, meta: { breadcrumb: [{ parent: 'Pages', label: 'Invoice' }] } },
+        { path: '/invoice', component: () => <Invoice logoUrl={logoUrl} location={location} />, meta: { breadcrumb: [{ parent: 'Pages', label: 'Invoice' }] } },
         { path: '/help', component: Help, meta: { breadcrumb: [{ parent: 'Pages', label: 'Help' }] } },
         { path: '/empty', component: EmptyPage, meta: { breadcrumb: [{ parent: 'Pages', label: 'Empty Page' }] } },
         { path: '/documentation', component: Documentation, meta: { breadcrumb: [{ parent: 'Pages', label: 'Documentation' }] } }
     ];
+
+    useEffect(() => {
+        copyTooltipRef && copyTooltipRef.current && copyTooltipRef.current.updateTargetEvents();
+    }, [location]);
 
     useEffect(() => {
         if (staticMenuMobileActive) {
@@ -264,7 +255,6 @@ const App = () => {
             horizontalLogoLink.src = horizontalLogoUrl;
         }
         setLogoColor(logoColor);
-        setMenuColor(name);
     };
 
     const changeComponentTheme = (theme) => {
@@ -444,7 +434,7 @@ const App = () => {
 
     const onMenuModeChange = (e) => {
         setMenuMode(e.value);
-        if(e.value === 'static') {
+        if (e.value === 'static') {
             setStaticMenuDesktopInactive(false)
         }
     };
@@ -560,12 +550,14 @@ const App = () => {
 
     return (
         <div className={containerClassName} data-theme={colorScheme} onClick={onDocumentClick}>
+            <Tooltip ref={copyTooltipRef} target=".block-action-copy" position="bottom" content="Copied to clipboard" event="focus" />
+
             <div className="layout-content-wrapper">
                 <AppTopbar routers={routers} topbarNotificationMenuActive={topbarNotificationMenuActive} topbarUserMenuActive={topbarUserMenuActive}
-                           onMenuButtonClick={onMenuButtonClick} onSearchClick={toggleSearch} onTopbarNotification={onTopbarNotificationMenuButtonClick}
-                           onTopbarUserMenu={onTopbarUserMenuButtonClick} onRightMenuClick={onRightMenuButtonClick} onRightMenuButtonClick={onRightMenuButtonClick}
-                           menu={menu} menuMode={menuMode} menuActive={menuActive} staticMenuMobileActive={staticMenuMobileActive} onMenuClick={onMenuClick}
-                           onMenuitemClick={onMenuitemClick} onRootMenuitemClick={onRootMenuitemClick}></AppTopbar>
+                    onMenuButtonClick={onMenuButtonClick} onSearchClick={toggleSearch} onTopbarNotification={onTopbarNotificationMenuButtonClick}
+                    onTopbarUserMenu={onTopbarUserMenuButtonClick} onRightMenuClick={onRightMenuButtonClick} onRightMenuButtonClick={onRightMenuButtonClick}
+                    menu={menu} menuMode={menuMode} menuActive={menuActive} staticMenuMobileActive={staticMenuMobileActive} onMenuClick={onMenuClick}
+                    onMenuitemClick={onMenuitemClick} onRootMenuitemClick={onRootMenuitemClick}></AppTopbar>
 
                 <div className="layout-content">
                     <div className="layout-breadcrumb viewname" style={{ textTransform: 'uppercase' }}>
@@ -575,10 +567,10 @@ const App = () => {
                     {
                         routers.map((router, index) => {
                             if (router.exact) {
-                                return <Route key={`router${index}`} path={router.path} exact component={router.component} />
+                                return <Route key={`router${index}`} path={router.path} exact component={router.component} render={router.render} />
                             }
 
-                            return <Route key={`router${index}`} path={router.path} component={router.component} />
+                            return <Route key={`router${index}`} path={router.path} component={router.component} render={router.render} />
                         })
                     }
                 </div>
@@ -589,9 +581,9 @@ const App = () => {
             <AppRightMenu rightMenuActive={rightMenuActive} onRightMenuClick={onRightMenuClick}></AppRightMenu>
 
             <AppConfig configActive={configActive} menuMode={menuMode} onMenuModeChange={onMenuModeChange} colorScheme={colorScheme}
-                       changeColorScheme={changeColorScheme} menuTheme={menuTheme} changeMenuTheme={changeMenuTheme}
-                       componentTheme={componentTheme} changeComponentTheme={changeComponentTheme} onConfigClick={onConfigClick} onConfigButtonClick={onConfigButtonClick}
-                       rippleActive={ripple} onRippleChange={onRippleChange} inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}></AppConfig>
+                changeColorScheme={changeColorScheme} menuTheme={menuTheme} changeMenuTheme={changeMenuTheme}
+                componentTheme={componentTheme} changeComponentTheme={changeComponentTheme} onConfigClick={onConfigClick} onConfigButtonClick={onConfigButtonClick}
+                rippleActive={ripple} onRippleChange={onRippleChange} inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}></AppConfig>
 
             <AppSearch searchActive={searchActive} onSearchClick={onSearchClick} onSearchHide={onSearchHide} />
         </div>

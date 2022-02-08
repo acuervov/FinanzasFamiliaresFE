@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import { classNames } from 'primereact/utils';
 import { RadioButton } from 'primereact/radiobutton';
 import { InputSwitch } from 'primereact/inputswitch';
 import { Button } from 'primereact/button';
@@ -117,7 +117,7 @@ const AppConfig = (props) => {
                             return (
                                 <div key={theme.name}>
                                     <button type="button" className="p-link" style={{ cursor: 'pointer', 'backgroundColor': theme.color }} onClick={() => props.changeMenuTheme(theme.name, theme.logoColor, theme.componentTheme)} title={theme.name}>
-                                        {props.menuTheme === 'layout-sidebar-' + theme.name && <span className="check p-d-flex p-ai-center p-jc-center">
+                                        {props.menuTheme === 'layout-sidebar-' + theme.name && <span className="check flex align-items-center justify-content-center">
                                             <i className="pi pi-check" style={{ color: checkStyle}}></i>
                                         </span>}
                                     </button>
@@ -144,7 +144,7 @@ const AppConfig = (props) => {
                         return (
                             <div key={theme.name}>
                                 <button type="button" className="p-link" style={{ cursor: 'pointer', 'backgroundColor': theme.color }} onClick={() => props.changeComponentTheme(theme.name)} title={theme.name}>
-                                    {props.componentTheme === theme.name && <span className="check p-d-flex p-ai-center p-jc-center">
+                                    {props.componentTheme === theme.name && <span className="check flex align-items-center justify-content-center">
                                         <i className="pi pi-check" style={{ color: 'white' }}></i>
                                     </span>}
                                 </button>
@@ -164,34 +164,34 @@ const AppConfig = (props) => {
         <Button className="layout-config-button" icon="pi pi-cog p-button-icon" type="button" onClick={onConfigButtonClick}></Button>
             <div className={configClassName} onClick={props.onConfigClick}>
                 <h5>Menu Type</h5>
-                <div className="p-field-radiobutton">
+                <div className="field-radiobutton">
                     <RadioButton name="menuMode" value="static" checked={props.menuMode === 'static'} inputId="mode1" onChange={props.onMenuModeChange}></RadioButton>
                     <label htmlFor="mode1">Static</label>
                 </div>
-                <div className="p-field-radiobutton">
+                <div className="field-radiobutton">
                     <RadioButton name="menuMode" value="overlay" checked={props.menuMode === 'overlay'} inputId="mode2" onChange={props.onMenuModeChange}></RadioButton>
                     <label htmlFor="mode2">Overlay</label>
                 </div>
-                <div className="p-field-radiobutton">
+                <div className="field-radiobutton">
                     <RadioButton name="menuMode" value="slim" checked={props.menuMode === 'slim'} inputId="mode3" onChange={props.onMenuModeChange}></RadioButton>
                     <label htmlFor="mode3">Slim</label>
                 </div>
-                <div className="p-field-radiobutton">
+                <div className="field-radiobutton">
                     <RadioButton name="menuMode" value="horizontal" checked={props.menuMode === 'horizontal'} inputId="mode4" onChange={props.onMenuModeChange}></RadioButton>
                     <label htmlFor="mode4">Horizontal</label>
                 </div>
                 <hr />
 
                 <h5>Color Scheme</h5>
-                <div className="p-field-radiobutton">
+                <div className="field-radiobutton">
                     <RadioButton name="colorScheme" value="dark" checked={props.colorScheme === 'dark'} inputId="theme1" onChange={props.changeColorScheme}></RadioButton>
                     <label htmlFor="theme1">Dark</label>
                 </div>
-                <div className="p-field-radiobutton">
+                <div className="field-radiobutton">
                     <RadioButton name="colorScheme" value="dim" checked={props.colorScheme === 'dim'} inputId="theme2" onChange={props.changeColorScheme}></RadioButton>
                     <label htmlFor="theme2">Dim</label>
                 </div>
-                <div className="p-field-radiobutton">
+                <div className="field-radiobutton">
                     <RadioButton name="colorScheme" value="light" checked={props.colorScheme === 'light'} inputId="theme3" onChange={props.changeColorScheme}></RadioButton>
                     <label htmlFor="theme3">Light</label>
                 </div>
@@ -199,11 +199,11 @@ const AppConfig = (props) => {
                 <hr />
 
                 <h5>Input Style</h5>
-                <div className="p-field-radiobutton">
+                <div className="field-radiobutton">
                     <RadioButton inputId="input_outlined" name="inputstyle" value="outlined" checked={props.inputStyle === 'outlined'} onChange={(e) => props.onInputStyleChange(e.value)} />
                     <label htmlFor="input_outlined">Outlined</label>
                 </div>
-                <div className="p-field-radiobutton">
+                <div className="field-radiobutton">
                     <RadioButton inputId="input_filled" name="inputstyle" value="filled" checked={props.inputStyle === 'filled'} onChange={(e) => props.onInputStyleChange(e.value)} />
                     <label htmlFor="input_filled">Filled</label>
                 </div>

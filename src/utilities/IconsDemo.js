@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import AppCodeHighlight from '../AppCodeHighlight';
-import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
+import AppCodeHiglight  from '../AppCodeHighlight';
 
-export const IconsDemo = () => {
+const IconsDemo = () => {
 
     const [icons, setIcons] = useState([]);
     const [filteredIcons, setFilteredIcons] = useState([]);
@@ -38,74 +37,98 @@ export const IconsDemo = () => {
     }
 
     return (
-        <div className="card icons-demo">
+        <div className="card docs">
             <h4>Icons</h4>
-            <p>This layout uses PrimeIcons v4.0, PrimeTek's new modern icon library.</p>
+            <p>PrimeReact components internally use <a href="https://github.com/primefaces/primeicons" className="font-medium">PrimeIcons</a> library, the official icons suite from <a href="https://www.primetek.com.tr" className="font-medium">PrimeTek</a>.</p>
+
+            <h5>Download</h5>
+            <p>PrimeIcons is available at npm, run the following command to download it to your project.</p>
+<AppCodeHiglight>
+{`
+npm install primeicons --save
+`}
+</AppCodeHiglight>
 
             <h5>Getting Started</h5>
-            <p>PrimeIcons use the pi pi-{`{icon}`} syntax such as pi pi-check. A standalone icon can be displayed using an element like i or span.</p>
-<AppCodeHighlight>
+            <p>PrimeIcons use the <strong>pi pi-&#123;icon&#125;</strong> syntax such as <strong>pi pi-check</strong>.
+            A standalone icon can be displayed using an element like <i>i</i> or <i>span</i></p>
+
+<AppCodeHiglight>
 {`
-<i className="pi pi-check"></i>
+<i className="pi pi-check" style={{ marginRight: '.5rem' }}></i>
 <i className="pi pi-times"></i>
 `}
-</AppCodeHighlight>
-
-            <i className="pi pi-check" style={{ marginRight: '.5rem' }}></i>
-            <i className="pi pi-times"></i>
-
-            <h5>Component Icons</h5>
-            <p>Components that have icon properties accept PrimeIcons with the pi pi-{`{icon}`} syntax.</p>
-<AppCodeHighlight>
-{`
-<Button type="button" label="Confirm" icon="pi pi-check"></Button>
-`}
-</AppCodeHighlight>
-
-            <Button type="button" label="Confirm" icon="pi pi-check"></Button>
+</AppCodeHiglight>
 
             <h5>Size</h5>
             <p>Size of the icons can easily be changed using font-size property.</p>
 
-<AppCodeHighlight>
+<AppCodeHiglight>
 {`
 <i className="pi pi-check"></i>
 `}
-</AppCodeHighlight>
+</AppCodeHiglight>
 
             <i className="pi pi-check"></i>
 
-<AppCodeHighlight>
+<AppCodeHiglight>
 {`
 <i className="pi pi-check" style={{ fontSize: '2rem' }}></i>
 `}
-</AppCodeHighlight>
+</AppCodeHiglight>
 
             <i className="pi pi-check" style={{ fontSize: '2rem' }}></i>
 
             <h5>Spinning Animation</h5>
             <p>Special pi-spin class applies continuous rotation to an icon.</p>
-<AppCodeHighlight>
+<AppCodeHiglight>
 {`
 <i className="pi pi-spin pi-spinner" style={{ fontSize: '2rem' }}></i>
 `}
-</AppCodeHighlight>
+</AppCodeHiglight>
 
             <i className="pi pi-spin pi-spinner" style={{ fontSize: '2rem' }}></i>
 
+            <h5>Constants</h5>
+            <p>PrimeIcons constants API is provided to easily choose an icon with typescript e.g. when defining a menu model.</p>
+<AppCodeHiglight>
+{`
+<Menu model={items} />
+`}
+</AppCodeHiglight>
+<AppCodeHiglight lang="js">
+{`
+import {PrimeIcons} from 'primereact/api';
+
+const items = [
+    {
+        label: 'Update',
+        icon: PrimeIcons.REFRESH,
+        to: '/update'
+    },
+    {
+        label: 'Delete',
+        icon: PrimeIcons.TIMES,
+        to: '/delete'
+    }
+]
+`}
+</AppCodeHiglight>
             <h5>List of Icons</h5>
-            <p>Here is the current list of PrimeIcons, more icons are added periodically. You may also <a href="https://github.com/primefaces/primeicons/issues">request new icons</a> at the issue tracker.</p>
+            <p>Here is the current list of PrimeIcons, more icons are added periodically. You may also <a href="https://github.com/primefaces/primeicons/issues" className="font-medium">request new icons</a> at the issue tracker.</p>
 
             <div>
-                <InputText type="text" className="icon-filter" onInput={onFilter} placeholder="Search an icon" />
+                <InputText type="text" className="w-full p-3 mt-3 mb-5" onInput={onFilter} placeholder="Search an icon" />
             </div>
-            <div className="p-grid icons-list">
+            <div className="grid icons-list text-center">
                 {
-                    filteredIcons && filteredIcons.map(icon => {
-                        return (
-                            <div className="p-col-12 p-md-2" key={icon.properties.name}>
-                                <i className={`pi pi-${icon.properties.name}`}></i>
-                                <div>pi-{icon.properties.name}</div>
+                    filteredIcons && filteredIcons.map(iconMeta => {
+                        const { icon, properties } = iconMeta;
+
+                        return icon.tags.indexOf('deprecate') === -1 && (
+                            <div className="col-6 sm:col-4 lg:col-3 xl:col-2 pb-5" key={properties.name}>
+                                <i className={"text-2xl mb-2 pi pi-" + properties.name}></i>
+                                <div>pi-{properties.name}</div>
                             </div>
                         );
                     })
@@ -114,3 +137,9 @@ export const IconsDemo = () => {
         </div>
     )
 }
+
+const comparisonFn = function (prevProps, nextProps) {
+    return prevProps.location.pathname === nextProps.location.pathname;
+};
+
+export default React.memo(IconsDemo, comparisonFn);

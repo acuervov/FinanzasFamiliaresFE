@@ -1,41 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { AutoComplete } from 'primereact/autocomplete';
-import { Calendar } from 'primereact/calendar';
+import React, { useState, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
-import { Chips } from 'primereact/chips';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { InputMask } from 'primereact/inputmask';
 import { InputNumber } from 'primereact/inputnumber';
-import { MultiSelect } from 'primereact/multiselect';
+import { AutoComplete } from 'primereact/autocomplete';
+import { Calendar } from 'primereact/calendar';
+import { Chips } from 'primereact/chips';
 import { Dropdown } from 'primereact/dropdown';
-import CountryService from '../service/CountryService';
+import { MultiSelect } from 'primereact/multiselect';
+import { Password } from 'primereact/password';
+import CountryService  from '../service/CountryService';
 
-export const InvalidStateDemo = () => {
+const InvalidStateDemo = () => {
 
     const [countries, setCountries] = useState([]);
     const [filteredCountries, setFilteredCountries] = useState(null);
-    const [selectedCountry, setSelectedCountry] = useState('');
-
     const [value1, setValue1] = useState('');
     const [value2, setValue2] = useState('');
-    const [value3, setValue3] = useState([]);
+    const [value3, setValue3] = useState(null);
     const [value4, setValue4] = useState('');
     const [value5, setValue5] = useState('');
-    const [value6, setValue6] = useState(null);
-    const [value7, setValue7] = useState([]);
-    const [value8, setValue8] = useState(null);
+    const [value6, setValue6] = useState('');
+    const [value7, setValue7] = useState('');
+    const [value8, setValue8] = useState([]);
+    const [value9, setValue9] = useState(null);
+    const [value10, setValue10] = useState('');
 
     const cities = [
         { name: 'New York', code: 'NY' },
         { name: 'Rome', code: 'RM' },
         { name: 'London', code: 'LDN' },
         { name: 'Istanbul', code: 'IST' },
-        { name: 'Paris', code: 'PRS' }
+        { name: 'Paris', code: 'PRS' },
     ];
 
     useEffect(() => {
         const countryService = new CountryService();
-        countryService.getCountries().then(countries => setCountries(countries))
+        countryService.getCountries().then((countries) => {
+            setCountries(countries);
+        });
     }, []);
 
     const searchCountry = (event) => {
@@ -53,50 +56,55 @@ export const InvalidStateDemo = () => {
     };
 
     return (
-        <div className="p-grid p-nogutter">
-            <div className="card" style={{ width: '100%' }}>
-                <h5>Invalid State</h5>
-                <p>All form components have an invalid state style to display the validation errors when p-invalid is applied by React.</p>
-                <div className="p-fluid p-grid">
-                    <div className="p-col-12 p-md-6">
-                        <div className="p-field">
-                            <label htmlFor="inputtext">InputText</label>
-                            <InputText className="p-invalid" id="inputtext" value={value1} onChange={(e) => setValue1(e.target.value)} />
+        <div className="grid p-fluid">
+            <div className="col">
+                <div className="card">
+                    <h5>Invalid State</h5>
+                    <div className="grid">
+                        <div className="col-12 md:col-6">
+                            <div className="field">
+                                <label htmlFor="inputtext">InputText</label>
+                                <InputText type="text" id="inputtext" value={value1} onChange={(e) => setValue1(e.target.value)} className="p-invalid" />
+                            </div>
+                            <div className="field">
+                                <label htmlFor="autocomplete">AutoComplete</label>
+                                <AutoComplete id="autocomplete" value={value5} onChange={(e) => setValue5(e.value)} suggestions={filteredCountries} completeMethod={searchCountry} field="name" className="p-invalid"/>
+                            </div>
+                            <div className="field">
+                                <label htmlFor="calendar">Calendar</label>
+                                <Calendar inputId="calendar" value={value6} onChange={(e) => setValue6(e.value)} className="p-invalid" showIcon/>
+                            </div>
+                            <div className="field">
+                                <label htmlFor="chips">Chips</label>
+                                <Chips inputId="chips" value={value8} onChange={(e) => setValue8(e.value)} className="p-invalid"/>
+                            </div>
+                            <div className="field">
+                                <label htmlFor="password">Password</label>
+                                <Password inputId="password" value={value10} onChange={(e) => setValue10(e.target.value)} className="p-invalid" />
+                            </div>
                         </div>
-                        <div className="p-field">
-                            <label htmlFor="autocomplete">AutoComplete</label>
-                            <AutoComplete className="p-invalid" id="autocomplete" field="name" value={selectedCountry} suggestions={filteredCountries} completeMethod={searchCountry} onChange={(e) => setSelectedCountry(e.value)}></AutoComplete>
-                        </div>
-                        <div className="p-field">
-                            <label htmlFor="calendar">Calendar</label>
-                            <Calendar id="calendar" className="p-invalid" showIcon value={value2} onChange={(e) => setValue2(e.value)}></Calendar>
-                        </div>
-                        <div className="p-field">
-                            <label htmlFor="chips">Chips</label>
-                            <Chips id="chips" className="p-invalid" value={value3} onChange={(e) => setValue3(e.value)}></Chips>
-                        </div>
-                        <div className="p-field">
-                            <label htmlFor="textarea">Textarea</label>
-                            <InputTextarea id="textarea" className="p-invalid" rows={3} cols={30} value={value4} onChange={(e) => setValue4(e.target.value)}></InputTextarea>
-                        </div>
-                    </div>
 
-                    <div className="p-col-12 p-md-6">
-                        <div className="p-field">
-                            <label htmlFor="inputmask">InputMask</label>
-                            <InputMask id="inputmask" className="p-invalid" mask="99/99/9999" value={value5} onChange={(e) => setValue5(e.value)}></InputMask>
-                        </div>
-                        <div className="p-field">
-                            <label htmlFor="inputnumber">InputNumber</label>
-                            <InputNumber id="inputnumber" className="p-invalid" value={value6} onValueChange={(e) => setValue6(e.target.value)}></InputNumber>
-                        </div>
-                        <div className="p-field">
-                            <label htmlFor="dropdown">Dropdown</label>
-                            <Dropdown id="dropdown" className="p-invalid" autoDisplayFirst={false} options={cities} value={value7} onChange={(e) => setValue7(e.value)} optionLabel="name" ></Dropdown>
-                        </div>
-                        <div className="p-field">
-                            <label htmlFor="multiselect">MultiSelect</label>
-                            <MultiSelect id="multiselect" className="p-invalid" options={cities} value={value8} onChange={(e) => setValue8(e.value)} optionLabel="name" filter={false} ></MultiSelect>
+                        <div className="col-12 md:col-6">
+                            <div className="field">
+                                <label htmlFor="inputmask">InputMask</label>
+                                <InputMask id="inputmask" mask="99/99/9999" value={value2} onChange={(e) => setValue2(e.value)} className="p-invalid"/>
+                            </div>
+                            <div className="field">
+                                <label htmlFor="inputnumber">InputNumber</label>
+                                <InputNumber id="inputnumber" value={value3} onValueChange={(e) => setValue3(e.target.value)} className="p-invalid"/>
+                            </div>
+                            <div className="field">
+                                <label htmlFor="dropdown">Dropdown</label>
+                                <Dropdown id="dropdown" options={cities} value={value7} onChange={(e) => setValue7(e.value)} optionLabel="name" className="p-invalid"/>
+                            </div>
+                            <div className="field">
+                                <label htmlFor="multiselect">MultiSelect</label>
+                                <MultiSelect id="multiselect" options={cities} value={value9} onChange={(e) => setValue9(e.value)} optionLabel="name" className="p-invalid"/>
+                            </div>
+                            <div className="field">
+                                <label htmlFor="textarea">Textarea</label>
+                                <InputTextarea id="textarea" rows="3" cols="30" value={value4} onChange={(e) => setValue4(e.target.value)} className="p-invalid"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,3 +112,9 @@ export const InvalidStateDemo = () => {
         </div>
     )
 }
+
+const comparisonFn = function (prevProps, nextProps) {
+    return prevProps.location.pathname === nextProps.location.pathname;
+};
+
+export default React.memo(InvalidStateDemo, comparisonFn);

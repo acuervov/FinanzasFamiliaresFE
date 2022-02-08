@@ -3,83 +3,83 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 
-export const Widgets = () => {
+const Widgets = () => {
 
     return (
         <div className="layout-widgets">
             <h4>Reusable CSS widgets for your applications.</h4>
 
-            <div className="p-grid">
-                <div className="p-col-12">
+            <div className="grid">
+                <div className="col-12">
                     <div className="card">
                         <h4>Overview Boxes</h4>
-                        <div className="p-grid">
-                            <div className="p-col-12 p-md-6 p-xl-3">
-                                <div className="card no-gutter widget-overview-box widget-overview-box-1">
+                        <div className="grid">
+                            <div className="col-12 md:col-6 xl:col-3">
+                                <div className="card grid-nogutter widget-overview-box widget-overview-box-1">
                                     <span className="overview-icon">
                                         <i className="pi pi-shopping-cart"></i>
                                     </span>
                                     <span className="overview-title">Orders</span>
-                                    <div className="p-grid overview-detail">
-                                        <div className="p-col-6">
+                                    <div className="grid overview-detail">
+                                        <div className="col-6">
                                             <div className="overview-number">640</div>
                                             <div className="overview-subtext">Pending</div>
                                         </div>
-                                        <div className="p-col-6">
+                                        <div className="col-6">
                                             <div className="overview-number">1420</div>
                                             <div className="overview-subtext">Completed</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="p-col-12 p-md-6 p-xl-3">
-                                <div className="card no-gutter widget-overview-box widget-overview-box-2">
+                            <div className="col-12 md:col-6 xl:col-3">
+                                <div className="card grid-nogutter widget-overview-box widget-overview-box-2">
                                     <span className="overview-icon">
                                         <i className="pi pi-dollar"></i>
                                     </span>
                                     <span className="overview-title">Revenue</span>
-                                    <div className="p-grid overview-detail">
-                                        <div className="p-col-6">
+                                    <div className="grid overview-detail">
+                                        <div className="col-6">
                                             <div className="overview-number">$2,100</div>
                                             <div className="overview-subtext">Expenses</div>
                                         </div>
-                                        <div className="p-col-6">
+                                        <div className="col-6">
                                             <div className="overview-number">$9,640</div>
                                             <div className="overview-subtext">Income</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="p-col-12 p-md-6 p-xl-3">
-                                <div className="card no-gutter widget-overview-box widget-overview-box-3">
+                            <div className="col-12 md:col-6 xl:col-3">
+                                <div className="card grid-nogutter widget-overview-box widget-overview-box-3">
                                     <span className="overview-icon">
                                         <i className="pi pi-users"></i>
                                     </span>
                                     <span className="overview-title">Customers</span>
-                                    <div className="p-grid overview-detail">
-                                        <div className="p-col-6">
+                                    <div className="grid overview-detail">
+                                        <div className="col-6">
                                             <div className="overview-number">8272</div>
                                             <div className="overview-subtext">Active</div>
                                         </div>
-                                        <div className="p-col-6">
+                                        <div className="col-6">
                                             <div className="overview-number">25402</div>
                                             <div className="overview-subtext">Registered</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="p-col-12 p-md-6 p-xl-3">
-                                <div className="card no-gutter widget-overview-box widget-overview-box-4">
+                            <div className="col-12 md:col-6 xl:col-3">
+                                <div className="card grid-nogutter widget-overview-box widget-overview-box-4">
                                     <span className="overview-icon">
                                         <i className="pi pi-comment"></i>
                                     </span>
                                     <span className="overview-title">Comments</span>
-                                    <div className="p-grid overview-detail">
-                                        <div className="p-col-6">
+                                    <div className="grid overview-detail">
+                                        <div className="col-6">
                                             <div className="overview-number">12</div>
                                             <div className="overview-subtext">New</div>
                                         </div>
-                                        <div className="p-col-6">
+                                        <div className="col-6">
                                             <div className="overview-number">85</div>
                                             <div className="overview-subtext">Responded</div>
                                         </div>
@@ -90,7 +90,7 @@ export const Widgets = () => {
                     </div>
                 </div>
 
-                <div className="p-col-12 p-lg-4">
+                <div className="col-12 lg:col-4">
                     <div className="card widget-tasks">
                         <h4>Task Status</h4>
                         <div>
@@ -128,7 +128,7 @@ export const Widgets = () => {
                     </div>
                 </div>
 
-                <div className="p-col-12 p-lg-4">
+                <div className="col-12 lg:col-4">
                     <div className="card">
                         <h4>Image List</h4>
 
@@ -169,7 +169,7 @@ export const Widgets = () => {
                     </div>
                 </div>
 
-                <div className="p-col-12 p-lg-4">
+                <div className="col-12 lg:col-4">
                     <div className="widget-pricing-card">
                         <h4>PRICING</h4>
                         <span>Starting from</span>
@@ -185,7 +185,7 @@ export const Widgets = () => {
                     </div>
                 </div>
 
-                <div className="p-col-12 p-lg-3">
+                <div className="col-12 lg:col-3">
                     <div className="card">
                         <h4>Timeline</h4>
                         <div className="widget-timeline">
@@ -196,7 +196,7 @@ export const Widgets = () => {
                                 <div className="timeline-event-title">New Sale</div>
                                 <div className="timeline-event-detail">
                                     Richard Jones has purchased a blue t-shirt for
-                                <strong>$79</strong>.
+                                <strong> $79</strong>.
                             </div>
                             </div>
                             <div className="timeline-event">
@@ -206,7 +206,7 @@ export const Widgets = () => {
                                 <div className="timeline-event-title">Withdrawal Initiated</div>
                                 <div className="timeline-event-detail">
                                     Your request for withdrawal of
-                                <strong>$2500</strong> has been initiated.
+                                <strong> $2500</strong> has been initiated.
                             </div>
                             </div>
                             <div className="timeline-event">
@@ -216,7 +216,7 @@ export const Widgets = () => {
                                 <div className="timeline-event-title">Question Received</div>
                                 <div className="timeline-event-detail">
                                     Jane Davis has posted a
-                                <strong>new question</strong> about your product.
+                                <strong> new question</strong> about your product.
                             </div>
                             </div>
                             <div className="timeline-event">
@@ -226,14 +226,14 @@ export const Widgets = () => {
                                 <div className="timeline-event-title">Comment Received</div>
                                 <div className="timeline-event-detail">
                                     Claire Smith has upvoted your store along with a
-                                <strong>comment</strong>.
+                                <strong> comment</strong>.
                             </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="p-col-12 p-lg-9">
+                <div className="col-12 lg:col-9">
                     <div className="card">
                         <h4>Chat</h4>
                         <div className="widget-chat">
@@ -267,7 +267,7 @@ export const Widgets = () => {
                     </div>
                 </div>
 
-                <div className="p-col-12 p-lg-4">
+                <div className="col-12 lg:col-4">
                     <div className="card">
                         <h4>Person List</h4>
                         <ul className="widget-person-list">
@@ -340,7 +340,7 @@ export const Widgets = () => {
                     </div>
                 </div>
 
-                <div className="p-col-12 p-lg-4">
+                <div className="col-12 lg:col-4">
                     <div className="card widget-user-card">
                         <div className="user-card-header">
                             <img src="assets/demo/images/avatar/profile.jpg" className="user-card-avatar" alt="diamond-layout" />
@@ -349,16 +349,16 @@ export const Widgets = () => {
                             <div className="user-card-title">AMELIA STONE</div>
                             <div className="user-card-subtext">Sales Team</div>
 
-                            <div className="p-grid user-card-stats">
-                                <div className="p-col-4">
+                            <div className="grid user-card-stats">
+                                <div className="col-4">
                                     <i className="pi pi-users"></i>
                                     <div>14 Clients</div>
                                 </div>
-                                <div className="p-col-4">
+                                <div className="col-4">
                                     <i className="pi pi-bookmark"></i>
                                     <div>2 Leads</div>
                                 </div>
-                                <div className="p-col-4">
+                                <div className="col-4">
                                     <i className="pi pi-check-square"></i>
                                     <div>6 Tasks</div>
                                 </div>
@@ -369,22 +369,22 @@ export const Widgets = () => {
                     </div>
                 </div>
 
-                <div className="p-col-12 p-lg-4">
+                <div className="col-12 lg:col-4">
                     <div className="card p-fluid">
                         <h4>Contact Form</h4>
-                        <div className="p-field">
+                        <div className="field">
                             <label htmlFor="firstname">First Name</label>
                             <InputText id="firstname" />
                         </div>
-                        <div className="p-field">
+                        <div className="field">
                             <label htmlFor="lastname">Last Name</label>
                             <InputText id="lastname" />
                         </div>
-                        <div className="p-field">
+                        <div className="field">
                             <label htmlFor="email">Email</label>
                             <InputText id="email" />
                         </div>
-                        <div className="p-field">
+                        <div className="field">
                             <label htmlFor="message">Message</label>
                             <InputTextarea id="message"></InputTextarea>
                         </div>
@@ -392,32 +392,32 @@ export const Widgets = () => {
                     </div>
                 </div>
 
-                <div className="p-col-12">
+                <div className="col-12">
                     <div className="card">
                         <h4>Feature Box</h4>
-                        <div className="p-grid">
-                            <div className="p-col-12 p-md-6 p-lg-3">
+                        <div className="grid">
+                            <div className="col-12 md:col-6 lg:col-3">
                                 <div className="card widget-feature-box">
                                     <img src="assets/layout/images/pages/landing/icon-devices.svg" alt="diamond-layout" />
                                     <h2>Responsive</h2>
                                     <span>Nam non ligula sed urna malesuada lacinia. Aliquam sed viverra ipsum.</span>
                                 </div>
                             </div>
-                            <div className="p-col-12 p-md-6 p-lg-3">
+                            <div className="col-12 md:col-6 lg:col-3">
                                 <div className="card widget-feature-box">
                                     <img src="assets/layout/images/pages/landing/icon-design.svg" alt="diamond-layout" />
                                     <h2>Modern Design</h2>
                                     <span>Nam non ligula sed urna malesuada lacinia. Aliquam sed viverra ipsum.</span>
                                 </div>
                             </div>
-                            <div className="p-col-12 p-md-6 p-lg-3">
+                            <div className="col-12 md:col-6 lg:col-3">
                                 <div className="card widget-feature-box">
                                     <img src="assets/layout/images/pages/landing/icon-document.svg" alt="diamond-layout" />
                                     <h2>Well Documented</h2>
                                     <span>Nam non ligula sed urna malesuada lacinia. Aliquam sed viverra ipsum.</span>
                                 </div>
                             </div>
-                            <div className="p-col-12 p-md-6 p-lg-3">
+                            <div className="col-12 md:col-6 lg:col-3">
                                 <div className="card widget-feature-box">
                                     <img src="assets/layout/images/pages/landing/icon-diamond.svg" alt="diamond-layout" />
                                     <h2>Premium Support</h2>
@@ -431,3 +431,9 @@ export const Widgets = () => {
         </div>
     );
 }
+
+const comparisonFn = function (prevProps, nextProps) {
+    return prevProps.location.pathname === nextProps.location.pathname;
+};
+
+export default React.memo(Widgets, comparisonFn);

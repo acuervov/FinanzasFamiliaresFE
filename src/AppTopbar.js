@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import { classNames } from 'primereact/utils';
 import { Link } from 'react-router-dom';
 import AppBreadcrumb from './AppBreadcrumb';
 import AppMenu from './AppMenu';
