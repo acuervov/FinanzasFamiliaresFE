@@ -210,7 +210,7 @@ const App = () => {
         { path: '/crud', component: CrudDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Crud' }] } },
         { path: '/calendar', component: CalendarDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Calendar' }] } },
         { path: '/timeline', component: TimelineDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Timeline' }] } },
-        { path: '/invoice', component: () => <Invoice logoUrl={logoUrl} location={location} />, meta: { breadcrumb: [{ parent: 'Pages', label: 'Invoice' }] } },
+        { path: '/invoice', render: () => <Invoice logoUrl={logoUrl} location={location} />, meta: { breadcrumb: [{ parent: 'Pages', label: 'Invoice' }] } },
         { path: '/help', component: Help, meta: { breadcrumb: [{ parent: 'Pages', label: 'Help' }] } },
         { path: '/empty', component: EmptyPage, meta: { breadcrumb: [{ parent: 'Pages', label: 'Empty Page' }] } },
         { path: '/documentation', component: Documentation, meta: { breadcrumb: [{ parent: 'Pages', label: 'Documentation' }] } }

@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Chart } from 'primereact/chart';
-import { useState } from 'react/cjs/react.development';
 
 const lineData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -358,6 +357,9 @@ const ChartDemo = (props) => {
         }
     }, [props.colorMode]);
 
+    console.log(props)
+
+
     return (
         <div className="grid p-fluid">
             <div className="col-12 lg:col-6">
@@ -396,8 +398,9 @@ const ChartDemo = (props) => {
     )
 }
 
+
 const comparisonFn = function (prevProps, nextProps) {
-    return prevProps.location.pathname === nextProps.location.pathname;
+    return (prevProps.location.pathname === nextProps.location.pathname) && (prevProps.colorMode === nextProps.colorMode);
 };
 
 export default React.memo(ChartDemo, comparisonFn);
