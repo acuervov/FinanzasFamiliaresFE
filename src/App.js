@@ -26,6 +26,7 @@ import FileDemo from './components/FileDemo';
 import ChartDemo from './components/ChartDemo';
 import MiscDemo from './components/MiscDemo';
 import Documentation from './components/Documentation';
+import BlocksDemo from './components/BlocksDemo';
 import IconsDemo from './utilities/IconsDemo';
 import CrudDemo from './pages/CrudDemo';
 import CalendarDemo from './pages/CalendarDemo';
@@ -208,6 +209,7 @@ const App = () => {
         { path: '/misc', component: MiscDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Misc' }] } },
         { path: '/icons', component: IconsDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Icons' }] } },
         { path: '/crud', component: CrudDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Crud' }] } },
+        { path: '/blocks', component: BlocksDemo, meta: { breadcrumb: [{ parent: 'PrimeBLOCKS', label: 'Blocks' }] } },
         { path: '/calendar', component: CalendarDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Calendar' }] } },
         { path: '/timeline', component: TimelineDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Timeline' }] } },
         { path: '/invoice', render: () => <Invoice logoUrl={logoUrl} location={location} />, meta: { breadcrumb: [{ parent: 'Pages', label: 'Invoice' }] } },
