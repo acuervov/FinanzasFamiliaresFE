@@ -209,7 +209,7 @@ const App = () => {
         { path: '/misc', component: MiscDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Misc' }] } },
         { path: '/icons', component: IconsDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Icons' }] } },
         { path: '/crud', component: CrudDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Crud' }] } },
-        { path: '/blocks', component: BlocksDemo, meta: { breadcrumb: [{ parent: 'PrimeBLOCKS', label: 'Blocks' }] } },
+        { path: '/blocks', component: BlocksDemo, meta: { breadcrumb: [{ parent: 'PrimeBlocks', label: 'Blocks' }] } },
         { path: '/calendar', component: CalendarDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Calendar' }] } },
         { path: '/timeline', component: TimelineDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Timeline' }] } },
         { path: '/invoice', render: () => <Invoice logoUrl={logoUrl} location={location} />, meta: { breadcrumb: [{ parent: 'Pages', label: 'Invoice' }] } },
