@@ -357,9 +357,6 @@ const ChartDemo = (props) => {
         }
     }, [props.colorMode]);
 
-    console.log(props)
-
-
     return (
         <div className="grid p-fluid">
             <div className="col-12 lg:col-6">
