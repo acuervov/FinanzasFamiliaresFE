@@ -1,56 +1,54 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { classNames } from 'primereact/utils';
-import { Route, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from "react";
+import { classNames } from "primereact/utils";
+import { Route, Routes, useLocation } from "react-router-dom";
 
-import AppTopbar from './AppTopbar';
-import AppFooter from './AppFooter';
-import AppConfig from './AppConfig';
-import AppSearch from './AppSearch';
-import AppRightMenu from './AppRightMenu';
-import AppBreadcrumb from './AppBreadcrumb';
+import AppTopbar from "./AppTopbar";
+import AppFooter from "./AppFooter";
+import AppConfig from "./AppConfig";
+import AppSearch from "./AppSearch";
+import AppRightMenu from "./AppRightMenu";
+import AppBreadcrumb from "./AppBreadcrumb";
 
-import Dashboard from './components/Dashboard';
-import FormLayoutDemo from './components/FormLayoutDemo';
-import InputDemo from './components/InputDemo';
-import FloatLabelDemo from './components/FloatLabelDemo';
-import ButtonDemo from './components/ButtonDemo';
-import TableDemo from './components/TableDemo';
-import ListDemo from './components/ListDemo';
-import TreeDemo from './components/TreeDemo';
-import PanelDemo from './components/PanelDemo';
-import OverlayDemo from './components/OverlayDemo';
-import MediaDemo from './components/MediaDemo';
-import MenuDemo from './components/MenuDemo';
-import MessagesDemo from './components/MessagesDemo';
-import FileDemo from './components/FileDemo';
-import ChartDemo from './components/ChartDemo';
-import MiscDemo from './components/MiscDemo';
-import Documentation from './components/Documentation';
-import BlocksDemo from './components/BlocksDemo';
-import IconsDemo from './utilities/IconsDemo';
-import CrudDemo from './pages/CrudDemo';
-import CalendarDemo from './pages/CalendarDemo';
-import Invoice from './pages/Invoice';
-import Help from './pages/Help';
-import EmptyPage from './pages/EmptyPage';
-import InvalidStateDemo from './components/InvalidStateDemo';
-import TimelineDemo from './pages/TimelineDemo';
+import Dashboard from "./components/Dashboard";
+import FormLayoutDemo from "./components/FormLayoutDemo";
+import InputDemo from "./components/InputDemo";
+import FloatLabelDemo from "./components/FloatLabelDemo";
+import ButtonDemo from "./components/ButtonDemo";
+import TableDemo from "./components/TableDemo";
+import ListDemo from "./components/ListDemo";
+import TreeDemo from "./components/TreeDemo";
+import PanelDemo from "./components/PanelDemo";
+import OverlayDemo from "./components/OverlayDemo";
+import MediaDemo from "./components/MediaDemo";
+import MenuDemo from "./components/MenuDemo";
+import MessagesDemo from "./components/MessagesDemo";
+import FileDemo from "./components/FileDemo";
+import ChartDemo from "./components/ChartDemo";
+import MiscDemo from "./components/MiscDemo";
+import Documentation from "./components/Documentation";
+import BlocksDemo from "./components/BlocksDemo";
+import IconsDemo from "./utilities/IconsDemo";
+import CrudDemo from "./pages/CrudDemo";
+import CalendarDemo from "./pages/CalendarDemo";
+import Invoice from "./pages/Invoice";
+import Help from "./pages/Help";
+import EmptyPage from "./pages/EmptyPage";
+import InvalidStateDemo from "./components/InvalidStateDemo";
+import TimelineDemo from "./pages/TimelineDemo";
 
-import PrimeReact from 'primereact/api';
+import PrimeReact from "primereact/api";
 import { Tooltip } from "primereact/tooltip";
 
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-import 'primeflex/primeflex.css';
-import './App.scss';
-
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
+import "./App.scss";
 
 const App = () => {
-
     const [menuActive, setMenuActive] = useState(false);
-    const [menuMode, setMenuMode] = useState('static');
-    const [colorScheme, setColorScheme] = useState('light');
-    const [menuTheme, setMenuTheme] = useState('layout-sidebar-darkgray');
+    const [menuMode, setMenuMode] = useState("static");
+    const [colorScheme, setColorScheme] = useState("light");
+    const [menuTheme, setMenuTheme] = useState("layout-sidebar-darkgray");
     const [overlayMenuActive, setOverlayMenuActive] = useState(false);
     const [staticMenuDesktopInactive, setStaticMenuDesktopInactive] = useState(false);
     const [staticMenuMobileActive, setStaticMenuMobileActive] = useState(false);
@@ -59,14 +57,13 @@ const App = () => {
     const [topbarNotificationMenuActive, setTopbarNotificationMenuActive] = useState(false);
     const [rightMenuActive, setRightMenuActive] = useState(false);
     const [configActive, setConfigActive] = useState(false);
-    const [inputStyle, setInputStyle] = useState('outlined');
+    const [inputStyle, setInputStyle] = useState("outlined");
     const [ripple, setRipple] = useState(false);
-    const [logoColor, setLogoColor] = useState('white');
-    const [componentTheme, setComponentTheme] = useState('blue');
-    const [logoUrl, setLogoUrl] = useState('assets/layout/images/logo-dark.svg');
+    const [logoColor, setLogoColor] = useState("white");
+    const [componentTheme, setComponentTheme] = useState("blue");
+    const [logoUrl, setLogoUrl] = useState("assets/layout/images/logo-dark.svg");
     const copyTooltipRef = useRef();
     const location = useLocation();
-
 
     let menuClick = false;
     let searchClick = false;
@@ -75,22 +72,54 @@ const App = () => {
     let rightMenuClick = false;
     let configClick = false;
 
+    const breadcrumb = [
+        { path: "/", parent: "Dashboard", label: "Dashboard" },
+        { path: "/formlayout", parent: "UI Kit", label: "Form Layout" },
+        { path: "/input", parent: "UI Kit", label: "Input" },
+        { path: "/floatlabel", parent: "UI Kit", label: "Float Label" },
+        { path: "/invalidstate", parent: "UI Kit", label: "Invalid State" },
+        { path: "/button", parent: "UI Kit", label: "Button" },
+        { path: "/table", parent: "UI Kit", label: "Table" },
+        { path: "/list", parent: "UI Kit", label: "List" },
+        { path: "/tree", parent: "UI Kit", label: "Tree" },
+        { path: "/panel", parent: "UI Kit", label: "Panel" },
+        { path: "/overlay", parent: "UI Kit", label: "Overlay" },
+        { path: "/media", parent: "UI Kit", label: "Media" },
+        { path: "/menu", parent: "UI Kit", label: "Menu" },
+        { path: "/menu/seat", parent: "UI Kit", label: "Menu" },
+        { path: "/menu/payment", parent: "UI Kit", label: "Menu" },
+        { path: "/menu/confirmation", parent: "UI Kit", label: "Menu" },
+        { path: "/messages", parent: "UI Kit", label: "Messages" },
+        { path: "/file", parent: "UI Kit", label: "File" },
+        { path: "/chart", parent: "UI Kit", label: "Charts" },
+        { path: "/misc", parent: "UI Kit", label: "Misc" },
+        { path: "/icons", parent: "Utilities", label: "Icons" },
+        { path: "/blocks", parent: "PrimeBlocks", label: "Blocks" },
+        { path: "/crud", parent: "Utilities", label: "Crud" },
+        { path: "/calendar", parent: "PrimeBlocks", label: "Calendar" },
+        { path: "/timeline", parent: "Pages", label: "Timeline" },
+        { path: "/invoice", parent: "Pages", label: "Invoice" },
+        { path: "/help", parent: "Pages", label: "Help" },
+        { path: "/empty", parent: "Pages", label: "Empty Page" },
+        { path: "/documentation", parent: "Pages", label: "Documentation" },
+    ];
+
     const menu = [
         {
-            label: "Favorites", icon: "pi pi-fw pi-home",
-            items: [
-                { label: "Dashboard", icon: "pi pi-fw pi-home", to: "/" }
-            ]
+            label: "Favorites",
+            icon: "pi pi-fw pi-home",
+            items: [{ label: "Dashboard", icon: "pi pi-fw pi-home", to: "/" }],
         },
         { separator: true },
         {
-            label: "UI Kit", icon: "pi pi-fw pi-id-card",
+            label: "UI Kit",
+            icon: "pi pi-fw pi-id-card",
             items: [
                 { label: "Form Layout", icon: "pi pi-fw pi-id-card", to: "/formlayout" },
                 { label: "Input", icon: "pi pi-fw pi-check-square", to: "/input" },
                 { label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel" },
-                { label: "Invalid State", icon: 'pi pi-fw pi-exclamation-circle', to: '/invalidstate' },
-                { label: "Button", icon: "pi pi-fw pi-mobile", to: "/button", className: 'rotated-icon' },
+                { label: "Invalid State", icon: "pi pi-fw pi-exclamation-circle", to: "/invalidstate" },
+                { label: "Button", icon: "pi pi-fw pi-mobile", to: "/button", className: "rotated-icon" },
                 { label: "Table", icon: "pi pi-fw pi-table", to: "/table" },
                 { label: "List", icon: "pi pi-fw pi-list", to: "/list" },
                 { label: "Tree", icon: "pi pi-fw pi-share-alt", to: "/tree" },
@@ -101,31 +130,34 @@ const App = () => {
                 { label: "Message", icon: "pi pi-fw pi-comment", to: "/messages" },
                 { label: "File", icon: "pi pi-fw pi-file", to: "/file" },
                 { label: "Chart", icon: "pi pi-fw pi-chart-bar", to: "/chart" },
-                { label: "Misc", icon: "pi pi-fw pi-circle-off", to: "/misc" }
-            ]
+                { label: "Misc", icon: "pi pi-fw pi-circle-off", to: "/misc" },
+            ],
         },
         { separator: true },
         {
-            label: "PrimeBlocks", icon: "pi pi-fw pi-prime",
+            label: "PrimeBlocks",
+            icon: "pi pi-fw pi-prime",
             items: [
-                { label: "Free Blocks", icon: "pi pi-fw pi-eye", to: "/blocks", badge: "NEW", badgeStyle: { width: '40px' } },
-                { label: "All Blocks", icon: "pi pi-fw pi-globe", url: "https://www.primefaces.org/primeblocks-react", target: "_blank" }
-            ]
+                { label: "Free Blocks", icon: "pi pi-fw pi-eye", to: "/blocks", badge: "NEW", badgeStyle: { width: "40px" } },
+                { label: "All Blocks", icon: "pi pi-fw pi-globe", url: "https://www.primefaces.org/primeblocks-react", target: "_blank" },
+            ],
         },
         { separator: true },
         {
-            label: 'Utilities', icon: 'pi pi-fw pi-compass',
+            label: "Utilities",
+            icon: "pi pi-fw pi-compass",
             items: [
-                { label: 'Icons', icon: 'pi pi-fw pi-prime', to: '/icons' },
-                { label: "PrimeFlex", icon: "pi pi-fw pi-desktop", url: "https://www.primefaces.org/primeflex", target: "_blank" }
-            ]
+                { label: "Icons", icon: "pi pi-fw pi-prime", to: "/icons" },
+                { label: "PrimeFlex", icon: "pi pi-fw pi-desktop", url: "https://www.primefaces.org/primeflex", target: "_blank" },
+            ],
         },
         {
-            label: "Pages", icon: "pi pi-fw pi-pencil",
+            label: "Pages",
+            icon: "pi pi-fw pi-pencil",
             items: [
                 { label: "Crud", icon: "pi pi-fw pi-pencil", to: "/crud" },
                 { label: "Calendar", icon: "pi pi-fw pi-calendar-plus", to: "/calendar" },
-                { label: 'Timeline', icon: 'pi pi-fw pi-calendar', to: '/timeline' },
+                { label: "Timeline", icon: "pi pi-fw pi-calendar", to: "/timeline" },
                 { label: "Landing", icon: "pi pi-fw pi-user-plus", url: "assets/pages/landing.html", target: "_blank" },
                 { label: "Login", icon: "pi pi-fw pi-sign-in", to: "/login" },
                 { label: "Invoice", icon: "pi pi-fw pi-dollar", to: "/invoice" },
@@ -133,108 +165,73 @@ const App = () => {
                 { label: "Error", icon: "pi pi-fw pi-times-circle", to: "/error" },
                 { label: "Not Found", icon: "pi pi-fw pi-exclamation-circle", to: "/notfound" },
                 { label: "Access Denied", icon: "pi pi-fw pi-lock", to: "/access" },
-                { label: "Empty", icon: "pi pi-fw pi-circle-off", to: "/empty" }
-            ]
+                { label: "Empty", icon: "pi pi-fw pi-circle-off", to: "/empty" },
+            ],
         },
         { separator: true },
         {
-            label: "Hierarchy", icon: "pi pi-fw pi-align-left",
+            label: "Hierarchy",
+            icon: "pi pi-fw pi-align-left",
             items: [
                 {
-                    label: "Submenu 1", icon: "pi pi-fw pi-align-left",
+                    label: "Submenu 1",
+                    icon: "pi pi-fw pi-align-left",
                     items: [
                         {
-                            label: "Submenu 1.1", icon: "pi pi-fw pi-align-left",
+                            label: "Submenu 1.1",
+                            icon: "pi pi-fw pi-align-left",
                             items: [
                                 { label: "Submenu 1.1.1", icon: "pi pi-fw pi-align-left" },
                                 { label: "Submenu 1.1.2", icon: "pi pi-fw pi-align-left" },
-                                { label: "Submenu 1.1.3", icon: "pi pi-fw pi-align-left" }
-                            ]
+                                { label: "Submenu 1.1.3", icon: "pi pi-fw pi-align-left" },
+                            ],
                         },
                         {
-                            label: "Submenu 1.2", icon: "pi pi-fw pi-align-left",
-                            items: [
-                                { label: "Submenu 1.2.1", icon: "pi pi-fw pi-align-left" }
-                            ]
-                        }
-                    ]
+                            label: "Submenu 1.2",
+                            icon: "pi pi-fw pi-align-left",
+                            items: [{ label: "Submenu 1.2.1", icon: "pi pi-fw pi-align-left" }],
+                        },
+                    ],
                 },
                 {
-                    label: "Submenu 2", icon: "pi pi-fw pi-align-left",
+                    label: "Submenu 2",
+                    icon: "pi pi-fw pi-align-left",
                     items: [
                         {
-                            label: "Submenu 2.1", icon: "pi pi-fw pi-align-left",
+                            label: "Submenu 2.1",
+                            icon: "pi pi-fw pi-align-left",
                             items: [
                                 { label: "Submenu 2.1.1", icon: "pi pi-fw pi-align-left" },
                                 { label: "Submenu 2.1.2", icon: "pi pi-fw pi-align-left" },
                             ],
                         },
                         {
-                            label: "Submenu 2.2", icon: "pi pi-fw pi-align-left",
-                            items: [
-                                { label: "Submenu 2.2.1", icon: "pi pi-fw pi-align-left" },
-                            ]
-                        }
-                    ]
-                }
-            ]
+                            label: "Submenu 2.2",
+                            icon: "pi pi-fw pi-align-left",
+                            items: [{ label: "Submenu 2.2.1", icon: "pi pi-fw pi-align-left" }],
+                        },
+                    ],
+                },
+            ],
         },
         { separator: true },
         {
-            label: "Start", icon: "pi pi-fw pi-download",
+            label: "Start",
+            icon: "pi pi-fw pi-download",
             items: [
                 { label: "Buy Now", icon: "pi pi-fw pi-shopping-cart", command: () => window.open("https://www.primefaces.org/store", "_blank") },
                 { label: "Documentation", icon: "pi pi-fw pi-info-circle", to: "/documentation" },
-            ]
-        }
+            ],
+        },
     ];
 
-    const routers = [
-        { path: '/', component: Dashboard, exact: true, meta: { breadcrumb: [{ parent: 'Dashboard', label: 'Dashboard' }] } },
-        { path: '/formlayout', component: FormLayoutDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Form Layout' }] } },
-        { path: '/input', component: InputDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Input' }] } },
-        { path: '/floatlabel', component: FloatLabelDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Float Label' }] } },
-        { path: '/invalidstate', component: InvalidStateDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Invalid State' }] } },
-        { path: '/button', component: ButtonDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Button' }] } },
-        { path: '/table', component: TableDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Table' }] } },
-        { path: '/list', component: ListDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'List' }] } },
-        { path: '/tree', component: TreeDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Tree' }] } },
-        { path: '/panel', component: PanelDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Panel' }] } },
-        { path: '/overlay', component: OverlayDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Overlay' }] } },
-        { path: '/media', component: MediaDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Media' }] } },
-        { path: '/menu', component: MenuDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Menu' }] } },
-        { path: '/messages', component: MessagesDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Messages' }] } },
-        { path: '/file', component: FileDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'File' }] } },
-        { path: '/chart', render: () => <ChartDemo colorMode={colorScheme} location={location} />, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Charts' }] } },
-        { path: '/misc', component: MiscDemo, meta: { breadcrumb: [{ parent: 'UI Kit', label: 'Misc' }] } },
-        { path: '/icons', component: IconsDemo, meta: { breadcrumb: [{ parent: 'Utilities', label: 'Icons' }] } },
-        { path: '/crud', component: CrudDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Crud' }] } },
-        { path: '/blocks', component: BlocksDemo, meta: { breadcrumb: [{ parent: 'PrimeBlocks', label: 'Blocks' }] } },
-        { path: '/calendar', component: CalendarDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Calendar' }] } },
-        { path: '/timeline', component: TimelineDemo, meta: { breadcrumb: [{ parent: 'Pages', label: 'Timeline' }] } },
-        { path: '/invoice', render: () => <Invoice logoUrl={logoUrl} location={location} />, meta: { breadcrumb: [{ parent: 'Pages', label: 'Invoice' }] } },
-        { path: '/help', component: Help, meta: { breadcrumb: [{ parent: 'Pages', label: 'Help' }] } },
-        { path: '/empty', component: EmptyPage, meta: { breadcrumb: [{ parent: 'Pages', label: 'Empty Page' }] } },
-        { path: '/documentation', component: Documentation, meta: { breadcrumb: [{ parent: 'Pages', label: 'Documentation' }] } }
-    ];
+    let meta = breadcrumb.find((obj) => {
+        return obj.path === location.pathname;
+    });
 
     useEffect(() => {
         copyTooltipRef && copyTooltipRef.current && copyTooltipRef.current.updateTargetEvents();
     }, [location]);
-
-    useEffect(() => {
-        if (staticMenuMobileActive) {
-            blockBodyScroll();
-        }
-        else {
-            unblockBodyScroll();
-        }
-    }, [staticMenuMobileActive]);
-
-    useEffect(() => {
-        changeStyleSheetUrl('layout-css', 'layout-' + colorScheme + '.css', 1);
-        changeStyleSheetUrl('theme-css', 'theme-' + colorScheme + '.css', 1);
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const onInputStyleChange = (inputStyle) => {
         setInputStyle(inputStyle);
@@ -242,13 +239,13 @@ const App = () => {
 
     const changeMenuTheme = (name, logoColor, componentTheme) => {
         onMenuThemeChange(name);
-        changeStyleSheetUrl('theme-css', componentTheme, 2);
-        setComponentTheme(componentTheme)
+        changeStyleSheetUrl("theme-css", componentTheme, 2);
+        setComponentTheme(componentTheme);
 
-        const appLogoLink = document.getElementById('app-logo');
-        const appLogoUrl = `assets/layout/images/logo-${logoColor === 'dark' ? 'dark' : 'white'}.svg`;
-        const horizontalLogoLink = document.getElementById('logo-horizontal');
-        const horizontalLogoUrl = `assets/layout/images/logo-${logoColor === 'dark' ? 'dark' : 'white'}.svg`;
+        const appLogoLink = document.getElementById("app-logo");
+        const appLogoUrl = `assets/layout/images/logo-${logoColor === "dark" ? "dark" : "white"}.svg`;
+        const horizontalLogoLink = document.getElementById("logo-horizontal");
+        const horizontalLogoUrl = `assets/layout/images/logo-${logoColor === "dark" ? "dark" : "white"}.svg`;
 
         if (appLogoLink) {
             appLogoLink.src = appLogoUrl;
@@ -260,23 +257,23 @@ const App = () => {
     };
 
     const changeComponentTheme = (theme) => {
-        setComponentTheme(theme)
-        changeStyleSheetUrl('theme-css', theme, 3);
+        setComponentTheme(theme);
+        changeStyleSheetUrl("theme-css", theme, 3);
     };
 
     const changeColorScheme = (e) => {
         setColorScheme(e.value);
 
         const scheme = e.value;
-        changeStyleSheetUrl('layout-css', 'layout-' + scheme + '.css', 1);
-        changeStyleSheetUrl('theme-css', 'theme-' + scheme + '.css', 1);
+        changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
+        changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
 
         changeLogo(scheme);
     };
 
     const changeStyleSheetUrl = (id, value, from) => {
         const element = document.getElementById(id);
-        const urlTokens = element.getAttribute('href').split('/');
+        const urlTokens = element.getAttribute("href").split("/");
 
         if (from === 1) {
             // which function invoked this function
@@ -291,7 +288,7 @@ const App = () => {
             urlTokens[urlTokens.length - 2] = value;
         }
 
-        const newURL = urlTokens.join('/');
+        const newURL = urlTokens.join("/");
 
         replaceLink(element, newURL);
     };
@@ -301,15 +298,15 @@ const App = () => {
         const mobileLogoLink = document.getElementById("logo-mobile");
         const invoiceLogoLink = document.getElementById("invoice-logo");
         const footerLogoLink = document.getElementById("footer-logo");
-        const horizontalLogoLink = document.getElementById('logo-horizontal');
-        setLogoUrl(`assets/layout/images/logo-${scheme === 'light' ? 'dark' : 'white'}.svg`);
+        const horizontalLogoLink = document.getElementById("logo-horizontal");
+        setLogoUrl(`assets/layout/images/logo-${scheme === "light" ? "dark" : "white"}.svg`);
 
         if (appLogoLink) {
-            appLogoLink.src = `assets/layout/images/logo-${scheme === 'light' ? logoColor : 'white'}.svg`;
+            appLogoLink.src = `assets/layout/images/logo-${scheme === "light" ? logoColor : "white"}.svg`;
         }
 
         if (horizontalLogoLink) {
-            horizontalLogoLink.src = `assets/layout/images/logo-${scheme === 'light' ? logoColor : 'white'}.svg`;
+            horizontalLogoLink.src = `assets/layout/images/logo-${scheme === "light" ? logoColor : "white"}.svg`;
         }
 
         if (mobileLogoLink) {
@@ -328,8 +325,7 @@ const App = () => {
     const replaceLink = (linkElement, href) => {
         if (isIE()) {
             linkElement.setAttribute("href", href);
-        }
-        else {
+        } else {
             const id = linkElement.getAttribute("id");
             const cloneLinkElement = linkElement.cloneNode(true);
 
@@ -345,11 +341,9 @@ const App = () => {
         }
     };
 
-
     const isIE = () => {
         return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
     };
-
 
     const onRippleChange = (e) => {
         PrimeReact.ripple = e.value;
@@ -408,14 +402,13 @@ const App = () => {
         setRightMenuActive(false);
 
         if (isOverlay()) {
-            setOverlayMenuActive(prevOverlayMenuActive => !prevOverlayMenuActive);
+            setOverlayMenuActive((prevOverlayMenuActive) => !prevOverlayMenuActive);
         }
 
         if (isDesktop()) {
-            setStaticMenuDesktopInactive(prevStaticMenuDesktopInactive => !prevStaticMenuDesktopInactive);
-        }
-        else {
-            setStaticMenuMobileActive(prevStaticMenuMobileActive => !prevStaticMenuMobileActive);
+            setStaticMenuDesktopInactive((prevStaticMenuDesktopInactive) => !prevStaticMenuDesktopInactive);
+        } else {
+            setStaticMenuMobileActive((prevStaticMenuMobileActive) => !prevStaticMenuMobileActive);
         }
 
         event.preventDefault();
@@ -432,23 +425,23 @@ const App = () => {
     };
 
     const onRootMenuitemClick = () => {
-        setMenuActive(prevMenuActive => !prevMenuActive);
+        setMenuActive((prevMenuActive) => !prevMenuActive);
     };
 
     const onMenuThemeChange = (name) => {
-        setMenuTheme('layout-sidebar-' + name);
+        setMenuTheme("layout-sidebar-" + name);
     };
 
     const onMenuModeChange = (e) => {
         setMenuMode(e.value);
-        if (e.value === 'static') {
-            setStaticMenuDesktopInactive(false)
+        if (e.value === "static") {
+            setStaticMenuDesktopInactive(false);
         }
     };
 
     const onTopbarUserMenuButtonClick = (event) => {
         userMenuClick = true;
-        setTopbarUserMenuActive(prevTopbarUserMenuActive => !prevTopbarUserMenuActive);
+        setTopbarUserMenuActive((prevTopbarUserMenuActive) => !prevTopbarUserMenuActive);
 
         hideOverlayMenu();
 
@@ -457,7 +450,7 @@ const App = () => {
 
     const onTopbarNotificationMenuButtonClick = (event) => {
         notificationMenuClick = true;
-        setTopbarNotificationMenuActive(prevTopbarNotificationMenuActive => !prevTopbarNotificationMenuActive);
+        setTopbarNotificationMenuActive((prevTopbarNotificationMenuActive) => !prevTopbarNotificationMenuActive);
 
         hideOverlayMenu();
 
@@ -465,7 +458,7 @@ const App = () => {
     };
 
     const toggleSearch = () => {
-        setSearchActive(prevSearchActive => !prevSearchActive);
+        setSearchActive((prevSearchActive) => !prevSearchActive);
         searchClick = true;
     };
 
@@ -484,7 +477,7 @@ const App = () => {
 
     const onRightMenuButtonClick = (event) => {
         rightMenuClick = true;
-        setRightMenuActive(prevRightMenuActive => !prevRightMenuActive);
+        setRightMenuActive((prevRightMenuActive) => !prevRightMenuActive);
         hideOverlayMenu();
         event.preventDefault();
     };
@@ -494,7 +487,7 @@ const App = () => {
     };
 
     const onConfigButtonClick = () => {
-        setConfigActive(prevConfigActive => !prevConfigActive);
+        setConfigActive((prevConfigActive) => !prevConfigActive);
         configClick = true;
     };
 
@@ -504,22 +497,11 @@ const App = () => {
         unblockBodyScroll();
     };
 
-    const blockBodyScroll = () => {
-        if (document.body.classList) {
-            document.body.classList.add('blocked-scroll');
-        }
-        else {
-            document.body.className += ' blocked-scroll';
-        }
-    };
-
     const unblockBodyScroll = () => {
         if (document.body.classList) {
-            document.body.classList.remove('blocked-scroll');
-        }
-        else {
-            document.body.className = document.body.className.replace(new RegExp('(^|\\b)' +
-                'blocked-scroll'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+            document.body.classList.remove("blocked-scroll");
+        } else {
+            document.body.className = document.body.className.replace(new RegExp("(^|\\b)" + "blocked-scroll".split(" ").join("|") + "(\\b|$)", "gi"), " ");
         }
     };
 
@@ -539,47 +521,80 @@ const App = () => {
         return window.innerWidth > 1091;
     };
 
-    const containerClassName = classNames('layout-wrapper',
+    const containerClassName = classNames(
+        "layout-wrapper",
         {
-            'layout-overlay': menuMode === "overlay",
-            'layout-static': menuMode === "static",
-            'layout-slim': menuMode === "slim",
-            'layout-horizontal': menuMode === "horizontal",
-            'layout-sidebar-dim': colorScheme === "dim",
-            'layout-sidebar-dark': colorScheme === "dark",
-            'layout-overlay-active': overlayMenuActive,
-            'layout-mobile-active': staticMenuMobileActive,
-            'layout-static-inactive': staticMenuDesktopInactive && menuMode === "static",
-            'p-input-filled': inputStyle === "filled",
-            'p-ripple-disabled': !ripple,
+            "layout-overlay": menuMode === "overlay",
+            "layout-static": menuMode === "static",
+            "layout-slim": menuMode === "slim",
+            "layout-horizontal": menuMode === "horizontal",
+            "layout-sidebar-dim": colorScheme === "dim",
+            "layout-sidebar-dark": colorScheme === "dark",
+            "layout-overlay-active": overlayMenuActive,
+            "layout-mobile-active": staticMenuMobileActive,
+            "layout-static-inactive": staticMenuDesktopInactive && menuMode === "static",
+            "p-input-filled": inputStyle === "filled",
+            "p-ripple-disabled": !ripple,
         },
-        colorScheme === 'light' ? menuTheme : '');
+        colorScheme === "light" ? menuTheme : ""
+    );
 
     return (
         <div className={containerClassName} data-theme={colorScheme} onClick={onDocumentClick}>
             <Tooltip ref={copyTooltipRef} target=".block-action-copy" position="bottom" content="Copied to clipboard" event="focus" />
 
             <div className="layout-content-wrapper">
-                <AppTopbar routers={routers} topbarNotificationMenuActive={topbarNotificationMenuActive} topbarUserMenuActive={topbarUserMenuActive}
-                    onMenuButtonClick={onMenuButtonClick} onSearchClick={toggleSearch} onTopbarNotification={onTopbarNotificationMenuButtonClick}
-                    onTopbarUserMenu={onTopbarUserMenuButtonClick} onRightMenuClick={onRightMenuButtonClick} onRightMenuButtonClick={onRightMenuButtonClick}
-                    menu={menu} menuMode={menuMode} menuActive={menuActive} staticMenuMobileActive={staticMenuMobileActive} onMenuClick={onMenuClick}
-                    onMenuitemClick={onMenuitemClick} onRootMenuitemClick={onRootMenuitemClick}></AppTopbar>
+                <AppTopbar
+                    meta={meta}
+                    topbarNotificationMenuActive={topbarNotificationMenuActive}
+                    topbarUserMenuActive={topbarUserMenuActive}
+                    onMenuButtonClick={onMenuButtonClick}
+                    onSearchClick={toggleSearch}
+                    onTopbarNotification={onTopbarNotificationMenuButtonClick}
+                    onTopbarUserMenu={onTopbarUserMenuButtonClick}
+                    onRightMenuClick={onRightMenuButtonClick}
+                    onRightMenuButtonClick={onRightMenuButtonClick}
+                    menu={menu}
+                    menuMode={menuMode}
+                    menuActive={menuActive}
+                    staticMenuMobileActive={staticMenuMobileActive}
+                    onMenuClick={onMenuClick}
+                    onMenuitemClick={onMenuitemClick}
+                    onRootMenuitemClick={onRootMenuitemClick}
+                ></AppTopbar>
 
                 <div className="layout-content">
-                    <div className="layout-breadcrumb viewname" style={{ textTransform: 'uppercase' }}>
-                        <AppBreadcrumb routers={routers} />
+                    <div className="layout-breadcrumb viewname" style={{ textTransform: "uppercase" }}>
+                        <AppBreadcrumb meta={meta} />
                     </div>
-
-                    {
-                        routers.map((router, index) => {
-                            if (router.exact) {
-                                return <Route key={`router${index}`} path={router.path} exact component={router.component} render={router.render} />
-                            }
-
-                            return <Route key={`router${index}`} path={router.path} component={router.component} render={router.render} />
-                        })
-                    }
+                    <Routes>
+                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/formlayout" element={<FormLayoutDemo />} />
+                        <Route path="/input" element={<InputDemo />} />
+                        <Route path="/floatlabel" element={<FloatLabelDemo />} />
+                        <Route path="/invalidstate" element={<InvalidStateDemo />} />
+                        <Route path="/button" element={<ButtonDemo />} />
+                        <Route path="/table" element={<TableDemo />} />
+                        <Route path="/list" element={<ListDemo />} />
+                        <Route path="/tree" element={<TreeDemo />} />
+                        <Route path="/panel" element={<PanelDemo />} />
+                        <Route path="/overlay" element={<OverlayDemo />} />
+                        <Route path="/media" element={<MediaDemo />} />
+                        <Route path="/menu/*" element={<MenuDemo />} />
+                        <Route path="/messages" element={<MessagesDemo />} />
+                        <Route path="/file" element={<FileDemo />} />
+                        <Route path="/chart" element={<ChartDemo colorMode={colorScheme} location={location} />} />
+                        <Route path="/misc" element={<MiscDemo />} />
+                        <Route path="/icons" element={<IconsDemo />} />
+                        <Route path="/crud" element={<CrudDemo />} />
+                        <Route path="/blocks" element={<BlocksDemo />} />
+                        <Route path="/calendar" element={<CalendarDemo />} />
+                        <Route path="/timeline" element={<TimelineDemo />} />
+                        <Route path="/invoice" element={<Invoice logoUrl={logoUrl} location={location} />} />
+                        <Route path="/help" element={<Help />} />
+                        <Route path="/empty" element={<EmptyPage />} />
+                        <Route path="/documentation" element={<Documentation />} />
+                    </Routes>
                 </div>
 
                 <AppFooter />
@@ -587,14 +602,27 @@ const App = () => {
 
             <AppRightMenu rightMenuActive={rightMenuActive} onRightMenuClick={onRightMenuClick}></AppRightMenu>
 
-            <AppConfig configActive={configActive} menuMode={menuMode} onMenuModeChange={onMenuModeChange} colorScheme={colorScheme}
-                changeColorScheme={changeColorScheme} menuTheme={menuTheme} changeMenuTheme={changeMenuTheme}
-                componentTheme={componentTheme} changeComponentTheme={changeComponentTheme} onConfigClick={onConfigClick} onConfigButtonClick={onConfigButtonClick}
-                rippleActive={ripple} onRippleChange={onRippleChange} inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}></AppConfig>
+            <AppConfig
+                configActive={configActive}
+                menuMode={menuMode}
+                onMenuModeChange={onMenuModeChange}
+                colorScheme={colorScheme}
+                changeColorScheme={changeColorScheme}
+                menuTheme={menuTheme}
+                changeMenuTheme={changeMenuTheme}
+                componentTheme={componentTheme}
+                changeComponentTheme={changeComponentTheme}
+                onConfigClick={onConfigClick}
+                onConfigButtonClick={onConfigButtonClick}
+                rippleActive={ripple}
+                onRippleChange={onRippleChange}
+                inputStyle={inputStyle}
+                onInputStyleChange={onInputStyleChange}
+            ></AppConfig>
 
             <AppSearch searchActive={searchActive} onSearchClick={onSearchClick} onSearchHide={onSearchHide} />
         </div>
     );
-}
+};
 
 export default App;

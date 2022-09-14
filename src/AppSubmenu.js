@@ -1,12 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
-import { classNames } from 'primereact/utils';
-import { Ripple } from 'primereact/ripple';
-import { Badge } from 'primereact/badge';
+import React, { useCallback, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+import { classNames } from "primereact/utils";
+import { Ripple } from "primereact/ripple";
+import { Badge } from "primereact/badge";
 
 const AppSubmenu = (props) => {
-
     const [activeIndex, setActiveIndex] = useState(null);
 
     const onMenuItemClick = (event, item, index) => {
@@ -33,7 +32,7 @@ const AppSubmenu = (props) => {
 
         props.onMenuitemClick({
             originalEvent: event,
-            item: item
+            item: item,
         });
     };
 
@@ -52,56 +51,69 @@ const AppSubmenu = (props) => {
     };
 
     const isSlim = useCallback(() => {
-        return props.menuMode === 'slim';
-    }, [props.menuMode])
+        return props.menuMode === "slim";
+    }, [props.menuMode]);
 
     const isHorizontal = useCallback(() => {
-        return props.menuMode === 'horizontal';
-    }, [props.menuMode])
+        return props.menuMode === "horizontal";
+    }, [props.menuMode]);
 
     const getLink = (item, index) => {
-        const menuitemIconClassName = classNames('layout-menuitem-icon', item.icon);
+        const menuitemIconClassName = classNames("layout-menuitem-icon", item.icon);
         const content = (
             <>
                 <i className={menuitemIconClassName}></i>
                 <span className="layout-menuitem-text">{item.label}</span>
-                { item.items && <i className="pi pi-fw pi-angle-down layout-submenu-toggler"></i>}
-                { item.badge && <Badge value={item.badge} style={{height: '100%'}}/>}
+                {item.items && <i className="pi pi-fw pi-angle-down layout-submenu-toggler"></i>}
+                {item.badge && <Badge value={item.badge} style={{ height: "100%" }} />}
                 <Ripple />
             </>
         );
         const commonLinkProps = {
-            'style': item.style,
-            'className': classNames(item.className, 'p-ripple', { 'p-disabled': item.disabled, 'p-link': !item.to }),
-            'target': item.target,
-            'onClick': (e) => onMenuItemClick(e, item, index),
-            'onMouseEnter': () => onMenuItemMouseEnter(index)
-        }
+            style: item.style,
+            className: classNames(item.className, "p-ripple", { "p-disabled": item.disabled, "p-link": !item.to }),
+            target: item.target,
+            onClick: (e) => onMenuItemClick(e, item, index),
+            onMouseEnter: () => onMenuItemMouseEnter(index),
+        };
 
         if (item.url) {
-            return <a href={item.url} rel="noopener noreferrer" {...commonLinkProps}>{content}</a>
-        }
-        else if (!item.to) {
-            return <button type="button" {...commonLinkProps}>{content}</button>
+            return (
+                <a href={item.url} rel="noopener noreferrer" {...commonLinkProps}>
+                    {content}
+                </a>
+            );
+        } else if (!item.to) {
+            return (
+                <button type="button" {...commonLinkProps}>
+                    {content}
+                </button>
+            );
         }
 
-        return <NavLink to={item.to} exact activeClassName="active-route" {...commonLinkProps}>{content}</NavLink>;
+        return (
+            <NavLink to={item.to} {...commonLinkProps} className={({ isActive }) => classNames(commonLinkProps.className, isActive ? "active-route" : undefined)}>
+                {content}
+            </NavLink>
+        );
     };
 
     const isMenuActive = (item, index) => {
         return item.items && (props.root && (!isSlim() || (isSlim() && (props.mobileMenuActive || activeIndex !== null))) ? true : activeIndex === index);
-    }
+    };
 
     const getItems = () => {
-        const transitionTimeout =  props.mobileMenuActive ? 0 : (isSlim() && props.root ? { enter: 400, exit: 400 } : (props.root ? 0 : { enter: 1000, exit: 450 }));
+        const transitionTimeout = props.mobileMenuActive ? 0 : isSlim() && props.root ? { enter: 400, exit: 400 } : props.root ? 0 : { enter: 1000, exit: 450 };
         return props.items.map((item, i) => {
             if (visible(item)) {
                 if (!item.separator) {
-                    const menuitemClassName = classNames({ 'layout-root-menuitem': props.root, 'active-menuitem': activeIndex === i && !item.disabled });
+                    const menuitemClassName = classNames({ "layout-root-menuitem": props.root, "active-menuitem": activeIndex === i && !item.disabled });
                     const link = getLink(item, i);
                     const rootMenuItem = props.root && (
                         <div className="layout-root-menuitem">
-                            <div className="layout-menuitem-root-text" style={{ textTransform: 'uppercase' }}>{item.label}</div>
+                            <div className="layout-menuitem-root-text" style={{ textTransform: "uppercase" }}>
+                                {item.label}
+                            </div>
                         </div>
                     );
 
@@ -113,15 +125,14 @@ const AppSubmenu = (props) => {
                                 <AppSubmenu items={visible(item) && item.items} menuActive={props.menuActive} menuMode={props.menuMode} parentMenuItemActive={activeIndex === i} onMenuitemClick={props.onMenuitemClick}></AppSubmenu>
                             </CSSTransition>
                         </li>
-                    )
-                }
-                else {
+                    );
+                } else {
                     return <li className="menu-separator" style={item.style} key={`separator${i}`} role="separator"></li>;
                 }
             }
 
             return null;
-        })
+        });
     };
 
     useEffect(() => {
@@ -146,6 +157,6 @@ const AppSubmenu = (props) => {
             {items}
         </ul>
     );
-}
+};
 
 export default AppSubmenu;

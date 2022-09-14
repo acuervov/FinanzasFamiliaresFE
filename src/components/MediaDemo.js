@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Carousel } from 'primereact/carousel';
-import { Galleria } from 'primereact/galleria';
-import { Button } from 'primereact/button';
+import React, { useEffect, useState } from "react";
+import { Carousel } from "primereact/carousel";
+import { Galleria } from "primereact/galleria";
+import { Button } from "primereact/button";
 import { Image } from "primereact/image";
-import ProductService from '../service/ProductService';
-import PhotoService from '../service/PhotoService';
+import ProductService from "../service/ProductService";
+import PhotoService from "../service/PhotoService";
 
 const MediaDemo = () => {
-
     const [products, setProducts] = useState([]);
     const [images, setImages] = useState([]);
     const galleriaResponsiveOptions = [
@@ -62,9 +61,7 @@ const MediaDemo = () => {
                         <img src={`assets/demo/images/product/${product.image}`} alt={product.name} className="product-image" />
                     </div>
                     <div>
-                        <h4 className="p-mb-1">
-                            {product.name}
-                        </h4>
+                        <h4 className="p-mb-1">{product.name}</h4>
                         <h6 className="mt-0 mb-3">${product.price}</h6>
                         <span className={`product-badge status-${product.inventoryStatus.toLowerCase()}`}>{product.inventoryStatus}</span>
                         <div className="car-buttons mt-5">
@@ -78,8 +75,8 @@ const MediaDemo = () => {
         );
     };
 
-    const galleriaItemTemplate = (item) => <img src={`assets/${item.itemImageSrc}`} alt={item.alt} style={{ width: '100%', display: 'block' }} />
-    const galleriaThumbnailTemplate = (item) => <img src={`assets/${item.thumbnailImageSrc}`} alt={item.alt} style={{ width: '100%', display: 'block' }} />
+    const galleriaItemTemplate = (item) => <img src={`assets/${item.itemImageSrc}`} alt={item.alt} style={{ width: "100%", display: "block" }} />;
+    const galleriaThumbnailTemplate = (item) => <img src={`assets/${item.thumbnailImageSrc}`} alt={item.alt} style={{ width: "100%", display: "block" }} />;
 
     return (
         <div className="grid p-fluid media-demo">
@@ -93,8 +90,7 @@ const MediaDemo = () => {
             <div className="col-12">
                 <div className="card">
                     <h5>Galleria</h5>
-                    <Galleria value={images} responsiveOptions={galleriaResponsiveOptions} numVisible={7} circular style={{ maxWidth: '800px', margin: 'auto' }}
-                        item={galleriaItemTemplate} thumbnail={galleriaThumbnailTemplate}></Galleria>
+                    <Galleria value={images} responsiveOptions={galleriaResponsiveOptions} numVisible={7} circular style={{ maxWidth: "800px", margin: "auto" }} item={galleriaItemTemplate} thumbnail={galleriaThumbnailTemplate}></Galleria>
                 </div>
             </div>
 
@@ -108,10 +104,6 @@ const MediaDemo = () => {
             </div>
         </div>
     );
-}
-
-const comparisonFn = function (prevProps, nextProps) {
-    return prevProps.location.pathname === nextProps.location.pathname;
 };
 
-export default React.memo(MediaDemo, comparisonFn);
+export default MediaDemo;
