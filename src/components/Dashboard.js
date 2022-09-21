@@ -1,66 +1,63 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Button } from 'primereact/button';
-import { Dropdown } from 'primereact/dropdown';
-import { Chart } from 'primereact/chart';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { Menu } from 'primereact/menu';
-import ProductService from '../service/ProductService';
+import React, { useState, useEffect, useRef } from "react";
+import { Button } from "primereact/button";
+import { Dropdown } from "primereact/dropdown";
+import { Chart } from "primereact/chart";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { Menu } from "primereact/menu";
+import ProductService from "../service/ProductService";
 
 const ordersChart = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [{
-        label: 'New',
-        data: [2, 7, 20, 9, 16, 9, 5],
-        backgroundColor: [
-            'rgba(100, 181, 246, 0.2)',
-        ],
-        borderColor: [
-            '#64B5F6',
-        ],
-        borderWidth: 3,
-        fill: true,
-        tension: .4
-    }]
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+        {
+            label: "New",
+            data: [2, 7, 20, 9, 16, 9, 5],
+            backgroundColor: ["rgba(100, 181, 246, 0.2)"],
+            borderColor: ["#64B5F6"],
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4,
+        },
+    ],
 };
 
 const ordersChartOptions = {
     maintainAspectRatio: false,
-    aspectRatio: .8,
+    aspectRatio: 0.8,
     plugins: {
         legend: {
             display: true,
-        }
+        },
     },
     responsive: true,
     hover: {
-        mode: 'index',
+        mode: "index",
     },
     scales: {
         y: {
             ticks: {
                 min: 0,
-                max: 20
-            }
-        }
-    }
+                max: 20,
+            },
+        },
+    },
 };
 
 const revenueChart = {
-    labels: ['Direct', 'Promoted', 'Affiliate'],
+    labels: ["Direct", "Promoted", "Affiliate"],
     datasets: [
         {
             data: [40, 35, 25],
-            backgroundColor: ['#64B5F6', '#7986CB', '#4DB6AC']
-        }
-    ]
+            backgroundColor: ["#64B5F6", "#7986CB", "#4DB6AC"],
+        },
+    ],
 };
 
 const Dashboard = () => {
-
     const orderWeek = [
-        { name: 'This Week', code: '0' },
-        { name: 'Last Week', code: '1' }
+        { name: "This Week", code: "0" },
+        { name: "Last Week", code: "1" },
     ];
 
     const [selectedOrderWeek, setSelectedOrderWeek] = useState(orderWeek[0]);
@@ -70,13 +67,13 @@ const Dashboard = () => {
 
     const items = [
         {
-            label: 'Shipments',
+            label: "Shipments",
             items: [
-                { label: 'Tracker', icon: 'pi pi-compass' },
-                { label: 'Map', icon: 'pi pi-map-marker' },
-                { label: 'Manage', icon: 'pi pi-pencil' },
-            ]
-        }
+                { label: "Tracker", icon: "pi pi-compass" },
+                { label: "Map", icon: "pi pi-map-marker" },
+                { label: "Manage", icon: "pi pi-pencil" },
+            ],
+        },
     ];
 
     const menuRef = useRef(null);
@@ -97,17 +94,16 @@ const Dashboard = () => {
             [2, 2, 20, 4, 17, 16, 20],
         ];
 
-        ordersChart.datasets[0].data = dataSet[parseInt(event.currentTarget.getAttribute('data-index'))];
-        ordersChart.datasets[0].label = event.currentTarget.getAttribute('data-label');
-        ordersChart.datasets[0].borderColor = event.currentTarget.getAttribute('data-stroke');
-        ordersChart.datasets[0].backgroundColor = event.currentTarget.getAttribute('data-fill');
+        ordersChart.datasets[0].data = dataSet[parseInt(event.currentTarget.getAttribute("data-index"))];
+        ordersChart.datasets[0].label = event.currentTarget.getAttribute("data-label");
+        ordersChart.datasets[0].borderColor = event.currentTarget.getAttribute("data-stroke");
+        ordersChart.datasets[0].backgroundColor = event.currentTarget.getAttribute("data-fill");
     };
 
     const recentSales = (event) => {
-        if (event.value.code === '0') {
+        if (event.value.code === "0") {
             setProducts(productsThisWeek);
-        }
-        else {
+        } else {
             setProducts(productsLastWeek);
         }
 
@@ -123,9 +119,9 @@ const Dashboard = () => {
     };
 
     const formatCurrency = (value) => {
-        return value.toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD',
+        return value.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
         });
     };
 
@@ -149,7 +145,7 @@ const Dashboard = () => {
                 <span className="p-column-title">Status</span>
                 <span className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span>
             </>
-        )
+        );
     };
 
     const priceBodyTemplate = (data) => {
@@ -248,29 +244,25 @@ const Dashboard = () => {
                         <div className="grid">
                             <div className="col-12">
                                 <div id="order-tabs-container" className="grid order-tabs">
-                                    <div className="order-tab order-tab-new col-6 md:col-3" onClick={onOrderTabClick}
-                                        data-label="New Orders" data-index="0" data-stroke="#BBDEFB" data-fill="rgba(100, 181, 246, 0.2)">
+                                    <div className="order-tab order-tab-new col-6 md:col-3" onClick={onOrderTabClick} data-label="New Orders" data-index="0" data-stroke="#BBDEFB" data-fill="rgba(100, 181, 246, 0.2)">
                                         <i className="pi pi-plus-circle"></i>
                                         <span className="order-label">New</span>
                                         <i className="stat-detail-icon icon-arrow-right-circle"></i>
                                         <img src="assets/demo/images/dashboard/graph-new.svg" alt="order" />
                                     </div>
-                                    <div className="order-tab order-tab-completed col-6 md:col-3" onClick={onOrderTabClick}
-                                        data-label="Completed Orders" data-index="1" data-stroke="#C5CAE9" data-fill="rgba(121, 134, 203, 0.2)">
+                                    <div className="order-tab order-tab-completed col-6 md:col-3" onClick={onOrderTabClick} data-label="Completed Orders" data-index="1" data-stroke="#C5CAE9" data-fill="rgba(121, 134, 203, 0.2)">
                                         <i className="pi pi-check-circle"></i>
                                         <span className="order-label">Completed</span>
                                         <i className="stat-detail-icon icon-arrow-right-circle"></i>
                                         <img src="assets/demo/images/dashboard/graph-completed.svg" alt="order" />
                                     </div>
-                                    <div className="order-tab order-tab-refunded col-6 md:col-3" onClick={onOrderTabClick}
-                                        data-label="Refunded Orders" data-index="2" data-stroke="#B2DFDB" data-fill="rgba(224, 242, 241, 0.5)">
+                                    <div className="order-tab order-tab-refunded col-6 md:col-3" onClick={onOrderTabClick} data-label="Refunded Orders" data-index="2" data-stroke="#B2DFDB" data-fill="rgba(224, 242, 241, 0.5)">
                                         <i className="pi pi-refresh"></i>
                                         <span className="order-label">Refunded</span>
                                         <i className="stat-detail-icon icon-arrow-right-circle"></i>
                                         <img src="assets/demo/images/dashboard/graph-refunded.svg" alt="order" />
                                     </div>
-                                    <div className="order-tab order-tab-cancelled col-6 md:col-3" onClick={onOrderTabClick}
-                                        data-label="Cancelled Orders" data-index="3" data-stroke="#B2EBF2" data-fill="rgba(224, 247, 250, 0.5)">
+                                    <div className="order-tab order-tab-cancelled col-6 md:col-3" onClick={onOrderTabClick} data-label="Cancelled Orders" data-index="3" data-stroke="#B2EBF2" data-fill="rgba(224, 247, 250, 0.5)">
                                         <i className="pi pi-times-circle"></i>
                                         <span className="order-label">Cancelled</span>
                                         <i className="stat-detail-icon icon-arrow-right-circle"></i>
@@ -301,7 +293,7 @@ const Dashboard = () => {
                             <Column field="category" header="Category" sortable body={bodyTemplate}></Column>
                             <Column field="price" header="Price" sortable body={priceBodyTemplate}></Column>
                             <Column field="inventoryStatus" header="Status" sortable body={statusBodyTemplate}></Column>
-                            <Column bodyStyle={{ textAlign: 'center', justifyContent: 'center' }} body={() => <Button type="button" icon="pi pi-search"></Button>}></Column>
+                            <Column bodyStyle={{ textAlign: "center", justifyContent: "center" }} body={() => <Button type="button" icon="pi pi-search"></Button>}></Column>
                         </DataTable>
                     </div>
                 </div>
@@ -312,31 +304,41 @@ const Dashboard = () => {
                         <p>Overview of your pending tasks.</p>
                         <div>
                             <div className="task task-1">
-                                <div className="task-name"><span>12 Orders</span> to fulfill</div>
+                                <div className="task-name">
+                                    <span>12 Orders</span> to fulfill
+                                </div>
                                 <div className="task-progress">
                                     <div></div>
                                 </div>
                             </div>
                             <div className="task task-2">
-                                <div className="task-name"><span>40+ Payments</span> to withdraw</div>
+                                <div className="task-name">
+                                    <span>40+ Payments</span> to withdraw
+                                </div>
                                 <div className="task-progress">
                                     <div></div>
                                 </div>
                             </div>
                             <div className="task task-3">
-                                <div className="task-name"><span>4 Reports</span> to revise</div>
+                                <div className="task-name">
+                                    <span>4 Reports</span> to revise
+                                </div>
                                 <div className="task-progress">
                                     <div></div>
                                 </div>
                             </div>
                             <div className="task task-4">
-                                <div className="task-name"><span>6 Questions</span> to respond</div>
+                                <div className="task-name">
+                                    <span>6 Questions</span> to respond
+                                </div>
                                 <div className="task-progress">
                                     <div></div>
                                 </div>
                             </div>
                             <div className="task task-5">
-                                <div className="task-name"><span>2 Chargebacks</span> to review</div>
+                                <div className="task-name">
+                                    <span>2 Chargebacks</span> to review
+                                </div>
                                 <div className="task-progress">
                                     <div></div>
                                 </div>
@@ -412,7 +414,7 @@ const Dashboard = () => {
                         <p>Comparison of your revenue sources.</p>
                         <div className="revenue-chart-container">
                             <div className="flex justify-content-center">
-                                <Chart style={{ position: 'relative', width: '50%' }} type="pie" id="revenue-chart" data={revenueChart}></Chart>
+                                <Chart style={{ position: "relative", width: "50%" }} type="pie" id="revenue-chart" data={revenueChart}></Chart>
                             </div>
                         </div>
                     </div>
@@ -491,10 +493,6 @@ const Dashboard = () => {
             </div>
         </div>
     );
-}
-
-const comparisonFn = function (prevProps, nextProps) {
-    return prevProps.location.pathname === nextProps.location.pathname;
 };
 
-export default React.memo(Dashboard, comparisonFn);
+export default Dashboard;

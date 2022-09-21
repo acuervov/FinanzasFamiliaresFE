@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Tree } from 'primereact/tree';
-import { TreeTable } from 'primereact/treetable';
-import { Column } from 'primereact/column';
-import NodeService from '../service/NodeService';
+import React, { useState, useEffect } from "react";
+import { Tree } from "primereact/tree";
+import { TreeTable } from "primereact/treetable";
+import { Column } from "primereact/column";
+import NodeService from "../service/NodeService";
 
 const TreeDemo = () => {
-
     const [treeNodes, setTreeNodes] = useState([]);
     const [selectedTreeNodeKeys, setSelectedTreeNodeKeys] = useState(null);
     const [treeTableNodes, setTreeTableNodes] = useState([]);
@@ -13,8 +12,8 @@ const TreeDemo = () => {
 
     useEffect(() => {
         const nodeService = new NodeService();
-        nodeService.getTreeNodes().then(data => setTreeNodes(data));
-        nodeService.getTreeTableNodes().then(data => setTreeTableNodes(data));
+        nodeService.getTreeNodes().then((data) => setTreeNodes(data));
+        nodeService.getTreeTableNodes().then((data) => setTreeTableNodes(data));
     }, []);
 
     return (
@@ -36,11 +35,7 @@ const TreeDemo = () => {
                 </div>
             </div>
         </div>
-    )
-}
-
-const comparisonFn = function (prevProps, nextProps) {
-    return prevProps.location.pathname === nextProps.location.pathname;
+    );
 };
 
-export default React.memo(TreeDemo, comparisonFn);
+export default TreeDemo;

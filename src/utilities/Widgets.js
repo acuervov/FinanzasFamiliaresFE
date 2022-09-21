@@ -1,10 +1,9 @@
-import React from 'react';
-import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
-import { InputTextarea } from 'primereact/inputtextarea';
+import React from "react";
+import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
+import { InputTextarea } from "primereact/inputtextarea";
 
 const Widgets = () => {
-
     return (
         <div className="layout-widgets">
             <h4>Reusable CSS widgets for your applications.</h4>
@@ -95,31 +94,41 @@ const Widgets = () => {
                         <h4>Task Status</h4>
                         <div>
                             <div className="task task-1">
-                                <div className="task-name"><span>12 Orders</span> to fulfill</div>
+                                <div className="task-name">
+                                    <span>12 Orders</span> to fulfill
+                                </div>
                                 <div className="task-progress">
                                     <div></div>
                                 </div>
                             </div>
                             <div className="task task-2">
-                                <div className="task-name"><span>40+ Payments</span> to withdraw</div>
+                                <div className="task-name">
+                                    <span>40+ Payments</span> to withdraw
+                                </div>
                                 <div className="task-progress">
                                     <div></div>
                                 </div>
                             </div>
                             <div className="task task-3">
-                                <div className="task-name"><span>4 Reports</span> to revise</div>
+                                <div className="task-name">
+                                    <span>4 Reports</span> to revise
+                                </div>
                                 <div className="task-progress">
                                     <div></div>
                                 </div>
                             </div>
                             <div className="task task-4">
-                                <div className="task-name"><span>6 Questions</span> to respond</div>
+                                <div className="task-name">
+                                    <span>6 Questions</span> to respond
+                                </div>
                                 <div className="task-progress">
                                     <div></div>
                                 </div>
                             </div>
                             <div className="task task-5">
-                                <div className="task-name"><span>2 Chargebacks</span> to review</div>
+                                <div className="task-name">
+                                    <span>2 Chargebacks</span> to review
+                                </div>
                                 <div className="task-progress">
                                     <div></div>
                                 </div>
@@ -181,7 +190,9 @@ const Widgets = () => {
                             <li>Free Shipping</li>
                             <li>10GB Storage</li>
                         </ul>
-                        <button type="button" className="p-link">BUY NOW</button>
+                        <button type="button" className="p-link">
+                            BUY NOW
+                        </button>
                     </div>
                 </div>
 
@@ -190,44 +201,42 @@ const Widgets = () => {
                         <h4>Timeline</h4>
                         <div className="widget-timeline">
                             <div className="timeline-event">
-                                <span className="timeline-event-icon" style={{ backgroundColor: '#64b5f6' }}>
+                                <span className="timeline-event-icon" style={{ backgroundColor: "#64b5f6" }}>
                                     <i className="pi pi-dollar"></i>
                                 </span>
                                 <div className="timeline-event-title">New Sale</div>
                                 <div className="timeline-event-detail">
                                     Richard Jones has purchased a blue t-shirt for
-                                <strong> $79</strong>.
-                            </div>
+                                    <strong> $79</strong>.
+                                </div>
                             </div>
                             <div className="timeline-event">
-                                <span className="timeline-event-icon" style={{ backgroundColor: '#7986cb' }}>
+                                <span className="timeline-event-icon" style={{ backgroundColor: "#7986cb" }}>
                                     <i className="timeline-icon pi pi-download"></i>
                                 </span>
                                 <div className="timeline-event-title">Withdrawal Initiated</div>
                                 <div className="timeline-event-detail">
                                     Your request for withdrawal of
-                                <strong> $2500</strong> has been initiated.
-                            </div>
+                                    <strong> $2500</strong> has been initiated.
+                                </div>
                             </div>
                             <div className="timeline-event">
-                                <span className="timeline-event-icon" style={{ backgroundColor: '#4db6ac' }}>
+                                <span className="timeline-event-icon" style={{ backgroundColor: "#4db6ac" }}>
                                     <i className="timeline-icon pi pi-question"></i>
                                 </span>
                                 <div className="timeline-event-title">Question Received</div>
                                 <div className="timeline-event-detail">
-                                    Jane Davis has posted a
-                                <strong> new question</strong> about your product.
-                            </div>
+                                    Jane Davis has posted a<strong> new question</strong> about your product.
+                                </div>
                             </div>
                             <div className="timeline-event">
-                                <span className="timeline-event-icon" style={{ backgroundColor: '#4dd0e1' }}>
+                                <span className="timeline-event-icon" style={{ backgroundColor: "#4dd0e1" }}>
                                     <i className="timeline-icon pi pi-comment"></i>
                                 </span>
                                 <div className="timeline-event-title">Comment Received</div>
                                 <div className="timeline-event-detail">
-                                    Claire Smith has upvoted your store along with a
-                                <strong> comment</strong>.
-                            </div>
+                                    Claire Smith has upvoted your store along with a<strong> comment</strong>.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -364,7 +373,7 @@ const Widgets = () => {
                                 </div>
                             </div>
 
-                            <Button label="Assign" style={{ width: '100%' }}></Button>
+                            <Button label="Assign" style={{ width: "100%" }}></Button>
                         </div>
                     </div>
                 </div>
@@ -430,10 +439,6 @@ const Widgets = () => {
             </div>
         </div>
     );
-}
-
-const comparisonFn = function (prevProps, nextProps) {
-    return prevProps.location.pathname === nextProps.location.pathname;
 };
 
-export default React.memo(Widgets, comparisonFn);
+export default Widgets;

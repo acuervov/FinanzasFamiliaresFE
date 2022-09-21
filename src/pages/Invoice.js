@@ -1,15 +1,14 @@
-import React from 'react';
-import { Button } from 'primereact/button';
+import React from "react";
+import { Button } from "primereact/button";
 
 const Invoice = (props) => {
-
     const print = () => {
         window.print();
-    }
+    };
 
     return (
         <div>
-            <Button type="button" label="Print" icon="pi pi-print" onClick={print} style={{ display: 'block', marginBottom: '20px', marginLeft: '6px' }}></Button>
+            <Button type="button" label="Print" icon="pi pi-print" onClick={print} style={{ display: "block", marginBottom: "20px", marginLeft: "6px" }}></Button>
 
             <div className="grid">
                 <div className="col">
@@ -101,10 +100,10 @@ const Invoice = (props) => {
             </div>
         </div>
     );
-}
+};
 
 const comparisonFn = function (prevProps, nextProps) {
-    return (prevProps.location.pathname === nextProps.location.pathname) && (prevProps.logoUrl === nextProps.logoUrl);
+    return prevProps.location.pathname === nextProps.location.pathname && prevProps.logoUrl === nextProps.logoUrl;
 };
 
 export default React.memo(Invoice, comparisonFn);

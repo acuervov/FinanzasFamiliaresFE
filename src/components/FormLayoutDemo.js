@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import { InputText } from 'primereact/inputtext';
-import { Button } from 'primereact/button';
-import { InputTextarea } from 'primereact/inputtextarea';
-import { Dropdown } from 'primereact/dropdown';
+import React, { useState } from "react";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import { InputTextarea } from "primereact/inputtextarea";
+import { Dropdown } from "primereact/dropdown";
 
 const FormLayoutDemo = () => {
-
     const [dropdownItem, setDropdownItem] = useState(null);
     const dropdownItems = [
-        { name: 'Option 1', code: 'Option 1' },
-        { name: 'Option 2', code: 'Option 2' },
-        { name: 'Option 3', code: 'Option 3' }
+        { name: "Option 1", code: "Option 1" },
+        { name: "Option 2", code: "Option 2" },
+        { name: "Option 3", code: "Option 3" },
     ];
 
     return (
@@ -51,13 +50,17 @@ const FormLayoutDemo = () => {
                 <div className="card p-fluid">
                     <h5>Horizontal</h5>
                     <div className="field grid">
-                        <label htmlFor="name3" className="col-12 mb-2 md:col-2 md:mb-0">Name</label>
+                        <label htmlFor="name3" className="col-12 mb-2 md:col-2 md:mb-0">
+                            Name
+                        </label>
                         <div className="col-12 md:col-10">
                             <InputText id="name3" type="text" />
                         </div>
                     </div>
                     <div className="field grid">
-                        <label htmlFor="email3" className="col-12 mb-2 md:col-2 md:mb-0">Email</label>
+                        <label htmlFor="email3" className="col-12 mb-2 md:col-2 md:mb-0">
+                            Email
+                        </label>
                         <div className="col-12 md:col-10">
                             <InputText id="email3" type="text" />
                         </div>
@@ -68,11 +71,15 @@ const FormLayoutDemo = () => {
                     <h5>Inline</h5>
                     <div className="formgroup-inline">
                         <div className="field">
-                            <label htmlFor="firstname1" className="p-sr-only">Firstname</label>
+                            <label htmlFor="firstname1" className="p-sr-only">
+                                Firstname
+                            </label>
                             <InputText id="firstname1" type="text" placeholder="Firstname" />
                         </div>
                         <div className="field">
-                            <label htmlFor="lastname1" className="p-sr-only">Lastname</label>
+                            <label htmlFor="lastname1" className="p-sr-only">
+                                Lastname
+                            </label>
                             <InputText id="lastname1" type="text" placeholder="Lastname" />
                         </div>
                         <Button label="Submit"></Button>
@@ -121,11 +128,7 @@ const FormLayoutDemo = () => {
                 </div>
             </div>
         </div>
-    )
-}
-
-const comparisonFn = function (prevProps, nextProps) {
-    return prevProps.location.pathname === nextProps.location.pathname;
+    );
 };
 
-export default React.memo(FormLayoutDemo, comparisonFn);
+export default FormLayoutDemo;
