@@ -1,5 +1,21 @@
 # Changelog
 
+## 8.0.0
+###### * Brings support to PrimeReact 8.x
+
+**Migration Guide**
+
+- Update theme files and layout files.
+
+**Implemented New Features and Enhancements**
+
+- Upgrade to PrimeReact 8.6.0
+- Upgrade to PrimeIcons 6.0.0
+- Upgrade to React Router 6.3.0
+- New styles of PrimeReact components
+
+# Changelog
+
 ## 7.0.0
 ###### * Brings support to PrimeReact 7.x
 
