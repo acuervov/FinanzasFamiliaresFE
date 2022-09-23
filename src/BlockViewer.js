@@ -3,13 +3,12 @@ import { classNames } from 'primereact/utils';
 import AppCodeHighlight from './AppCodeHighlight';
 
 const BlockViewer = (props) => {
-
-    const [blockView, setBlockView] = useState('PREVIEW')
+    const [blockView, setBlockView] = useState('PREVIEW');
 
     const copyCode = async (event) => {
         await navigator.clipboard.writeText(props.code);
         event.preventDefault();
-    }
+    };
 
     return (
         <div className="block-viewer">
@@ -20,9 +19,10 @@ const BlockViewer = (props) => {
                         {props.new && <span className="badge-new">New</span>}
                     </span>
                     <div className="block-actions">
-                        <button tabIndex={0} className={classNames('p-link', { 'block-action-active': blockView === 'PREVIEW' })} onClick={() => setBlockView('PREVIEW')}><span>Preview</span></button>
-                        <button className={classNames('p-link', { 'block-action-active': blockView === 'CODE' })} style={{ color: 'var(--menu-text-color)' }}
-                            onClick={() => setBlockView('CODE')} >
+                        <button tabIndex={0} className={classNames('p-link', { 'block-action-active': blockView === 'PREVIEW' })} onClick={() => setBlockView('PREVIEW')}>
+                            <span>Preview</span>
+                        </button>
+                        <button className={classNames('p-link', { 'block-action-active': blockView === 'CODE' })} style={{ color: 'var(--menu-text-color)' }} onClick={() => setBlockView('CODE')}>
                             <span>Code</span>
                         </button>
                         <button tabIndex={0} className="p-link block-action-copy" onClick={copyCode}>
@@ -31,20 +31,17 @@ const BlockViewer = (props) => {
                     </div>
                 </div>
                 <div className="block-content">
-                    {blockView === 'PREVIEW' &&
+                    {blockView === 'PREVIEW' && (
                         <div className={props.containerClassName} style={props.previewStyle}>
                             {props.children}
-                        </div>}
+                        </div>
+                    )}
 
-                    {blockView === 'CODE' &&
-                        <AppCodeHighlight>
-                            {props.code}
-                        </AppCodeHighlight>
-                    }
+                    {blockView === 'CODE' && <AppCodeHighlight>{props.code}</AppCodeHighlight>}
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default BlockViewer;

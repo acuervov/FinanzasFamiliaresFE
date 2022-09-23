@@ -1,25 +1,25 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Button } from "primereact/button";
-import { Dropdown } from "primereact/dropdown";
-import { Chart } from "primereact/chart";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
-import { Menu } from "primereact/menu";
-import ProductService from "../service/ProductService";
+import React, { useState, useEffect, useRef } from 'react';
+import { Button } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown';
+import { Chart } from 'primereact/chart';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { Menu } from 'primereact/menu';
+import ProductService from '../service/ProductService';
 
 const ordersChart = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
         {
-            label: "New",
+            label: 'New',
             data: [2, 7, 20, 9, 16, 9, 5],
-            backgroundColor: ["rgba(100, 181, 246, 0.2)"],
-            borderColor: ["#64B5F6"],
+            backgroundColor: ['rgba(100, 181, 246, 0.2)'],
+            borderColor: ['#64B5F6'],
             borderWidth: 3,
             fill: true,
-            tension: 0.4,
-        },
-    ],
+            tension: 0.4
+        }
+    ]
 };
 
 const ordersChartOptions = {
@@ -27,37 +27,37 @@ const ordersChartOptions = {
     aspectRatio: 0.8,
     plugins: {
         legend: {
-            display: true,
-        },
+            display: true
+        }
     },
     responsive: true,
     hover: {
-        mode: "index",
+        mode: 'index'
     },
     scales: {
         y: {
             ticks: {
                 min: 0,
-                max: 20,
-            },
-        },
-    },
+                max: 20
+            }
+        }
+    }
 };
 
 const revenueChart = {
-    labels: ["Direct", "Promoted", "Affiliate"],
+    labels: ['Direct', 'Promoted', 'Affiliate'],
     datasets: [
         {
             data: [40, 35, 25],
-            backgroundColor: ["#64B5F6", "#7986CB", "#4DB6AC"],
-        },
-    ],
+            backgroundColor: ['#64B5F6', '#7986CB', '#4DB6AC']
+        }
+    ]
 };
 
 const Dashboard = () => {
     const orderWeek = [
-        { name: "This Week", code: "0" },
-        { name: "Last Week", code: "1" },
+        { name: 'This Week', code: '0' },
+        { name: 'Last Week', code: '1' }
     ];
 
     const [selectedOrderWeek, setSelectedOrderWeek] = useState(orderWeek[0]);
@@ -67,13 +67,13 @@ const Dashboard = () => {
 
     const items = [
         {
-            label: "Shipments",
+            label: 'Shipments',
             items: [
-                { label: "Tracker", icon: "pi pi-compass" },
-                { label: "Map", icon: "pi pi-map-marker" },
-                { label: "Manage", icon: "pi pi-pencil" },
-            ],
-        },
+                { label: 'Tracker', icon: 'pi pi-compass' },
+                { label: 'Map', icon: 'pi pi-map-marker' },
+                { label: 'Manage', icon: 'pi pi-pencil' }
+            ]
+        }
     ];
 
     const menuRef = useRef(null);
@@ -91,17 +91,17 @@ const Dashboard = () => {
             [2, 7, 20, 9, 16, 9, 5],
             [2, 4, 9, 20, 16, 12, 20],
             [2, 17, 7, 15, 4, 20, 8],
-            [2, 2, 20, 4, 17, 16, 20],
+            [2, 2, 20, 4, 17, 16, 20]
         ];
 
-        ordersChart.datasets[0].data = dataSet[parseInt(event.currentTarget.getAttribute("data-index"))];
-        ordersChart.datasets[0].label = event.currentTarget.getAttribute("data-label");
-        ordersChart.datasets[0].borderColor = event.currentTarget.getAttribute("data-stroke");
-        ordersChart.datasets[0].backgroundColor = event.currentTarget.getAttribute("data-fill");
+        ordersChart.datasets[0].data = dataSet[parseInt(event.currentTarget.getAttribute('data-index'))];
+        ordersChart.datasets[0].label = event.currentTarget.getAttribute('data-label');
+        ordersChart.datasets[0].borderColor = event.currentTarget.getAttribute('data-stroke');
+        ordersChart.datasets[0].backgroundColor = event.currentTarget.getAttribute('data-fill');
     };
 
     const recentSales = (event) => {
-        if (event.value.code === "0") {
+        if (event.value.code === '0') {
             setProducts(productsThisWeek);
         } else {
             setProducts(productsLastWeek);
@@ -114,14 +114,14 @@ const Dashboard = () => {
         menuRef.current.toggle(event);
     };
 
-    const refreshDataset = (event) => {
-        chartRef.current.reinit(event);
+    const refreshDataset = () => {
+        chartRef.current.refresh();
     };
 
     const formatCurrency = (value) => {
-        return value.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
+        return value.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD'
         });
     };
 
@@ -293,7 +293,7 @@ const Dashboard = () => {
                             <Column field="category" header="Category" sortable body={bodyTemplate}></Column>
                             <Column field="price" header="Price" sortable body={priceBodyTemplate}></Column>
                             <Column field="inventoryStatus" header="Status" sortable body={statusBodyTemplate}></Column>
-                            <Column bodyStyle={{ textAlign: "center", justifyContent: "center" }} body={() => <Button type="button" icon="pi pi-search"></Button>}></Column>
+                            <Column bodyStyle={{ textAlign: 'center', justifyContent: 'center' }} body={() => <Button type="button" icon="pi pi-search"></Button>}></Column>
                         </DataTable>
                     </div>
                 </div>
@@ -414,7 +414,7 @@ const Dashboard = () => {
                         <p>Comparison of your revenue sources.</p>
                         <div className="revenue-chart-container">
                             <div className="flex justify-content-center">
-                                <Chart style={{ position: "relative", width: "50%" }} type="pie" id="revenue-chart" data={revenueChart}></Chart>
+                                <Chart style={{ position: 'relative', width: '50%' }} type="pie" id="revenue-chart" data={revenueChart}></Chart>
                             </div>
                         </div>
                     </div>

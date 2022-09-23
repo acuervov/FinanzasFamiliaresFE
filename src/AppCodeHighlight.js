@@ -8,7 +8,6 @@ import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-scss';
 
 const AppCodeHighlight = (props) => {
-
     const codeElement = useRef(null);
 
     useEffect(() => {
@@ -21,10 +20,10 @@ const AppCodeHighlight = (props) => {
         <pre style={props.style}>
             <code ref={codeElement} className={`language-${props.lang}`}>
                 {props.children}&nbsp;
-                </code>
+            </code>
         </pre>
     );
-}
+};
 
 AppCodeHighlight.defaultProps = {
     lang: 'jsx',

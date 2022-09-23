@@ -1,9 +1,9 @@
-import React, { forwardRef, useCallback, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
-import { classNames } from "primereact/utils";
-import { Ripple } from "primereact/ripple";
-import { Badge } from "primereact/badge";
+import React, { createRef, forwardRef, useCallback, useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
+import { classNames } from 'primereact/utils';
+import { Ripple } from 'primereact/ripple';
+import { Badge } from 'primereact/badge';
 
 const AppSubmenu = forwardRef((props, ref) => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -23,7 +23,7 @@ const AppSubmenu = forwardRef((props, ref) => {
         }
         if (props.root) {
             props.onRootMenuitemClick({
-                originalEvent: event,
+                originalEvent: event
             });
         }
         if (item.items) {
@@ -32,18 +32,18 @@ const AppSubmenu = forwardRef((props, ref) => {
 
         props.onMenuitemClick({
             originalEvent: event,
-            item: item,
+            item: item
         });
     };
 
     const onMenuItemMouseEnter = (index) => {
-        if (props.root && props.menuActive && (props.menuMode === "slim" || props.menuMode === "horizontal") && !isMobile()) {
+        if (props.root && props.menuActive && (props.menuMode === 'slim' || props.menuMode === 'horizontal') && !isMobile()) {
             setActiveIndex(index);
         }
     };
 
     const visible = (item) => {
-        return typeof item.visible === "function" ? item.visible() : item.visible !== false;
+        return typeof item.visible === 'function' ? item.visible() : item.visible !== false;
     };
 
     const isMobile = () => {
@@ -51,30 +51,30 @@ const AppSubmenu = forwardRef((props, ref) => {
     };
 
     const isSlim = useCallback(() => {
-        return props.menuMode === "slim";
+        return props.menuMode === 'slim';
     }, [props.menuMode]);
 
     const isHorizontal = useCallback(() => {
-        return props.menuMode === "horizontal";
+        return props.menuMode === 'horizontal';
     }, [props.menuMode]);
 
     const getLink = (item, index) => {
-        const menuitemIconClassName = classNames("layout-menuitem-icon", item.icon);
+        const menuitemIconClassName = classNames('layout-menuitem-icon', item.icon);
         const content = (
             <>
                 <i className={menuitemIconClassName}></i>
                 <span className="layout-menuitem-text">{item.label}</span>
                 {item.items && <i className="pi pi-fw pi-angle-down layout-submenu-toggler"></i>}
-                {item.badge && <Badge value={item.badge} style={{ height: "100%" }} />}
+                {item.badge && <Badge value={item.badge} style={{ height: '100%' }} />}
                 <Ripple />
             </>
         );
         const commonLinkProps = {
             style: item.style,
-            className: classNames(item.className, "p-ripple", { "p-disabled": item.disabled, "p-link": !item.to }),
+            className: classNames(item.className, 'p-ripple', { 'p-disabled': item.disabled, 'p-link': !item.to }),
             target: item.target,
             onClick: (e) => onMenuItemClick(e, item, index),
-            onMouseEnter: () => onMenuItemMouseEnter(index),
+            onMouseEnter: () => onMenuItemMouseEnter(index)
         };
 
         if (item.url) {
@@ -92,7 +92,7 @@ const AppSubmenu = forwardRef((props, ref) => {
         }
 
         return (
-            <NavLink to={item.to} {...commonLinkProps} className={({ isActive }) => classNames(commonLinkProps.className, isActive ? "active-route" : undefined)}>
+            <NavLink to={item.to} {...commonLinkProps} className={({ isActive }) => classNames(commonLinkProps.className, isActive ? 'active-route' : undefined)}>
                 {content}
             </NavLink>
         );
@@ -107,11 +107,12 @@ const AppSubmenu = forwardRef((props, ref) => {
         return props.items.map((item, i) => {
             if (visible(item)) {
                 if (!item.separator) {
-                    const menuitemClassName = classNames({ "layout-root-menuitem": props.root, "active-menuitem": activeIndex === i && !item.disabled });
+                    const submenuRef = createRef();
+                    const menuitemClassName = classNames({ 'layout-root-menuitem': props.root, 'active-menuitem': activeIndex === i && !item.disabled });
                     const link = getLink(item, i);
                     const rootMenuItem = props.root && (
                         <div className="layout-root-menuitem">
-                            <div className="layout-menuitem-root-text" style={{ textTransform: "uppercase" }}>
+                            <div className="layout-menuitem-root-text" style={{ textTransform: 'uppercase' }}>
                                 {item.label}
                             </div>
                         </div>

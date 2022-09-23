@@ -1,12 +1,12 @@
-import React from "react";
-import { classNames } from "primereact/utils";
-import { Link } from "react-router-dom";
-import AppBreadcrumb from "./AppBreadcrumb";
-import AppMenu from "./AppMenu";
+import React from 'react';
+import { classNames } from 'primereact/utils';
+import { Link } from 'react-router-dom';
+import AppBreadcrumb from './AppBreadcrumb';
+import AppMenu from './AppMenu';
 
 const AppTopbar = (props) => {
-    const notificationsItemClassName = classNames("notifications-item", { "active-menuitem": props.topbarNotificationMenuActive });
-    const profileItemClassName = classNames("profile-item", { "active-menuitem fadeInDown": props.topbarUserMenuActive });
+    const notificationsItemClassName = classNames('notifications-item', { 'active-menuitem': props.topbarNotificationMenuActive });
+    const profileItemClassName = classNames('profile-item', { 'active-menuitem fadeInDown': props.topbarUserMenuActive });
 
     return (
         <div className="layout-topbar">
@@ -21,14 +21,22 @@ const AppTopbar = (props) => {
 
                 <span className="topbar-separator"></span>
 
-                <div className="layout-breadcrumb viewname" style={{ textTransform: "uppercase" }}>
+                <div className="layout-breadcrumb viewname" style={{ textTransform: 'uppercase' }}>
                     <AppBreadcrumb meta={props.meta} />
                 </div>
 
                 <img id="logo-mobile" className="mobile-logo" src="assets/layout/images/logo-dark.svg" alt="diamond-layout" />
             </div>
 
-            <AppMenu model={props.menu} menuMode={props.menuMode} active={props.menuActive} mobileMenuActive={props.staticMenuMobileActive} onMenuClick={props.onMenuClick} onMenuitemClick={props.onMenuitemClick} onRootMenuitemClick={props.onRootMenuitemClick}></AppMenu>
+            <AppMenu
+                model={props.menu}
+                menuMode={props.menuMode}
+                active={props.menuActive}
+                mobileMenuActive={props.staticMenuMobileActive}
+                onMenuClick={props.onMenuClick}
+                onMenuitemClick={props.onMenuitemClick}
+                onRootMenuitemClick={props.onRootMenuitemClick}
+            ></AppMenu>
 
             <div className="layout-mask modal-in"></div>
 

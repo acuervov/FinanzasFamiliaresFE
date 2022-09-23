@@ -5,102 +5,99 @@ import { InputSwitch } from 'primereact/inputswitch';
 import { Button } from 'primereact/button';
 
 const AppConfig = (props) => {
-
-
     const menuThemes = [
         {
-            name: "white",
-            color: "#ffffff",
-            logoColor: "dark",
-            componentTheme: props.componentTheme,
+            name: 'white',
+            color: '#ffffff',
+            logoColor: 'dark',
+            componentTheme: props.componentTheme
         },
         {
-            name: "darkgray",
-            color: "#343a40",
-            logoColor: "white",
-            componentTheme: props.componentTheme,
+            name: 'darkgray',
+            color: '#343a40',
+            logoColor: 'white',
+            componentTheme: props.componentTheme
         },
         {
-            name: "blue",
-            color: "#1976d2",
-            logoColor: "white",
-            componentTheme: "blue",
+            name: 'blue',
+            color: '#1976d2',
+            logoColor: 'white',
+            componentTheme: 'blue'
         },
         {
-            name: "bluegray",
-            color: "#455a64",
-            logoColor: "white",
-            componentTheme: "lightgreen",
+            name: 'bluegray',
+            color: '#455a64',
+            logoColor: 'white',
+            componentTheme: 'lightgreen'
         },
         {
-            name: "brown",
-            color: "#5d4037",
-            logoColor: "white",
-            componentTheme: "cyan",
+            name: 'brown',
+            color: '#5d4037',
+            logoColor: 'white',
+            componentTheme: 'cyan'
         },
         {
-            name: "cyan",
-            color: "#0097a7",
-            logoColor: "white",
-            componentTheme: "cyan",
+            name: 'cyan',
+            color: '#0097a7',
+            logoColor: 'white',
+            componentTheme: 'cyan'
         },
         {
-            name: "green",
-            color: "#388e3C",
-            logoColor: "white",
-            componentTheme: "green",
+            name: 'green',
+            color: '#388e3C',
+            logoColor: 'white',
+            componentTheme: 'green'
         },
         {
-            name: "indigo",
-            color: "#303f9f",
-            logoColor: "white",
-            componentTheme: "indigo",
+            name: 'indigo',
+            color: '#303f9f',
+            logoColor: 'white',
+            componentTheme: 'indigo'
         },
         {
-            name: "deeppurple",
-            color: "#512da8",
-            logoColor: "white",
-            componentTheme: "deeppurple",
+            name: 'deeppurple',
+            color: '#512da8',
+            logoColor: 'white',
+            componentTheme: 'deeppurple'
         },
         {
-            name: "orange",
-            color: "#F57c00",
-            logoColor: "dark",
-            componentTheme: "orange",
+            name: 'orange',
+            color: '#F57c00',
+            logoColor: 'dark',
+            componentTheme: 'orange'
         },
         {
-            name: "pink",
-            color: "#c2185b",
-            logoColor: "white",
-            componentTheme: "pink",
+            name: 'pink',
+            color: '#c2185b',
+            logoColor: 'white',
+            componentTheme: 'pink'
         },
         {
-            name: "purple",
-            color: "#7b1fa2",
-            logoColor: "white",
-            componentTheme: "purple",
+            name: 'purple',
+            color: '#7b1fa2',
+            logoColor: 'white',
+            componentTheme: 'purple'
         },
         {
-            name: "teal",
-            color: "#00796b",
-            logoColor: "white",
-            componentTheme: "teal",
-        },
+            name: 'teal',
+            color: '#00796b',
+            logoColor: 'white',
+            componentTheme: 'teal'
+        }
     ];
 
     const componentThemes = [
-        { name: "blue", color: "#42A5F5" },
-        { name: "green", color: "#66BB6A" },
-        { name: "lightgreen", color: "#9CCC65" },
-        { name: "purple", color: "#AB47BC" },
-        { name: "deeppurple", color: "#7E57C2" },
-        { name: "indigo", color: "#5C6BC0" },
-        { name: "orange", color: "#FFA726" },
-        { name: "cyan", color: "#26C6DA" },
-        { name: "pink", color: "#EC407A" },
-        { name: "teal", color: "#26A69A" },
+        { name: 'blue', color: '#42A5F5' },
+        { name: 'green', color: '#66BB6A' },
+        { name: 'lightgreen', color: '#9CCC65' },
+        { name: 'purple', color: '#AB47BC' },
+        { name: 'deeppurple', color: '#7E57C2' },
+        { name: 'indigo', color: '#5C6BC0' },
+        { name: 'orange', color: '#FFA726' },
+        { name: 'cyan', color: '#26C6DA' },
+        { name: 'pink', color: '#EC407A' },
+        { name: 'teal', color: '#26A69A' }
     ];
-
 
     const onConfigButtonClick = (event) => {
         props.onConfigButtonClick(event);
@@ -111,20 +108,20 @@ const AppConfig = (props) => {
         if (props.colorScheme === 'light') {
             return (
                 <div className="layout-themes">
-                    {
-                        menuThemes.map(theme => {
-                            const checkStyle = theme.name === 'white' ? 'black' : 'white';
-                            return (
-                                <div key={theme.name}>
-                                    <button type="button" className="p-link" style={{ cursor: 'pointer', 'backgroundColor': theme.color }} onClick={() => props.changeMenuTheme(theme.name, theme.logoColor, theme.componentTheme)} title={theme.name}>
-                                        {props.menuTheme === 'layout-sidebar-' + theme.name && <span className="check flex align-items-center justify-content-center">
-                                            <i className="pi pi-check" style={{ color: checkStyle}}></i>
-                                        </span>}
-                                    </button>
-                                </div>
-                            )
-                        })
-                    }
+                    {menuThemes.map((theme) => {
+                        const checkStyle = theme.name === 'white' ? 'black' : 'white';
+                        return (
+                            <div key={theme.name}>
+                                <button type="button" className="p-link" style={{ cursor: 'pointer', backgroundColor: theme.color }} onClick={() => props.changeMenuTheme(theme.name, theme.logoColor, theme.componentTheme)} title={theme.name}>
+                                    {props.menuTheme === 'layout-sidebar-' + theme.name && (
+                                        <span className="check flex align-items-center justify-content-center">
+                                            <i className="pi pi-check" style={{ color: checkStyle }}></i>
+                                        </span>
+                                    )}
+                                </button>
+                            </div>
+                        );
+                    })}
                 </div>
             );
         }
@@ -139,29 +136,29 @@ const AppConfig = (props) => {
     const getComponentThemes = () => {
         return (
             <div className="layout-themes">
-                {
-                    componentThemes.map(theme => {
-                        return (
-                            <div key={theme.name}>
-                                <button type="button" className="p-link" style={{ cursor: 'pointer', 'backgroundColor': theme.color }} onClick={() => props.changeComponentTheme(theme.name)} title={theme.name}>
-                                    {props.componentTheme === theme.name && <span className="check flex align-items-center justify-content-center">
+                {componentThemes.map((theme) => {
+                    return (
+                        <div key={theme.name}>
+                            <button type="button" className="p-link" style={{ cursor: 'pointer', backgroundColor: theme.color }} onClick={() => props.changeComponentTheme(theme.name)} title={theme.name}>
+                                {props.componentTheme === theme.name && (
+                                    <span className="check flex align-items-center justify-content-center">
                                         <i className="pi pi-check" style={{ color: 'white' }}></i>
-                                    </span>}
-                                </button>
-                            </div>
-                        )
-                    })
-                }
+                                    </span>
+                                )}
+                            </button>
+                        </div>
+                    );
+                })}
             </div>
         );
     };
 
     const componentThemesElement = getComponentThemes();
     const menuThemesElement = getMenuThemes();
-    const configClassName = classNames('layout-config', { 'layout-config-active': props.configActive })
+    const configClassName = classNames('layout-config', { 'layout-config-active': props.configActive });
     return (
         <div id="layout-config">
-        <Button className="layout-config-button" icon="pi pi-cog p-button-icon" type="button" onClick={onConfigButtonClick}></Button>
+            <Button className="layout-config-button" icon="pi pi-cog p-button-icon" type="button" onClick={onConfigButtonClick}></Button>
             <div className={configClassName} onClick={props.onConfigClick}>
                 <h5>Menu Type</h5>
                 <div className="field-radiobutton">
@@ -225,6 +222,6 @@ const AppConfig = (props) => {
             </div>
         </div>
     );
-}
+};
 
 export default AppConfig;

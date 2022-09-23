@@ -27,11 +27,11 @@ const AppSearch = (props) => {
             <CSSTransition nodeRef={searchRef} classNames="search-container" timeout={{ enter: 400, exit: 400 }} in={props.searchActive} unmountOnExit onEnter={onEnter}>
                 <div ref={searchRef} className="search-container" onClick={props.onSearchClick}>
                     <i className="pi pi-search"></i>
-                    <InputText ref={(el) => searchInputEl = ReactDOM.findDOMNode(el)} type="text" name="search" placeholder="Search" onKeyDown={onInputKeydown} />
+                    <InputText ref={(el) => (searchInputEl = ReactDOM.findDOMNode(el))} type="text" name="search" placeholder="Search" onKeyDown={onInputKeydown} />
                 </div>
             </CSSTransition>
         </div>
     );
-}
+};
 
 export default AppSearch;

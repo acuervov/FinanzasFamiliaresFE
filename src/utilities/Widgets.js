@@ -1,7 +1,7 @@
-import React from "react";
-import { Button } from "primereact/button";
-import { InputText } from "primereact/inputtext";
-import { InputTextarea } from "primereact/inputtextarea";
+import React from 'react';
+import { Button } from 'primereact/button';
+import { InputText } from 'primereact/inputtext';
+import { InputTextarea } from 'primereact/inputtextarea';
 
 const Widgets = () => {
     return (
@@ -201,7 +201,7 @@ const Widgets = () => {
                         <h4>Timeline</h4>
                         <div className="widget-timeline">
                             <div className="timeline-event">
-                                <span className="timeline-event-icon" style={{ backgroundColor: "#64b5f6" }}>
+                                <span className="timeline-event-icon" style={{ backgroundColor: '#64b5f6' }}>
                                     <i className="pi pi-dollar"></i>
                                 </span>
                                 <div className="timeline-event-title">New Sale</div>
@@ -211,7 +211,7 @@ const Widgets = () => {
                                 </div>
                             </div>
                             <div className="timeline-event">
-                                <span className="timeline-event-icon" style={{ backgroundColor: "#7986cb" }}>
+                                <span className="timeline-event-icon" style={{ backgroundColor: '#7986cb' }}>
                                     <i className="timeline-icon pi pi-download"></i>
                                 </span>
                                 <div className="timeline-event-title">Withdrawal Initiated</div>
@@ -221,7 +221,7 @@ const Widgets = () => {
                                 </div>
                             </div>
                             <div className="timeline-event">
-                                <span className="timeline-event-icon" style={{ backgroundColor: "#4db6ac" }}>
+                                <span className="timeline-event-icon" style={{ backgroundColor: '#4db6ac' }}>
                                     <i className="timeline-icon pi pi-question"></i>
                                 </span>
                                 <div className="timeline-event-title">Question Received</div>
@@ -230,7 +230,7 @@ const Widgets = () => {
                                 </div>
                             </div>
                             <div className="timeline-event">
-                                <span className="timeline-event-icon" style={{ backgroundColor: "#4dd0e1" }}>
+                                <span className="timeline-event-icon" style={{ backgroundColor: '#4dd0e1' }}>
                                     <i className="timeline-icon pi pi-comment"></i>
                                 </span>
                                 <div className="timeline-event-title">Comment Received</div>
@@ -373,7 +373,7 @@ const Widgets = () => {
                                 </div>
                             </div>
 
-                            <Button label="Assign" style={{ width: "100%" }}></Button>
+                            <Button label="Assign" style={{ width: '100%' }}></Button>
                         </div>
                     </div>
                 </div>

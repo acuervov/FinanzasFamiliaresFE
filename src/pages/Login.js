@@ -4,7 +4,6 @@ import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 
 export const Login = () => {
-
     return (
         <div className="login-body">
             <div className="login-wrapper">
@@ -13,14 +12,18 @@ export const Login = () => {
 
                     <div className="login-form">
                         <h2>Login</h2>
-                        <p>Already have an account? <a href="/">Login</a></p>
+                        <p>
+                            Already have an account? <a href="/">Login</a>
+                        </p>
                         <InputText placeholder="Full Name" />
                         <InputText placeholder="Email" />
                         <Password placeholder="Password" />
                         <Button label="CONTINUE" type="button"></Button>
                     </div>
 
-                    <p>A problem? <a href="/">Click here</a> and let us help you.</p>
+                    <p>
+                        A problem? <a href="/">Click here</a> and let us help you.
+                    </p>
                 </div>
                 <div className="login-image">
                     <div className="login-image-content">
@@ -29,9 +32,9 @@ export const Login = () => {
                         <h1>Account</h1>
                         <h3>
                             Lorem ipsum dolor sit amet, consectetur <br />
-						adipiscing elit. Donec posuere velit nec enim <br />
-						sodales, nec placerat erat tincidunt.
-					</h3>
+                            adipiscing elit. Donec posuere velit nec enim <br />
+                            sodales, nec placerat erat tincidunt.
+                        </h3>
                     </div>
                     <div className="image-footer">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -44,4 +47,4 @@ export const Login = () => {
             </div>
         </div>
     );
-}
+};

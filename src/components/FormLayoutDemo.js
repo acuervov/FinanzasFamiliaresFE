@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
-import { InputTextarea } from "primereact/inputtextarea";
-import { Dropdown } from "primereact/dropdown";
+import React, { useState } from 'react';
+import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
+import { InputTextarea } from 'primereact/inputtextarea';
+import { Dropdown } from 'primereact/dropdown';
 
 const FormLayoutDemo = () => {
     const [dropdownItem, setDropdownItem] = useState(null);
     const dropdownItems = [
-        { name: "Option 1", code: "Option 1" },
-        { name: "Option 2", code: "Option 2" },
-        { name: "Option 3", code: "Option 3" },
+        { name: 'Option 1', code: 'Option 1' },
+        { name: 'Option 2', code: 'Option 2' },
+        { name: 'Option 3', code: 'Option 3' }
     ];
 
     return (

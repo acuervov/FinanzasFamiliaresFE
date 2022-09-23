@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Button } from "primereact/button";
-import { SplitButton } from "primereact/splitbutton";
+import React, { useState } from 'react';
+import { Button } from 'primereact/button';
+import { SplitButton } from 'primereact/splitbutton';
 
 const ButtonDemo = () => {
     const [loading1, setLoading1] = useState(false);
@@ -42,17 +42,17 @@ const ButtonDemo = () => {
 
     const items = [
         {
-            label: "Update",
-            icon: "pi pi-refresh",
+            label: 'Update',
+            icon: 'pi pi-refresh'
         },
         {
-            label: "Delete",
-            icon: "pi pi-times",
+            label: 'Delete',
+            icon: 'pi pi-times'
         },
         {
-            label: "Home",
-            icon: "pi pi-home",
-        },
+            label: 'Home',
+            icon: 'pi pi-home'
+        }
     ];
 
     return (

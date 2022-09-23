@@ -13,4 +13,4 @@ export const Access = () => {
             </div>
         </div>
     );
-}
+};

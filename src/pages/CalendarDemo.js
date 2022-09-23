@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction";
-import { Button } from "primereact/button";
-import { Dialog } from "primereact/dialog";
-import { InputText } from "primereact/inputtext";
-import { Checkbox } from "primereact/checkbox";
-import { Calendar as PRCalendar } from "primereact/calendar";
-import EventService from "../service/EventService";
+import React, { useEffect, useState } from 'react';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { Button } from 'primereact/button';
+import { Dialog } from 'primereact/dialog';
+import { InputText } from 'primereact/inputtext';
+import { Checkbox } from 'primereact/checkbox';
+import { Calendar as PRCalendar } from 'primereact/calendar';
+import EventService from '../service/EventService';
 
 const CalendarDemo = () => {
     const [eventDialog, setEventDialog] = useState(false);
     const [clickedEvent, setClickedEvent] = useState(null);
-    const [changedEvent, setChangedEvent] = useState({ title: "", start: null, end: null, allDay: null });
+    const [changedEvent, setChangedEvent] = useState({ title: '', start: null, end: null, allDay: null });
     const [events, setEvents] = useState(null);
 
     const eventClick = (e) => {
@@ -31,12 +31,12 @@ const CalendarDemo = () => {
     const save = () => {
         setEventDialog(false);
 
-        clickedEvent.setProp("title", changedEvent.title);
+        clickedEvent.setProp('title', changedEvent.title);
         clickedEvent.setStart(changedEvent.start);
         clickedEvent.setEnd(changedEvent.end);
         clickedEvent.setAllDay(changedEvent.allDay);
 
-        setChangedEvent({ title: "", start: null, end: "", allDay: null });
+        setChangedEvent({ title: '', start: null, end: '', allDay: null });
     };
 
     const reset = () => {
@@ -61,14 +61,14 @@ const CalendarDemo = () => {
                         initialDate="2023-01-01"
                         initialView="dayGridMonth"
                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                        headerToolbar={{ left: "prev,next today", center: "title", right: "dayGridMonth,timeGridWeek,timeGridDay" }}
+                        headerToolbar={{ left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay' }}
                         editable
                         selectable
                         selectMirror
                         dayMaxEvents
                     />
 
-                    <Dialog visible={eventDialog && !!clickedEvent} style={{ width: "450px" }} header="Event Details" footer={footer} modal closable onHide={() => setEventDialog(false)}>
+                    <Dialog visible={eventDialog && !!clickedEvent} style={{ width: '450px' }} header="Event Details" footer={footer} modal closable onHide={() => setEventDialog(false)}>
                         <div className="p-fluid">
                             <div className="field">
                                 <label htmlFor="title">Title</label>
