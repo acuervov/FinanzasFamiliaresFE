@@ -336,6 +336,8 @@ const App = () => {
 
             cloneLinkElement.addEventListener('load', () => {
                 linkElement.remove();
+                const _linkElement = document.getElementById(id);
+                _linkElement && _linkElement.remove();
                 cloneLinkElement.setAttribute('id', id);
             });
         }
