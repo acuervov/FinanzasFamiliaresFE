@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { forwardRef, useCallback, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { classNames } from "primereact/utils";
 import { Ripple } from "primereact/ripple";
 import { Badge } from "primereact/badge";
 
-const AppSubmenu = (props) => {
+const AppSubmenu = forwardRef((props, ref) => {
     const [activeIndex, setActiveIndex] = useState(null);
 
     const onMenuItemClick = (event, item, index) => {
@@ -121,8 +121,8 @@ const AppSubmenu = (props) => {
                         <li key={item.label || i} className={menuitemClassName} role="menuitem">
                             {link}
                             {rootMenuItem}
-                            <CSSTransition classNames="layout-menu" timeout={transitionTimeout} in={isMenuActive(item, i)} unmountOnExit>
-                                <AppSubmenu items={visible(item) && item.items} menuActive={props.menuActive} menuMode={props.menuMode} parentMenuItemActive={activeIndex === i} onMenuitemClick={props.onMenuitemClick}></AppSubmenu>
+                            <CSSTransition nodeRef={submenuRef} classNames="layout-menu" timeout={transitionTimeout} in={isMenuActive(item, i)} unmountOnExit>
+                                <AppSubmenu ref={submenuRef} items={visible(item) && item.items} menuActive={props.menuActive} menuMode={props.menuMode} parentMenuItemActive={activeIndex === i} onMenuitemClick={props.onMenuitemClick}></AppSubmenu>
                             </CSSTransition>
                         </li>
                     );
@@ -157,6 +157,6 @@ const AppSubmenu = (props) => {
             {items}
         </ul>
     );
-};
+});
 
 export default AppSubmenu;

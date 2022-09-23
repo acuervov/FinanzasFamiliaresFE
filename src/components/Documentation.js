@@ -7,7 +7,7 @@ const Documentation = () => {
             <div className="col-12">
                 <div className="card docs">
                     <h4>Current Version</h4>
-                    <p>React 17.x and PrimeReact 7.x</p>
+                    <p>React 18.x and PrimeReact 8.x</p>
 
                     <h4>Getting Started</h4>
                     <p>
