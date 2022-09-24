@@ -6,14 +6,13 @@ const Help = () => {
         <div className="grid help-page">
             <div className="col-12">
                 <div className="card help-search grid">
-                    <div className="help-search-content col-12 md:col-6">
-                        <h4>We are here to help</h4>
+                    <div className="help-search-content col-12">
+                        <h1>We are here to help</h1>
                         <div className="search-container">
                             <i className="pi pi-search"></i>
                             <input type="text" className="p-inputtext" placeholder="Search" />
                         </div>
                     </div>
-                    <div className="help-search-effect col-12 md:col-6"></div>
                 </div>
             </div>
 
@@ -113,31 +112,31 @@ const Help = () => {
                     <div className="blog-posts">
                         <div className="blog-post">
                             <div className="blog-text">
-                                <h6>Building Revenue With Confidence</h6>
+                                <h1>Building Revenue With Confidence</h1>
                                 <span>And avoiding failures</span>
                             </div>
                             <div className="blog-profile">
-                                <img src="assets/demo/images/avatar/miracle.png" alt="atlantis-layout" />
+                                <img src="assets/demo/images/avatar/miracle.png" alt="diamond-layout" />
                             </div>
                         </div>
 
                         <div className="blog-post">
                             <div className="blog-text">
-                                <h6>Latest Marketing Trends</h6>
+                                <h1>Latest Marketing Trends</h1>
                                 <span>Don't miss out our tips</span>
                             </div>
                             <div className="blog-profile">
-                                <img src="assets/demo/images/avatar/kaylynn.png" alt="atlantis-layout" />
+                                <img src="assets/demo/images/avatar/kaylynn.png" alt="diamond-layout" />
                             </div>
                         </div>
 
                         <div className="blog-post">
                             <div className="blog-text">
-                                <h6>How To Reach Your Audience</h6>
+                                <h1>How To Reach Your Audience</h1>
                                 <span>10 ways to increase your efficiency</span>
                             </div>
                             <div className="blog-profile">
-                                <img src="assets/demo/images/avatar/angel.png" alt="atlantis-layout" />
+                                <img src="assets/demo/images/avatar/angel.png" alt="diamond-layout" />
                             </div>
                         </div>
                     </div>
