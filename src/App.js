@@ -148,7 +148,8 @@ const App = () => {
             icon: 'pi pi-fw pi-compass',
             items: [
                 { label: 'Icons', icon: 'pi pi-fw pi-prime', to: '/icons' },
-                { label: 'PrimeFlex', icon: 'pi pi-fw pi-desktop', url: 'https://www.primefaces.org/primeflex', target: '_blank' }
+                { label: 'PrimeFlex', icon: 'pi pi-fw pi-desktop', url: 'https://www.primefaces.org/primeflex', target: '_blank' },
+                { label: 'Figma', icon: 'pi pi-fw pi-pencil', url: 'https://www.figma.com/file/lKooXEoqqWz7PBYwJ7B8QS/Preview-%7C-Diamond-2022?node-id=271%3A12531&t=n8BDwmUuvDNMkK7n-1', target: '_blank' }
             ]
         },
         {
