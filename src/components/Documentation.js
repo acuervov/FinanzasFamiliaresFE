@@ -1,5 +1,4 @@
 import React from 'react';
-import AppCodeHighlight from '../AppCodeHighlight';
 
 const Documentation = () => {
     return (
@@ -14,32 +13,38 @@ const Documentation = () => {
                         Diamond is an application template for React, based on the popular <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a> that allows creating React apps with no configuration. To get started
                         extract the contents of the zip bundle and install the dependencies with npm or yarn.
                     </p>
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 "npm install" or "yarn"
 `}
-                    </AppCodeHighlight>
-                    
+                        </code>
+                    </pre>
+
                     <p>
                         Next step is running the application using the start script and navigate to <b>http://localhost:3000/</b> to view the application.
                     </p>
 
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 "npm start" or "yarn start"
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
                     <p>That is it, you may now start with the development of your application using the Diamond template.</p>
 
                     <h4>React Scripts</h4>
                     <p>Following commands are derived from create-app-app.</p>
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 "npm start" or "yarn start": Starts the development server
 "npm test" or "yarn test": Runs the tests.
 "npm run build" or "yarn run build": Creates a production build.
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h4>Structure</h4>
                     <p>
@@ -53,8 +58,9 @@ const Documentation = () => {
                         <i>App.js</i> component that implements the logic such as menu state, layout modes and other configurable options.
                     </p>
 
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 <div className={containerClassName} data-theme={colorScheme} onClick={onDocumentClick}>
     <div className="layout-content-wrapper">
         <AppTopbar routers={routers} topbarNotificationMenuActive={topbarNotificationMenuActive} topbarUserMenuActive={topbarUserMenuActive} onMenuButtonClick={onMenuButtonClick} onSearchClick={toggleSearch}
@@ -80,7 +86,8 @@ const Documentation = () => {
     <div className="layout-mask modal-in"></div>
 </div>
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h4>Menu</h4>
                     <p>
@@ -88,8 +95,9 @@ const Documentation = () => {
                         using the menu property. Here is the menu component from the demo application. Notice that menu object is bound to the model property of AppMenu component as shown above.
                     </p>
 
-                    <AppCodeHighlight lang="js">
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 const menu = [
     {
         label: "Favorites", icon: "pi pi-fw pi-home",
@@ -205,17 +213,20 @@ const menu = [
     }
 ];
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <p>Dependencies of Layout are listed below and needs to be added to package.json. Only required dependency is PrimeReact where optional dependencies exist to enable certain components in PrimeReact.</p>
 
-                    <AppCodeHighlight lang="js">
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 "primereact": "...",                //required: PrimeReact components
 "primeicons": "...",                //required: Icons
 "primeflex": "..."                  //required: Grid system
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h4>Theme</h4>
                     <p>Diamond provides 30 PrimeReact themes out of the box. Setup of a theme is simple by including the css of theme to your bundle that are located inside assets/theme folder such as assets/theme/theme-amber-teal.css.</p>
@@ -271,8 +282,9 @@ const menu = [
 
                     <p>Here are the variables required to create a sample theme.</p>
 
-                    <AppCodeHighlight lang="scss">
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 $primaryColor: #2196F3;
 $primaryLightColor: scale-color($primaryColor, $lightness: 60%) !default;
 $primaryDarkColor: scale-color($primaryColor, $lightness: -10%) !default;
@@ -284,25 +296,30 @@ $highlightTextColor: #495057;
 
 @import '../../sass/theme/_theme_light';
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <p>An example sass command to compile the css would be;</p>
 
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 sass public/assets/theme/mytheme/theme.scss:public/assets/theme/mytheme/theme.css
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <p>
                         Watch mode is handy to avoid compiling everytime when a change is made, instead use the following command so that sass generates the file whenever you make a customization. This builds all css files whenever a change is made
                         to any scss file.
                     </p>
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 sass --watch public/assets:public/assets
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <p>Same can also be applied to layout itself;</p>
                     <ul>
@@ -319,11 +336,13 @@ sass --watch public/assets:public/assets
 
                     <p>Here are the variables required to create a layout.</p>
 
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 @import '../../sass/layout/_layout';
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h4>SASS Variables</h4>
                     <p>Both the theme and layout provides various variables to customize the design.</p>
@@ -331,8 +350,9 @@ sass --watch public/assets:public/assets
                     <h5>sass/variables/layout/_common.scss</h5>
                     <p>Common variables for light, dark and dim application layout.</p>
 
-                    <AppCodeHighlight lang="scss">
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 $fontSize:14px !default;
 $fontFamily:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !default;
 $transitionDuration:.2s !default;
@@ -343,12 +363,14 @@ $borderRadius:4px !default;
 $tabletBreakpoint:1091px !default;
 $phoneBreakpoint:576px !default;
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h5>sass/variables/layout/_layout_light.scss</h5>
                     <p>Variables of the light theme layout.</p>
-                    <AppCodeHighlight lang="scss">
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 @import '_common';
 
 $bodyBg: #f8f9fa !default;
@@ -392,7 +414,8 @@ $footerBorder: 1px solid $dividerColor !default;
 $rightSidebarWidth: 16rem !default;
 $rightSidebarBg: #ffffff !default;
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h5>sass/variables/theme/_theme_light.scss</h5>
                     <p>
@@ -400,8 +423,9 @@ $rightSidebarBg: #ffffff !default;
                     </p>
 
                     <div style={{ height: '400px', overflow: 'auto' }}>
-                        <AppCodeHighlight lang="scss">
-                            {`
+                        <pre className="app-code">
+                            <code>
+                                {`
 $colors: (
     "blue": #2196F3,
     "green": #4caf50,
@@ -1277,7 +1301,8 @@ $imagePreviewActionIconBorderRadius:50% !default;
     --maskbg: #{$maskBg};
 }
 `}
-                        </AppCodeHighlight>
+                            </code>
+                        </pre>
                     </div>
 
                     <h4>Menu Modes</h4>
@@ -1289,11 +1314,13 @@ $imagePreviewActionIconBorderRadius:50% !default;
                     </ul>
 
                     <p>For example to create a horizontal menu, the div element should be in following form;</p>
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 <div className="layout-wrapper layout-static">
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h4>Menu Themes</h4>
                     <p>
