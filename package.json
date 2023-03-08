@@ -1,6 +1,6 @@
 {
     "name": "diamond-react",
-    "version": "10.0.0-SNAPSHOT",
+    "version": "9.0.0",
     "homepage": ".",
     "private": true,
     "dependencies": {
@@ -24,7 +24,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build",
+        "build": "GENERATE_SOURCEMAP=false react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "format": "prettier --write \"src/**/*.{js,ts,tsx}\""
