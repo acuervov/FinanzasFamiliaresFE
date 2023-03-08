@@ -1,6 +1,6 @@
 {
     "name": "diamond-react",
-    "version": "9.0.0",
+    "version": "10.0.0-SNAPSHOT",
     "homepage": ".",
     "private": true,
     "dependencies": {
