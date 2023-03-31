@@ -197,18 +197,7 @@ const CalendarDemo = () => {
                                         </label>
                                         <span className="p-input-icon-left">
                                             <i className="pi pi-pencil"></i>
-                                            <InputText
-                                                id="title"
-                                                value={changedEvent.title}
-                                                onChange={(e) =>
-                                                    setChangedEvent((prevState) => ({
-                                                        ...prevState,
-                                                        title: e.target.value
-                                                    }))
-                                                }
-                                                type="text"
-                                                placeholder="Title"
-                                            />
+                                            <InputText id="title" value={changedEvent.title} onChange={(e) => setChangedEvent((prevState) => ({ ...prevState, title: e.target.value }))} type="text" placeholder="Title" />
                                         </span>
                                     </div>
                                     <div className="col-12 md:col-6 field">
@@ -217,18 +206,7 @@ const CalendarDemo = () => {
                                         </label>
                                         <span className="p-input-icon-left">
                                             <i className="pi pi-map-marker"></i>
-                                            <InputText
-                                                id="location"
-                                                value={changedEvent.location}
-                                                onChange={(e) =>
-                                                    setChangedEvent((prevState) => ({
-                                                        ...prevState,
-                                                        location: e.target.value
-                                                    }))
-                                                }
-                                                type="text"
-                                                placeholder="Location"
-                                            />
+                                            <InputText id="location" value={changedEvent.location} onChange={(e) => setChangedEvent((prevState) => ({ ...prevState, location: e.target.value }))} type="text" placeholder="Location" />
                                         </span>
                                     </div>
                                     <div className="col-12 field">
@@ -240,12 +218,7 @@ const CalendarDemo = () => {
                                             type="text"
                                             rows={5}
                                             value={changedEvent.description}
-                                            onChange={(e) =>
-                                                setChangedEvent((prevState) => ({
-                                                    ...prevState,
-                                                    description: e.target.value
-                                                }))
-                                            }
+                                            onChange={(e) => setChangedEvent((prevState) => ({ ...prevState, description: e.target.value }))}
                                             style={{ resize: 'none' }}
                                         ></InputTextarea>
                                     </div>
@@ -254,37 +227,13 @@ const CalendarDemo = () => {
                                         <label htmlFor="start" className="text-900 font-semibold">
                                             Start Date
                                         </label>
-                                        <PRCalendar
-                                            id="start"
-                                            maxDate={changedEvent.end}
-                                            value={changedEvent.start}
-                                            onChange={(e) =>
-                                                setChangedEvent((prevState) => ({
-                                                    ...prevState,
-                                                    start: e.value
-                                                }))
-                                            }
-                                            showTime
-                                            required
-                                        />
+                                        <PRCalendar id="start" maxDate={changedEvent.end} value={changedEvent.start} onChange={(e) => setChangedEvent((prevState) => ({ ...prevState, start: e.value }))} showTime required />
                                     </div>
                                     <div className="col-12 md:col-6 field">
                                         <label htmlFor="end" className="text-900 font-semibold">
                                             End Date
                                         </label>
-                                        <PRCalendar
-                                            id="end"
-                                            minDate={changedEvent.start}
-                                            value={changedEvent.end}
-                                            onChange={(e) =>
-                                                setChangedEvent((prevState) => ({
-                                                    ...prevState,
-                                                    end: e.value
-                                                }))
-                                            }
-                                            showTime
-                                            required
-                                        />
+                                        <PRCalendar id="end" minDate={changedEvent.start} value={changedEvent.end} onChange={(e) => setChangedEvent((prevState) => ({ ...prevState, end: e.value }))} showTime required />
                                     </div>
                                     <div className="col-12 field">
                                         <label htmlFor="company-color" className="text-900 font-semibold">
@@ -294,12 +243,7 @@ const CalendarDemo = () => {
                                             inputId="company-color"
                                             value={changedEvent.tag}
                                             options={tags}
-                                            onChange={(e) =>
-                                                setChangedEvent((prevState) => ({
-                                                    ...prevState,
-                                                    tag: e.value
-                                                }))
-                                            }
+                                            onChange={(e) => setChangedEvent((prevState) => ({ ...prevState, tag: e.value }))}
                                             optionLabel="name"
                                             valueTemplate={selectedItemTemplate}
                                             itemTemplate={itemOptionTemplate}

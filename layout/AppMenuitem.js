@@ -60,7 +60,7 @@ const AppMenuitem = (props) => {
         }
 
         // navigate with hover
-        if ((props.root && isSlim()) || isHorizontal() || isCompact()) {
+        if (props.root && (isSlim() || isHorizontal() || isCompact())) {
             const isSubmenu = event.currentTarget.closest('.layout-root-menuitem.active-menuitem > ul') !== null;
             if (isSubmenu)
                 setLayoutState((prevLayoutState) => ({

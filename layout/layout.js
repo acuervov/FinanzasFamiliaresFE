@@ -75,7 +75,7 @@ const Layout = (props) => {
 
         if (layoutState.staticMenuMobileActive) {
             blockBodyScroll();
-            (isSlim() || isHorizontal()) && bindDocumentResizeListener();
+            (isSlim() || isCompact() || isHorizontal()) && bindDocumentResizeListener();
         }
 
         return () => {

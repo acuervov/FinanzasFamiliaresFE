@@ -106,10 +106,10 @@ const AppConfig = (props) => {
         { name: 'teal', color: '#26A69A' }
     ];
 
-    const { layoutConfig, setLayoutConfig, layoutState, setLayoutState, isSlim, isHorizontal } = useContext(LayoutContext);
+    const { layoutConfig, setLayoutConfig, layoutState, setLayoutState, isSlim, isHorizontal, isCompact } = useContext(LayoutContext);
 
     useEffect(() => {
-        if (isSlim() || isHorizontal()) {
+        if (isSlim() || isHorizontal() || isCompact()) {
             setLayoutState((prevState) => ({ ...prevState, resetMenu: true }));
         }
     }, [layoutConfig.menuMode]);

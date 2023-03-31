@@ -2,10 +2,11 @@ import { useEventListener } from 'primereact/hooks';
 import { DomHandler } from 'primereact/utils';
 import { useContext, useEffect } from 'react';
 import { LayoutContext } from '../context/layoutcontext';
+import { MenuContext } from '../context/menucontext';
 
 export const useSubmenuOverlayPosition = ({ target, overlay, container, when }) => {
     const { isSlim, isCompact, isHorizontal, setLayoutState, layoutState } = useContext(LayoutContext);
-
+    const { activeMenu } = useContext(MenuContext);
     const [bindScrollListener, unbindScrollListener] = useEventListener({
         type: 'scroll',
         target: container,
@@ -49,5 +50,5 @@ export const useSubmenuOverlayPosition = ({ target, overlay, container, when }) 
 
     useEffect(() => {
         when && calculatePosition();
-    }, [when, layoutState]);
+    }, [when, activeMenu]);
 };
