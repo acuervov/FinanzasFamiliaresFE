@@ -35,18 +35,10 @@ const CalendarDemo = () => {
 
     const onEventClick = (e) => {
         const { start, end } = e.event;
-        let plainEvent = e.event.toPlainObject({
-            collapseExtendedProps: true,
-            collapseColor: true
-        });
+        let plainEvent = e.event.toPlainObject({ collapseExtendedProps: true, collapseColor: true });
         setView('display');
         setShowDialog(true);
-        setChangedEvent((prevChangeState) => ({
-            ...prevChangeState,
-            ...plainEvent,
-            start,
-            end: end ? end : start
-        }));
+        setChangedEvent((prevChangeState) => ({ ...prevChangeState, ...plainEvent, start, end: end ? end : start }));
     };
 
     useEffect(() => {
@@ -64,12 +56,7 @@ const CalendarDemo = () => {
         if (!validate()) {
             return;
         } else {
-            const _clickedEvent = {
-                ...changedEvent,
-                backgroundColor: changedEvent.tag.color,
-                borderColor: changedEvent.tag.color,
-                textColor: '#212121'
-            };
+            const _clickedEvent = { ...changedEvent, backgroundColor: changedEvent.tag.color, borderColor: changedEvent.tag.color, textColor: '#212121' };
             setShowDialog(false);
             if (_clickedEvent.id) {
                 const _events = events.map((i) => (i.id.toString() === _clickedEvent.id.toString() ? (i = _clickedEvent) : i));
@@ -126,8 +113,8 @@ const CalendarDemo = () => {
 
     const footer = (
         <>
-            {view === 'display' ? <Button label="Edit" icon="pi pi-pencil" onClick={onEditClick} /> : null}
-            {view === 'new' || view === 'edit' ? <Button label="Save" icon="pi pi-check" disabled={!changedEvent.start || !changedEvent.end} onClick={handleSave} /> : null}
+            {view === 'display' ? <Button type="button" label="Edit" icon="pi pi-pencil" onClick={onEditClick} /> : null}
+            {view === 'new' || view === 'edit' ? <Button type="button" label="Save" icon="pi pi-check" disabled={!changedEvent.start || !changedEvent.end} onClick={handleSave} /> : null}
         </>
     );
 
