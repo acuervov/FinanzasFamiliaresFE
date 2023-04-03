@@ -77,13 +77,13 @@ export const LayoutContext = React.createContext();
 export const LayoutProvider = (props) => {
     const [breadcrumbs, setBreadcrumbs] = useState({});
     const [layoutConfig, setLayoutConfig] = useState({
-        ripple: false,                          //toggles ripple on and off
-        inputStyle: 'outlined',                 //default style for input elements
-        menuMode: 'compact',                     //layout mode of the menu, valid values are "static", "overlay", "slim" and "horizontal"
-        menuTheme: 'colorScheme',               //theme of the menu, valid values are "colorScheme", "primaryColor" and "transparent"
-        colorScheme: 'light',                   //color scheme of the template, valid values are "light", "dim" and "dark"
-        theme: 'indigo',                        //default component theme for PrimeReact
-        scale: 14                               //size of the body font size to scale the whole application
+        ripple: false,                      //toggles ripple on and off
+        inputStyle: 'outlined',             //default style for input elements
+        menuMode: 'static',                 //layout mode of the menu, valid values are "static", "overlay", "slim", "compact", "reveal", "drawer" and "horizontal"
+        colorScheme: 'light',               //color scheme of the template, valid values are "light", "dim" and "dark"
+        theme: 'blue',                      //default component theme for PrimeNG, see theme section for available values  
+        menuTheme: "darkgray",              //theme of the menu, see menu theme section for available values  
+        scale: 14                           //size of the body font size to scale the whole application
     });
 }`}
                 </code>
@@ -133,11 +133,24 @@ const AppMenu = () => {
                 <iframe className={styles['video']} width="560" height="315" src="https://www.youtube.com/embed/jnm0_U6zJFY" allowFullScreen></iframe>
             </div>
 
-            <h4>Theme</h4>
+            <h4>Menu Theme</h4>
             <p>
                 Diamond provides 30 PrimeReact themes out of the box. Setup of a theme is simple by including the CSS of the theme to your bundle that are located inside <span className="text-primary font-medium">theme/</span>
                 folder such as <span className="text-primary font-medium">theme/theme-light/blue/theme.css</span>.
             </p>
+
+            <ul className="pl-5 line-height-3">
+        <li>blue</li>
+        <li>cyan</li>
+        <li>deeppurple</li>
+        <li>green</li>
+        <li>indigo</li>
+        <li>lightgreen</li>
+        <li>orange</li>
+        <li>pink</li>
+        <li>purple</li>
+        <li>teal</li>
+    </ul>
 
             <p>A custom theme can be developed by the following steps.</p>
             <ul>
@@ -169,21 +182,6 @@ $highlightTextColor: $primaryDarkerColor !default;
                 </code>
             </pre>
 
-            <h5>SASS Variables</h5>
-            <p>
-                In case you&apos;d like to customize the main layout variables, open <b>_variables.scss</b> file under src/layout folder. Saving the changes will be reflected instantly at your browser.
-            </p>
-
-            <h6>styles/layout/_variables.scss</h6>
-            <pre className="app-code">
-                <code>
-                    {`/* General */
-$scale:14px;                    /* initial font size */
-$borderRadius:12px;             /* border radius of layout element e.g. card, sidebar */
-$transitionDuration:.2s;        /* transition duration of layout elements e.g. sidebar */`}
-                </code>
-            </pre>
-
             <h5>Theme Switcher</h5>
             <p>
                 Dynamic theming is built-in to the template and implemented by including the theme via a link tag instead of bundling the theme along with a configurator component to switch it. In order to switch your theme dynamically as well, it
@@ -206,6 +204,22 @@ $transitionDuration:.2s;        /* transition duration of layout elements e.g. s
                 docs.
             </p>
 
+            <h4>Figma Design</h4>
+            <p>
+                Figma design file of Diamond is available at no extra cost at PrimeStore. The download dialog both displays the figma files and source code that are made accessible. The design file is{' '}
+                <a href="https://www.figma.com/file/lKooXEoqqWz7PBYwJ7B8QS/Preview-%7C-Diamond-2022?node-id=271%3A12531" className="font-medium text-primary hover:underline">
+                    accessible
+                </a>{' '}
+                in preview mode for trial purposes.
+            </p>
+
+            <p>
+                Please note that Diamond design file mostly covers the layout and does not include the PrimeReact UI components design which is covered by the official{' '}
+                <a href="https://www.primefaces.org/primereact/uikit" className="font-medium text-primary hover:underline">
+                    UI Kit
+                </a>{' '}
+                that requires a separate license and purchase.
+            </p>
             <h4>Migration Guide</h4>
             <p>
                 Every important change is included in <b>CHANGELOG.md</b> file at the root folder of the distribution along with the instructions to update. Whenever a major versions of React and NextJS is released, a new version of the template is
