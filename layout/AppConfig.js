@@ -114,22 +114,6 @@ const AppConfig = (props) => {
         }
     }, [layoutConfig.menuMode]);
 
-    const onConfigButtonClick = (event) => {
-        props.setConfigActive((prevConfigActive) => !prevConfigActive);
-        event.preventDefault();
-        setLayoutState((prevState) => ({
-            ...prevState,
-            configSidebarVisible: true
-        }));
-    };
-
-    const onConfigSidebarHide = () => {
-        setLayoutState((prevState) => ({
-            ...prevState,
-            configSidebarVisible: false
-        }));
-    };
-
     const changeInputStyle = (e) => {
         setLayoutConfig((prevState) => ({ ...prevState, inputStyle: e.value }));
     };
@@ -147,70 +131,15 @@ const AppConfig = (props) => {
         setLayoutConfig((prevState) => ({ ...prevState, menuTheme: theme.name }));
     };
 
-    const changeStyleSheetUrl = (id, value, from) => {
-        const element = document.getElementById(id);
-        const urlTokens = element.getAttribute('href').split('/');
-
-        if (from === 1) {
-            // which function invoked this function
-            urlTokens[urlTokens.length - 1] = value;
-        } else if (from === 2) {
-            // which function invoked this function
-            if (value !== null) {
-                urlTokens[urlTokens.length - 2] = value;
-            }
-        } else if (from === 3) {
-            // which function invoked this function
-            urlTokens[urlTokens.length - 2] = value;
-        }
-
-        const newURL = urlTokens.join('/');
-
-        replaceLink(element, newURL);
-    };
-
     const changeColorScheme = (colorScheme) => {
-        const themeLink = document.getElementById('theme-link');
-        const themeLinkHref = themeLink.getAttribute('href');
-        const currentColorScheme = 'theme-' + layoutConfig.colorScheme.toString();
-        const newColorScheme = 'theme-' + colorScheme;
-        const newHref = themeLinkHref.replace(currentColorScheme, newColorScheme);
-
-        replaceLink(themeLink, newHref, () => {
+        PrimeReact.changeTheme(layoutConfig.colorScheme, colorScheme, 'theme-link', () => {
             setLayoutConfig((prevState) => ({ ...prevState, colorScheme }));
         });
     };
 
     const changeTheme = (theme) => {
-        const themeLink = document.getElementById('theme-link');
-        const themeHref = themeLink.getAttribute('href');
-        const newHref = themeHref.replace(layoutConfig.theme, theme);
-        replaceLink(themeLink, newHref, () => {
+        PrimeReact.changeTheme(layoutConfig.theme, theme, 'theme-link', () => {
             setLayoutConfig((prevState) => ({ ...prevState, theme }));
-        });
-    };
-
-    const replaceLink = (linkElement, href, onComplete) => {
-        if (!linkElement || !href) {
-            return;
-        }
-
-        const id = linkElement.getAttribute('id');
-        const cloneLinkElement = linkElement.cloneNode(true);
-
-        cloneLinkElement.setAttribute('href', href);
-        cloneLinkElement.setAttribute('id', id + '-clone');
-
-        linkElement.parentNode.insertBefore(cloneLinkElement, linkElement.nextSibling);
-
-        cloneLinkElement.addEventListener('load', () => {
-            linkElement.remove();
-
-            const element = document.getElementById(id); // re-check
-            element && element.remove();
-
-            cloneLinkElement.setAttribute('id', id);
-            onComplete && onComplete();
         });
     };
 
@@ -221,7 +150,7 @@ const AppConfig = (props) => {
                     return (
                         <div key={theme.name}>
                             <a
-                                className="w-2rem h-2rem cursor-pointer hover:shadow-4 border-round transition-duration-150 flex align-items-center justify-content-center"
+                                className="w-2rem h-2rem shadow-2 cursor-pointer hover:shadow-4 border-round transition-duration-150 flex align-items-center justify-content-center"
                                 style={{ cursor: 'pointer', backgroundColor: theme.color }}
                                 onClick={() => changeTheme(theme.name)}
                             >
@@ -247,7 +176,7 @@ const AppConfig = (props) => {
                         return (
                             <div key={theme.name}>
                                 <a
-                                    className="w-2rem h-2rem cursor-pointer hover:shadow-4 border-round transition-duration-150 flex align-items-center justify-content-center"
+                                    className="w-2rem shadow-2 h-2rem cursor-pointer hover:shadow-4 border-round transition-duration-150 flex align-items-center justify-content-center"
                                     style={{ cursor: 'pointer', backgroundColor: theme.color }}
                                     onClick={() => changeMenuTheme(theme)}
                                 >

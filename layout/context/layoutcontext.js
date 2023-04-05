@@ -19,8 +19,6 @@ export const LayoutProvider = (props) => {
         staticMenuDesktopInactive: false,
         overlayMenuActive: false,
         overlaySubmenuActive: false,
-        profileSidebarVisible: false,
-        configSidebarVisible: false,
         staticMenuMobileActive: false,
         menuHoverActive: false,
         resetMenu: false,
@@ -110,13 +108,6 @@ export const LayoutProvider = (props) => {
         event.preventDefault();
     };
 
-    const showProfileSidebar = () => {
-        setLayoutState((prevLayoutState) => ({
-            ...prevLayoutState,
-            profileSidebarVisible: !prevLayoutState.profileSidebarVisible
-        }));
-    };
-
     const isOverlay = () => {
         return layoutConfig.menuMode === 'overlay';
     };
@@ -142,7 +133,6 @@ export const LayoutProvider = (props) => {
         setLayoutConfig,
         layoutState,
         setLayoutState,
-        showProfileSidebar,
         isSlim,
         isCompact,
         isHorizontal,
