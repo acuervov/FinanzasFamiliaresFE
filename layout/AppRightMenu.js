@@ -23,19 +23,19 @@ const AppRightMenu = () => {
     const [selectedAmount, setSelectedAmount] = useState(amount[0].value);
 
     const sidebarClassName = classNames('layout-sidebar-right', {
-        'layout-sidebar-right-active': layoutState.rightMenuActive
+        'layout-sidebar-right-active': layoutState.rightMenuVisible
     });
 
     return (
         <div className={sidebarClassName} onClick={onRightMenuClick}>
             <Sidebar
-                visible={layoutState.rightMenuActive}
+                visible={layoutState.rightMenuVisible}
                 position="right"
                 style={{ width: '100%', maxWidth: '18rem' }}
                 onHide={() =>
                     setLayoutState((prevLayoutState) => ({
                         ...prevLayoutState,
-                        rightMenuActive: false
+                        rightMenuVisible: false
                     }))
                 }
             >

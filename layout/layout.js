@@ -17,12 +17,8 @@ import { Tooltip } from 'primereact/tooltip';
 
 const Layout = (props) => {
     const { layoutConfig, layoutState, setLayoutState, isSlim, isCompact, isHorizontal, isDesktop } = useContext(LayoutContext);
-    const [configActive, setConfigActive] = useState(false);
-
     const topbarRef = useRef(null);
-
     const sidebarRef = useRef(null);
-
     const copyTooltipRef = useRef(null);
     const router = useRouter();
     const [bindMenuOutsideClickListener, unbindMenuOutsideClickListener] = useEventListener({
@@ -113,7 +109,7 @@ const Layout = (props) => {
             'layout-sidebar-dim': layoutConfig.colorScheme === 'dim',
             'layout-sidebar-dark': layoutConfig.colorScheme === 'dark',
             'layout-overlay-active': layoutState.overlayMenuActive,
-            'layout-mobile-active': layoutState.menuClick,
+            'layout-mobile-active': layoutState.staticMenuMobileActive,
             'layout-static-inactive': layoutState.staticMenuDesktopInactive && layoutConfig.menuMode === 'static',
             'p-input-filled': layoutConfig.inputStyle === 'filled',
             'p-ripple-disabled': !layoutConfig.ripple,
@@ -136,9 +132,9 @@ const Layout = (props) => {
                 </div>
                 <AppFooter />
             </div>
-            <AppConfig configActive={configActive} setConfigActive={setConfigActive}></AppConfig>
+            <AppConfig></AppConfig>
 
-            <AppSearch searchActive={layoutState.searchActive} />
+            <AppSearch />
             <AppRightMenu></AppRightMenu>
             <div className="layout-mask"></div>
         </div>

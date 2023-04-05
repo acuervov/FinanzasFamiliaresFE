@@ -18,21 +18,18 @@ export const LayoutProvider = (props) => {
     const [layoutState, setLayoutState] = useState({
         staticMenuDesktopInactive: false,
         overlayMenuActive: false,
-        overlaySubmenuActive: false,
+        rightMenuVisible: false,
+        configSidebarVisible: false,
         staticMenuMobileActive: false,
         menuHoverActive: false,
-        resetMenu: false,
-        searchActive: false,
-        notificationMenuActive: false,
-        userMenuActive: false,
-        rightMenuActive: false,
-        menuClick: false,
+        searchBarActive: false,
         sidebarActive: false,
         anchored: false,
-        configActive: false
+        resetMenu: false,
+        overlaySubmenuActive: false
     });
 
-    const onMenuButtonClick = (event) => {
+    const onMenuToggle = (event) => {
         if (isOverlay()) {
             setLayoutState((prevLayoutState) => ({
                 ...prevLayoutState,
@@ -47,23 +44,11 @@ export const LayoutProvider = (props) => {
         } else {
             setLayoutState((prevLayoutState) => ({
                 ...prevLayoutState,
-                staticMenuMobileActive: !prevLayoutState.staticMenuMobileActive,
-                menuClick: true
+                staticMenuMobileActive: !prevLayoutState.staticMenuMobileActive
             }));
 
             event.preventDefault();
         }
-    };
-
-    const onTopbarNotificationMenuButtonClick = (event) => {
-        setLayoutState((prevLayoutState) => ({
-            ...prevLayoutState,
-            notificationMenuActive: !layoutState.notificationMenuActive
-        }));
-
-        hideOverlayMenu();
-
-        event.preventDefault();
     };
 
     const hideOverlayMenu = () => {
@@ -77,31 +62,21 @@ export const LayoutProvider = (props) => {
     const toggleSearch = () => {
         setLayoutState((prevLayoutState) => ({
             ...prevLayoutState,
-            searchActive: !layoutState.searchActive
+            searchBarActive: !layoutState.searchBarActive
         }));
     };
 
     const onSearchHide = () => {
         setLayoutState((prevLayoutState) => ({
             ...prevLayoutState,
-            searchActive: false
+            searchBarActive: false
         }));
-    };
-
-    const onTopbarUserMenuButtonClick = (event) => {
-        setLayoutState((prevLayoutState) => ({
-            ...prevLayoutState,
-            userMenuActive: !layoutState.userMenuActive
-        }));
-        hideOverlayMenu();
-
-        event.preventDefault();
     };
 
     const onRightMenuButtonClick = (event) => {
         setLayoutState((prevLayoutState) => ({
             ...prevLayoutState,
-            rightMenuActive: !layoutState.rightMenuActive
+            rightMenuVisible: !layoutState.rightMenuVisible
         }));
         hideOverlayMenu();
 
@@ -137,11 +112,9 @@ export const LayoutProvider = (props) => {
         isCompact,
         isHorizontal,
         isDesktop,
-        onMenuButtonClick,
+        onMenuToggle,
         toggleSearch,
         onSearchHide,
-        onTopbarNotificationMenuButtonClick,
-        onTopbarUserMenuButtonClick,
         onRightMenuButtonClick,
         breadcrumbs,
         setBreadcrumbs

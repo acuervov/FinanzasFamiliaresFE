@@ -1,12 +1,10 @@
 import React, { useRef, useContext } from 'react';
-import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import { InputText } from 'primereact/inputtext';
 import { LayoutContext } from './context/layoutcontext';
 import { Dialog } from 'primereact/dialog';
-import { Button } from 'primereact/button';
 
-const AppSearch = (props) => {
+const AppSearch = () => {
     const { layoutState, setLayoutState, onSearchHide } = useContext(LayoutContext);
     const searchRef = useRef(null);
     let searchInputEl = null;
@@ -36,9 +34,9 @@ const AppSearch = (props) => {
 
     return (
         <div className="layout-search">
-            <CSSTransition nodeRef={searchRef} classNames="search-container" timeout={{ enter: 400, exit: 400 }} in={layoutState.searchActive} unmountOnExit onEnter={onEnter}>
+            <CSSTransition nodeRef={searchRef} classNames="search-container" timeout={{ enter: 400, exit: 400 }} in={layoutState.searchBarActive} unmountOnExit onEnter={onEnter}>
                 <Dialog
-                    visible={layoutState.searchActive}
+                    visible={layoutState.searchBarActive}
                     style={{ width: '50vw' }}
                     breakpoints={breakpoints}
                     closeOnEscape={true}
@@ -52,7 +50,7 @@ const AppSearch = (props) => {
                     onHide={() =>
                         setLayoutState((prevLayoutState) => ({
                             ...prevLayoutState,
-                            searchActive: false
+                            searchBarActive: false
                         }))
                     }
                 >

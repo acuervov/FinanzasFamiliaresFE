@@ -12,7 +12,7 @@ const AppTopbar = forwardRef((props, ref) => {
     const btnRef2 = useRef(null);
     const menubuttonRef = useRef(null);
 
-    const { onMenuButtonClick, toggleSearch, onRightMenuButtonClick } = useContext(LayoutContext);
+    const { onMenuToggle, toggleSearch, onRightMenuButtonClick } = useContext(LayoutContext);
 
     useImperativeHandle(ref, () => ({
         menubutton: menubuttonRef.current
@@ -21,7 +21,7 @@ const AppTopbar = forwardRef((props, ref) => {
     return (
         <div className="layout-topbar">
             <div className="topbar-left">
-                <button ref={menubuttonRef} type="button" className="menu-button p-link" onClick={onMenuButtonClick}>
+                <button ref={menubuttonRef} type="button" className="menu-button p-link" onClick={onMenuToggle}>
                     <i className="pi pi-chevron-left"></i>
                 </button>
 
