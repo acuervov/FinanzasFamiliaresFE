@@ -31,7 +31,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-layout.css
-pages.css
-theme.css
 theme-*.map
