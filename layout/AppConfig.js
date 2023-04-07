@@ -5,9 +5,7 @@ import { RadioButton } from 'primereact/radiobutton';
 import { InputSwitch } from 'primereact/inputswitch';
 import { Button } from 'primereact/button';
 import { LayoutContext } from './context/layoutcontext';
-
 import { Sidebar } from 'primereact/sidebar';
-
 import { useContext, useEffect } from 'react';
 
 const AppConfig = (props) => {

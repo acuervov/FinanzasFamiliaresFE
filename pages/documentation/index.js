@@ -140,17 +140,17 @@ const AppMenu = () => {
             </p>
 
             <ul className="pl-5 line-height-3">
-        <li>blue</li>
-        <li>cyan</li>
-        <li>deeppurple</li>
-        <li>green</li>
-        <li>indigo</li>
-        <li>lightgreen</li>
-        <li>orange</li>
-        <li>pink</li>
-        <li>purple</li>
-        <li>teal</li>
-    </ul>
+                <li>blue</li>
+                <li>cyan</li>
+                <li>deeppurple</li>
+                <li>green</li>
+                <li>indigo</li>
+                <li>lightgreen</li>
+                <li>orange</li>
+                <li>pink</li>
+                <li>purple</li>
+                <li>teal</li>
+            </ul>
 
             <p>A custom theme can be developed by the following steps.</p>
             <ul>

@@ -3,15 +3,12 @@ import { classNames, DomHandler } from 'primereact/utils';
 import { useRouter } from 'next/router';
 import { LayoutContext } from './context/layoutcontext';
 import { useEventListener, useMountEffect, useResizeListener, useUnmountEffect } from 'primereact/hooks';
-
 import AppTopbar from './AppTopbar';
 import AppFooter from './AppFooter';
 import AppConfig from './AppConfig';
 import AppSearch from './AppSearch';
 import AppBreadCrumb from './AppBreadCrumb';
-
 import AppRightMenu from './AppRightMenu';
-
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
 
