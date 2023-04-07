@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef, useContext } from 'react';
+import React, { useCallback, useEffect, useRef, useContext } from 'react';
 import { classNames, DomHandler } from 'primereact/utils';
 import { useRouter } from 'next/router';
 import { LayoutContext } from './context/layoutcontext';
@@ -132,7 +132,7 @@ const Layout = (props) => {
                 </div>
                 <AppFooter />
             </div>
-            <AppConfig></AppConfig>
+            <AppConfig />
 
             <AppSearch />
             <AppRightMenu></AppRightMenu>

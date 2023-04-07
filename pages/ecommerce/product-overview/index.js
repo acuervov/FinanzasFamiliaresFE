@@ -61,23 +61,17 @@ function ProductOverview() {
                     <div className="flex align-items-center mb-5">
                         <div
                             className="w-2rem h-2rem flex-shrink-0 border-circle bg-bluegray-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                            style={{
-                                boxShadow: color === 'bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null
-                            }}
+                            style={{ boxShadow: color === 'bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null }}
                             onClick={() => setColor('bluegray')}
                         ></div>
                         <div
                             className="w-2rem h-2rem flex-shrink-0 border-circle bg-green-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                            style={{
-                                boxShadow: color === 'green' ? '0 0 0 0.2rem var(--green-500)' : null
-                            }}
+                            style={{ boxShadow: color === 'green' ? '0 0 0 0.2rem var(--green-500)' : null }}
                             onClick={() => setColor('green')}
                         ></div>
                         <div
                             className="w-2rem h-2rem flex-shrink-0 border-circle bg-blue-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                            style={{
-                                boxShadow: color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null
-                            }}
+                            style={{ boxShadow: color === 'blue' ? '0 0 0 0.2rem var(--blue-500)' : null }}
                             onClick={() => setColor('blue')}
                         ></div>
                     </div>
@@ -151,13 +145,7 @@ function ProductOverview() {
                         ></InputNumber>
                         <div className="flex align-items-center flex-1 mt-3 sm:mt-0 ml-0 sm:ml-5">
                             <Button label="Add to Cart" className="flex-1 mr-5"></Button>
-                            <i
-                                className={classNames('pi text-2xl cursor-pointer', {
-                                    'pi-heart text-600': !liked,
-                                    'pi-heart-fill text-orange-500': liked
-                                })}
-                                onClick={() => setLiked(!liked)}
-                            ></i>
+                            <i className={classNames('pi text-2xl cursor-pointer', { 'pi-heart text-600': !liked, 'pi-heart-fill text-orange-500': liked })} onClick={() => setLiked(!liked)}></i>
                         </div>
                     </div>
                 </div>

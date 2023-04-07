@@ -28,12 +28,7 @@ function OrderSummary() {
                 <span className="text-700 text-xl">Thanks!</span>
                 <div className="text-900 font-bold text-4xl my-2">Successful Order 🚀</div>
                 <p className="text-700 text-xl mt-0 mb-4 p-0">Your order is on the way. It&lsquo;ll be shipped today. We&lsquo;ll inform you.</p>
-                <div
-                    style={{
-                        height: '3px',
-                        background: 'linear-gradient(90deg, var(--primary-color) 0%, rgba(33, 150, 243, 0) 50%)'
-                    }}
-                ></div>
+                <div style={{ height: '3px', background: 'linear-gradient(90deg, var(--primary-color) 0%, rgba(33, 150, 243, 0) 50%)' }}></div>
 
                 <div className="flex flex-column sm:flex-row sm:align-items-center sm:justify-content-between py-5">
                     <div className="mb-3 sm:mb-0">
@@ -41,8 +36,8 @@ function OrderSummary() {
                         <span className="font-medium text-xl text-blue-500">451234</span>
                     </div>
                     <div>
-                        <Button outlined label="Details" icon="pi pi-list" className="mr-2"></Button>
-                        <Button outlined label="Print" icon="pi pi-print"></Button>
+                        <Button label="Details" icon="pi pi-list" className="p-button-outlined p-button-primary mr-2"></Button>
+                        <Button label="Print" icon="pi pi-print" className="p-button-outlined p-button-primary"></Button>
                     </div>
                 </div>
                 <div className="border-round surface-border border-1">
@@ -75,7 +70,7 @@ function OrderSummary() {
 
                         <span className="font-medium text-900">Payment</span>
                         <div className="flex align-items-center mt-3">
-                            <img src={`/demo/images/ecommerce/ordersummary/visa.png`} className="w-4rem mr-3" alt="visa" />
+                            <img src="/demo/images/ecommerce/ordersummary/visa.png" className="w-4rem mr-3" alt="visa" />
                             <div className="flex flex-column">
                                 <span className="text-900 mb-1">Visa Debit Card</span>
                                 <span className="text-900 font-medium">**** **** **** 1234</span>
@@ -123,7 +118,7 @@ function OrderSummary() {
                     </div>
                 </div>
                 <div className="flex flex-column md:flex-row md:align-items-center border-bottom-1 surface-border py-5">
-                    <img src={`/demo/images/ecommerce/ordersummary/order-summary-2-1.png`} className="w-15rem flex-shrink-0 md:mr-6" alt="summary-1-2" />
+                    <img src="/demo/images/ecommerce/ordersummary/order-summary-2-1.png" className="w-15rem flex-shrink-0 md:mr-6" alt="summary-1-2" />
                     <div className="flex-auto mt-3 md:mt-0">
                         <span className="text-xl text-900">Product Name</span>
                         <div className="font-medium text-2xl text-900 mt-3 mb-5">Order Processing</div>
@@ -154,7 +149,7 @@ function OrderSummary() {
                     <div className="flex flex-column">
                         <span className="font-medium text-900 text-xl">Payment</span>
                         <div className="flex align-items-center mt-3">
-                            <img src={`/demo/images/ecommerce/ordersummary/visa.png`} className="w-4rem mr-3" alt="visa-2" />
+                            <img src="/demo/images/ecommerce/ordersummary/visa.png" className="w-4rem mr-3" alt="visa-2" />
                             <div className="flex flex-column">
                                 <span className="text-900 mb-1">Visa Debit Card</span>
                                 <span className="text-900 font-medium">**** **** **** 1234</span>

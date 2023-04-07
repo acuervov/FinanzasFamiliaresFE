@@ -12,7 +12,7 @@ const AppTopbar = forwardRef((props, ref) => {
     const btnRef2 = useRef(null);
     const menubuttonRef = useRef(null);
 
-    const { onMenuToggle, toggleSearch, onRightMenuButtonClick } = useContext(LayoutContext);
+    const { onMenuToggle, toggleSearch, onRightMenuButtonClick, layoutConfig } = useContext(LayoutContext);
 
     useImperativeHandle(ref, () => ({
         menubutton: menubuttonRef.current
@@ -26,12 +26,17 @@ const AppTopbar = forwardRef((props, ref) => {
                 </button>
 
                 <Link href="/">
-                    <img id="logo-horizontal" className="horizontal-logo" src={`/layout/images/logo-white.svg`} alt="diamond-layout" />
+                    <img id="logo-horizontal" className="horizontal-logo" src={`/layout/images/logo-${layoutConfig.menuTheme === 'white' || layoutConfig.menuTheme === 'orange' ? 'dark' : 'white'}.svg`} alt="diamond-layout" />
                 </Link>
 
                 <span className="topbar-separator"></span>
                 <AppBreadCrumb />
-                <img id="logo-mobile" className="mobile-logo" src={`/layout/images/logo-dark.svg`} alt="diamond-layout" />
+                <img
+                    id="logo-mobile"
+                    className="mobile-logo"
+                    src={`/layout/images/logo-${layoutConfig.colorScheme == 'light' && (layoutConfig.menuTheme === 'white' || layoutConfig.menuTheme === 'orange') ? 'dark' : 'white'}.svg`}
+                    alt="diamond-layout"
+                />
             </div>
             <div className="layout-topbar-menu-section">
                 <AppSidebar sidebarRef={props.sidebarRef} />

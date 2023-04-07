@@ -36,17 +36,13 @@ const IconsDemo = () => {
         <div className="card">
             <h2>Icons</h2>
             <p>
-                PrimeReact components internally use {/* @see https://github.com/vercel/next.js/commit/489e65ed98544e69b0afd7e0cfc3f9f6c2b803b7 */}
-                <Link href="https://github.com/primefaces/primeicons" legacyBehavior>
-                    <a className="font-medium hover:underline" target={'_blank'}>
-                        PrimeIcons
-                    </a>
+                PrimeReact components internally use{' '}
+                <Link href="https://github.com/primefaces/primeicons" className="font-medium hover:underline" target={'_blank'}>
+                    PrimeIcons
                 </Link>{' '}
-                library, the official icons suite from {/* @see https://github.com/vercel/next.js/commit/489e65ed98544e69b0afd7e0cfc3f9f6c2b803b7 */}
-                <Link href="https://www.primetek.com.tr" legacyBehavior>
-                    <a className="font-medium hover:underline" target={'_blank'}>
-                        PrimeTek
-                    </a>
+                library, the official icons suite from{' '}
+                <Link href="https://www.primetek.com.tr" className="font-medium hover:underline" target={'_blank'}>
+                    PrimeTek
                 </Link>
                 .
             </p>
@@ -63,24 +59,17 @@ const IconsDemo = () => {
             </p>
 
             <pre className="app-code">
-                <code>
-                    {`<i className="pi pi-check" style={{ marginRight: '.5rem' }}></i>
-<i className="pi pi-times"></i>`}
-                </code>
+                <code>{`<i className="pi pi-check" style={{ marginRight: '.5rem' }}></i>`}</code>
             </pre>
 
             <h4>Size</h4>
             <p>Size of the icons can easily be changed using font-size property.</p>
 
             <pre className="app-code">
-                <code>
-                    {`<i className="pi pi-check"></i>
-<i className="pi pi-times"></i>`}
-                </code>
+                <code>{`<i className="pi pi-check"></i>`}</code>
             </pre>
 
             <i className="pi pi-check mr-2"></i>
-            <i className="pi pi-times"></i>
 
             <pre className="app-code">
                 <code>{`<i className="pi pi-check" style={{ fontSize: '2rem' }}></i>`}</code>
@@ -98,12 +87,9 @@ const IconsDemo = () => {
 
             <h4>List of Icons</h4>
             <p>
-                Here is the current list of PrimeIcons, more icons are added periodically. You may also
-                {/* @see https://github.com/vercel/next.js/commit/489e65ed98544e69b0afd7e0cfc3f9f6c2b803b7 */}{' '}
-                <Link href="https://github.com/primefaces/primeicons/issues" legacyBehavior>
-                    <a className="font-medium hover:underline" target={'_blank'}>
-                        request new icons
-                    </a>
+                Here is the current list of PrimeIcons, more icons are added periodically. You may also{' '}
+                <Link href="https://github.com/primefaces/primeicons/issues" className="font-medium hover:underline" target={'_blank'}>
+                    request new icons
                 </Link>{' '}
                 at the issue tracker.
             </p>

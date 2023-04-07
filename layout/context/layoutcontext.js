@@ -18,15 +18,15 @@ export const LayoutProvider = (props) => {
     const [layoutState, setLayoutState] = useState({
         staticMenuDesktopInactive: false,
         overlayMenuActive: false,
+        overlaySubmenuActive: false,
         rightMenuVisible: false,
         configSidebarVisible: false,
         staticMenuMobileActive: false,
         menuHoverActive: false,
         searchBarActive: false,
-        sidebarActive: false,
-        anchored: false,
         resetMenu: false,
-        overlaySubmenuActive: false
+        sidebarActive: false,
+        anchored: false
     });
 
     const onMenuToggle = (event) => {

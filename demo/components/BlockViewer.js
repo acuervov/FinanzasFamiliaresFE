@@ -18,23 +18,13 @@ const BlockViewer = (props) => {
                     <span className="block-title">
                         <span>{props.header}</span>
                         {props.new && <span className="badge-new">New</span>}
+                        {props.free && <span className="badge-free">Free</span>}
                     </span>
                     <div className="block-actions">
-                        <button
-                            tabIndex="0"
-                            className={classNames('p-link', {
-                                'block-action-active': blockView === 'PREVIEW'
-                            })}
-                            onClick={() => setBlockView('PREVIEW')}
-                        >
+                        <button tabIndex="0" className={classNames('p-link', { 'block-action-active': blockView === 'PREVIEW' })} onClick={() => setBlockView('PREVIEW')}>
                             <span>Preview</span>
                         </button>
-                        <button
-                            className={classNames('p-link', {
-                                'block-action-active': blockView === 'CODE'
-                            })}
-                            onClick={() => setBlockView('CODE')}
-                        >
+                        <button className={classNames('p-link', { 'block-action-active': blockView === 'CODE' })} onClick={() => setBlockView('CODE')}>
                             <span>Code</span>
                         </button>
                         <button ref={actionCopyRef} tabIndex="0" className="p-link block-action-copy" onClick={copyCode}>

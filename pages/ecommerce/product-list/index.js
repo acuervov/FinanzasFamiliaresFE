@@ -66,14 +66,7 @@ function ProductList() {
                                 <div className="p-2">
                                     <div className="shadow-2 p-4 surface-card border-round">
                                         <div className="relative mb-3">
-                                            <span
-                                                className="surface-card text-900 shadow-2 px-3 py-2 absolute"
-                                                style={{
-                                                    borderRadius: '1.5rem',
-                                                    left: '1rem',
-                                                    top: '1rem'
-                                                }}
-                                            >
+                                            <span className="surface-card text-900 shadow-2 px-3 py-2 absolute" style={{ borderRadius: '1.5rem', left: '1rem', top: '1rem' }}>
                                                 Category
                                             </span>
                                             <img src={'/' + product.image} className="w-full" alt={i} />
@@ -103,12 +96,9 @@ function ProductList() {
                                 <div className="mb-3 relative">
                                     <img src={'/' + product.image} className="w-full" alt={i} />
                                     <Button
+                                        type="button"
                                         className="border-1 border-white border-round py-2 px-3 absolute bg-black-alpha-30 text-white inline-flex align-items-center justify-content-center hover:bg-black-alpha-40 transition-colors transition-duration-300 cursor-pointer"
-                                        style={{
-                                            bottom: '1rem',
-                                            left: '1rem',
-                                            width: 'calc(100% - 2rem)'
-                                        }}
+                                        style={{ bottom: '1rem', left: '1rem', width: 'calc(100% - 2rem)' }}
                                     >
                                         <i className="pi pi-shopping-cart mr-3 text-base"></i>
                                         <span className="text-base">Add to Cart</span>
@@ -120,38 +110,22 @@ function ProductList() {
                                     <div className="flex align-items-center mb-3">
                                         <div
                                             className="w-2rem h-2rem flex-shrink-0 border-circle bg-bluegray-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                            style={{
-                                                width: '1.2rem',
-                                                height: '1.2rem',
-                                                boxShadow: product.color === 'Bluegray' ? '0 0 0 0.2rem var(--bluegray-900)' : null
-                                            }}
+                                            style={{ width: '1.2rem', height: '1.2rem', boxShadow: product.color === 'Bluegray' ? '0 0 0 0.2rem var(--bluegray-500)' : null }}
                                             onClick={() => onColorChange('Bluegray', i)}
                                         ></div>
                                         <div
                                             className="w-2rem h-2rem flex-shrink-0 border-circle bg-indigo-500 hover:border-indigo-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                            style={{
-                                                width: '1.2rem',
-                                                height: '1.2rem',
-                                                boxShadow: product.color === 'Indigo' ? '0 0 0 0.2rem var(--bluegray-500)' : null
-                                            }}
+                                            style={{ width: '1.2rem', height: '1.2rem', boxShadow: product.color === 'Indigo' ? '0 0 0 0.2rem var(--indigo-500)' : null }}
                                             onClick={() => onColorChange('Indigo', i)}
                                         ></div>
                                         <div
                                             className="w-2rem h-2rem flex-shrink-0 border-circle bg-purple-500 hover:border-purple-500 mr-3 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                            style={{
-                                                width: '1.2rem',
-                                                height: '1.2rem',
-                                                boxShadow: product.color === 'Green' ? '0 0 0 0.2rem var(--green-500)' : null
-                                            }}
+                                            style={{ width: '1.2rem', height: '1.2rem', boxShadow: product.color === 'Green' ? '0 0 0 0.2rem var(--purple-500)' : null }}
                                             onClick={() => onColorChange('Green', i)}
                                         ></div>
                                         <div
                                             className="w-2rem h-2rem flex-shrink-0 border-circle bg-cyan-500 hover:border-cyan-500 cursor-pointer border-2 surface-border transition-all transition-duration-300"
-                                            style={{
-                                                width: '1.2rem',
-                                                height: '1.2rem',
-                                                boxShadow: product.color === 'Blue' ? '0 0 0 0.2rem var(--blue-500)' : null
-                                            }}
+                                            style={{ width: '1.2rem', height: '1.2rem', boxShadow: product.color === 'Blue' ? '0 0 0 0.2rem var(--cyan-500)' : null }}
                                             onClick={() => onColorChange('Blue', i)}
                                         ></div>
                                     </div>

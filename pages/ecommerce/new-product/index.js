@@ -68,24 +68,15 @@ function NewProduct() {
     const onColorSelect = (colorName) => {
         if (product.colors.indexOf(colorName) !== -1) {
             product.colors.splice(product.colors.indexOf(colorName), 1);
-            setProduct((prevState) => ({
-                ...prevState,
-                colors: prevState.colors.filter((color) => color.name !== colorName)
-            }));
+            setProduct((prevState) => ({ ...prevState, colors: prevState.colors.filter((color) => color.name !== colorName) }));
         } else {
-            setProduct((prevState) => ({
-                ...prevState,
-                colors: [...prevState.colors, colorName]
-            }));
+            setProduct((prevState) => ({ ...prevState, colors: [...prevState.colors, colorName] }));
         }
     };
 
     const onUpload = (event) => {
         for (let file of event.files) {
-            setProduct((prevState) => ({
-                ...prevState,
-                images: Array.from(prevState.images).push(file)
-            }));
+            setProduct((prevState) => ({ ...prevState, images: Array.from(prevState.images).push(file) }));
         }
     };
 
@@ -119,9 +110,9 @@ function NewProduct() {
                         <Button
                             ref={(element) => buttonEl.current.push(element)}
                             id={file.name}
-                            rounded
+                            type="button"
                             icon="pi pi-times"
-                            className="hover:flex text-sm absolute justify-content-center align-items-center cursor-pointer"
+                            className="p-button-rounded hover:flex p-button-primary text-sm absolute justify-content-center align-items-center cursor-pointer w-2rem h-2rem"
                             style={{ top: '-10px', right: '-10px', display: 'none' }}
                             onClick={(event) => {
                                 event.stopPropagation();
@@ -141,60 +132,16 @@ function NewProduct() {
                 <div className="col-12 lg:col-8">
                     <div className="grid formgrid">
                         <div className="col-12 field">
-                            <InputText
-                                type="text"
-                                value={product.name}
-                                onChange={(e) =>
-                                    setProduct((prevState) => ({
-                                        ...prevState,
-                                        name: e.target.value
-                                    }))
-                                }
-                                placeholder="Product Name"
-                                label="Product Name"
-                            />
+                            <InputText type="text" value={product.name} onChange={(e) => setProduct((prevState) => ({ ...prevState, name: e.target.value }))} placeholder="Product Name" label="Product Name" />
                         </div>
                         <div className="col-12 lg:col-4 field">
-                            <InputText
-                                type="text"
-                                placeholder="Price"
-                                label="Price"
-                                value={product.price}
-                                onChange={(e) =>
-                                    setProduct((prevState) => ({
-                                        ...prevState,
-                                        price: e.target.value
-                                    }))
-                                }
-                            />
+                            <InputText type="text" placeholder="Price" label="Price" value={product.price} onChange={(e) => setProduct((prevState) => ({ ...prevState, price: e.target.value }))} />
                         </div>
                         <div className="col-12 lg:col-4 field">
-                            <InputText
-                                type="text"
-                                placeholder="Product Code"
-                                label="Product Code"
-                                value={product.code}
-                                onChange={(e) =>
-                                    setProduct((prevState) => ({
-                                        ...prevState,
-                                        code: e.target.value
-                                    }))
-                                }
-                            />
+                            <InputText type="text" placeholder="Product Code" label="Product Code" value={product.code} onChange={(e) => setProduct((prevState) => ({ ...prevState, code: e.target.value }))} />
                         </div>
                         <div className="col-12 lg:col-4 field">
-                            <InputText
-                                type="text"
-                                placeholder="Product SKU"
-                                label="SKU"
-                                value={product.sku}
-                                onChange={(e) =>
-                                    setProduct((prevState) => ({
-                                        ...prevState,
-                                        sku: e.target.value
-                                    }))
-                                }
-                            />
+                            <InputText type="text" placeholder="Product SKU" label="SKU" value={product.sku} onChange={(e) => setProduct((prevState) => ({ ...prevState, sku: e.target.value }))} />
                         </div>
                         <div className="col-12 field">
                             <Editor value={product.description} style={{ height: '250px' }}></Editor>
@@ -225,7 +172,7 @@ function NewProduct() {
                             <div className="bg-gray-100 py-2 px-3 flex align-items-center border-round">
                                 <span className="text-black-alpha-90 font-bold mr-3">Status:</span>
                                 <span className="text-black-alpha-60 font-semibold">{product.status}</span>
-                                <Button rounded text icon="pi pi-fw pi-pencil" className="text-black-alpha-60 ml-auto"></Button>
+                                <Button type="button" icon="pi pi-fw pi-pencil" className="p-button-rounded p-button-text text-black-alpha-60 ml-auto"></Button>
                             </div>
                         </div>
                     </div>
@@ -278,8 +225,8 @@ function NewProduct() {
                     </div>
 
                     <div className="flex flex-column sm:flex-row justify-content-between align-items-center gap-3 py-2">
-                        <Button severity="danger" outlined className="flex-1" label="Discard" icon="pi pi-fw pi-trash"></Button>
-                        <Button className="flex-1 border-round" label="Save" icon="pi pi-fw pi-check"></Button>
+                        <Button className="p-button-danger flex-1 p-button-outlined" label="Discard" icon="pi pi-fw pi-trash"></Button>
+                        <Button className="p-button-primary flex-1 border-round" label="Save" icon="pi pi-fw pi-check"></Button>
                     </div>
                 </div>
             </div>

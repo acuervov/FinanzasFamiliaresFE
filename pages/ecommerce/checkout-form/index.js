@@ -31,12 +31,10 @@ function CheckoutForm() {
                             Cart <i className="pi pi-chevron-right text-500 text-xs ml-2"></i>
                         </li>
                         <li className="flex align-items-center text-500 mr-2">
-                            Information
-                            <i className="pi pi-chevron-right text-500 text-xs ml-2"></i>
+                            Information<i className="pi pi-chevron-right text-500 text-xs ml-2"></i>
                         </li>
                         <li className="flex align-items-center text-500 mr-2">
-                            Shipping
-                            <i className="pi pi-chevron-right text-500 text-xs ml-2"></i>
+                            Shipping<i className="pi pi-chevron-right text-500 text-xs ml-2"></i>
                         </li>
                         <li className="flex align-items-center text-500 mr-2">Payment</li>
                     </ul>
@@ -78,8 +76,8 @@ function CheckoutForm() {
                             </div>
                         </div>
                         <div className="col-12 flex flex-column lg:flex-row justify-content-center align-items-center lg:justify-content-end my-6">
-                            <Button severity="secondary" outlined className="mt-3 lg:mt-0 w-full lg:w-auto flex-order-2 lg:flex-order-1 lg:mr-4" label="Return to Cart" icon="pi pi-fw pi-arrow-left"></Button>
-                            <Button className="w-full lg:w-auto flex-order-1 lg:flex-order-2" label="Continue to Shipping" icon="pi pi-fw pi-check"></Button>
+                            <Button className="p-button-secondary p-button-outlined mt-3 lg:mt-0 w-full lg:w-auto flex-order-2 lg:flex-order-1 lg:mr-4" label="Return to Cart" icon="pi pi-fw pi-arrow-left"></Button>
+                            <Button className="p-button-primary w-full lg:w-auto flex-order-1 lg:flex-order-2" label="Continue to Shipping" icon="pi pi-fw pi-check"></Button>
                         </div>
                     </div>
                 </div>
@@ -88,7 +86,7 @@ function CheckoutForm() {
                         <span className="text-900 font-medium text-xl">Your Cart</span>
                     </div>
                     <div className="flex flex-column lg:flex-row flex-wrap lg:align-items-center py-2 mt-3 surface-border">
-                        <img src={`/demo/images/ecommerce/shop/shop-1.png`} className="w-8rem h-8rem flex-shrink-0 mb-3" alt="product" />
+                        <img src="/demo/images/ecommerce/shop/shop-1.png" className="w-8rem h-8rem flex-shrink-0 mb-3" alt="product" />
                         <div className="flex-auto lg:ml-3">
                             <div className="flex align-items-center justify-content-between mb-3">
                                 <span className="text-900 font-bold">Product Name</span>
@@ -108,14 +106,14 @@ function CheckoutForm() {
                                     incrementButtonIcon="pi pi-plus"
                                     decrementButtonIcon="pi pi-minus"
                                 ></InputNumber>
-                                <Button text rounded icon="pi pi-trash"></Button>
+                                <Button icon="pi pi-trash" className="p-button-text p-button-rounded"></Button>
                             </div>
                         </div>
                     </div>
                     <div className="py-2 mt-3 surface-border">
                         <div className="p-inputgroup mb-3">
                             <InputText type="text" value={value} onChange={(e) => setValue(e.target.value)} placeholder="Promo code" className="w-full" />
-                            <Button label="Apply" disabled={!value}></Button>
+                            <Button type="button" label="Apply" disabled={!value}></Button>
                         </div>
                     </div>
                     <div className="py-2 mt-3">
@@ -133,7 +131,7 @@ function CheckoutForm() {
                         </div>
                     </div>
                     <div className="py-2 mt-3 bg-yellow-100 flex align-items-center justify-content-center border-round">
-                        <img src={`/demo/images/ecommerce/shop/flag.png`} className="mr-2" alt="Country Flag" />
+                        <img src="/demo/images/ecommerce/shop/flag.png" className="mr-2" alt="Country Flag" />
                         <span className="text-black-alpha-90 font-medium">No additional duties or taxes.</span>
                     </div>
                 </div>
