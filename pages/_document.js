@@ -17,9 +17,21 @@ class MyDocument extends Document {
                 <body>
                     <Main />
                     <NextScript />
-                    <div className="layout-preloader-container">
-                        <div className="layout-preloader">
-                            <span></span>
+                    <div className="loader-container">
+                        <div className="loader">
+                            <div className="bottom-section">
+                                <div className="bottom"></div>
+                                <div className="bottom"></div>
+                                <div className="bottom"></div>
+                                <div className="bottom"></div>
+                            </div>
+                            <div className="top-section">
+                                <div className="bottom"></div>
+                                <div className="bottom"></div>
+                                <div className="bottom"></div>
+                                <div className="bottom"></div>
+                            </div>
+                            <div className="middle"></div>
                         </div>
                     </div>
                 </body>
