@@ -1,7 +1,7 @@
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
-import React from 'react';
+import React, { useEffect} from 'react';
 import { LayoutProvider } from '../layout/context/layoutcontext';
 import Layout from '../layout/layout';
 import '../styles/demo/Demos.scss';
@@ -14,7 +14,7 @@ export default function MyApp({ Component, pageProps }) {
             if (loader) loader.style.display = 'none';
         }
     }, []);
-    
+
     if (Component.getLayout) {
         return <LayoutProvider>{Component.getLayout(<Component {...pageProps} />)}</LayoutProvider>;
     } else {
