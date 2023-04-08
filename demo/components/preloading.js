@@ -13,7 +13,7 @@ display: block;
     right: 0;
     width: 100%;
     height: 100%;
-    background-color: #111417;
+	background: #343A40;
     justify-content: center;
     align-items: center;
 }
