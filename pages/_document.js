@@ -17,21 +17,23 @@ class MyDocument extends Document {
                 <body>
                     <Main />
                     <NextScript />
-                    <div className="loader-container">
-                        <div className="loader">
-                            <div className="bottom-section">
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
+                    <div id={'globalLoader'}>
+                        <div className="loader-container">
+                            <div className="loader">
+                                <div className="bottom-section">
+                                    <div className="bottom"></div>
+                                    <div className="bottom"></div>
+                                    <div className="bottom"></div>
+                                    <div className="bottom"></div>
+                                </div>
+                                <div className="top-section">
+                                    <div className="bottom"></div>
+                                    <div className="bottom"></div>
+                                    <div className="bottom"></div>
+                                    <div className="bottom"></div>
+                                </div>
+                                <div className="middle"></div>
                             </div>
-                            <div className="top-section">
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                            </div>
-                            <div className="middle"></div>
                         </div>
                     </div>
                 </body>
