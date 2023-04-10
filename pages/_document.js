@@ -16,8 +16,9 @@ class MyDocument extends Document {
                     <style>{preloader}</style>
                 </Head>
                 <body>
-                    {/* <Main />
-                    <NextScript /> */}
+                    <Main />
+                    <NextScript />
+
                     <div id={'globalLoader'}>
                         <div className="loader">
                             <div className="bottom-section">
