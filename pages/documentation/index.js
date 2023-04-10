@@ -127,16 +127,16 @@ const AppMenu = () => {
             <p>The Breadcrumb component at the topbar section is dynamic and generates the current route information from the rendered menu items.</p>
 
             <h5>Integration with Existing NextJS Applications</h5>
-            <p>Only the folders that are related to the layout needs to move in to your project. We&lsquo;ve already created a short tutorial with details for Sakai React. The both templates have the same implementation.</p>
+            <p>Only the folders that are related to the layout needs to move in to your project. We&lsquo;ve already created a short tutorial with details for Sakai React. Both templates have the same implementation.</p>
 
             <div className={styles['video-container']}>
                 <iframe className={styles['video']} width="560" height="315" src="https://www.youtube.com/embed/jnm0_U6zJFY" allowFullScreen></iframe>
             </div>
 
-            <h4>Menu Theme</h4>
+            <h4>Theme</h4>
             <p>
-                Diamond provides 30 PrimeReact themes out of the box. Setup of a theme is simple by including the CSS of the theme to your bundle that are located inside <span className="text-primary font-medium">theme/</span>
-                folder such as <span className="text-primary font-medium">theme/theme-light/blue/theme.css</span>.
+                Diamond provides 30 PrimeReact themes out of the box. Setup of a theme is simple by including the CSS of the theme to your bundle that are located inside <span className="text-primary font-medium">public/theme/</span>
+                folder such as <span className="text-primary font-medium">public/theme/theme-light/blue/theme.css</span>.
             </p>
 
             <ul className="pl-5 line-height-3">
@@ -194,16 +194,6 @@ $highlightTextColor: $primaryDarkerColor !default;
 
             <p className="text-sm">*Note: The sass command above is supported by Dart Sass. Please use Dart Sass instead of Ruby Sass.</p>
 
-            <h5>Theme Designer</h5>
-            <p>
-                Diamond includes a simplified version of the <a href="https://www.primefaces.org/designer/primereact">PrimeReact Theme Designer</a> that only includes the main SASS structure. Full list of SASS variables to customize the components
-                further is available at the{' '}
-                <a href="https://www.primefaces.org/designer/api/primereact/7.1.0/" className="font-medium text-primary hover:underline">
-                    SASS API
-                </a>{' '}
-                docs.
-            </p>
-
             <h4>Figma Design</h4>
             <p>
                 Figma design file of Diamond is available at no extra cost at PrimeStore. The download dialog both displays the figma files and source code that are made accessible. The design file is{' '}
@@ -220,11 +210,10 @@ $highlightTextColor: $primaryDarkerColor !default;
                 </a>{' '}
                 that requires a separate license and purchase.
             </p>
-            <h4>Migration Guide</h4>
+            <h4>Migration</h4>
             <p>
-                Every important change is included in <b>CHANGELOG.md</b> file at the root folder of the distribution along with the instructions to update. Whenever a major versions of React and NextJS is released, a new version of the template is
-                provided that mainly brings compatibility support to the PrimeReact component theming. If there are no compatibility issues on component theming e.g. new components or new functionality to PrimeReact, you may still update your
-                application to the latest NextJS, React and PrimeReact without the need to waiting for an update.
+                Every important change is included in <b>CHANGELOG.md</b> file at the root folder of the distribution along with the instructions to update. Migration process mainly requires
+                updating the <span className="text-primary font-medium">layout</span> folder and <span className="text-primary font-medium">styles/layout</span> folders.
             </p>
         </div>
     );

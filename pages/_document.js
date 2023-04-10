@@ -1,7 +1,6 @@
 import React from 'react';
-
 import Document, { Head, Html, Main, NextScript } from 'next/document';
-import preloader from '../demo/components/preloading';
+
 class MyDocument extends Document {
     static async getInitialProps(ctx) {
         const initialProps = await Document.getInitialProps(ctx);
@@ -13,29 +12,10 @@ class MyDocument extends Document {
             <Html lang="en">
                 <Head>
                     <link id="theme-link" href={`/theme/theme-light/blue/theme.css`} rel="stylesheet"></link>
-                    <style>{preloader}</style>
                 </Head>
                 <body>
                     <Main />
                     <NextScript />
-
-                    <div id={'globalLoader'}>
-                        <div className="loader">
-                            <div className="bottom-section">
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                            </div>
-                            <div className="top-section">
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                                <div className="bottom"></div>
-                            </div>
-                            <div className="middle"></div>
-                        </div>
-                    </div>
                 </body>
             </Html>
         );

@@ -1,29 +1,33 @@
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';
-import React, { useEffect} from 'react';
+import React, { useState } from 'react';
 import { LayoutProvider } from '../layout/context/layoutcontext';
 import Layout from '../layout/layout';
+import AppLoadingScreen from '../layout/loading/AppLoadingScreen';
 import '../styles/demo/Demos.scss';
 import '../styles/layout/layout.scss';
 
 export default function MyApp({ Component, pageProps }) {
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const loader = document.getElementById('globalLoader');
-            if (loader) loader.style.display = 'none';
-        }
+    const [loading, setLoading] = useState(false);
+
+    React.useEffect(() => {
+        setLoading(true);
     }, []);
 
-    if (Component.getLayout) {
-        return <LayoutProvider>{Component.getLayout(<Component {...pageProps} />)}</LayoutProvider>;
-    } else {
-        return (
-            <LayoutProvider>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            </LayoutProvider>
-        );
-    }
+    const MainContent = () => {
+        if (Component.getLayout) {
+            return <LayoutProvider>{Component.getLayout(<Component {...pageProps} />)}</LayoutProvider>;
+        } else {
+            return (
+                <LayoutProvider>
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </LayoutProvider>
+            );
+        }
+    };
+
+    return !loading ? <AppLoadingScreen /> : <MainContent />;
 }
