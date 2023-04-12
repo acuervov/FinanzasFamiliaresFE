@@ -306,7 +306,7 @@ const Dashboard = () => {
                                 <span className="flex align-items-center">
                                     <i className="pi pi-plus-circle mr-1"></i> New
                                 </span>
-                                <img src={`/demo/images/dashboard/graph-new.svg`} className="absolute w-11" style={{ left: '5%', bottom: 0 }} alt='order.image' />
+                                <img src={`/demo/images/dashboard/graph-new.svg`} className="absolute w-11" style={{ left: '5%', bottom: 0 }} alt="order.image" />
                             </div>
                             <div
                                 onClick={onOrderTabClick}
@@ -319,7 +319,7 @@ const Dashboard = () => {
                                 <span className="flex align-items-center">
                                     <i className="pi pi-check-circle mr-1"></i> Completed
                                 </span>
-                                <img src={`/demo/images/dashboard/graph-completed.svg`} className="absolute w-11" style={{ left: '5%', bottom: 0 }} alt='New Graph' />
+                                <img src={`/demo/images/dashboard/graph-completed.svg`} className="absolute w-11" style={{ left: '5%', bottom: 0 }} alt="New Graph" />
                             </div>
                             <div
                                 onClick={onOrderTabClick}
@@ -345,7 +345,7 @@ const Dashboard = () => {
                                 <span className="flex align-items-center">
                                     <i className="pi pi-times-circle mr-1"></i> Cancelled
                                 </span>
-                                <img src={`/demo/images/dashboard/graph-cancelled.svg`} className="absolute w-11" style={{ left: '5%', bottom: 0 }} alt='Cancel Graph' />
+                                <img src={`/demo/images/dashboard/graph-cancelled.svg`} className="absolute w-11" style={{ left: '5%', bottom: 0 }} alt="Cancel Graph" />
                             </div>
 
                             <div className="col-12">

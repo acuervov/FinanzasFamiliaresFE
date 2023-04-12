@@ -3,7 +3,9 @@ let selectedIcon = null;
 
 export const IconService = {
     getIcons() {
-        return fetch('/demo/data/icons.json', { headers: { 'Cache-Control': 'no-cache' } })
+        return fetch('/demo/data/icons.json', {
+            headers: { 'Cache-Control': 'no-cache' }
+        })
             .then((res) => res.json())
             .then((d) => d.icons);
     },

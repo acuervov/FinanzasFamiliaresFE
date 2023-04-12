@@ -28,7 +28,12 @@ function OrderSummary() {
                 <span className="text-700 text-xl">Thanks!</span>
                 <div className="text-900 font-bold text-4xl my-2">Successful Order 🚀</div>
                 <p className="text-700 text-xl mt-0 mb-4 p-0">Your order is on the way. It&lsquo;ll be shipped today. We&lsquo;ll inform you.</p>
-                <div style={{ height: '3px', background: 'linear-gradient(90deg, var(--primary-color) 0%, rgba(33, 150, 243, 0) 50%)' }}></div>
+                <div
+                    style={{
+                        height: '3px',
+                        background: 'linear-gradient(90deg, var(--primary-color) 0%, rgba(33, 150, 243, 0) 50%)'
+                    }}
+                ></div>
 
                 <div className="flex flex-column sm:flex-row sm:align-items-center sm:justify-content-between py-5">
                     <div className="mb-3 sm:mb-0">

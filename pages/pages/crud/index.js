@@ -322,7 +322,7 @@ const Crud = () => {
                         ref={dt}
                         value={products}
                         selection={selectedProducts}
-                        onSelectionChange={(e) => setSelectedProducts(e.value)}                        
+                        onSelectionChange={(e) => setSelectedProducts(e.value)}
                         paginator
                         rows={10}
                         rowsPerPageOptions={[5, 10, 25]}

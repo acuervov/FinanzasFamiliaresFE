@@ -225,11 +225,28 @@ const AppConfig = (props) => {
 
     return (
         <div id="layout-config">
-            <a className="layout-config-button" onClick={() => setLayoutState((prevState) => ({ ...prevState, configSidebarVisible: true }))}>
+            <a
+                className="layout-config-button"
+                onClick={() =>
+                    setLayoutState((prevState) => ({
+                        ...prevState,
+                        configSidebarVisible: true
+                    }))
+                }
+            >
                 <i className="pi pi-cog"></i>
             </a>
 
-            <Sidebar visible={layoutState.configSidebarVisible} position="right" onHide={() => setLayoutState((prevState) => ({ ...prevState, configSidebarVisible: false }))}>
+            <Sidebar
+                visible={layoutState.configSidebarVisible}
+                position="right"
+                onHide={() =>
+                    setLayoutState((prevState) => ({
+                        ...prevState,
+                        configSidebarVisible: false
+                    }))
+                }
+            >
                 <div className={`w-full sm:w-18rem`} style={{ transition: '.3s cubic-bezier(0, 0, 0.2, 1)' }}>
                     <h5>Color Scheme</h5>
                     <div className="flex">

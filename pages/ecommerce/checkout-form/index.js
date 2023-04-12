@@ -31,10 +31,12 @@ function CheckoutForm() {
                             Cart <i className="pi pi-chevron-right text-500 text-xs ml-2"></i>
                         </li>
                         <li className="flex align-items-center text-500 mr-2">
-                            Information<i className="pi pi-chevron-right text-500 text-xs ml-2"></i>
+                            Information
+                            <i className="pi pi-chevron-right text-500 text-xs ml-2"></i>
                         </li>
                         <li className="flex align-items-center text-500 mr-2">
-                            Shipping<i className="pi pi-chevron-right text-500 text-xs ml-2"></i>
+                            Shipping
+                            <i className="pi pi-chevron-right text-500 text-xs ml-2"></i>
                         </li>
                         <li className="flex align-items-center text-500 mr-2">Payment</li>
                     </ul>

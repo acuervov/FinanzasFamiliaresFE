@@ -116,7 +116,13 @@ function OrderHistory() {
                                                 </a>
                                             </div>
                                         </div>
-                                        <div className="mr-0 lg:mr-3 mt-4 lg:mt-0 p-2 flex align-items-center" style={{ borderRadius: '2.5rem', backgroundColor: 'rgba(76, 175, 80,.1)' }}>
+                                        <div
+                                            className="mr-0 lg:mr-3 mt-4 lg:mt-0 p-2 flex align-items-center"
+                                            style={{
+                                                borderRadius: '2.5rem',
+                                                backgroundColor: 'rgba(76, 175, 80,.1)'
+                                            }}
+                                        >
                                             <span className="bg-green-500 text-white flex align-items-center justify-content-center border-circle mr-2" style={{ minWidth: '2rem', minHeight: '2rem' }}>
                                                 <i className="pi pi-check"></i>
                                             </span>

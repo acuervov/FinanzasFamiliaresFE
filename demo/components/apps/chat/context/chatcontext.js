@@ -31,8 +31,8 @@ export const ChatProvider = (props) => {
     });
 
     const getChatData = useCallback(() => {
-        return fetch("/demo/data/chat.json", {
-            headers: { "Cache-Control": "no-cache" },
+        return fetch('/demo/data/chat.json', {
+            headers: { 'Cache-Control': 'no-cache' }
         })
             .then((res) => res.json())
             .then((d) => d.data);
@@ -45,7 +45,10 @@ export const ChatProvider = (props) => {
     const sendMessage = (message) => {
         const _users = [...users];
         _users.map((user) => (user.id === activeUser.id ? user.messages.push(message) : null));
-        setActiveUser((prevState) => ({ ...prevState, messages: [...prevState.messages, message] }));
+        setActiveUser((prevState) => ({
+            ...prevState,
+            messages: [...prevState.messages, message]
+        }));
         setUsers(_users);
     };
 

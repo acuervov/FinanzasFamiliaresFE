@@ -68,15 +68,24 @@ function NewProduct() {
     const onColorSelect = (colorName) => {
         if (product.colors.indexOf(colorName) !== -1) {
             product.colors.splice(product.colors.indexOf(colorName), 1);
-            setProduct((prevState) => ({ ...prevState, colors: prevState.colors.filter((color) => color.name !== colorName) }));
+            setProduct((prevState) => ({
+                ...prevState,
+                colors: prevState.colors.filter((color) => color.name !== colorName)
+            }));
         } else {
-            setProduct((prevState) => ({ ...prevState, colors: [...prevState.colors, colorName] }));
+            setProduct((prevState) => ({
+                ...prevState,
+                colors: [...prevState.colors, colorName]
+            }));
         }
     };
 
     const onUpload = (event) => {
         for (let file of event.files) {
-            setProduct((prevState) => ({ ...prevState, images: Array.from(prevState.images).push(file) }));
+            setProduct((prevState) => ({
+                ...prevState,
+                images: Array.from(prevState.images).push(file)
+            }));
         }
     };
 
@@ -132,16 +141,60 @@ function NewProduct() {
                 <div className="col-12 lg:col-8">
                     <div className="grid formgrid">
                         <div className="col-12 field">
-                            <InputText type="text" value={product.name} onChange={(e) => setProduct((prevState) => ({ ...prevState, name: e.target.value }))} placeholder="Product Name" label="Product Name" />
+                            <InputText
+                                type="text"
+                                value={product.name}
+                                onChange={(e) =>
+                                    setProduct((prevState) => ({
+                                        ...prevState,
+                                        name: e.target.value
+                                    }))
+                                }
+                                placeholder="Product Name"
+                                label="Product Name"
+                            />
                         </div>
                         <div className="col-12 lg:col-4 field">
-                            <InputText type="text" placeholder="Price" label="Price" value={product.price} onChange={(e) => setProduct((prevState) => ({ ...prevState, price: e.target.value }))} />
+                            <InputText
+                                type="text"
+                                placeholder="Price"
+                                label="Price"
+                                value={product.price}
+                                onChange={(e) =>
+                                    setProduct((prevState) => ({
+                                        ...prevState,
+                                        price: e.target.value
+                                    }))
+                                }
+                            />
                         </div>
                         <div className="col-12 lg:col-4 field">
-                            <InputText type="text" placeholder="Product Code" label="Product Code" value={product.code} onChange={(e) => setProduct((prevState) => ({ ...prevState, code: e.target.value }))} />
+                            <InputText
+                                type="text"
+                                placeholder="Product Code"
+                                label="Product Code"
+                                value={product.code}
+                                onChange={(e) =>
+                                    setProduct((prevState) => ({
+                                        ...prevState,
+                                        code: e.target.value
+                                    }))
+                                }
+                            />
                         </div>
                         <div className="col-12 lg:col-4 field">
-                            <InputText type="text" placeholder="Product SKU" label="SKU" value={product.sku} onChange={(e) => setProduct((prevState) => ({ ...prevState, sku: e.target.value }))} />
+                            <InputText
+                                type="text"
+                                placeholder="Product SKU"
+                                label="SKU"
+                                value={product.sku}
+                                onChange={(e) =>
+                                    setProduct((prevState) => ({
+                                        ...prevState,
+                                        sku: e.target.value
+                                    }))
+                                }
+                            />
                         </div>
                         <div className="col-12 field">
                             <Editor value={product.description} style={{ height: '250px' }}></Editor>

@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "format": "prettier --write \"**/**/*.{js,ts,tsx}\""
     },
     "dependencies": {
         "eslint": "8.38.0",
@@ -26,6 +27,7 @@
         "@fullcalendar/timegrid": "6.1.4"
     },
     "devDependencies": {
-        "sass": "^1.58.3"
+        "sass": "^1.58.3",
+        "prettier": "2.8.4"
     }
 }

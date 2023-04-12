@@ -212,8 +212,8 @@ $highlightTextColor: $primaryDarkerColor !default;
             </p>
             <h4>Migration</h4>
             <p>
-                Every important change is included in <b>CHANGELOG.md</b> file at the root folder of the distribution along with the instructions to update. Migration process mainly requires
-                updating the <span className="text-primary font-medium">layout</span> folder and <span className="text-primary font-medium">styles/layout</span> folders.
+                Every important change is included in <b>CHANGELOG.md</b> file at the root folder of the distribution along with the instructions to update. Migration process mainly requires updating the{' '}
+                <span className="text-primary font-medium">layout</span> folder and <span className="text-primary font-medium">styles/layout</span> folders.
             </p>
         </div>
     );

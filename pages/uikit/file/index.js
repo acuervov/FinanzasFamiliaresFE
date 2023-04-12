@@ -6,7 +6,12 @@ const FileDemo = () => {
     const toast = useRef(null);
 
     const onUpload = () => {
-        toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded', life: 3000 });
+        toast.current.show({
+            severity: 'info',
+            summary: 'Success',
+            detail: 'File Uploaded',
+            life: 3000
+        });
     };
 
     return (
