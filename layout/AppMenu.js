@@ -187,7 +187,7 @@ const AppMenu = () => {
                 {
                     label: 'All Blocks',
                     icon: 'pi pi-fw pi-globe',
-                    url: ['https://www.primefaces.org/primeblocks-ng'],
+                    url: ['https://blocks.primereact.org'],
                     target: '_blank'
                 }
             ]

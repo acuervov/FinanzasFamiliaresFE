@@ -131,12 +131,11 @@ export const LayoutProvider = (props) => {
                     <meta name="viewport" content="initial-scale=1, width=device-width" />
                     <meta property="og:type" content="website"></meta>
                     <meta property="og:title" content="Diamond by PrimeReact for NextJS"></meta>
-                    <meta property="og:url" content="https://diamond-react.primereact.org"></meta>
+                    <meta property="og:url" content="https://diamond.primereact.org"></meta>
                     <meta property="og:description" content="The ultimate collection of design-agnostic, flexible and accessible React UI Components." />
                     <meta property="og:image" content="https://www.primefaces.org/static/social/diamond-react.png"></meta>
                     <meta property="og:ttl" content="604800"></meta>
                     <link rel="icon" href={`/favicon.ico`} type="image/x-icon"></link>
-                    <link rel="stylesheet" type="text/css" href="/styles/layout/preloading.css"></link>
                 </Head>
                 {props.children}
             </>
