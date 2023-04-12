@@ -32,7 +32,7 @@ const ChatSidebar = () => {
             setUsers(data);
             setFilteredUsers(data);
         });
-    }, []);
+    }, [getChatData, setUsers]);
 
     return (
         <React.Fragment>

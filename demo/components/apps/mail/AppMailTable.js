@@ -1,5 +1,4 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
-
 import { useRouter } from 'next/router';
 import { classNames } from 'primereact/utils';
 import { Dialog } from 'primereact/dialog';
@@ -38,27 +37,12 @@ function AppMailTable(props) {
     const initFilters = () => {
         setFilters({
             global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-            name: {
-                operator: FilterOperator.AND,
-                constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }]
-            },
-            'country.name': {
-                operator: FilterOperator.AND,
-                constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }]
-            },
+            name: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+            'country.name': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
             representative: { value: null, matchMode: FilterMatchMode.IN },
-            date: {
-                operator: FilterOperator.AND,
-                constraints: [{ value: null, matchMode: FilterMatchMode.DATE_IS }]
-            },
-            balance: {
-                operator: FilterOperator.AND,
-                constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }]
-            },
-            status: {
-                operator: FilterOperator.OR,
-                constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }]
-            },
+            date: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.DATE_IS }] },
+            balance: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
+            status: { operator: FilterOperator.OR, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
             activity: { value: null, matchMode: FilterMatchMode.BETWEEN },
             verified: { value: null, matchMode: FilterMatchMode.EQUALS }
         });
@@ -184,40 +168,39 @@ function AppMailTable(props) {
         return (
             <>
                 {!mail.trash && !mail.spam ? (
-                    <>
-                        <td style={{ width: '4rem' }}>
-                            <span onClick={(e) => handleStar(e, mail.id)} onTouchEnd={(e) => handleStar(e, mail.id)} className="cursor-pointer">
-                                <i
-                                    className={classNames('pi pi-fw text-xl', {
-                                        'pi-star-fill': mail.starred,
-                                        'pi-star': !mail.starred
-                                    })}
-                                ></i>
-                            </span>
-                        </td>
-                        <td style={{ width: '4rem' }}>
-                            <span onClick={(e) => handleBookmark(e, mail.id)} onTouchEnd={(e) => handleBookmark(e, mail.id)} className="cursor-pointer">
-                                <i
-                                    className={classNames('pi pi-fw text-xl', {
-                                        'pi-bookmark-fill': mail.important,
-                                        'pi-bookmark': !mail.important
-                                    })}
-                                ></i>
-                            </span>
-                        </td>
-                    </>
+                    <div className="flex">
+                        <span style={{ width: '4rem' }} onClick={(e) => handleStar(e, mail.id)} onTouchEnd={(e) => handleStar(e, mail.id)} className="cursor-pointer">
+                            <i
+                                className={classNames('pi pi-fw text-xl', {
+                                    'pi-star-fill': mail.starred,
+                                    'pi-star': !mail.starred
+                                })}
+                            ></i>
+                        </span>
+
+                        <span onClick={(e) => handleBookmark(e, mail.id)} onTouchEnd={(e) => handleBookmark(e, mail.id)} className="cursor-pointer">
+                            <i
+                                className={classNames('pi pi-fw text-xl', {
+                                    'pi-bookmark-fill': mail.important,
+                                    'pi-bookmark': !mail.important
+                                })}
+                            ></i>
+                        </span>
+                    </div>
                 ) : null}
             </>
         );
     };
 
     const avatarBodyTemplate = (mail) => {
-        return <Avatar image={`/demo/images/avatar/${mail.image ? mail.image : '.png'}`}></Avatar>;
+        const folder = mail.image ? 'demo' : 'layout';
+        const imageName = mail.image ? mail.image : 'avatar.png';
+        return <Avatar image={`/${folder}/images/avatar/${imageName}`} onClick={(e) => onRowSelect(mail.id)}></Avatar>;
     };
 
     const authorBodyTemplate = (mail) => {
         return (
-            <div style={{ minWidth: '12rem' }} className="text-900 font-semibold">
+            <div className="text-900 font-semibold" onClick={(e) => onRowSelect(mail.id)} style={{ minWidth: '12rem' }}>
                 {mail.from || mail.to}
             </div>
         );
@@ -225,7 +208,7 @@ function AppMailTable(props) {
 
     const titleBodyTemplate = (mail) => {
         return (
-            <span className="font-medium white-space-nowrap overflow-hidden text-overflow-ellipsis block" style={{ maxWidth: '30rem', minWidth: '12rem' }}>
+            <span className="font-medium white-space-nowrap overflow-hidden text-overflow-ellipsis block" onClick={(e) => onRowSelect(mail.id)} style={{ maxWidth: '30rem', minWidth: '12rem' }}>
                 {mail.title}
             </span>
         );
@@ -266,8 +249,8 @@ function AppMailTable(props) {
                     </span>
                     <div id={columnOptions.rowIndex.toString() + '-options'} style={{ display: 'none' }}>
                         <Button type="button" tooltip="Archive" tooltipOptions={{ position: 'top' }} icon="pi pi-inbox" className="h-2rem w-2rem mr-2" onClick={(event) => handleArchive(event, mail.id)}></Button>
-                        <Button type="button" tooltip="Reply" tooltipOptions={{ position: 'top' }} icon="pi pi-reply" severity="secondary" className="h-2rem w-2rem mr-2" onClick={(event) => handleReply(event, mail)}></Button>
-                        <Button type="button" tooltip="Trash" tooltipOptions={{ position: 'top' }} icon="pi pi-trash" severity="danger" className="h-2rem w-2rem" onClick={(event) => handleTrash(event, mail)}></Button>
+                        <Button type="button" tooltip="Reply" tooltipOptions={{ position: 'top' }} icon="pi pi-reply" className="p-button-secondary h-2rem w-2rem mr-2" onClick={(event) => handleReply(event, mail)}></Button>
+                        <Button type="button" tooltip="Trash" tooltipOptions={{ position: 'top' }} icon="pi pi-trash" className="p-button-danger h-2rem w-2rem" onClick={(event) => handleTrash(event, mail)}></Button>
                     </div>
                 </div>
             </div>
@@ -292,10 +275,10 @@ function AppMailTable(props) {
                 selection={selectedMails}
                 onSelectionChange={(e) => setSelectedMails(e.value)}
                 selectionMode="multiple"
-                onRowClick={(e) => onRowSelect(e.data.id)}
+                dataKey="id"
             >
                 <Column selectionMode="multiple" style={{ width: '4rem' }}></Column>
-                <Column header={actionHeaderTemplate} body={actionsBodyTemplate}></Column>
+                <Column header={actionHeaderTemplate} body={actionsBodyTemplate} style={{ width: '8rem' }}></Column>
                 <Column style={{ minWidth: '4rem' }} body={avatarBodyTemplate}></Column>
                 <Column body={authorBodyTemplate}></Column>
                 <Column style={{ minWidth: '12rem' }} body={titleBodyTemplate}></Column>

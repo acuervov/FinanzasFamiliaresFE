@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { InputTextarea } from 'primereact/inputtextarea';
@@ -6,15 +6,18 @@ import { Dropdown } from 'primereact/dropdown';
 
 const FormLayoutDemo = () => {
     const [dropdownItem, setDropdownItem] = useState(null);
-    const dropdownItems = [
-        { name: 'Option 1', code: 'Option 1' },
-        { name: 'Option 2', code: 'Option 2' },
-        { name: 'Option 3', code: 'Option 3' }
-    ];
+    const dropdownItems = useMemo(
+        () => [
+            { name: "Option 1", code: "Option 1" },
+            { name: "Option 2", code: "Option 2" },
+            { name: "Option 3", code: "Option 3" },
+        ],
+        []
+    );
 
     useEffect(() => {
         setDropdownItem(dropdownItems[0]);
-    }, []);
+    }, [dropdownItems]);
 
     return (
         <div className="grid">
