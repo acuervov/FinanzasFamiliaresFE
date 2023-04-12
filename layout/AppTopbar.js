@@ -51,7 +51,7 @@ const AppTopbar = forwardRef((props, ref) => {
                         </a>
                     </li>
                     <li className="static sm:relative">
-                        <StyleClass nodeRef={btnRef1} selector="@next" enterClassName="hidden" enteractiveclass="scalein" leaveToClassName="hidden" leaveActiveClassName="fadeout" hideOnOutsideClick>
+                        <StyleClass nodeRef={btnRef1} selector="@next" enterClassName="hidden" enterActiveClassName="scalein" leaveToClassName="hidden" leaveActiveClassName="fadeout" hideOnOutsideClick>
                             <a tabIndex={0} ref={btnRef1}>
                                 <i className="pi pi-bell"></i>
                                 <span className="topbar-badge">5</span>
@@ -109,7 +109,7 @@ const AppTopbar = forwardRef((props, ref) => {
                     </li>
 
                     <li className="profile-item static sm:relative">
-                        <StyleClass nodeRef={btnRef2} selector="@next" enterClassName="hidden" enteractiveclass="scalein" leaveToClassName="hidden" leaveActiveClassName="fadeout" hideOnOutsideClick="true">
+                        <StyleClass nodeRef={btnRef2} selector="@next" enterClassName="hidden" enterActiveClassName="scalein" leaveToClassName="hidden" leaveActiveClassName="fadeout" hideOnOutsideClick="true">
                             <a tabIndex={1} ref={btnRef2}>
                                 <img src={`/demo/images/avatar/profile.jpg`} alt="diamond-layout" className="profile-image" />
                                 <span className="profile-name">Amelia Stone</span>
