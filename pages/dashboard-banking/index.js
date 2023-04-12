@@ -277,7 +277,7 @@ const Banking = () => {
                                     <span className="block text-color-secondary mt-2 white-space-nowrap">vs last week</span>
                                 </div>
                             </div>
-                            <img src={`/demo/images/dashboard/${metric.image}.svg`} className="absolute w-full bottom-0 left-0" />
+                            <img src={`/demo/images/dashboard/${metric.image}.svg`} className="absolute w-full bottom-0 left-0" alt='metric.image' />
                             {hoveredIndex === index && (
                                 <Button label="View Details" icon="pi pi-eye" iconPos="right" rounded severity="secondary" className="p-ripple font-semibold absolute" style={{ borderRadius: '50px', left: '36%', bottom: '10%' }} />
                             )}

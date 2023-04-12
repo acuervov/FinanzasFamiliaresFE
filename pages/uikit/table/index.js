@@ -369,7 +369,6 @@ const TableDemo = () => {
                         className="p-datatable-gridlines"
                         showGridlines
                         rows={10}
-                        dataKey="id"
                         filters={filters1}
                         filterDisplay="menu"
                         loading={loading1}
@@ -420,7 +419,7 @@ const TableDemo = () => {
             <div className="col-12">
                 <div className="card">
                     <h5>Row Expand</h5>
-                    <DataTable value={products} expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)} responsiveLayout="scroll" rowExpansionTemplate={rowExpansionTemplate} dataKey="id" header={header}>
+                    <DataTable value={products} expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)} responsiveLayout="scroll" rowExpansionTemplate={rowExpansionTemplate} header={header}>
                         <Column expander style={{ width: '3em' }} />
                         <Column field="name" header="Name" sortable />
                         <Column header="Image" body={imageBodyTemplate} />

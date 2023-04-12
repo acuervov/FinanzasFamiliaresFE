@@ -286,7 +286,7 @@ function Files() {
                 </div>
                 <div className="card">
                     <div className="text-900 text-xl font-semibold mb-3">Recent Uploads</div>
-                    <DataTable ref={dt} value={files} dataKey="id" paginator rows={8} responsiveLayout="scroll">
+                    <DataTable ref={dt} value={files} paginator rows={8} responsiveLayout="scroll">
                         <Column field="name" header="Name" sortable body={nameBodyTemplate} headerStyle={{ minWidth: '12rem' }}></Column>
                         <Column field="date" header="Date" body={dateBodyTemplate} headerClassName="white-space-nowrap" headerStyle={{ minWidth: '12rem' }}></Column>
                         <Column field="fileSize" header="File Size" body={fileSizeBodyTemplate} sortable headerStyle={{ minWidth: '12rem' }}></Column>

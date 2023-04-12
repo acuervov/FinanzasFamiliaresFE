@@ -292,7 +292,6 @@ function AppMailTable(props) {
                 selection={selectedMails}
                 onSelectionChange={(e) => setSelectedMails(e.value)}
                 selectionMode="multiple"
-                dataKey="id"
                 onRowClick={(e) => onRowSelect(e.data.id)}
             >
                 <Column selectionMode="multiple" style={{ width: '4rem' }}></Column>

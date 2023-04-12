@@ -21,7 +21,7 @@ function Register() {
                     <div className="flex flex-column align-items-center gap-4">
                         <div className="mb-3">
                             <h2>Register</h2>
-                            <p>Let's get started</p>
+                            <p>Let&lsquo;s get started</p>
                         </div>
 
                         <div className="flex flex-column gap-4">

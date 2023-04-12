@@ -20,7 +20,7 @@ function LandingPage() {
             <div id="home" className="pages-wrapper z-1">
                 <div className="px-4 md:px-8 flex align-items-center justify-content-between relative lg:static" style={{ minHeight: '80px' }}>
                     <div className="flex gap-2 align-items-center text-white mr-0 lg:mr-6 select-none">
-                        <img src={`/layout/images/logo-white.svg`} className="w-2rem h-2rem" />
+                        <img src={`/layout/images/logo-white.svg`} className="w-2rem h-2rem" alt='Diamond Logo' />
                         <span className="font-bold text-3xl">DIAMOND</span>
                     </div>
 
@@ -66,7 +66,7 @@ function LandingPage() {
                             <li>
                                 <a
                                     onClick={toggleMenuItemClick}
-                                    enterActiveClass="px-fadein"
+                                    enteractiveclassname="px-fadein"
                                     href="#pricing"
                                     className="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
                                 >
@@ -78,7 +78,7 @@ function LandingPage() {
                                 <a
                                     onClick={toggleMenuItemClick}
                                     href="#pricing"
-                                    enterActiveClass="px-fadein"
+                                    enteractiveclassname="px-fadein"
                                     className="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
                                 >
                                     <span>BUY NOW</span>
@@ -130,7 +130,7 @@ function LandingPage() {
                             </a>
                         </div>
                         <div className="col-12 text-center md:text-right lg:col-6">
-                            <img src={`/layout/images/pages/landing/header-image.png`} className="w-full sm:w-auto animation-duration-200 fadeinright" />
+                            <img src={`/layout/images/pages/landing/header-image.png`} className="w-full sm:w-auto animation-duration-200 fadeinright" alt='Diamond Dashboard' />
                         </div>
                     </div>
 
@@ -275,7 +275,7 @@ function LandingPage() {
 
                     <div id="contact" className="grid justify-content-center lg:justify-content-evenly mt-6 md:mt-8 pt-4">
                         <div className="col-12 text-center mb-5 text-white">
-                            <span className="block text-5xl font-bold mb-3">Let's Get In Touch</span>
+                            <span className="block text-5xl font-bold mb-3">Let&lsquo;s Get In Touch</span>
                             <span className="block text-xl font-bold">Just drop us an email</span>
                         </div>
 
@@ -330,7 +330,7 @@ function LandingPage() {
 
                 <div className="flex align-items-center justify-content-between px-4 md:px-8 py-4 mt-5">
                     <div className="flex gap-2 align-items-center text-white select-none">
-                        <img src={`/layout/images/logo-white.svg`} className="w-2rem h-2rem" />
+                        <img src={`/layout/images/logo-white.svg`} className="w-2rem h-2rem" alt='Diamond Logo' />
                         <span className="font-bold text-3xl">DIAMOND</span>
                     </div>
                     <div className="flex">
