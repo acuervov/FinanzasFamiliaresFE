@@ -111,7 +111,7 @@ function OrderHistory() {
                                                 <span className="text-700 text-sm mb-3">
                                                     {product.color} | {product.size}
                                                 </span>
-                                                <a tabIndex={0} className="p-2 select-none cursor-pointer w-10rem mx-auto lg:mx-0 border-round font-medium text-center border-1 border-primary text-primary transition-duration-150">
+                                                <a tabIndex={0} className="p-ripple p-2 select-none cursor-pointer w-10rem mx-auto lg:mx-0 border-round font-medium text-center border-1 border-primary text-primary transition-duration-150">
                                                     Buy Again <span className="font-light">| {product.price}</span>
                                                     <Ripple />
                                                 </a>
