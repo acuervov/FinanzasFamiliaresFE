@@ -1,11 +1,10 @@
 'use client';
-
 import React, { useContext, useEffect, useState } from 'react';
 import { LayoutContext } from '../../../../layout/context/layoutcontext';
 
 function Colors() {
-    const [colors, setColors] = useState([]);
-    const [shades, setShades] = useState([]);
+    const [colors, setColors] = useState<any[]>([]);
+    const [shades, setShades] = useState<number[]>([]);
     const { layoutConfig } = useContext(LayoutContext);
     const dark = layoutConfig.colorScheme !== 'light';
 

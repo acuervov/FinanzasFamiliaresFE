@@ -216,6 +216,16 @@
   --purple-700:#6d1b7b;
   --purple-800:#561561;
   --purple-900:#3e1046;
+  --red-50:#fef6f5;
+  --red-100:#fcd2cf;
+  --red-200:#faaea9;
+  --red-300:#f88a82;
+  --red-400:#f6675c;
+  --red-500:#f44336;
+  --red-600:#cf392e;
+  --red-700:#ab2f26;
+  --red-800:#86251e;
+  --red-900:#621b16;
   --primary-50:#fcf7fc;
   --primary-100:#eedbf2;
   --primary-200:#e1bee7;
@@ -2495,13 +2505,6 @@
   background: rgba(244, 143, 177, 0.16);
   border-color: transparent;
   color: #f48fb1;
-}
-
-.p-splitbutton-menubutton,
-.p-splitbutton.p-button-rounded > .p-splitbutton-menubutton.p-button,
-.p-splitbutton.p-button-outlined > .p-splitbutton-menubutton.p-button {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 }
 
 .p-speeddial-button.p-button.p-button-icon-only {
@@ -6022,10 +6025,6 @@
 
 .p-avatar-group .p-avatar {
   border: 2px solid #1f2d40;
-}
-
-.p-avatar-circle {
-  border-radius: 50%;
 }
 
 .p-chip {
