@@ -38,7 +38,7 @@ const LandingPage: Page = () => {
                                 <a
                                     onClick={toggleMenuItemClick}
                                     href="#home"
-                                    className="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
+                                    className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
                                 >
                                     <span>HOME</span>
                                     <Ripple />
@@ -48,7 +48,7 @@ const LandingPage: Page = () => {
                                 <a
                                     href="#features"
                                     onClick={toggleMenuItemClick}
-                                    className="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
+                                    className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
                                 >
                                     <span>MEET DIAMOND</span>
                                     <Ripple />
@@ -59,7 +59,7 @@ const LandingPage: Page = () => {
                                 <a
                                     onClick={toggleMenuItemClick}
                                     href="#theming"
-                                    className="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
+                                    className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
                                 >
                                     <span>THEMING</span>
                                     <Ripple />
@@ -69,7 +69,7 @@ const LandingPage: Page = () => {
                                 <a
                                     onClick={toggleMenuItemClick}
                                     href="#pricing"
-                                    className="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
+                                    className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
                                 >
                                     <span>PRICING</span>
                                     <Ripple />
@@ -79,7 +79,7 @@ const LandingPage: Page = () => {
                                 <a
                                     onClick={toggleMenuItemClick}
                                     href="#pricing"
-                                    className="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
+                                    className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
                                 >
                                     <span>BUY NOW</span>
                                     <Ripple />
@@ -91,21 +91,21 @@ const LandingPage: Page = () => {
                                 <a
                                     href="#contact"
                                     onClick={toggleMenuItemClick}
-                                    className="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
+                                    className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
                                 >
                                     <span>CONTACT</span>
                                     <Ripple />
                                 </a>
                             </li>
                             <li>
-                                <a className="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap">
+                                <a className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap">
                                     <i className="pi pi-github text-2xl lg:text-xl mr-2 lg:mr-0"></i>
                                     <span className="lg:hidden">Github</span>
                                     <Ripple />
                                 </a>
                             </li>
                             <li>
-                                <a className="flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap">
+                                <a className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap">
                                     <i className="pi pi-twitter text-2xl lg:text-xl mr-2 lg:mr-0"></i>
                                     <span className="lg:hidden">Twitter</span>
                                     <Ripple />
@@ -122,7 +122,7 @@ const LandingPage: Page = () => {
                             <p className="w-full md:w-9 text-center md:text-left font-semibold text-white">Modern and elegant responsive application template with a premium look for PrimeReact components.</p>
                             <a
                                 role="button"
-                                className="p-button px-6 py-2 w-15rem flex align-self-center md:align-self-start justify-content-center align-items-center surface-section font-bold cursor-pointer border-none hover:bg-primary-100 shadow-3 md:shadow-none"
+                                className="p-ripple p-button px-6 py-2 w-15rem flex align-self-center md:align-self-start justify-content-center align-items-center surface-section font-bold cursor-pointer border-none hover:bg-primary-100 shadow-3 md:shadow-none"
                                 style={{ color: 'var(--primary-800)' }}
                             >
                                 LEARN MORE
