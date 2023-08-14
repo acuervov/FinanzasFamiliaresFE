@@ -32,13 +32,9 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
                 </Link>
 
                 <span className="topbar-separator"></span>
+
                 <AppBreadCrumb />
-                <img
-                    id="logo-mobile"
-                    className="mobile-logo"
-                    src={`/layout/images/logo-${layoutConfig.colorScheme == 'light' && (layoutConfig.menuTheme === 'white' || layoutConfig.menuTheme === 'orange') ? 'dark' : 'white'}.svg`}
-                    alt="diamond-layout"
-                />
+                <img id="logo-mobile" className="mobile-logo" src={`/layout/images/logo-${layoutConfig.colorScheme == 'light' ? 'dark' : 'white'}.svg`} alt="diamond-layout" />
             </div>
             <div className="layout-topbar-menu-section">
                 <AppSidebar sidebarRef={props.sidebarRef} />
