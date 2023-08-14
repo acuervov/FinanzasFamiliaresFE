@@ -9,7 +9,7 @@ import type { Demo } from '../../../../types/types';
 
 function ProfileCreate() {
     const [countries, setCountries] = useState<Demo.Country[]>([]);
-    const [selectedCountry, setSelectedCountry] = useState<Demo.Country | {}>({});
+    const [selectedCountry, setSelectedCountry] = useState<Demo.Country | {}>(null);
     useEffect(() => {
         setCountries([
             { name: 'Australia', code: 'AU' },
