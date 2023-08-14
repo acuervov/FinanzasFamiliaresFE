@@ -262,7 +262,8 @@ function Files() {
                             itemTemplate={itemTemplate}
                             emptyTemplate={emptyTemplate}
                             maxFileSize={1000000}
-                            invalidFileSizeMessageDetail="Invalid File Size"
+                            invalidFileSizeMessageSummary="Invalid File Size"
+                            invalidFileSizeMessageDetail="Max Size: 1MB"
                         />
                     </div>
                 </div>
