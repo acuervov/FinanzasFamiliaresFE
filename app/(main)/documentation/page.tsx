@@ -69,7 +69,8 @@ const Documentation = () => {
 
             <pre className="app-code">
                 <code>
-                    {`import React, { useState } from 'react';
+                    {`"use client"
+import React, { useState } from 'react';
 import Head from 'next/head';
 
 export const LayoutContext = React.createContext();
@@ -77,7 +78,7 @@ export const LayoutContext = React.createContext();
 export const LayoutProvider = (props) => {
     const [breadcrumbs, setBreadcrumbs] = useState({});
     const [layoutConfig, setLayoutConfig] = useState({
-        ripple: false,                      //toggles ripple on and off
+        ripple: true,                      //toggles ripple on and off
         inputStyle: 'outlined',             //default style for input elements
         menuMode: 'static',                 //layout mode of the menu, valid values are "static", "overlay", "slim", "compact", "reveal", "drawer" and "horizontal"
         colorScheme: 'light',               //color scheme of the template, valid values are "light", "dim" and "dark"
@@ -193,6 +194,56 @@ $highlightTextColor: $primaryDarkerColor !default;
             </pre>
 
             <p className="text-sm">*Note: The sass command above is supported by Dart Sass. Please use Dart Sass instead of Ruby Sass.</p>
+
+            <h5>Menu Theme</h5>
+            <p>Menu skin has 13 alternatives to choose from in light mode, note that in dark and dim modes menu theme is not applied by design. Possible values for the menu theme are the following.</p>
+            <ul className="pl-5 line-height-3">
+                <li>blue</li>
+                <li>bluegray</li>
+                <li>brown</li>
+                <li>cyan</li>
+                <li>darkgray</li>
+                <li>deeppurple</li>
+                <li>green</li>
+                <li>indigo</li>
+                <li>orange</li>
+                <li>pink</li>
+                <li>purple</li>
+                <li>teal</li>
+                <li>white</li>
+            </ul>
+
+            <p>A custom menu theme can be developed by steps below.</p>
+            <ul className="pl-5 line-height-3">
+                <li>Choose a custom theme name such as &lsquo;mymenu&lsquo;.</li>
+                <li>
+                    Create a file named &lsquo;_mymenu.scss&lsquo; under <span className="font-semibold">styles/layout/sidebar/themes</span> folder.
+                </li>
+                <li>Define the variables listed below in your file.</li>
+                <li>
+                    Import the file at <span className="font-semibold">styles/layout/layout.scss</span>.
+                </li>
+                <li>Configure the menutheme property at layoutservice with the name of your sidebar theme e.g. mymenu.</li>
+            </ul>
+
+            <pre className="app-code">
+                <code>
+                    {`
+ .layout-sidebar-mymenu &#123;
+    --d-sidebar-bg-color:#2196F3; 
+    --d-sidebar-bg-color-alt:#1769aa;
+    --d-sidebar-border:0 none;
+    --d-app-name-color:#ffffff; 
+    --d-menu-separator-border: 1px solid rgba(255,255,255,0.2);
+    --d-menuitem-root-text-color: rgba(255,255,255,0.6);
+    --d-menuitem-text-color: rgba(255,255,255,0.8);
+    --d-menuitem-hover-bg: rgba(255,255,255,0.1);
+    --d-menuitem-active-bg: rgba(255,255,255,0.1);
+    --d-menuitem-text-active-color: #ffffff;
+    --d-menuitem-focus-shadow: 0 0 0 0.2rem rgba(255,255,255,0.1); &#125;
+                        `}
+                </code>
+            </pre>
 
             <h4>Figma Design</h4>
             <p>
