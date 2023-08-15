@@ -117,8 +117,8 @@ const CalendarDemo: Page = () => {
     const selectedItemTemplate = () => {
         return (
             <div className="flex align-items-center">
-                <div className="flex-shrink-0 w-1rem h-1rem mr-2 border-circle" style={{ backgroundColor: changedEvent.tag?.color }}></div>
-                <div>{changedEvent.tag?.name}</div>
+                <div className="flex-shrink-0 w-1rem h-1rem mr-2 border-circle" style={{ backgroundColor: changedEvent.tag?.color || '#FFB6B6' }}></div>
+                <div>{changedEvent.tag?.name || 'Company A'}</div>
             </div>
         );
     };
@@ -322,6 +322,7 @@ const CalendarDemo: Page = () => {
                                                 }))
                                             }
                                             optionLabel="name"
+                                            placeholder="Select a Tag"
                                             valueTemplate={selectedItemTemplate}
                                             itemTemplate={itemOptionTemplate}
                                         />
