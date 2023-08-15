@@ -93,7 +93,7 @@ const AppMailDetail = ({ params }: { params: { mailId: string } }) => {
                             onTextChange={(e) =>
                                 setNewMail((prevState) => ({
                                     ...prevState,
-                                    message: e.htmlValue ?? ''
+                                    message: e.textValue ?? ''
                                 }))
                             }
                         ></Editor>
