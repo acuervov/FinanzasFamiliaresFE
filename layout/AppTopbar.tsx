@@ -27,8 +27,8 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
                     <i className="pi pi-chevron-left"></i>
                 </button>
 
-                <Link href="/">
-                    <img id="logo-horizontal" className="horizontal-logo" src={`/layout/images/logo-${layoutConfig.menuTheme === 'white' || layoutConfig.menuTheme === 'orange' ? 'dark' : 'white'}.svg`} alt="diamond-layout" />
+                <Link href="/" className="horizontal-logo">
+                    <img id="logo-horizontal" src={`/layout/images/logo-${layoutConfig.menuTheme === 'white' || layoutConfig.menuTheme === 'orange' ? 'dark' : 'white'}.svg`} alt="diamond-layout" />
                 </Link>
 
                 <span className="topbar-separator"></span>

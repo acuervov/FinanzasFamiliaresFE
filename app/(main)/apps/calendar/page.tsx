@@ -143,7 +143,7 @@ const CalendarDemo: Page = () => {
         <div className="grid">
             <div className="col-12">
                 <div className="card">
-                <h5>Calendar</h5>
+                    <h5>Calendar</h5>
                     <FullCalendar
                         events={events}
                         eventClick={onEventClick}
