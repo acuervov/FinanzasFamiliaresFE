@@ -41,11 +41,13 @@ const AppMailDetail = ({ params }: { params: { mailId: string } }) => {
         if (newMail.message) {
             setNewMail((prevState) => ({
                 ...prevState,
+                from: mail.from,
                 to: mail!.from ? mail!.from : mail!.to,
-                image: mail!.image
+                image: mail!.image,
+                title: mail!.title
             }));
 
-            onSend(newMail);
+            onSend({ ...newMail, from: mail.from, to: mail!.from ? mail!.from : mail!.to, image: mail!.image, title: mail!.title });
             toast.current?.show({
                 severity: 'success',
                 summary: 'Success',
