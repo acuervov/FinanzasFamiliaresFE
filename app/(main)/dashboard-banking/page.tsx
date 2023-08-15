@@ -277,7 +277,7 @@ const Banking = () => {
                             </div>
                             <img src={`/demo/images/dashboard/${metric.image}.svg`} className="absolute w-full bottom-0 left-0" alt="metric.image" />
                             {hoveredIndex === index && (
-                                <Button label="View Details" icon="pi pi-eye" iconPos="right" rounded severity="secondary" className="p-ripple font-semibold absolute" style={{ borderRadius: '50px', left: '36%', bottom: '10%' }} />
+                                <Button label="View Details" icon="pi pi-eye" iconPos="right" rounded severity="secondary" className="p-ripple fadeindown font-semibold absolute" style={{ borderRadius: '50px', left: '36%', bottom: '10%' }} />
                             )}
                         </div>
                     </div>
