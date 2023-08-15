@@ -5,12 +5,16 @@ import { classNames } from 'primereact/utils';
 import { usePathname, useRouter } from 'next/navigation';
 import { MailContext } from './context/mailcontext';
 import type { AppMailSidebarItem, Demo } from '../../../../types/types';
+import { LayoutContext } from '../../../../layout/context/layoutcontext';
 
 function AppMailSidebar() {
     const [items, setItems] = useState<AppMailSidebarItem[]>([]);
+    const { layoutConfig } = useContext(LayoutContext);
     const router = useRouter();
     const pathname = usePathname();
     const { mails } = useContext(MailContext);
+
+    const isDark = layoutConfig.colorScheme === 'dark' || layoutConfig.colorScheme === 'dim';
 
     const navigate = (item: AppMailSidebarItem) => {
         if (item.to) {
@@ -129,8 +133,20 @@ function AppMailSidebar() {
                                     })}
                                     onClick={() => navigate(item)}
                                 >
-                                    <i className={classNames('md:mr-3 text-600 transition-duration-150 text-lg', item.icon || '', { 'text-primary-50': pathname === item.to })}></i>
-                                    <span className={classNames('text-900 font-medium hidden md:inline', { 'text-primary-50': pathname === item.to })}>{item.label}</span>
+                                    <i
+                                        className={classNames('md:mr-3 text-600 transition-duration-150 text-lg', item.icon || '', {
+                                            'text-primary-50': pathname === item.to && !isDark,
+                                            'text-primary-900': pathname === item.to && isDark
+                                        })}
+                                    ></i>
+                                    <span
+                                        className={classNames('text-900 font-medium hidden md:inline', {
+                                            'text-primary-50': pathname === item.to && !isDark,
+                                            'text-primary-900': pathname === item.to && isDark
+                                        })}
+                                    >
+                                        {item.label}
+                                    </span>
                                     {item.badge ? (
                                         <span className="ml-auto text-sm font-semibold bg-primary-50 text-primary-900 px-2 py-1 hidden md:inline" style={{ borderRadius: '2rem' }}>
                                             {item.badge}
