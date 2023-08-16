@@ -10,6 +10,7 @@
         padding: $dialogHeaderPadding;
         border-top-right-radius: $borderRadius;
         border-top-left-radius: $borderRadius;
+        
 
         .p-dialog-title {
             font-weight: $dialogHeaderFontWeight;
@@ -30,6 +31,8 @@
         background: $overlayContentBg;
         color: $panelContentTextColor;
         padding: $dialogContentPadding;
+        border-top-left-radius: $borderRadius;
+        border-top-right-radius: $borderRadius;
 
         &:last-of-type {
             border-bottom-right-radius: $borderRadius;

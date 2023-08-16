@@ -4378,6 +4378,8 @@
   background: #1e1e1e;
   color: rgba(255, 255, 255, 0.87);
   padding: 0 1.5rem 2rem 1.5rem;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 .p-dialog .p-dialog-content:last-of-type {
   border-bottom-right-radius: 4px;
@@ -4701,22 +4703,22 @@
     margin: auto 0;
   }
   .p-dock.p-dock-magnification.p-dock-top .p-dock-item-second-prev,
-  .p-dock.p-dock-magnification.p-dock-top .p-dock-item-second-next,
-  .p-dock.p-dock-magnification.p-dock-top .p-dock-item-prev,
-  .p-dock.p-dock-magnification.p-dock-top .p-dock-item-next,
-  .p-dock.p-dock-magnification.p-dock-top .p-dock-item-current, .p-dock.p-dock-magnification.p-dock-bottom .p-dock-item-second-prev,
-  .p-dock.p-dock-magnification.p-dock-bottom .p-dock-item-second-next,
-  .p-dock.p-dock-magnification.p-dock-bottom .p-dock-item-prev,
-  .p-dock.p-dock-magnification.p-dock-bottom .p-dock-item-next,
-  .p-dock.p-dock-magnification.p-dock-bottom .p-dock-item-current, .p-dock.p-dock-magnification.p-dock-left .p-dock-item-second-prev,
-  .p-dock.p-dock-magnification.p-dock-left .p-dock-item-second-next,
-  .p-dock.p-dock-magnification.p-dock-left .p-dock-item-prev,
-  .p-dock.p-dock-magnification.p-dock-left .p-dock-item-next,
-  .p-dock.p-dock-magnification.p-dock-left .p-dock-item-current, .p-dock.p-dock-magnification.p-dock-right .p-dock-item-second-prev,
-  .p-dock.p-dock-magnification.p-dock-right .p-dock-item-second-next,
-  .p-dock.p-dock-magnification.p-dock-right .p-dock-item-prev,
-  .p-dock.p-dock-magnification.p-dock-right .p-dock-item-next,
-  .p-dock.p-dock-magnification.p-dock-right .p-dock-item-current {
+.p-dock.p-dock-magnification.p-dock-top .p-dock-item-second-next,
+.p-dock.p-dock-magnification.p-dock-top .p-dock-item-prev,
+.p-dock.p-dock-magnification.p-dock-top .p-dock-item-next,
+.p-dock.p-dock-magnification.p-dock-top .p-dock-item-current, .p-dock.p-dock-magnification.p-dock-bottom .p-dock-item-second-prev,
+.p-dock.p-dock-magnification.p-dock-bottom .p-dock-item-second-next,
+.p-dock.p-dock-magnification.p-dock-bottom .p-dock-item-prev,
+.p-dock.p-dock-magnification.p-dock-bottom .p-dock-item-next,
+.p-dock.p-dock-magnification.p-dock-bottom .p-dock-item-current, .p-dock.p-dock-magnification.p-dock-left .p-dock-item-second-prev,
+.p-dock.p-dock-magnification.p-dock-left .p-dock-item-second-next,
+.p-dock.p-dock-magnification.p-dock-left .p-dock-item-prev,
+.p-dock.p-dock-magnification.p-dock-left .p-dock-item-next,
+.p-dock.p-dock-magnification.p-dock-left .p-dock-item-current, .p-dock.p-dock-magnification.p-dock-right .p-dock-item-second-prev,
+.p-dock.p-dock-magnification.p-dock-right .p-dock-item-second-next,
+.p-dock.p-dock-magnification.p-dock-right .p-dock-item-prev,
+.p-dock.p-dock-magnification.p-dock-right .p-dock-item-next,
+.p-dock.p-dock-magnification.p-dock-right .p-dock-item-current {
     transform: none;
     margin: 0;
   }
