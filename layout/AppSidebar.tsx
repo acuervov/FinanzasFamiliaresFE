@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react';
 import AppMenu from './AppMenu';
 import { LayoutContext } from './context/layoutcontext';
 import { MenuProvider } from './context/menucontext';
+import { classNames } from 'primereact/utils';
 
 const AppSidebar = (props: { sidebarRef: React.RefObject<HTMLDivElement> }) => {
     const { setLayoutState, layoutConfig, layoutState } = useContext(LayoutContext);
@@ -91,7 +92,11 @@ const AppSidebar = (props: { sidebarRef: React.RefObject<HTMLDivElement> }) => {
                         </div>
                         <span className="app-name">DIAMOND</span>
                     </Link>
-                    <button className="layout-sidebar-anchor p-link" type="button" onClick={anchor}></button>
+                    <button
+                        className={classNames('layout-sidebar-anchor p-link', { 'border-900': logoColor() === 'dark' && layoutState.anchored }, { 'border-200': logoColor() !== 'dark' && layoutState.anchored })}
+                        type="button"
+                        onClick={anchor}
+                    ></button>
                 </div>
                 <div className="layout-menu-container">
                     <MenuProvider>
