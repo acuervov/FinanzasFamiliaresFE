@@ -121,7 +121,7 @@ const ChatBox = (props: ChatBoxProps) => {
             <div className="flex flex-column h-full">
                 <div className="flex align-items-center border-bottom-1 surface-border p-3 lg:p-6">
                     <div className="relative flex align-items-center mr-3">
-                        {/* <img src={`/demo/images/avatar/${props.user.image}`} alt={props.user.name} className="w-4rem h-4rem border-circle shadow-4" /> */}
+                        <img src={`/demo/images/avatar/${props.user.image}`} alt={props.user.name} className="w-4rem h-4rem border-circle shadow-4" />
                         <span
                             className={classNames('w-1rem h-1rem border-circle border-2 surface-border absolute bottom-0 right-0', {
                                 'bg-green-400': props.user.status === 'active',
