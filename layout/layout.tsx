@@ -10,12 +10,13 @@ import AppConfig from './AppConfig';
 import AppSearch from './AppSearch';
 import AppBreadCrumb from './AppBreadCrumb';
 import AppRightMenu from './AppRightMenu';
-import PrimeReact from 'primereact/api';
+import { PrimeReactContext } from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
 import { ChildContainerProps } from '../types/types';
 
 const Layout = (props: ChildContainerProps) => {
     const { layoutConfig, layoutState, setLayoutState, isSlim, isCompact, isHorizontal, isDesktop } = useContext(LayoutContext);
+    const { setRipple } = useContext(PrimeReactContext);
     const topbarRef = useRef(null);
     const sidebarRef = useRef(null);
     const copyTooltipRef = useRef(null);
@@ -68,7 +69,7 @@ const Layout = (props: ChildContainerProps) => {
         }
     };
     useMountEffect(() => {
-        PrimeReact.ripple = true;
+        setRipple(layoutConfig.ripple);
     });
 
     useEffect(() => {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { classNames } from 'primereact/utils';
-import PrimeReact from 'primereact/api';
+import { PrimeReactContext } from 'primereact/api';
 import { RadioButton, RadioButtonChangeEvent } from 'primereact/radiobutton';
 import { InputSwitch, InputSwitchChangeEvent } from 'primereact/inputswitch';
 import { Button } from 'primereact/button';
@@ -13,6 +13,7 @@ import { AppConfigProps, ColorScheme, MenuTheme } from '../types/layout';
 
 const AppConfig = (props: AppConfigProps) => {
     const { layoutConfig, setLayoutConfig, layoutState, setLayoutState, isSlim, isHorizontal, isCompact } = useContext(LayoutContext);
+    const { setRipple, changeTheme } = useContext(PrimeReactContext);
     const scales = [12, 13, 14, 15, 16];
     const menuThemes: MenuTheme[] = [
         {
@@ -119,7 +120,7 @@ const AppConfig = (props: AppConfigProps) => {
     };
 
     const changeRipple = (e: InputSwitchChangeEvent) => {
-        PrimeReact.ripple = e.value;
+        setRipple(e.value);
         setLayoutConfig((prevState) => ({ ...prevState, ripple: e.value }));
     };
 
@@ -132,13 +133,13 @@ const AppConfig = (props: AppConfigProps) => {
     };
 
     const changeColorScheme = (colorScheme: ColorScheme) => {
-        PrimeReact.changeTheme(layoutConfig.colorScheme, colorScheme, 'theme-link', () => {
+        changeTheme(layoutConfig.colorScheme, colorScheme, 'theme-link', () => {
             setLayoutConfig((prevState) => ({ ...prevState, colorScheme }));
         });
     };
 
-    const changeTheme = (theme: string) => {
-        PrimeReact.changeTheme(layoutConfig.theme, theme, 'theme-link', () => {
+    const _changeTheme = (theme: string) => {
+        changeTheme(layoutConfig.theme, theme, 'theme-link', () => {
             setLayoutConfig((prevState) => ({ ...prevState, theme }));
         });
     };
@@ -152,7 +153,7 @@ const AppConfig = (props: AppConfigProps) => {
                             <a
                                 className="w-2rem h-2rem shadow-2 cursor-pointer hover:shadow-4 border-round transition-duration-150 flex align-items-center justify-content-center"
                                 style={{ cursor: 'pointer', backgroundColor: theme.color }}
-                                onClick={() => changeTheme(theme.name)}
+                                onClick={() => _changeTheme(theme.name)}
                             >
                                 {layoutConfig.theme === theme.name && (
                                     <span className="check flex align-items-center justify-content-center">
