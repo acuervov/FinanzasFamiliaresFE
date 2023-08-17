@@ -1,5 +1,10 @@
 # Changelog
+## 10.0.0
 
+-   Upgrade to Next 13.4.8
+-   Migrate to Next App Roter
+-   Update to PrimeReact 9.6.2
+-   Update other dependencies
 ## 9.1.0
 
 - Reimplemented as a Next.js project
