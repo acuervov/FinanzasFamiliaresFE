@@ -246,6 +246,7 @@
 }
 .p-autocomplete .p-autocomplete-multiple-container {
   padding: 0.25rem 0.5rem;
+  gap: 0.5rem;
 }
 .p-autocomplete .p-autocomplete-multiple-container:not(.p-disabled):hover {
   border-color: #7986CB;
@@ -686,6 +687,7 @@
 
 .p-chips .p-chips-multiple-container {
   padding: 0.25rem 0.5rem;
+  gap: 0.5rem;
 }
 .p-chips .p-chips-multiple-container:not(.p-disabled):hover {
   border-color: #7986CB;
@@ -699,7 +701,7 @@
 .p-chips .p-chips-multiple-container .p-chips-token {
   padding: 0.25rem 0.5rem;
   margin-right: 0.5rem;
-  background: #304562;
+  background: rgba(121, 134, 203, 0.16);
   color: rgba(255, 255, 255, 0.87);
   border-radius: 16px;
 }
@@ -2331,6 +2333,12 @@
 }
 .p-splitbutton.p-button-lg > .p-button .p-button-icon {
   font-size: 1.25rem;
+}
+.p-splitbutton .p-splitbutton-menubutton,
+.p-splitbutton .p-splitbutton.p-button-rounded > .p-splitbutton-menubutton.p-button,
+.p-splitbutton .p-splitbutton.p-button-outlined > .p-splitbutton-menubutton.p-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .p-splitbutton.p-button-secondary.p-button-outlined > .p-button {
@@ -4746,6 +4754,7 @@
 }
 .p-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link .p-submenu-icon {
   color: rgba(255, 255, 255, 0.6);
+  margin-left: 0.5rem;
 }
 .p-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link:not(.p-disabled):hover {
   background: rgba(255, 255, 255, 0.03);
@@ -4763,6 +4772,9 @@
   outline: 0 none;
   outline-offset: 0;
   box-shadow: inset 0 0 0 1px #a1aadb;
+}
+.p-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link > .p-submenu-icon {
+  margin-left: auto;
 }
 .p-megamenu .p-megamenu-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link,
 .p-megamenu .p-megamenu-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover {
@@ -5066,6 +5078,7 @@
 }
 .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-submenu-icon {
   color: rgba(255, 255, 255, 0.6);
+  margin-left: 0.5rem;
 }
 .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:not(.p-disabled):hover {
   background: rgba(255, 255, 255, 0.03);
@@ -6021,6 +6034,10 @@
 }
 .p-avatar.p-avatar-xl .p-avatar-icon {
   font-size: 2rem;
+}
+
+.p-avatar-circle {
+  border-radius: 50%;
 }
 
 .p-avatar-group .p-avatar {
