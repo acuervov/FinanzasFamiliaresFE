@@ -31,8 +31,8 @@ const CalendarDemo: Page = () => {
         textColor: '',
         description: '',
         tag: {
-            name: '',
-            color: ''
+            name: 'Company A',
+            color: '#FFB6B6'
         }
     });
     const onEventClick = (e: EventClickArg) => {
@@ -108,8 +108,8 @@ const CalendarDemo: Page = () => {
             textColor: '',
             description: '',
             tag: {
-                name: '',
-                color: ''
+                name: 'Company A',
+                color: '#FFB6B6'
             }
         });
     };
