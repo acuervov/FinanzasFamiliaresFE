@@ -12,7 +12,7 @@ const ChartDemo = () => {
 
     useEffect(() => {
         const documentStyle = getComputedStyle(document.documentElement);
-        const textColor = documentStyle.getPropertyValue('--text-color') || ' #495057';
+        const textColor = documentStyle.getPropertyValue('--text-color') || '#495057';
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary') || '#6c757d';
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border') || '#dee2e6';
         const barData: ChartData = {
@@ -20,14 +20,14 @@ const ChartDemo = () => {
             datasets: [
                 {
                     label: 'My First dataset',
-                    backgroundColor: documentStyle.getPropertyValue('--primary-500') || '#3f51b5',
-                    borderColor: documentStyle.getPropertyValue('--primary-500') || '#3f51b5',
+                    backgroundColor: documentStyle.getPropertyValue('--primary-500') || '#2196f3',
+                    borderColor: documentStyle.getPropertyValue('--primary-500') || '#2196f3',
                     data: [65, 59, 80, 81, 56, 55, 40]
                 },
                 {
                     label: 'My Second dataset',
-                    backgroundColor: documentStyle.getPropertyValue('--primary-200') || '#acb4df',
-                    borderColor: documentStyle.getPropertyValue('--primary-200') || '#acb4df',
+                    backgroundColor: documentStyle.getPropertyValue('--primary-200') || '#a0d2fa',
+                    borderColor: documentStyle.getPropertyValue('--primary-200') || '#a0d2fa',
                     data: [28, 48, 40, 19, 86, 27, 90]
                 }
             ]
@@ -99,16 +99,16 @@ const ChartDemo = () => {
                     label: 'First Dataset',
                     data: [65, 59, 80, 81, 56, 55, 40],
                     fill: false,
-                    backgroundColor: documentStyle.getPropertyValue('--primary-500'),
-                    borderColor: documentStyle.getPropertyValue('--primary-500'),
+                    backgroundColor: documentStyle.getPropertyValue('--primary-500') || '#2196f3',
+                    borderColor: documentStyle.getPropertyValue('--primary-500') || '#2196f3',
                     tension: 0.4
                 },
                 {
                     label: 'Second Dataset',
                     data: [28, 48, 40, 19, 86, 27, 90],
                     fill: false,
-                    backgroundColor: documentStyle.getPropertyValue('--primary-200'),
-                    borderColor: documentStyle.getPropertyValue('--primary-200'),
+                    backgroundColor: documentStyle.getPropertyValue('--primary-200') || '#a0d2fa',
+                    borderColor: documentStyle.getPropertyValue('--primary-200') || '#a0d2fa',
                     tension: 0.4
                 }
             ]
@@ -152,7 +152,12 @@ const ChartDemo = () => {
             datasets: [
                 {
                     data: [11, 16, 7, 3],
-                    backgroundColor: [documentStyle.getPropertyValue('--indigo-500'), documentStyle.getPropertyValue('--purple-500'), documentStyle.getPropertyValue('--teal-500'), documentStyle.getPropertyValue('--orange-500')],
+                    backgroundColor: [
+                        documentStyle.getPropertyValue('--indigo-500') || '#3f51b5',
+                        documentStyle.getPropertyValue('--purple-500') || '#9c27b0',
+                        documentStyle.getPropertyValue('--teal-500') || '#009688',
+                        documentStyle.getPropertyValue('--orange-500') || '#f57c00'
+                    ],
                     label: 'My dataset'
                 }
             ],

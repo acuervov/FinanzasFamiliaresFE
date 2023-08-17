@@ -41,13 +41,13 @@ const AppMailDetail = ({ params }: { params: { mailId: string } }) => {
         if (newMail.message) {
             setNewMail((prevState) => ({
                 ...prevState,
-                from: mail.from,
+                from: mail!.from,
                 to: mail!.from ? mail!.from : mail!.to,
                 image: mail!.image,
                 title: mail!.title
             }));
 
-            onSend({ ...newMail, from: mail.from, to: mail!.from ? mail!.from : mail!.to, image: mail!.image, title: mail!.title });
+            onSend({ ...newMail, from: mail!.from, to: mail!.from ? mail!.from : mail!.to, image: mail!.image, title: mail!.title });
             toast.current?.show({
                 severity: 'success',
                 summary: 'Success',
@@ -73,7 +73,7 @@ const AppMailDetail = ({ params }: { params: { mailId: string } }) => {
                     <Toast ref={toast}></Toast>
                     <div className="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-5 pt-5 md:pt-0 gap-4 md:border-top-none border-top-1 surface-border">
                         <div className="flex align-items-center md:justify-content-start">
-                            <Button type="button" icon="pi pi-chevron-left" className="p-button-plain md:mr-3" text onClick={goBack}></Button>
+                            <Button type="button" icon="pi pi-chevron-left" text className="p-button-plain md:mr-3" onClick={goBack}></Button>
                             {mail && mail.image ? <Avatar image={'/demo/images/avatar/' + mail.image} size="large" shape="circle" className="border-2 surface-border"></Avatar> : null}
                             <div className="flex flex-column mx-3">
                                 <span className="block text-900 font-bold text-lg">{mail.from}</span>
@@ -82,8 +82,8 @@ const AppMailDetail = ({ params }: { params: { mailId: string } }) => {
                         </div>
                         <div className="flex align-items-center justify-content-end column-gap-3 px-4 md:px-0">
                             <span className="text-900 font-semibold white-space-nowrap mr-auto">{mail.date}</span>
-                            <Button type="button" icon="pi pi-reply" className=" p-button-plain flex-shrink-0" text></Button>
-                            <Button type="button" icon="pi pi-ellipsis-v" className=" p-button-plain flex-shrink-0" text></Button>
+                            <Button type="button" icon="pi pi-reply" text className="p-button-plain flex-shrink-0"></Button>
+                            <Button type="button" icon="pi pi-ellipsis-v" text className="p-button-plain flex-shrink-0"></Button>
                         </div>
                     </div>
                     <div className="surface-border border-1 border-round p-4">

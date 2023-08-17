@@ -133,13 +133,13 @@ const OverlayDemo = () => {
                         <h5>Overlay Panel</h5>
                         <div className="flex flex-wrap gap-2">
                             <div>
-                                <Button type="button" label="Image" onClick={toggle} outlined />
+                                <Button type="button" label="Image" onClick={toggle} severity="success" />
                                 <OverlayPanel ref={op} appendTo={typeof window !== 'undefined' ? document.body : null} showCloseIcon>
                                     <img src="/demo/images/nature/nature9.jpg" alt="nature1" />
                                 </OverlayPanel>
                             </div>
                             <div>
-                                <Button type="button" label="DataTable" onClick={toggleDataTable} outlined />
+                                <Button type="button" label="DataTable" onClick={toggleDataTable} severity="success" />
                                 <OverlayPanel ref={op2} appendTo={typeof window !== 'undefined' ? document.body : null} showCloseIcon id="overlay_panel" style={{ width: '450px' }}>
                                     <DataTable value={products} selection={selectedProduct || undefined} onSelectionChange={onSelectionChange} selectionMode="single" responsiveLayout="scroll" paginator rows={5} onRowSelect={onProductSelect}>
                                         <Column field="name" header="Name" sortable headerStyle={{ minWidth: '10rem' }} />

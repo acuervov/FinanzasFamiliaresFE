@@ -1,10 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useContext } from 'react';
-
 import { MailContext } from '../../../../../../demo/components/apps/mail/context/mailcontext';
 import AppMailTable from '../../../../../../demo/components/apps/mail/AppMailTable';
-
 import type { Demo, Page } from '../../../../../../types/types';
 
 const MailStarred: Page = () => {

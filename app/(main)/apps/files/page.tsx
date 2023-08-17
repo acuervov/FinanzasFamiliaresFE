@@ -51,8 +51,8 @@ function Files() {
     const uploadBodyCenter = () => {
         return (
             <div className="text-center">
-                <Button icon="pi pi-times" className="mr-2" text rounded severity="danger"></Button>
-                <Button icon="pi pi-search" text rounded></Button>
+                <Button icon="pi pi-times" rounded text severity="danger" className="mr-2"></Button>
+                <Button icon="pi pi-search" rounded text></Button>
             </div>
         );
     };
@@ -91,8 +91,8 @@ function Files() {
                         id={fileObject.name}
                         type="button"
                         icon="pi pi-times"
-                        className="hover:flex text-sm absolute justify-content-center align-items-center cursor-pointer"
                         rounded
+                        className="hover:flex text-sm absolute justify-content-center align-items-center cursor-pointer"
                         style={{ top: '-10px', right: '-10px', display: 'none' }}
                         onClick={(event) => {
                             event.stopPropagation();
@@ -192,7 +192,7 @@ function Files() {
                             <div className="flex align-items-center justify-content-between mb-3">
                                 <span className="text-900 text-xl font-semibold">{metric.title}</span>
                                 <div>
-                                    <Button icon={metric.icon} size="small" text rounded onClick={(event) => menu.current?.toggle(event)}></Button>
+                                    <Button icon={metric.icon} size="small" rounded text onClick={(event) => menu.current?.toggle(event)}></Button>
                                     <Menu ref={menu} popup appendTo="self" model={menuItems}></Menu>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@ function Files() {
                         <Chart type="doughnut" plugins={[chartPlugin]} id="country-chart" data={chartData as ChartData} options={chartOptions as ChartOptions<'doughnut'>} style={{ width: '75%' }}></Chart>
                     </div>
                     <div className="mt-5 flex gap-3">
-                        <Button icon="pi pi-search" className="flex-1" outlined label="Details"></Button>
+                        <Button icon="pi pi-search" outlined className="flex-1" label="Details"></Button>
                         <Button icon="pi pi-upload" className="flex-1" label="Upgrade"></Button>
                     </div>
                 </div>

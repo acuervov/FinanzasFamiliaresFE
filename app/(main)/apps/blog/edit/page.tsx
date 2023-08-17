@@ -79,14 +79,14 @@ function BlogEdit() {
                             <div className="surface-100 p-3 flex align-items-center border-round">
                                 <span className="text-900 font-semibold mr-3">Status:</span>
                                 <span className="font-medium">Draft</span>
-                                <Button type="button" icon="pi pi-fw pi-pencil" className="ml-auto" text rounded></Button>
+                                <Button type="button" icon="pi pi-fw pi-pencil" rounded text className="ml-auto"></Button>
                             </div>
                         </div>
                         <div className="p-3">
                             <div className="surface-100 p-3 flex align-items-center border-round">
                                 <span className="text-900 font-semibold mr-3">Visibility:</span>
                                 <span className="font-medium">Private</span>
-                                <Button type="button" icon="pi pi-fw pi-pencil" className="ml-auto" text rounded></Button>
+                                <Button type="button" icon="pi pi-fw pi-pencil" rounded text className="ml-auto"></Button>
                             </div>
                         </div>
                     </div>
