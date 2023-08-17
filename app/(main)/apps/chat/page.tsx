@@ -178,7 +178,7 @@ const ChatBox = (props: ChatBoxProps) => {
                 <div className="p-3 md:p-4 lg:p-6 flex flex-column sm:flex-row align-items-center mt-auto border-top-1 surface-border gap-3">
                     <InputText id="message" type="text" placeholder="Type a message" className="flex-1 w-full sm:w-auto border-round" value={textContent} onChange={(e) => setTextContent(e.target.value)} onKeyDown={handleInputTextKeyDown} />
                     <div className="flex w-full sm:w-auto gap-3">
-                        <Button className="w-full sm:w-auto justify-content-center text-xl" security='secondary' onClick={(event) => op.current?.toggle(event)}>
+                        <Button className="w-full sm:w-auto justify-content-center text-xl" security="secondary" onClick={(event) => op.current?.toggle(event)}>
                             😀
                         </Button>
                         <Button label="Send" icon="pi pi-send" className="w-full sm:w-auto" onClick={() => _sendMessage()}></Button>

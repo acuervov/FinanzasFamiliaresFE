@@ -102,7 +102,7 @@ const AppMailDetail = ({ params }: { params: { mailId: string } }) => {
                         <div className="flex column-gap-3 justify-content-end p-5 border-top-1 surface-border">
                             <Button type="button" outlined icon="pi pi-image"></Button>
                             <Button type="button" outlined icon="pi pi-paperclip"></Button>
-                            <Button type="button"  icon="pi pi-send" label="Send" onClick={sendMail}></Button>
+                            <Button type="button" icon="pi pi-send" label="Send" onClick={sendMail}></Button>
                         </div>
                     </div>
                 </>

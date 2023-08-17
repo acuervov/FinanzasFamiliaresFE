@@ -163,7 +163,7 @@ declare namespace Demo {
         name: string;
         description: string;
         image?: string;
-        price?: number;
+        price?: number | string;
         category?: string;
         quantity?: number;
         inventoryStatus?: InventoryStatus;

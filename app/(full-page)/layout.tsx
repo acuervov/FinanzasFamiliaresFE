@@ -1,7 +1,11 @@
 import AppConfig from '../../layout/AppConfig';
 import React from 'react';
 
-export default function SimpleLayout({ children }) {
+interface FullPageLayoutProps {
+    children: React.ReactNode;
+}
+
+export default function FullPageLayout({ children }: FullPageLayoutProps) {
     return (
         <React.Fragment>
             {children}

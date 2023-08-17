@@ -101,7 +101,7 @@ const OverlayDemo = () => {
             }}
         />
     );
-    const priceBodyTemplate = (data: Demo.Product) => formatCurrency(data.price ?? 0);
+    const priceBodyTemplate = (data: Demo.Product) => formatCurrency((data.price as number) ?? 0);
     const confirmationDialogFooter = (
         <>
             <Button type="button" label="No" icon="pi pi-times" onClick={() => setDisplayConfirmation(false)} text />

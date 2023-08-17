@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './index.module.css';
 
 const Documentation = () => {
     return (
@@ -11,8 +10,13 @@ const Documentation = () => {
                 <a href="https://nextjs.org/" className="font-medium hover:underline">
                     NextJS
                 </a>{' '}
-                framework. Current versions is Next v13, React v18 with PrimeReact v9.
+                framework with new{' '}
+                <a href="https://nextjs.org/docs/app" className="font-medium hover:underline">
+                    App Router
+                </a>
+                . Current versions is Next v13, React v18 with PrimeReact v9.
             </p>
+            <p>To get started, extract the contents of the zip file, cd to the directory and install the dependencies with npm or yarn.</p>
             <pre className="app-code">
                 <code>{`"npm install" or "yarn"`}</code>
             </pre>
@@ -30,7 +34,7 @@ const Documentation = () => {
 
             <pre className="app-code">
                 <code>
-                    {`"primereact": "^9.2.3",                    //required: PrimeReact components
+                    {`"primereact": "^9.6.2",                    //required: PrimeReact components
 "primeicons": "^6.0.1",                    //required: Icons
 "primeflex": "^3.3.0",                     //required: Utility CSS classes`}
                 </code>
@@ -38,6 +42,14 @@ const Documentation = () => {
 
             <h5>Structure</h5>
             <p>Diamond consists of a couple folders, demos and core has been separated so that you can easily remove what is not necessary for your application.</p>
+            <p>
+                There are two{' '}
+                <a href="https://nextjs.org/docs/app/building-your-application/routing/route-groups" className="font-medium hover:underline">
+                    root groups
+                </a>{' '}
+                under the app folder; <span className="text-primary font-medium">{`(main)`}</span> represents the pages that reside in the main dashboard layout whereas <span className="text-primary font-medium">{`(full-page)`}</span> groups the
+                pages with full page content such as landing page or a login page.
+            </p>
             <ul className="line-height-3">
                 <li>
                     <span className="text-primary font-medium">layout</span>: Main layout files, needs to be present
@@ -46,7 +58,7 @@ const Documentation = () => {
                     <span className="text-primary font-medium">demo</span>: Contains demo related utilities and helpers
                 </li>
                 <li>
-                    <span className="text-primary font-medium">pages</span>: Demo pages
+                    <span className="text-primary font-medium">app</span>: Demo pages
                 </li>
                 <li>
                     <span className="text-primary font-medium">public/demo</span>: Assets used in demos
@@ -61,6 +73,101 @@ const Documentation = () => {
                     <span className="text-primary font-medium">styles/layout</span>: SCSS files of the core layout
                 </li>
             </ul>
+
+            <h5>Route Groups</h5>
+            <p>
+                Root Layout is the main of the application and it is defined at <span className="text-primary font-medium">app/layout.tsx</span> file. It contains the style imports and layout context provider.
+            </p>
+            <pre className="app-code">
+                <code>
+                    {`"use client"
+import { LayoutProvider } from "../layout/context/layoutcontext";
+import { PrimeReactProvider } from "primereact/api";
+
+import '../styles/layout/layout.scss';
+...
+import 'primereact/resources/primereact.css';
+import '../styles/demo/Demos.scss';
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          id="theme-link"
+          href={\`/theme/theme-light/blue/theme.css\`}
+          rel="stylesheet"
+        ></link>
+      </head>
+      <body>
+        <PrimeReactProvider>
+            <LayoutProvider>{children}</LayoutProvider>
+        </PrimeReactProvider>
+      </body>
+    </html>
+  );
+}
+`}
+                </code>
+            </pre>
+            <p>
+                The pages that are using the main dashboard layout need to be defined under the <span className="text-primary font-medium">app/{'(main)'}/</span> folder. Those pages use the{' '}
+                <span className="text-primary font-medium">app/{'(main)'}/layout.tsx</span> as the root layout.
+            </p>
+            <pre className="app-code">
+                <code>
+                    {`import { Metadata } from "next";
+import Layout from '../../layout/layout';
+interface MainLayoutProps {
+    children: React.ReactNode;
+}
+
+export const metadata: Metadata = {
+    title: "PrimeReact Diamond",
+    ...
+  };
+
+export default function MainLayout({ children }: MainLayoutProps) {
+    return <Layout>{children}</Layout>;
+}
+`}
+                </code>
+            </pre>
+            <p>
+                Only the full page content pages are required to be defined under the <span className="text-primary font-medium">app/{'(full-page)'}/</span> folder since they are outside of the dashboard layout. Those pages use the{' '}
+                <span className="text-primary font-medium">app/{'(full-page)'}/layout.tsx</span> as the root layout.
+            </p>
+            <pre className="app-code">
+                <code>
+                    {`import { Metadata } from "next";
+import AppConfig from '../../layout/AppConfig';
+import React from 'react';
+
+interface FullPageLayoutProps {
+    children: React.ReactNode;
+}
+
+export const metadata: Metadata = {
+    title: "PrimeReact Diamond",
+    ...
+};
+
+export default function FullPageLayout({ children }: FullPageLayoutProps) {
+    return (
+        <React.Fragment>
+            {children}
+            <AppConfig minimal />
+        </React.Fragment>
+    );
+}
+
+`}
+                </code>
+            </pre>
 
             <h5>Default Configuration</h5>
             <p>
@@ -128,11 +235,7 @@ const AppMenu = () => {
             <p>The Breadcrumb component at the topbar section is dynamic and generates the current route information from the rendered menu items.</p>
 
             <h5>Integration with Existing NextJS Applications</h5>
-            <p>Only the folders that are related to the layout needs to move in to your project. We&lsquo;ve already created a short tutorial with details for Sakai React. Both templates have the same implementation.</p>
-
-            <div className={styles['video-container']}>
-                <iframe className={styles['video']} width="560" height="315" src="https://www.youtube.com/embed/jnm0_U6zJFY" allowFullScreen></iframe>
-            </div>
+            <p>Only the folders related to the layout need to be moved into your project. Integration of pages involves moving the files under those folders. Make sure that the using page is defined under the related group layout.</p>
 
             <h4>Theme</h4>
             <p>

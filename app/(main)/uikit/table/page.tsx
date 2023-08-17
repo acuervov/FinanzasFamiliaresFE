@@ -159,11 +159,11 @@ const TableDemo = () => {
     };
 
     const filterClearTemplate = (options: ColumnFilterClearTemplateOptions) => {
-        return <Button type="button" icon="pi pi-times" onClick={options.filterClearCallback} severity='secondary'></Button>;
+        return <Button type="button" icon="pi pi-times" onClick={options.filterClearCallback} severity="secondary"></Button>;
     };
 
     const filterApplyTemplate = (options: ColumnFilterApplyTemplateOptions) => {
-        return <Button type="button" icon="pi pi-check" onClick={options.filterApplyCallback} severity='success'></Button>;
+        return <Button type="button" icon="pi pi-check" onClick={options.filterApplyCallback} severity="success"></Button>;
     };
 
     const representativeBodyTemplate = (rowData: Demo.Customer) => {

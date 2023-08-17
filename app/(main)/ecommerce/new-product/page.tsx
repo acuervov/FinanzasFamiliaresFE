@@ -19,7 +19,7 @@ function NewProduct() {
 
     const [product, setProduct] = useState<Demo.Product>({
         name: '',
-        price: 0,
+        price: '',
         code: '',
         sku: '',
         status: 'Draft',
@@ -158,7 +158,7 @@ function NewProduct() {
                                 onChange={(e) =>
                                     setProduct((prevState) => ({
                                         ...prevState,
-                                        price: parseFloat(e.target.value)
+                                        price: parseFloat(e.target.value) || undefined
                                     }))
                                 }
                             />

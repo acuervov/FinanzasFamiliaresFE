@@ -192,7 +192,7 @@ function Files() {
                             <div className="flex align-items-center justify-content-between mb-3">
                                 <span className="text-900 text-xl font-semibold">{metric.title}</span>
                                 <div>
-                                    <Button icon={metric.icon} size='small' text rounded onClick={(event) => menu.current?.toggle(event)}></Button>
+                                    <Button icon={metric.icon} size="small" text rounded onClick={(event) => menu.current?.toggle(event)}></Button>
                                     <Menu ref={menu} popup appendTo="self" model={menuItems}></Menu>
                                 </div>
                             </div>

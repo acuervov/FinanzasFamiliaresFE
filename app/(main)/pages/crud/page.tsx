@@ -394,7 +394,7 @@ const Crud = () => {
                         <div className="formgrid grid">
                             <div className="field col">
                                 <label htmlFor="price">Price</label>
-                                <InputNumber id="price" value={product.price} onValueChange={(e) => onInputNumberChange(e, 'price')} mode="currency" currency="USD" locale="en-US" />
+                                <InputNumber id="price" value={product.price as number} onValueChange={(e) => onInputNumberChange(e, 'price')} mode="currency" currency="USD" locale="en-US" />
                             </div>
                             <div className="field col">
                                 <label htmlFor="quantity">Quantity</label>
