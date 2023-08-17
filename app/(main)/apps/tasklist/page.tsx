@@ -22,7 +22,7 @@ const TaskListDemo: Page = () => {
             <div className="card">
                 <div className="flex justify-content-between align-items-center mb-5">
                     <span className="text-900 text-xl font-semibold">Task List</span>
-                    <Button className="p-button-outlined font-semibold" icon="pi pi-plus" label="Create Task" onClick={() => showDialog('Create Task', true)}></Button>
+                    <Button className="font-semibold" outlined icon="pi pi-plus" label="Create Task" onClick={() => showDialog('Create Task', true)}></Button>
                 </div>
                 <TaskList taskList={todo} title="ToDo"></TaskList>
                 <TaskList taskList={completed} title="Completed"></TaskList>

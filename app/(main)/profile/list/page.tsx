@@ -80,7 +80,7 @@ function List() {
                     <i className="pi pi-search"></i>
                     <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Global Search" className="w-full" />
                 </span>
-                <Button type="button" icon="pi pi-user-plus" label="Add New" className="p-button-outlined w-full sm:w-auto flex-order-0 sm:flex-order-1" onClick={() => router.push('/profile/create')} />
+                <Button type="button" icon="pi pi-user-plus" label="Add New" className="w-full sm:w-auto flex-order-0 sm:flex-order-1" outlined onClick={() => router.push('/profile/create')} />
             </div>
         );
     };

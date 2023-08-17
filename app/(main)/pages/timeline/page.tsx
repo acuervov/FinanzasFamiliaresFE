@@ -46,7 +46,7 @@ const TimelineDemo = () => {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
                     quas!
                 </p>
-                <Button label="Read more" className="p-button-outlined mb-5"></Button>
+                <Button label="Read more" className="mb-5" outlined></Button>
             </Card>
         );
     };

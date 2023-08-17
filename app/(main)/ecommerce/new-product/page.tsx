@@ -117,7 +117,8 @@ function NewProduct() {
                             id={item.name}
                             type="button"
                             icon="pi pi-times"
-                            className="p-button-rounded hover:flex p-button-primary text-sm absolute justify-content-center align-items-center cursor-pointer w-2rem h-2rem"
+                            className="hover:flex p-button-primary text-sm absolute justify-content-center align-items-center cursor-pointer w-2rem h-2rem"
+                            rounded
                             style={{ top: '-10px', right: '-10px', display: 'none' }}
                             onClick={(event) => {
                                 event.stopPropagation();
@@ -217,7 +218,7 @@ function NewProduct() {
                             <div className="bg-gray-100 py-2 px-3 flex align-items-center border-round">
                                 <span className="text-black-alpha-90 font-bold mr-3">Status:</span>
                                 <span className="text-black-alpha-60 font-semibold">{product.status as string}</span>
-                                <Button type="button" icon="pi pi-fw pi-pencil" className="p-button-rounded p-button-text text-black-alpha-60 ml-auto"></Button>
+                                <Button type="button" icon="pi pi-fw pi-pencil" className="text-black-alpha-60 ml-auto" text rounded></Button>
                             </div>
                         </div>
                     </div>
@@ -278,8 +279,8 @@ function NewProduct() {
                     </div>
 
                     <div className="flex flex-column sm:flex-row justify-content-between align-items-center gap-3 py-2">
-                        <Button className="p-button-danger flex-1 p-button-outlined" label="Discard" icon="pi pi-fw pi-trash"></Button>
-                        <Button className="p-button-primary flex-1 border-round" label="Save" icon="pi pi-fw pi-check"></Button>
+                        <Button className="flex-1 " security="danger" outlined label="Discard" icon="pi pi-fw pi-trash"></Button>
+                        <Button className="flex-1 border-round" label="Save" icon="pi pi-fw pi-check"></Button>
                     </div>
                 </div>
             </div>

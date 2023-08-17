@@ -66,9 +66,9 @@ const MediaDemo = () => {
                     <h6 className="mt-0 mb-3">${product.price}</h6>
                     <span className={`product-badge status-${product.inventoryStatus?.toLowerCase()}`}>{product.inventoryStatus}</span>
                     <div className="car-buttons mt-5">
-                        <Button type="button" className="p-button p-button-rounded mr-2" icon="pi pi-search"></Button>
-                        <Button type="button" className="p-button-success p-button-rounded mr-2" icon="pi pi-star"></Button>
-                        <Button type="button" className="p-button-help p-button-rounded" icon="pi pi-cog"></Button>
+                        <Button type="button" className="mr-2" rounded icon="pi pi-search"></Button>
+                        <Button type="button" className="mr-2" severity="success" rounded icon="pi pi-star"></Button>
+                        <Button type="button" severity="help" rounded icon="pi pi-cog"></Button>
                     </div>
                 </div>
             </div>

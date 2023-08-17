@@ -182,8 +182,8 @@ function CreateTask() {
                             />
                         </div>
                         <div className="col-12 flex justify-content-end mt-4">
-                            <Button className="p-button-outlined w-8rem mr-3" icon="pi pi-times" label="Cancel" onClick={closeDialog}></Button>
-                            <Button className="p-button-primary w-8rem" icon="pi pi-check" label="Save" onClick={() => save()}></Button>
+                            <Button className="w-8rem mr-3" outlined icon="pi pi-times" label="Cancel" onClick={closeDialog}></Button>
+                            <Button className="w-8rem" icon="pi pi-check" label="Save" onClick={() => save()}></Button>
                         </div>
                     </div>
                 </div>

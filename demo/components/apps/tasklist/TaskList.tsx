@@ -107,7 +107,7 @@ function TaskList(props: TaskListProps) {
                                             />
                                         )}
                                     </AvatarGroup>
-                                    <Button type="button" icon="pi pi-ellipsis-v" className="p-button-rounded p-button-text z-3 ml-auto sm:ml-0" onClick={(e) => toggleMenu(e, task)}></Button>
+                                    <Button type="button" icon="pi pi-ellipsis-v" className="z-3 ml-auto sm:ml-0" text rounded onClick={(e) => toggleMenu(e, task)}></Button>
                                     <Menu ref={menu} popup model={menuItems} className="w-8rem"></Menu>
                                 </div>
                             </div>

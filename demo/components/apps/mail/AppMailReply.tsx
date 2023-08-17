@@ -117,9 +117,9 @@ function AppMailReply(props: AppMailReplyProps) {
                         </div>
                     </div>
                     <div className="flex column-gap-3 justify-content-end p-5 border-top-1 surface-border">
-                        <Button type="button" className="p-button-outlined" icon="pi pi-image"></Button>
-                        <Button type="button" className="p-button-outlined" icon="pi pi-paperclip"></Button>
-                        <Button type="button" className="p-button-primary h-3rem" icon="pi pi-send" label="Send" onClick={sendMail}></Button>
+                        <Button type="button" outlined icon="pi pi-image"></Button>
+                        <Button type="button" outlined icon="pi pi-paperclip"></Button>
+                        <Button type="button" className="h-3rem" icon="pi pi-send" label="Send" onClick={sendMail}></Button>
                     </div>
                 </div>
             ) : null}

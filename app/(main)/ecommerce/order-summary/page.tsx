@@ -42,8 +42,8 @@ function OrderSummary() {
                         <span className="font-medium text-xl text-blue-500">451234</span>
                     </div>
                     <div>
-                        <Button label="Details" icon="pi pi-list" className="p-button-outlined p-button-primary mr-2"></Button>
-                        <Button label="Print" icon="pi pi-print" className="p-button-outlined p-button-primary"></Button>
+                        <Button label="Details" icon="pi pi-list" className="mr-2" outlined></Button>
+                        <Button label="Print" icon="pi pi-print" outlined></Button>
                     </div>
                 </div>
                 <div className="border-round surface-border border-1">

@@ -79,8 +79,8 @@ function CheckoutForm() {
                             </div>
                         </div>
                         <div className="col-12 flex flex-column lg:flex-row justify-content-center align-items-center lg:justify-content-end my-6">
-                            <Button className="p-button-secondary p-button-outlined mt-3 lg:mt-0 w-full lg:w-auto flex-order-2 lg:flex-order-1 lg:mr-4" label="Return to Cart" icon="pi pi-fw pi-arrow-left"></Button>
-                            <Button className="p-button-primary w-full lg:w-auto flex-order-1 lg:flex-order-2" label="Continue to Shipping" icon="pi pi-fw pi-check"></Button>
+                            <Button className="mt-3 lg:mt-0 w-full lg:w-auto flex-order-2 lg:flex-order-1 lg:mr-4" severity="secondary" outlined label="Return to Cart" icon="pi pi-fw pi-arrow-left"></Button>
+                            <Button className="w-full lg:w-auto flex-order-1 lg:flex-order-2" label="Continue to Shipping" icon="pi pi-fw pi-check"></Button>
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@ function CheckoutForm() {
                                     incrementButtonIcon="pi pi-plus"
                                     decrementButtonIcon="pi pi-minus"
                                 ></InputNumber>
-                                <Button icon="pi pi-trash" className="p-button-text p-button-rounded"></Button>
+                                <Button icon="pi pi-trash" text rounded></Button>
                             </div>
                         </div>
                     </div>

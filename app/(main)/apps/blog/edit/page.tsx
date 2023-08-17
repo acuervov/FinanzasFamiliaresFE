@@ -39,13 +39,7 @@ function BlogEdit() {
             <div className="h-20rem m-1 border-round">
                 <div className="w-full h-full relative border-round p-0">
                     <img src={file.objectURL} className="w-full h-full border-round" alt={file.name} />
-                    <Button
-                        type="button"
-                        icon="pi pi-times"
-                        className="p-button-rounded p-button-primary text-sm absolute justify-content-center align-items-center"
-                        style={{ top: '-10px', right: '-10px' }}
-                        onClick={(e) => onContentButtonClick(e, props.onRemove)}
-                    ></Button>
+                    <Button type="button" icon="pi pi-times" className="text-sm absolute justify-content-center align-items-center" rounded style={{ top: '-10px', right: '-10px' }} onClick={(e) => onContentButtonClick(e, props.onRemove)}></Button>
                 </div>
             </div>
         );
@@ -85,14 +79,14 @@ function BlogEdit() {
                             <div className="surface-100 p-3 flex align-items-center border-round">
                                 <span className="text-900 font-semibold mr-3">Status:</span>
                                 <span className="font-medium">Draft</span>
-                                <Button type="button" icon="pi pi-fw pi-pencil" className="p-button-rounded p-button-text ml-auto"></Button>
+                                <Button type="button" icon="pi pi-fw pi-pencil" className="ml-auto" text rounded></Button>
                             </div>
                         </div>
                         <div className="p-3">
                             <div className="surface-100 p-3 flex align-items-center border-round">
                                 <span className="text-900 font-semibold mr-3">Visibility:</span>
                                 <span className="font-medium">Private</span>
-                                <Button type="button" icon="pi pi-fw pi-pencil" className="p-button-rounded p-button-text ml-auto"></Button>
+                                <Button type="button" icon="pi pi-fw pi-pencil" className="ml-auto" text rounded></Button>
                             </div>
                         </div>
                     </div>
@@ -116,8 +110,8 @@ function BlogEdit() {
                         </div>
                     </div>
                     <div className="flex justify-content-between gap-3">
-                        <Button className="p-button-danger flex-1 p-button-outlined" label="Discard" icon="pi pi-fw pi-trash"></Button>
-                        <Button className="p-button-primary flex-1" label="Publish" icon="pi pi-fw pi-check"></Button>
+                        <Button className="flex-1 p-button-outlined" severity="danger" label="Discard" icon="pi pi-fw pi-trash"></Button>
+                        <Button className="flex-1" label="Publish" icon="pi pi-fw pi-check"></Button>
                     </div>
                 </div>
             </div>
