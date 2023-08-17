@@ -110,7 +110,7 @@ function BlogEdit() {
                         </div>
                     </div>
                     <div className="flex justify-content-between gap-3">
-                        <Button className="flex-1 p-button-outlined" severity="danger" label="Discard" icon="pi pi-fw pi-trash"></Button>
+                        <Button className="flex-1" outlined severity="danger" label="Discard" icon="pi pi-fw pi-trash"></Button>
                         <Button className="flex-1" label="Publish" icon="pi pi-fw pi-check"></Button>
                     </div>
                 </div>
