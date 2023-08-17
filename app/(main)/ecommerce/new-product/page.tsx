@@ -117,7 +117,7 @@ function NewProduct() {
                             id={item.name}
                             type="button"
                             icon="pi pi-times"
-                            className="hover:flex p-button-primary text-sm absolute justify-content-center align-items-center cursor-pointer w-2rem h-2rem"
+                            className="hover:flex text-sm absolute justify-content-center align-items-center cursor-pointer w-2rem h-2rem"
                             rounded
                             style={{ top: '-10px', right: '-10px', display: 'none' }}
                             onClick={(event) => {

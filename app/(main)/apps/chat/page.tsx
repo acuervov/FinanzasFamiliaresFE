@@ -197,7 +197,8 @@ const ChatBox = (props: ChatBoxProps) => {
                             }}
                             type="button"
                             label={emoji}
-                            className="p-2 p-button-text text-2xl"
+                            text
+                            className="p-2 text-2xl"
                         ></Button>
                     );
                 })}
