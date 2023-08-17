@@ -118,7 +118,7 @@ function CreateTask() {
                                 onTextChange={(e) =>
                                     setTask((prevState) => ({
                                         ...prevState,
-                                        description: e.htmlValue ?? ''
+                                        description: e.textValue ?? ''
                                     }))
                                 }
                                 style={{ height: '150px' }}

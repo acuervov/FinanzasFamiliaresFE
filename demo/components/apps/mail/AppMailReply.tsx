@@ -110,7 +110,7 @@ function AppMailReply(props: AppMailReplyProps) {
                                 onTextChange={(e) =>
                                     setNewMail((prevState) => ({
                                         ...prevState,
-                                        message: e.htmlValue ?? ''
+                                        message: e.textValue ?? ''
                                     }))
                                 }
                             ></Editor>
