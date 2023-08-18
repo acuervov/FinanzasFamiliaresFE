@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-Diamond is an application template for NextJS based on the popular NextJS framework with new App Router. 
+Diamond is an application template for Next.js based on the popular Next.js framework with new App Router. 
 
 First, run the development server:
 
@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
                 the pages with full page content such as landing page or a login page.
             </p>
 
-## Integration with Existing NextJS Applications
+## Integration with Existing Next.js Applications
 
 Only the folders related to the layout need to be moved into your project. Integration of pages involves moving the files under those folders. Make sure that the using page is defined under the related group layout.
 
