@@ -87,7 +87,7 @@ declare namespace Demo {
         icon: string;
         color_light: string;
         color_dark: string;
-        textContent: MetricContent[];
+        amount: sting;
         color?: string;
         fieldColor?: string;
         files?: string;

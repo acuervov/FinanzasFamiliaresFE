@@ -6,8 +6,11 @@ import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import '../styles/layout/layout.scss';
 import '../styles/demo/Demos.scss';
+import moment from 'moment';
+import 'moment/locale/es-mx';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+    moment.locale('es-mx');
     return (
         <html lang="en" suppressHydrationWarning>
             <head>

@@ -1,4 +1,5 @@
 import type { Demo } from '../../types/types';
+import { getMovements } from '../../service/queries';
 
 export const ProductService = {
     getProductsSmall() {
@@ -9,12 +10,13 @@ export const ProductService = {
             .then((d) => d.data as Demo.Product[]);
     },
 
-    getProducts() {
-        return fetch('/demo/data/products.json', {
-            headers: { 'Cache-Control': 'no-cache' }
-        })
-            .then((res) => res.json())
-            .then((d) => d.data as Demo.Product[]);
+    getProducts(client) {
+        return client
+            .graphql({
+                query: getMovements,
+                variables: { input: { limit: 10 } }
+            })
+            .then((d) => d.data.getMovements.items as Demo.Product[]);
     },
 
     getProductsMixed() {
