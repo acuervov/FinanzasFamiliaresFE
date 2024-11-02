@@ -52,5 +52,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 Made by:
 
-Andrés Felipe Cuervo Vega
-Antonio José Victoria Castro
+Andrés Felipe Cuervo Vega.
+Antonio José Victoria Castro.
