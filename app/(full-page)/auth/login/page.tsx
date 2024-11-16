@@ -1,11 +1,25 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Page } from '../../../../types/layout';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const Login: Page = () => {
+    // const router = useRouter();
+
+    // const { data: session } = useSession();
+
+    // useEffect(() => {
+    //     console.log('session login', session);
+    //     if (session) {
+    //         console.log('push');
+    //         router.push('/');
+    //     }
+    // }, [session]);
+
     return (
         <>
             <div className="flex h-screen">
@@ -21,7 +35,7 @@ const Login: Page = () => {
                         </div>
                         <InputText id="email" placeholder="Email" className="w-20rem" />
                         <InputText id="password" type="password" placeholder="Password" className="w-20rem" />
-                        <Button label="CONTINUE" className="w-20rem"></Button>
+                        <Button label="CONTINUE" className="w-20rem" onClick={() => signIn()}></Button>
                     </div>
 
                     <p className="text-color-secondary font-semibold">

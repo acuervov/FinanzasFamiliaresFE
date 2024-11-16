@@ -8,9 +8,11 @@ import '../styles/layout/layout.scss';
 import '../styles/demo/Demos.scss';
 import moment from 'moment';
 import 'moment/locale/es-mx';
+import { SessionProvider } from 'next-auth/react';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout(properties) {
     moment.locale('es-mx');
+
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
@@ -18,7 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </head>
             <body>
                 <PrimeReactProvider>
-                    <LayoutProvider>{children}</LayoutProvider>
+                    <SessionProvider>
+                        <LayoutProvider>{properties.children}</LayoutProvider>
+                    </SessionProvider>
                 </PrimeReactProvider>
             </body>
         </html>
