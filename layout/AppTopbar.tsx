@@ -8,6 +8,7 @@ import { LayoutContext } from './context/layoutcontext';
 import AppSidebar from './AppSidebar';
 import { StyleClass } from 'primereact/styleclass';
 import { Ripple } from 'primereact/ripple';
+import { signOut } from 'aws-amplify/auth';
 
 const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElement> }, ref) => {
     const btnRef1 = useRef(null);
@@ -19,6 +20,10 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
     useImperativeHandle(ref, () => ({
         menubutton: menubuttonRef.current
     }));
+
+    const handleLogOut = async () => {
+        return await signOut();
+    };
 
     return (
         <div className="layout-topbar">
@@ -143,7 +148,7 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
                                     </span>
                                     <Ripple />
                                 </a>
-                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
+                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer" onClick={handleLogOut}>
                                     <i className="pi pi-power-off mr-3"></i>
                                     <span className="flex flex-column">
                                         <span className="font-semibold">Logout</span>

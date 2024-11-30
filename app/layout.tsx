@@ -6,6 +6,10 @@ import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import '../styles/layout/layout.scss';
 import '../styles/demo/Demos.scss';
+import { Amplify } from 'aws-amplify';
+import { awsConfig } from '../amplify/config';
+
+Amplify.configure(awsConfig, { ssr: true });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
