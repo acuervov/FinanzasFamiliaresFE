@@ -1,11 +1,27 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Page } from '../../../../types/layout';
+import { fetchAuthSession, signIn } from 'aws-amplify/auth';
+import { useRouter } from 'next/navigation';
 
 const Login: Page = () => {
+    const router = useRouter();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLogin = async () => {
+        const { isSignedIn } = await signIn({
+            username: email,
+            password: password
+        });
+        if (isSignedIn) {
+            router.push('/');
+        }
+    };
     return (
         <>
             <div className="flex h-screen">
@@ -19,9 +35,26 @@ const Login: Page = () => {
                                 Forgot password? <a className="text-primary hover:underline cursor-pointer font-medium">Click here</a> to reset.
                             </p>
                         </div>
-                        <InputText id="email" placeholder="Email" className="w-20rem" />
-                        <InputText id="password" type="password" placeholder="Password" className="w-20rem" />
-                        <Button label="CONTINUE" className="w-20rem"></Button>
+                        <InputText
+                            id="email"
+                            placeholder="Email"
+                            className="w-20rem"
+                            value={email}
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                        />
+                        <InputText
+                            id="password"
+                            type="password"
+                            placeholder="Password"
+                            className="w-20rem"
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                        />
+                        <Button label="CONTINUE" className="w-20rem" onClick={handleLogin}></Button>
                     </div>
 
                     <p className="text-color-secondary font-semibold">
