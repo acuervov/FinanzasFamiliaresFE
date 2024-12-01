@@ -6,7 +6,7 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { InputText } from 'primereact/inputtext';
 import { StyleClass } from 'primereact/styleclass';
 import { classNames } from 'primereact/utils';
-import { Page } from '../../../types/layout';
+import { Page } from '../../types/layout';
 
 const LandingPage: Page = () => {
     const [isHidden, setIsHidden] = useState(false);
@@ -22,8 +22,8 @@ const LandingPage: Page = () => {
             <div id="home" className="pages-wrapper z-1">
                 <div className="px-4 md:px-8 flex align-items-center justify-content-between relative lg:static" style={{ minHeight: '80px' }}>
                     <div className="flex gap-2 align-items-center text-white mr-0 lg:mr-6 select-none">
-                        <img src={`/layout/images/logo-white.svg`} className="w-2rem h-2rem" alt="Diamond Logo" />
-                        <span className="font-bold text-3xl">DIAMOND</span>
+                        <img src={`/layout/images/logonegro.png`} className="w-5rem" alt="Cuervo Logo" />
+                        <span className="font-bold text-3xl">Cuervo</span>
                     </div>
 
                     <StyleClass nodeRef={menuRef} selector="@next" enterActiveClassName="px-fadein" enterClassName="hidden" leaveToClassName="hidden" hideOnOutsideClick>
