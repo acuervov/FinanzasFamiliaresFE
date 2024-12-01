@@ -21,9 +21,6 @@ export async function middleware(request: NextRequest) {
     });
 
     if (authenticated) {
-        if (authPaths.includes(request.nextUrl.pathname)) {
-            return NextResponse.redirect(new URL('/', request.url));
-        }
         return response;
     }
 
@@ -48,5 +45,5 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-    matcher: ['/dashboard-banking', '/auth/login']
+    matcher: ['/dashboard-banking']
 };

@@ -13,7 +13,21 @@ const Login: Page = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        fetchAuthSession().then((res) => {
+            if (res?.tokens?.accessToken) {
+                setIsLoading(true);
+                router.push('/');
+            } else {
+                setIsLoading(false);
+            }
+        });
+    }, [router]);
+
     const handleLogin = async () => {
+        setIsLoading(true);
         const { isSignedIn } = await signIn({
             username: email,
             password: password
@@ -54,7 +68,7 @@ const Login: Page = () => {
                                 setPassword(e.target.value);
                             }}
                         />
-                        <Button label="CONTINUE" className="w-20rem" onClick={handleLogin}></Button>
+                        <Button label="CONTINUE" className="w-20rem" onClick={handleLogin} disabled={isLoading}></Button>
                     </div>
 
                     <p className="text-color-secondary font-semibold">
