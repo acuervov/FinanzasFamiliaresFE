@@ -9,8 +9,11 @@ import AppSidebar from './AppSidebar';
 import { StyleClass } from 'primereact/styleclass';
 import { Ripple } from 'primereact/ripple';
 import { signOut } from 'aws-amplify/auth';
+import { useRouter } from 'next/navigation';
 
 const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElement> }, ref) => {
+    const router = useRouter();
+
     const btnRef1 = useRef(null);
     const btnRef2 = useRef(null);
     const menubuttonRef = useRef(null);
@@ -22,7 +25,8 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
     }));
 
     const handleLogOut = async () => {
-        return await signOut();
+        await signOut();
+        router.push('/auth/login');
     };
 
     return (

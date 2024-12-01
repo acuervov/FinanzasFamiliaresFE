@@ -27,23 +27,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/auth/login', request.url));
 }
 
-// export async function middleware(request: NextRequest) {
-//     const session = await fetchAuthSession();
-//     console.log('session', session);
-
-//     if (authPaths.includes(request.nextUrl.pathname)) {
-//         if (session?.tokens) {
-//             return NextResponse.redirect(new URL('/', request.url));
-//         }
-//     }
-
-//     // console.log('triggere middleware', request);
-//     if (!session?.tokens && !authPaths.includes(request.nextUrl.pathname)) {
-//         return NextResponse.redirect(new URL('/auth/login', request.url));
-//     }
-// }
-
 // See "Matching Paths" below to learn more
 export const config = {
-    matcher: ['/dashboard-banking']
+    matcher: ['/dashboard/:path*']
 };

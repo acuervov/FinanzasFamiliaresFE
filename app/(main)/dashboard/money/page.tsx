@@ -8,7 +8,7 @@ import { Card } from 'primereact/card';
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
 import { Menu } from 'primereact/menu';
-import { LayoutContext } from '../../../layout/context/layoutcontext';
+import { LayoutContext } from '../../../../layout/context/layoutcontext';
 import { Ripple } from 'primereact/ripple';
 import { ChartData, ChartOptions } from 'chart.js';
 
