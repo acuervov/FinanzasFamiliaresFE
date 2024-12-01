@@ -19,7 +19,7 @@ const Login: Page = () => {
         fetchAuthSession().then((res) => {
             if (res?.tokens?.accessToken) {
                 setIsLoading(true);
-                router.push('/');
+                router.push('/dashboard/money');
             } else {
                 setIsLoading(false);
             }
@@ -33,7 +33,7 @@ const Login: Page = () => {
             password: password
         });
         if (isSignedIn) {
-            router.push('/');
+            router.push('/dashboard/money');
         }
     };
     return (
