@@ -234,7 +234,7 @@ const Dashboard = () => {
         refreshDataset();
     };
 
-    const bodyTemplate = (data: Demo.Product, props: ColumnBodyOptions) => {
+    const bodyTemplate = (data: any, props: ColumnBodyOptions) => {
         return <>{data[props.field]}</>;
     };
 
