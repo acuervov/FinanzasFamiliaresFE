@@ -1,6 +1,6 @@
 'use client';
 
-import React, { forwardRef, useImperativeHandle, useContext, useRef } from 'react';
+import React, { forwardRef, useImperativeHandle, useContext, useRef, useEffect } from 'react';
 
 import Link from 'next/link';
 import AppBreadCrumb from './AppBreadCrumb';
@@ -8,11 +8,35 @@ import { LayoutContext } from './context/layoutcontext';
 import AppSidebar from './AppSidebar';
 import { StyleClass } from 'primereact/styleclass';
 import { Ripple } from 'primereact/ripple';
-import { signOut } from 'aws-amplify/auth';
+import { getCurrentUser, signOut } from 'aws-amplify/auth';
 import { useRouter } from 'next/navigation';
+import { useFinanzasStore } from '../store';
+import { client } from '../amplify/data/resource';
+import { getUser } from '../graphql/queries';
+
+const getCurrentUserInfo = async () => {
+    const { username } = await getCurrentUser();
+    const res = await client.graphql({
+        query: getUser,
+        variables: {
+            id: username
+        }
+    });
+
+    return res?.data?.getUser;
+};
 
 const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElement> }, ref) => {
-    const router = useRouter();
+    const router = useRouter(); // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { user, setUser } = useFinanzasStore((state) => state);
+
+    useEffect(() => {
+        const setUserInfoInStore = async () => {
+            const userInfo = await getCurrentUserInfo();
+            setUser(userInfo);
+        };
+        setUserInfoInStore();
+    }, [setUser]);
 
     const btnRef1 = useRef(null);
     const btnRef2 = useRef(null);
@@ -118,40 +142,15 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
                     <li className="profile-item static sm:relative">
                         <StyleClass nodeRef={btnRef2} selector="@next" enterClassName="hidden" enterActiveClassName="scalein" leaveToClassName="hidden" leaveActiveClassName="fadeout" hideOnOutsideClick={true}>
                             <a tabIndex={1} ref={btnRef2}>
-                                <img src={`/demo/images/avatar/profile.jpg`} alt="diamond-layout" className="profile-image" />
-                                <span className="profile-name">Amelia Stone</span>
+                                <span className="white-space-nowrap flex w-3rem h-3rem align-items-center justify-content-center border-round-xl" style={{ backgroundColor: 'rgba(77, 182, 172, 0.1)' }}>
+                                    <i className="text-2xl text-color pi pi-user" />
+                                </span>
+
+                                <span className="profile-name mr-3 pl-2">{user?.name}</span>
                             </a>
                         </StyleClass>
                         <ul className="list-none p-3 m-0 border-round shadow-2 absolute surface-overlay hidden origin-top w-full sm:w-19rem mt-2 right-0 z-5 top-auto">
                             <li>
-                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
-                                    <i className="pi pi-user mr-3"></i>
-                                    <span className="flex flex-column">
-                                        <span className="font-semibold">Profile</span>
-                                    </span>
-                                    <Ripple />
-                                </a>
-                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
-                                    <i className="pi pi-cog mr-3"></i>
-                                    <span className="flex flex-column">
-                                        <span className="font-semibold">Settings</span>
-                                    </span>
-                                    <Ripple />
-                                </a>
-                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
-                                    <i className="pi pi-calendar mr-3"></i>
-                                    <span className="flex flex-column">
-                                        <span className="font-semibold">Calendar</span>
-                                    </span>
-                                    <Ripple />
-                                </a>
-                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
-                                    <i className="pi pi-inbox mr-3"></i>
-                                    <span className="flex flex-column">
-                                        <span className="font-semibold">Inbox</span>
-                                    </span>
-                                    <Ripple />
-                                </a>
                                 <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer" onClick={handleLogOut}>
                                     <i className="pi pi-power-off mr-3"></i>
                                     <span className="flex flex-column">
