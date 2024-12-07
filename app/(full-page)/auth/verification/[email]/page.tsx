@@ -1,16 +1,20 @@
 'use client';
 
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Button } from 'primereact/button';
 import { useRouter } from 'next/navigation';
-import type { Page } from '../../../../types/types';
+import type { Page } from '../../../../../types/types';
 import { InputNumber } from 'primereact/inputnumber';
+import { confirmSignUp } from 'aws-amplify/auth';
 
-const Verification: Page = () => {
+const Verification: Page = ({ params }: { params: { email } }) => {
     const [value1, setValue1] = useState<number | null>();
     const [value2, setValue2] = useState<number | null>();
     const [value3, setValue3] = useState<number | null>();
     const [value4, setValue4] = useState<number | null>();
+    const [value5, setValue5] = useState<number | null>();
+    const [value6, setValue6] = useState<number | null>();
+
     const router = useRouter();
 
     const onDigitInput = (event: React.KeyboardEvent<HTMLSpanElement>, currentInputId: number) => {
@@ -31,6 +35,16 @@ const Verification: Page = () => {
         }
     };
 
+    const handleVerifyCode = async () => {
+        const { isSignUpComplete } = await confirmSignUp({
+            username: decodeURIComponent(params.email),
+            confirmationCode: '' + value1 + value2 + value3 + value4 + value5 + value6
+        });
+        if (isSignUpComplete) {
+            router.push('/dashboard/money');
+        }
+    };
+
     return (
         <>
             <div className="flex h-screen">
@@ -43,7 +57,7 @@ const Verification: Page = () => {
                             <p>We have sent code to you email:</p>
                             <div className="flex align-items-center w-full justify-content-center">
                                 <i className="pi pi-envelope text-600 mr-2"></i>
-                                <span className="text-900 font-bold">dm**@gmail.com</span>
+                                <span className="text-900 font-bold">{decodeURIComponent(params.email)}</span>
                             </div>
                         </div>
 
@@ -53,11 +67,13 @@ const Verification: Page = () => {
                                 <InputNumber inputId="val2" value={value2} onValueChange={(e) => setValue2(e.value)} inputClassName="w-3rem text-center" maxLength={1} onKeyUp={(e) => onDigitInput(e, 2)}></InputNumber>
                                 <InputNumber inputId="val3" value={value3} onValueChange={(e) => setValue3(e.value)} inputClassName="w-3rem text-center" maxLength={1} onKeyUp={(e) => onDigitInput(e, 3)}></InputNumber>
                                 <InputNumber inputId="val4" value={value4} onValueChange={(e) => setValue4(e.value)} inputClassName="w-3rem text-center" maxLength={1} onKeyUp={(e) => onDigitInput(e, 4)}></InputNumber>
+                                <InputNumber inputId="val5" value={value5} onValueChange={(e) => setValue5(e.value)} inputClassName="w-3rem text-center" maxLength={1} onKeyUp={(e) => onDigitInput(e, 5)}></InputNumber>
+                                <InputNumber inputId="val6" value={value6} onValueChange={(e) => setValue6(e.value)} inputClassName="w-3rem text-center" maxLength={1} onKeyUp={(e) => onDigitInput(e, 6)}></InputNumber>
                             </div>
 
                             <div className="flex flex-wrap gap-2 justify-content-between">
                                 <Button outlined className="flex-auto" onClick={() => router.push('/')} label="Cancel" />
-                                <Button className="flex-auto" onClick={() => router.push('/')} label="Verify" />
+                                <Button className="flex-auto" onClick={handleVerifyCode} label="Verify" />
                             </div>
                         </div>
                     </div>

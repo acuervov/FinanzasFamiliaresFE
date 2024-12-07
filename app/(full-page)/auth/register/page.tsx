@@ -1,16 +1,50 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { useRouter } from 'next/navigation';
-import { Checkbox } from 'primereact/checkbox';
 import { Page } from '../../../../types/layout';
+import { fetchAuthSession, signUp } from 'aws-amplify/auth';
 
 const Register: Page = () => {
-    const [confirmed, setConfirmed] = useState(false);
     const router = useRouter();
+
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const [isConfirmationValid, setIsConfirmationValid] = useState(true);
+
+    useEffect(() => {
+        password === confirmPassword ? setIsConfirmationValid(true) : setIsConfirmationValid(false);
+    }, [password, confirmPassword]);
+
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+        if (!isConfirmationValid) {
+            return;
+        }
+        const { nextStep } = await signUp({
+            username: email,
+            password: password,
+            options: {
+                userAttributes: {
+                    name: username
+                }
+            }
+        });
+        console.log('isSignUpComplete', nextStep);
+        if (nextStep.signUpStep === 'DONE') {
+            router.push('/dashboard/money');
+        }
+
+        if (nextStep.signUpStep === 'CONFIRM_SIGN_UP') {
+            router.push('/auth/verification/' + email);
+        }
+    };
 
     return (
         <>
@@ -27,25 +61,62 @@ const Register: Page = () => {
                         <div className="flex flex-column gap-4">
                             <span className="p-input-icon-left w-full">
                                 <i className="pi pi-user"></i>
-                                <InputText id="username" type="text" className="w-full md:w-25rem" placeholder="Username" />
+                                <InputText
+                                    id="username"
+                                    type="text"
+                                    className="w-full md:w-25rem"
+                                    placeholder="Username"
+                                    value={username}
+                                    onChange={(e) => {
+                                        setUsername(e.target.value);
+                                    }}
+                                />
                             </span>
                             <span className="p-input-icon-left w-full">
                                 <i className="pi pi-envelope"></i>
-                                <InputText id="email" type="text" className="w-full md:w-25rem" placeholder="Email" />
+                                <InputText
+                                    id="email"
+                                    type="text"
+                                    className="w-full md:w-25rem"
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={(e) => {
+                                        setEmail(e.target.value);
+                                    }}
+                                />
                             </span>
                             <span className="p-input-icon-left w-full">
                                 <i className="pi pi-lock z-2"></i>
-                                <Password id="password" type="password" className="w-full" inputClassName="w-full md:w-25rem" inputStyle={{ paddingLeft: '2.5rem' }} placeholder="Password" toggleMask />
+                                <Password
+                                    id="password"
+                                    type="password"
+                                    className="w-full"
+                                    inputClassName="w-full md:w-25rem"
+                                    inputStyle={{ paddingLeft: '2.5rem' }}
+                                    placeholder="Password"
+                                    toggleMask
+                                    value={password}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                    }}
+                                />
                             </span>
-                            <div className="flex flex-wrap">
-                                <Checkbox name="checkbox" checked={confirmed} onChange={(e) => setConfirmed(e.checked)} className="mr-2"></Checkbox>
-
-                                <label htmlFor="checkbox" className="text-900 font-medium mr-2">
-                                    I have read the
-                                </label>
-                                <a className="text-color-secondary font-semibold cursor-pointerhover:text-primary cursor-pointer">Terms and Conditions</a>
-                            </div>
-                            <Button label="SIGN UP" className="w-full mb-4" onClick={() => router.push('/')}></Button>
+                            <span className="p-input-icon-left w-full">
+                                <i className="pi pi-lock z-2"></i>
+                                <Password
+                                    id="confirmPassword"
+                                    type="password"
+                                    className={`w-full ${isConfirmationValid ? '' : 'p-invalid'}`}
+                                    inputClassName="w-full md:w-25rem"
+                                    inputStyle={{ paddingLeft: '2.5rem' }}
+                                    placeholder="Confirm Password"
+                                    value={confirmPassword}
+                                    onChange={(e) => {
+                                        setConfirmPassword(e.target.value);
+                                    }}
+                                />
+                            </span>
+                            <Button label="SIGN UP" className="w-full mb-4" onClick={handleSignUp}></Button>
                             <span className="font-semibold text-color-secondary">
                                 Already have an account? <a className="font-semibold cursor-pointer primary-color">Login</a>
                             </span>

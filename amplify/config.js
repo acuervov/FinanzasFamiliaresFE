@@ -8,9 +8,9 @@ export const awsConfig = {
     },
     Auth: {
         Cognito: {
-            userPoolId: 'us-east-1_a0tKbd98K',
-            userPoolClientId: '1454j01qk91t9f37r8pvuinst3',
-            identityPoolId: 'us-east-1:1469407c-dd6d-40af-9a66-d70bc092d2fa'
+            userPoolId: 'us-east-1_CLRGl20UZ',
+            userPoolClientId: '7ut03ojvljo4dn1b77obgrjifq',
+            identityPoolId: 'us-east-1:eb9f2eca-6f9e-46ff-9f36-b4833c9db06b'
         }
     }
 };
