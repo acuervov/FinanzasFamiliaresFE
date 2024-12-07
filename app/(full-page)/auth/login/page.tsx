@@ -69,6 +69,14 @@ const Login: Page = () => {
                             }}
                         />
                         <Button label="CONTINUE" className="w-20rem" onClick={handleLogin} disabled={isLoading}></Button>
+                        <div className="mb-3">
+                            <p>
+                                No tiene cuenta?{' '}
+                                <a href="/auth/register" className="text-primary hover:underline cursor-pointer font-medium">
+                                    Registrese aquí
+                                </a>
+                            </p>
+                        </div>
                     </div>
 
                     <p className="text-color-secondary font-semibold">
