@@ -1,6 +1,6 @@
 'use client';
 
-import React, { forwardRef, useImperativeHandle, useContext, useRef, useEffect } from 'react';
+import React, { forwardRef, useImperativeHandle, useContext, useRef, useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import AppBreadCrumb from './AppBreadCrumb';
@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import { useFinanzasStore } from '../store';
 import { client } from '../amplify/data/resource';
 import { getUser } from '../graphql/queries';
+import AssignUserFamily from '../components/widgets/newUserFamily';
 
 const getCurrentUserInfo = async () => {
     const { username } = await getCurrentUser();
@@ -28,15 +29,22 @@ const getCurrentUserInfo = async () => {
 
 const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElement> }, ref) => {
     const router = useRouter(); // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { user, setUser } = useFinanzasStore((state) => state);
+    const { user, setUser, setFamily, family } = useFinanzasStore((state) => state);
+
+    const [displayBasic, setDisplayBasic] = useState(false);
 
     useEffect(() => {
         const setUserInfoInStore = async () => {
             const userInfo = await getCurrentUserInfo();
             setUser(userInfo);
+            if (userInfo.family) {
+                setFamily(userInfo.family);
+            } else {
+                setDisplayBasic(true);
+            }
         };
         setUserInfoInStore();
-    }, [setUser]);
+    }, [setUser, setFamily]);
 
     const btnRef1 = useRef(null);
     const btnRef2 = useRef(null);
@@ -55,6 +63,7 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
 
     return (
         <div className="layout-topbar">
+            <AssignUserFamily visible={displayBasic} onHide={() => setDisplayBasic(false)} />
             <div className="topbar-left">
                 <button ref={menubuttonRef} type="button" className="menu-button p-link" onClick={onMenuToggle}>
                     <i className="pi pi-chevron-left"></i>
@@ -71,6 +80,9 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
             </div>
             <div className="layout-topbar-menu-section">
                 <AppSidebar sidebarRef={props.sidebarRef} />
+                <div className="hidden lg:block">
+                    <h1 className="mb-0 text-900 font-bold text-3xl">{family.name}</h1>
+                </div>
             </div>
             <div className="layout-mask modal-in"></div>
 

@@ -11,11 +11,21 @@ type UserSlice = {
     setUser: (user: any) => void;
 };
 
-type FinanzasStore = FishSlice & UserSlice;
+type FamilySlice = {
+    family: any;
+    setFamily: (family: any) => void;
+};
+
+type FinanzasStore = FishSlice & UserSlice & FamilySlice;
 
 const createUserSlice: StateCreator<FinanzasStore, [['zustand/devtools', never]], [], UserSlice> = (set) => ({
     user: {},
     setUser: (user) => set((state) => ({ user: user }), undefined, 'finanzas:user/setUser')
+});
+
+const createFamilySlice: StateCreator<FinanzasStore, [['zustand/devtools', never]], [], FamilySlice> = (set) => ({
+    family: {},
+    setFamily: (family) => set((state) => ({ family: family }), undefined, 'finanzas:family/setFamily')
 });
 
 const createFishSlice: StateCreator<FinanzasStore, [['zustand/devtools', never]], [], FishSlice> = (set) => ({
@@ -26,6 +36,7 @@ const createFishSlice: StateCreator<FinanzasStore, [['zustand/devtools', never]]
 export const useFinanzasStore = create<FinanzasStore>()(
     devtools((...args) => ({
         ...createUserSlice(...args),
-        ...createFishSlice(...args)
+        ...createFishSlice(...args),
+        ...createFamilySlice(...args)
     }))
 );
