@@ -13,7 +13,7 @@ const AssignUserFamily = ({ visible, onHide }: Props) => {
     const [view, setView] = useState('main');
 
     return (
-        <Dialog visible={visible} style={{ width: '30vw' }} modal onHide={onHide} header="Necesita crear o unirse a una familia antes de continuar" closable={false}>
+        <Dialog visible={visible} className="sm:w-10 lg:w-auto" modal onHide={onHide} header="Necesita crear o unirse a una familia antes de continuar" closable={false}>
             <div className="flex flex-column">
                 <p>Para poder funcionar adecuadamente requerimos que ustede cree o se una a un grupo familiar</p>
                 {view !== 'main' ? (
