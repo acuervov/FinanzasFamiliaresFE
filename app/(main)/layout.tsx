@@ -6,15 +6,15 @@ interface MainLayoutProps {
 }
 
 export const metadata: Metadata = {
-    title: 'PrimeReact Diamond',
-    description: 'The ultimate collection of design-agnostic, flexible and accessible React UI Components.',
+    title: 'Finanzas Familiares',
+    description: 'Aplicación para la gestion de las finanzas de la familia',
     robots: { index: false, follow: false },
 
     openGraph: {
         type: 'website',
-        title: 'PrimeReact Diamond-REACT',
+        title: 'Finanzas Familiares',
         url: 'https://www.primefaces.org/diamond-react',
-        description: 'The ultimate collection of design-agnostic, flexible and accessible React UI Components.',
+        description: 'Aplicación para la gestion de las finanzas de la familia',
         images: ['https://www.primefaces.org/static/social/diamond-react.png'],
         ttl: 604800
     },
