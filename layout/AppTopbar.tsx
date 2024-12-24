@@ -88,16 +88,10 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
 
             <div className="topbar-right">
                 <ul className="topbar-menu">
-                    <li className="search-item">
-                        <a type="button" onClick={toggleSearch}>
-                            <i className="pi pi-search"></i>
-                        </a>
-                    </li>
                     <li className="static sm:relative">
                         <StyleClass nodeRef={btnRef1} selector="@next" enterClassName="hidden" enterActiveClassName="scalein" leaveToClassName="hidden" leaveActiveClassName="fadeout" hideOnOutsideClick>
                             <a tabIndex={0} ref={btnRef1}>
-                                <i className="pi pi-bell"></i>
-                                <span className="topbar-badge">5</span>
+                                <i className="pi pi-th-large"></i>
                             </a>
                         </StyleClass>
                         <ul className="list-none p-3 m-0 border-round shadow-2 absolute surface-overlay hidden origin-top w-full sm:w-19rem mt-2 right-0 z-5 top-auto">
@@ -150,7 +144,6 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
                             </li>
                         </ul>
                     </li>
-
                     <li className="profile-item static sm:relative">
                         <StyleClass nodeRef={btnRef2} selector="@next" enterClassName="hidden" enterActiveClassName="scalein" leaveToClassName="hidden" leaveActiveClassName="fadeout" hideOnOutsideClick={true}>
                             <a tabIndex={1} ref={btnRef2}>
@@ -172,12 +165,6 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
                                 </a>
                             </li>
                         </ul>
-                    </li>
-
-                    <li className="right-sidebar-item">
-                        <a onClick={showRightSidebar}>
-                            <i className="pi pi-align-right"></i>
-                        </a>
                     </li>
                 </ul>
             </div>
