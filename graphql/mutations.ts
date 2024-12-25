@@ -8,160 +8,32 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
-export const createFamily = /* GraphQL */ `mutation CreateFamily($input: CreateFamilyInput) {
-  createFamily(input: $input) {
-    id
-    name
-    users {
-      id
-      name
-      email
-      family {
-        id
-        name
-        __typename
-      }
-      accounts {
-        id
-        name
-        description
-        type
-        overAllTotal
-        __typename
-      }
-      __typename
-    }
-    categories {
-      id
-      name
-      type
-      subCategories
-      isDefault
-      __typename
-    }
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.CreateFamilyMutationVariables,
-  APITypes.CreateFamilyMutation
->;
-export const createUser = /* GraphQL */ `mutation CreateUser($input: CreateUserInput) {
-  createUser(input: $input) {
-    id
-    name
-    email
-    family {
-      id
-      name
-      users {
-        id
-        name
-        email
-        __typename
-      }
-      categories {
-        id
-        name
-        type
-        subCategories
-        isDefault
-        __typename
-      }
-      __typename
-    }
-    accounts {
-      id
-      name
-      description
-      type
-      owner {
-        id
-        name
-        email
-        __typename
-      }
-      overAllTotal
-      __typename
-    }
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.CreateUserMutationVariables,
-  APITypes.CreateUserMutation
->;
-export const linkUserToFamily = /* GraphQL */ `mutation LinkUserToFamily($input: linkUserToFamilyInput) {
-  linkUserToFamily(input: $input) {
-    id
-    name
-    email
-    family {
-      id
-      name
-      users {
-        id
-        name
-        email
-        __typename
-      }
-      categories {
-        id
-        name
-        type
-        subCategories
-        isDefault
-        __typename
-      }
-      __typename
-    }
-    accounts {
-      id
-      name
-      description
-      type
-      owner {
-        id
-        name
-        email
-        __typename
-      }
-      overAllTotal
-      __typename
-    }
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.LinkUserToFamilyMutationVariables,
-  APITypes.LinkUserToFamilyMutation
->;
 export const createAccount = /* GraphQL */ `mutation CreateAccount($input: CreateAccountInput) {
   createAccount(input: $input) {
+    description
     id
     name
-    description
-    type
+    overAllTotal
     owner {
-      id
-      name
+      accounts {
+        description
+        id
+        name
+        overAllTotal
+        type
+        __typename
+      }
       email
       family {
         id
         name
         __typename
       }
-      accounts {
-        id
-        name
-        description
-        type
-        overAllTotal
-        __typename
-      }
+      id
+      name
       __typename
     }
-    overAllTotal
+    type
     __typename
   }
 }
@@ -172,10 +44,10 @@ export const createAccount = /* GraphQL */ `mutation CreateAccount($input: Creat
 export const createCategory = /* GraphQL */ `mutation CreateCategory($input: CreateCategoryInput) {
   createCategory(input: $input) {
     id
-    name
-    type
-    subCategories
     isDefault
+    name
+    subCategories
+    type
     __typename
   }
 }
@@ -183,42 +55,170 @@ export const createCategory = /* GraphQL */ `mutation CreateCategory($input: Cre
   APITypes.CreateCategoryMutationVariables,
   APITypes.CreateCategoryMutation
 >;
-export const createMovement = /* GraphQL */ `mutation CreateMovement($input: CreateMovementInput) {
-  createMovement(input: $input) {
+export const createFamily = /* GraphQL */ `mutation CreateFamily($input: CreateFamilyInput) {
+  createFamily(input: $input) {
+    categories {
+      id
+      isDefault
+      name
+      subCategories
+      type
+      __typename
+    }
     id
-    description
-    amount
-    type
-    category {
+    name
+    users {
+      accounts {
+        description
+        id
+        name
+        overAllTotal
+        type
+        __typename
+      }
+      email
+      family {
+        id
+        name
+        __typename
+      }
       id
       name
-      type
-      subCategories
+      __typename
+    }
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateFamilyMutationVariables,
+  APITypes.CreateFamilyMutation
+>;
+export const createMovement = /* GraphQL */ `mutation CreateMovement($input: CreateMovementInput) {
+  createMovement(input: $input) {
+    amount
+    bill
+    category {
+      id
       isDefault
+      name
+      subCategories
+      type
+      __typename
+    }
+    date
+    description
+    id
+    note
+    source {
+      description
+      id
+      name
+      overAllTotal
+      owner {
+        email
+        id
+        name
+        __typename
+      }
+      type
       __typename
     }
     subCategory
-    date
-    bill
-    source {
-      id
-      name
-      description
-      type
-      owner {
-        id
-        name
-        email
-        __typename
-      }
-      overAllTotal
-      __typename
-    }
-    note
+    type
     __typename
   }
 }
 ` as GeneratedMutation<
   APITypes.CreateMovementMutationVariables,
   APITypes.CreateMovementMutation
+>;
+export const createUser = /* GraphQL */ `mutation CreateUser($input: CreateUserInput) {
+  createUser(input: $input) {
+    accounts {
+      description
+      id
+      name
+      overAllTotal
+      owner {
+        email
+        id
+        name
+        __typename
+      }
+      type
+      __typename
+    }
+    email
+    family {
+      categories {
+        id
+        isDefault
+        name
+        subCategories
+        type
+        __typename
+      }
+      id
+      name
+      users {
+        email
+        id
+        name
+        __typename
+      }
+      __typename
+    }
+    id
+    name
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateUserMutationVariables,
+  APITypes.CreateUserMutation
+>;
+export const linkUserToFamily = /* GraphQL */ `mutation LinkUserToFamily($input: linkUserToFamilyInput) {
+  linkUserToFamily(input: $input) {
+    accounts {
+      description
+      id
+      name
+      overAllTotal
+      owner {
+        email
+        id
+        name
+        __typename
+      }
+      type
+      __typename
+    }
+    email
+    family {
+      categories {
+        id
+        isDefault
+        name
+        subCategories
+        type
+        __typename
+      }
+      id
+      name
+      users {
+        email
+        id
+        name
+        __typename
+      }
+      __typename
+    }
+    id
+    name
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.LinkUserToFamilyMutationVariables,
+  APITypes.LinkUserToFamilyMutation
 >;

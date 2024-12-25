@@ -2,247 +2,116 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateFamilyInput = {
+export type CreateAccountInput = {
+  description?: string | null,
+  name: string,
+  overAllTotal: number,
+  type: string,
+  userId: string,
+};
+
+export type Account = {
+  __typename: "Account",
+  description?: string | null,
+  id: string,
+  name: string,
+  overAllTotal: number,
+  owner: User,
+  type: string,
+};
+
+export type User = {
+  __typename: "User",
+  accounts?:  Array<Account | null > | null,
+  email?: string | null,
+  family?: Family | null,
+  id: string,
   name: string,
 };
 
 export type Family = {
   __typename: "Family",
+  categories?:  Array<Category | null > | null,
   id: string,
   name: string,
   users?:  Array<User | null > | null,
-  categories?:  Array<Category | null > | null,
-};
-
-export type User = {
-  __typename: "User",
-  id: string,
-  name: string,
-  email?: string | null,
-  family?: Family | null,
-  accounts?:  Array<Account | null > | null,
-};
-
-export type Account = {
-  __typename: "Account",
-  id: string,
-  name: string,
-  description?: string | null,
-  type: string,
-  owner: User,
-  overAllTotal: number,
 };
 
 export type Category = {
   __typename: "Category",
   id: string,
-  name: string,
-  type: string,
-  subCategories?: Array< string | null > | null,
   isDefault: boolean,
-};
-
-export type CreateUserInput = {
   name: string,
-  familyId?: string | null,
-  email?: string | null,
-};
-
-export type linkUserToFamilyInput = {
-  userId: string,
-  familyId: string,
-};
-
-export type CreateAccountInput = {
-  name: string,
-  description?: string | null,
+  subCategories?: Array< string | null > | null,
   type: string,
-  userId: string,
-  overAllTotal: number,
 };
 
 export type CreateCategoryInput = {
-  name: string,
-  type: string,
-  subCategories?: Array< string | null > | null,
-  isDefault: boolean,
   familyId?: string | null,
+  isDefault: boolean,
+  name: string,
+  subCategories?: Array< string | null > | null,
+  type: string,
+};
+
+export type CreateFamilyInput = {
+  name: string,
 };
 
 export type CreateMovementInput = {
-  description: string,
   amount: number,
-  type: string,
-  categoryId: string,
-  subCategory?: string | null,
-  date: string,
   bill?: string | null,
-  sourceId: string,
-  note?: string | null,
+  categoryId: string,
+  date: string,
+  description: string,
   familyId: string,
+  note?: string | null,
+  sourceId: string,
+  subCategory?: string | null,
+  type: string,
 };
 
 export type Movement = {
   __typename: "Movement",
-  id: string,
-  description: string,
   amount: number,
-  type: string,
-  category: Category,
-  subCategory?: string | null,
-  date: string,
   bill?: string | null,
-  source: Account,
+  category: Category,
+  date: string,
+  description: string,
+  id: string,
   note?: string | null,
+  source: Account,
+  subCategory?: string | null,
+  type: string,
+};
+
+export type CreateUserInput = {
+  email?: string | null,
+  familyId?: string | null,
+  name: string,
+};
+
+export type linkUserToFamilyInput = {
+  familyId: string,
+  userId: string,
 };
 
 export type getMovementsInput = {
-  startDate?: string | null,
-  endDate?: string | null,
-  type?: string | null,
   categoryId?: string | null,
-  sourceId?: string | null,
+  endDate?: string | null,
   familyId?: string | null,
-  nextToken?: string | null,
   limit?: number | null,
+  nextToken?: string | null,
+  sourceId?: string | null,
+  startDate?: string | null,
+  type?: string | null,
 };
 
 export type Movements = {
   __typename: "Movements",
+  count?: number | null,
   items?:  Array<Movement | null > | null,
   nextToken?: string | null,
-  count?: number | null,
-};
-
-export type CreateFamilyMutationVariables = {
-  input?: CreateFamilyInput | null,
-};
-
-export type CreateFamilyMutation = {
-  createFamily?:  {
-    __typename: "Family",
-    id: string,
-    name: string,
-    users?:  Array< {
-      __typename: "User",
-      id: string,
-      name: string,
-      email?: string | null,
-      family?:  {
-        __typename: "Family",
-        id: string,
-        name: string,
-      } | null,
-      accounts?:  Array< {
-        __typename: "Account",
-        id: string,
-        name: string,
-        description?: string | null,
-        type: string,
-        overAllTotal: number,
-      } | null > | null,
-    } | null > | null,
-    categories?:  Array< {
-      __typename: "Category",
-      id: string,
-      name: string,
-      type: string,
-      subCategories?: Array< string | null > | null,
-      isDefault: boolean,
-    } | null > | null,
-  } | null,
-};
-
-export type CreateUserMutationVariables = {
-  input?: CreateUserInput | null,
-};
-
-export type CreateUserMutation = {
-  createUser?:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    email?: string | null,
-    family?:  {
-      __typename: "Family",
-      id: string,
-      name: string,
-      users?:  Array< {
-        __typename: "User",
-        id: string,
-        name: string,
-        email?: string | null,
-      } | null > | null,
-      categories?:  Array< {
-        __typename: "Category",
-        id: string,
-        name: string,
-        type: string,
-        subCategories?: Array< string | null > | null,
-        isDefault: boolean,
-      } | null > | null,
-    } | null,
-    accounts?:  Array< {
-      __typename: "Account",
-      id: string,
-      name: string,
-      description?: string | null,
-      type: string,
-      owner:  {
-        __typename: "User",
-        id: string,
-        name: string,
-        email?: string | null,
-      },
-      overAllTotal: number,
-    } | null > | null,
-  } | null,
-};
-
-export type LinkUserToFamilyMutationVariables = {
-  input?: linkUserToFamilyInput | null,
-};
-
-export type LinkUserToFamilyMutation = {
-  linkUserToFamily?:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    email?: string | null,
-    family?:  {
-      __typename: "Family",
-      id: string,
-      name: string,
-      users?:  Array< {
-        __typename: "User",
-        id: string,
-        name: string,
-        email?: string | null,
-      } | null > | null,
-      categories?:  Array< {
-        __typename: "Category",
-        id: string,
-        name: string,
-        type: string,
-        subCategories?: Array< string | null > | null,
-        isDefault: boolean,
-      } | null > | null,
-    } | null,
-    accounts?:  Array< {
-      __typename: "Account",
-      id: string,
-      name: string,
-      description?: string | null,
-      type: string,
-      owner:  {
-        __typename: "User",
-        id: string,
-        name: string,
-        email?: string | null,
-      },
-      overAllTotal: number,
-    } | null > | null,
-  } | null,
 };
 
 export type CreateAccountMutationVariables = {
@@ -252,30 +121,30 @@ export type CreateAccountMutationVariables = {
 export type CreateAccountMutation = {
   createAccount?:  {
     __typename: "Account",
+    description?: string | null,
     id: string,
     name: string,
-    description?: string | null,
-    type: string,
+    overAllTotal: number,
     owner:  {
       __typename: "User",
-      id: string,
-      name: string,
+      accounts?:  Array< {
+        __typename: "Account",
+        description?: string | null,
+        id: string,
+        name: string,
+        overAllTotal: number,
+        type: string,
+      } | null > | null,
       email?: string | null,
       family?:  {
         __typename: "Family",
         id: string,
         name: string,
       } | null,
-      accounts?:  Array< {
-        __typename: "Account",
-        id: string,
-        name: string,
-        description?: string | null,
-        type: string,
-        overAllTotal: number,
-      } | null > | null,
+      id: string,
+      name: string,
     },
-    overAllTotal: number,
+    type: string,
   } | null,
 };
 
@@ -287,10 +156,49 @@ export type CreateCategoryMutation = {
   createCategory?:  {
     __typename: "Category",
     id: string,
-    name: string,
-    type: string,
-    subCategories?: Array< string | null > | null,
     isDefault: boolean,
+    name: string,
+    subCategories?: Array< string | null > | null,
+    type: string,
+  } | null,
+};
+
+export type CreateFamilyMutationVariables = {
+  input?: CreateFamilyInput | null,
+};
+
+export type CreateFamilyMutation = {
+  createFamily?:  {
+    __typename: "Family",
+    categories?:  Array< {
+      __typename: "Category",
+      id: string,
+      isDefault: boolean,
+      name: string,
+      subCategories?: Array< string | null > | null,
+      type: string,
+    } | null > | null,
+    id: string,
+    name: string,
+    users?:  Array< {
+      __typename: "User",
+      accounts?:  Array< {
+        __typename: "Account",
+        description?: string | null,
+        id: string,
+        name: string,
+        overAllTotal: number,
+        type: string,
+      } | null > | null,
+      email?: string | null,
+      family?:  {
+        __typename: "Family",
+        id: string,
+        name: string,
+      } | null,
+      id: string,
+      name: string,
+    } | null > | null,
   } | null,
 };
 
@@ -301,121 +209,128 @@ export type CreateMovementMutationVariables = {
 export type CreateMovementMutation = {
   createMovement?:  {
     __typename: "Movement",
-    id: string,
-    description: string,
     amount: number,
-    type: string,
+    bill?: string | null,
     category:  {
       __typename: "Category",
       id: string,
-      name: string,
-      type: string,
-      subCategories?: Array< string | null > | null,
       isDefault: boolean,
+      name: string,
+      subCategories?: Array< string | null > | null,
+      type: string,
     },
-    subCategory?: string | null,
     date: string,
-    bill?: string | null,
+    description: string,
+    id: string,
+    note?: string | null,
     source:  {
       __typename: "Account",
+      description?: string | null,
       id: string,
       name: string,
-      description?: string | null,
-      type: string,
+      overAllTotal: number,
       owner:  {
         __typename: "User",
-        id: string,
-        name: string,
         email?: string | null,
+        id: string,
+        name: string,
       },
-      overAllTotal: number,
-    },
-    note?: string | null,
-  } | null,
-};
-
-export type GetFamilyQueryVariables = {
-  id?: string | null,
-};
-
-export type GetFamilyQuery = {
-  getFamily?:  {
-    __typename: "Family",
-    id: string,
-    name: string,
-    users?:  Array< {
-      __typename: "User",
-      id: string,
-      name: string,
-      email?: string | null,
-      family?:  {
-        __typename: "Family",
-        id: string,
-        name: string,
-      } | null,
-      accounts?:  Array< {
-        __typename: "Account",
-        id: string,
-        name: string,
-        description?: string | null,
-        type: string,
-        overAllTotal: number,
-      } | null > | null,
-    } | null > | null,
-    categories?:  Array< {
-      __typename: "Category",
-      id: string,
-      name: string,
       type: string,
-      subCategories?: Array< string | null > | null,
-      isDefault: boolean,
-    } | null > | null,
+    },
+    subCategory?: string | null,
+    type: string,
   } | null,
 };
 
-export type GetUserQueryVariables = {
-  id?: string | null,
+export type CreateUserMutationVariables = {
+  input?: CreateUserInput | null,
 };
 
-export type GetUserQuery = {
-  getUser?:  {
+export type CreateUserMutation = {
+  createUser?:  {
     __typename: "User",
-    id: string,
-    name: string,
+    accounts?:  Array< {
+      __typename: "Account",
+      description?: string | null,
+      id: string,
+      name: string,
+      overAllTotal: number,
+      owner:  {
+        __typename: "User",
+        email?: string | null,
+        id: string,
+        name: string,
+      },
+      type: string,
+    } | null > | null,
     email?: string | null,
     family?:  {
       __typename: "Family",
+      categories?:  Array< {
+        __typename: "Category",
+        id: string,
+        isDefault: boolean,
+        name: string,
+        subCategories?: Array< string | null > | null,
+        type: string,
+      } | null > | null,
       id: string,
       name: string,
       users?:  Array< {
         __typename: "User",
+        email?: string | null,
         id: string,
         name: string,
-        email?: string | null,
       } | null > | null,
+    } | null,
+    id: string,
+    name: string,
+  } | null,
+};
+
+export type LinkUserToFamilyMutationVariables = {
+  input?: linkUserToFamilyInput | null,
+};
+
+export type LinkUserToFamilyMutation = {
+  linkUserToFamily?:  {
+    __typename: "User",
+    accounts?:  Array< {
+      __typename: "Account",
+      description?: string | null,
+      id: string,
+      name: string,
+      overAllTotal: number,
+      owner:  {
+        __typename: "User",
+        email?: string | null,
+        id: string,
+        name: string,
+      },
+      type: string,
+    } | null > | null,
+    email?: string | null,
+    family?:  {
+      __typename: "Family",
       categories?:  Array< {
         __typename: "Category",
         id: string,
-        name: string,
-        type: string,
-        subCategories?: Array< string | null > | null,
         isDefault: boolean,
+        name: string,
+        subCategories?: Array< string | null > | null,
+        type: string,
       } | null > | null,
-    } | null,
-    accounts?:  Array< {
-      __typename: "Account",
       id: string,
       name: string,
-      description?: string | null,
-      type: string,
-      owner:  {
+      users?:  Array< {
         __typename: "User",
+        email?: string | null,
         id: string,
         name: string,
-        email?: string | null,
-      },
-      overAllTotal: number,
-    } | null > | null,
+      } | null > | null,
+    } | null,
+    id: string,
+    name: string,
   } | null,
 };
 
@@ -426,69 +341,103 @@ export type GetAccountQueryVariables = {
 export type GetAccountQuery = {
   getAccount?:  {
     __typename: "Account",
+    description?: string | null,
     id: string,
     name: string,
-    description?: string | null,
-    type: string,
+    overAllTotal: number,
     owner:  {
       __typename: "User",
-      id: string,
-      name: string,
+      accounts?:  Array< {
+        __typename: "Account",
+        description?: string | null,
+        id: string,
+        name: string,
+        overAllTotal: number,
+        type: string,
+      } | null > | null,
       email?: string | null,
       family?:  {
         __typename: "Family",
         id: string,
         name: string,
       } | null,
-      accounts?:  Array< {
-        __typename: "Account",
-        id: string,
-        name: string,
-        description?: string | null,
-        type: string,
-        overAllTotal: number,
-      } | null > | null,
+      id: string,
+      name: string,
     },
-    overAllTotal: number,
+    type: string,
   } | null,
 };
 
-export type GetMovementsQueryVariables = {
-  input?: getMovementsInput | null,
+export type GetAccountsByUserGroupsQueryVariables = {
+  ids?: Array< string | null > | null,
 };
 
-export type GetMovementsQuery = {
-  getMovements?:  {
-    __typename: "Movements",
-    items?:  Array< {
-      __typename: "Movement",
-      id: string,
-      description: string,
-      amount: number,
-      type: string,
-      category:  {
-        __typename: "Category",
-        id: string,
-        name: string,
-        type: string,
-        subCategories?: Array< string | null > | null,
-        isDefault: boolean,
-      },
-      subCategory?: string | null,
-      date: string,
-      bill?: string | null,
-      source:  {
+export type GetAccountsByUserGroupsQuery = {
+  getAccountsByUserGroups?:  Array< {
+    __typename: "Account",
+    description?: string | null,
+    id: string,
+    name: string,
+    overAllTotal: number,
+    owner:  {
+      __typename: "User",
+      accounts?:  Array< {
         __typename: "Account",
+        description?: string | null,
         id: string,
         name: string,
-        description?: string | null,
-        type: string,
         overAllTotal: number,
-      },
-      note?: string | null,
+        type: string,
+      } | null > | null,
+      email?: string | null,
+      family?:  {
+        __typename: "Family",
+        id: string,
+        name: string,
+      } | null,
+      id: string,
+      name: string,
+    },
+    type: string,
+  } | null > | null,
+};
+
+export type GetFamilyQueryVariables = {
+  id?: string | null,
+};
+
+export type GetFamilyQuery = {
+  getFamily?:  {
+    __typename: "Family",
+    categories?:  Array< {
+      __typename: "Category",
+      id: string,
+      isDefault: boolean,
+      name: string,
+      subCategories?: Array< string | null > | null,
+      type: string,
     } | null > | null,
-    nextToken?: string | null,
-    count?: number | null,
+    id: string,
+    name: string,
+    users?:  Array< {
+      __typename: "User",
+      accounts?:  Array< {
+        __typename: "Account",
+        description?: string | null,
+        id: string,
+        name: string,
+        overAllTotal: number,
+        type: string,
+      } | null > | null,
+      email?: string | null,
+      family?:  {
+        __typename: "Family",
+        id: string,
+        name: string,
+      } | null,
+      id: string,
+      name: string,
+    } | null > | null,
   } | null,
 };
 
@@ -499,35 +448,120 @@ export type GetMovementQueryVariables = {
 export type GetMovementQuery = {
   getMovement?:  {
     __typename: "Movement",
-    id: string,
-    description: string,
     amount: number,
-    type: string,
+    bill?: string | null,
     category:  {
       __typename: "Category",
       id: string,
-      name: string,
-      type: string,
-      subCategories?: Array< string | null > | null,
       isDefault: boolean,
+      name: string,
+      subCategories?: Array< string | null > | null,
+      type: string,
     },
-    subCategory?: string | null,
     date: string,
-    bill?: string | null,
+    description: string,
+    id: string,
+    note?: string | null,
     source:  {
       __typename: "Account",
+      description?: string | null,
       id: string,
       name: string,
-      description?: string | null,
-      type: string,
+      overAllTotal: number,
       owner:  {
         __typename: "User",
+        email?: string | null,
         id: string,
         name: string,
-        email?: string | null,
       },
-      overAllTotal: number,
+      type: string,
     },
-    note?: string | null,
+    subCategory?: string | null,
+    type: string,
+  } | null,
+};
+
+export type GetMovementsQueryVariables = {
+  input?: getMovementsInput | null,
+};
+
+export type GetMovementsQuery = {
+  getMovements?:  {
+    __typename: "Movements",
+    count?: number | null,
+    items?:  Array< {
+      __typename: "Movement",
+      amount: number,
+      bill?: string | null,
+      category:  {
+        __typename: "Category",
+        id: string,
+        isDefault: boolean,
+        name: string,
+        subCategories?: Array< string | null > | null,
+        type: string,
+      },
+      date: string,
+      description: string,
+      id: string,
+      note?: string | null,
+      source:  {
+        __typename: "Account",
+        description?: string | null,
+        id: string,
+        name: string,
+        overAllTotal: number,
+        type: string,
+      },
+      subCategory?: string | null,
+      type: string,
+    } | null > | null,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetUserQueryVariables = {
+  id?: string | null,
+};
+
+export type GetUserQuery = {
+  getUser?:  {
+    __typename: "User",
+    accounts?:  Array< {
+      __typename: "Account",
+      description?: string | null,
+      id: string,
+      name: string,
+      overAllTotal: number,
+      owner:  {
+        __typename: "User",
+        email?: string | null,
+        id: string,
+        name: string,
+      },
+      type: string,
+    } | null > | null,
+    email?: string | null,
+    family?:  {
+      __typename: "Family",
+      categories?:  Array< {
+        __typename: "Category",
+        id: string,
+        isDefault: boolean,
+        name: string,
+        subCategories?: Array< string | null > | null,
+        type: string,
+      } | null > | null,
+      id: string,
+      name: string,
+      users?:  Array< {
+        __typename: "User",
+        email?: string | null,
+        id: string,
+        name: string,
+      } | null > | null,
+    } | null,
+    id: string,
+    name: string,
   } | null,
 };

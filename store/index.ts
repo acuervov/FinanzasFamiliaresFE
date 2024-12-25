@@ -2,11 +2,6 @@ import { create, StateCreator } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import _ from 'lodash';
 
-type FishSlice = {
-    fishes: number;
-    addFish: () => void;
-};
-
 type UserSlice = {
     user: any;
     setUser: (user: any) => void;
@@ -17,7 +12,12 @@ type FamilySlice = {
     setFamily: (family: any) => void;
 };
 
-type FinanzasStore = FishSlice & UserSlice & FamilySlice;
+type AccountsSlice = {
+    accounts: any;
+    setAccounts: (accounts: any) => void;
+};
+
+type FinanzasStore = UserSlice & FamilySlice & AccountsSlice;
 
 const createUserSlice: StateCreator<FinanzasStore, [['zustand/devtools', never]], [], UserSlice> = (set) => ({
     user: {},
@@ -29,15 +29,15 @@ const createFamilySlice: StateCreator<FinanzasStore, [['zustand/devtools', never
     setFamily: (family) => set((state) => ({ family: family }), undefined, 'finanzas:family/setFamily')
 });
 
-const createFishSlice: StateCreator<FinanzasStore, [['zustand/devtools', never]], [], FishSlice> = (set) => ({
-    fishes: 0,
-    addFish: () => set((state) => ({ fishes: state.fishes + 1 }), undefined, 'jungle:fish/addFish')
+const createAccountsSlice: StateCreator<FinanzasStore, [['zustand/devtools', never]], [], AccountsSlice> = (set) => ({
+    accounts: [],
+    setAccounts: (accounts) => set((state) => ({ accounts: [...accounts] }), undefined, 'finanzas:accounts/setAccounts')
 });
 
 export const useFinanzasStore = create<FinanzasStore>()(
     devtools((...args) => ({
         ...createUserSlice(...args),
-        ...createFishSlice(...args),
-        ...createFamilySlice(...args)
+        ...createFamilySlice(...args),
+        ...createAccountsSlice(...args)
     }))
 );

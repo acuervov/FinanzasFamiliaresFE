@@ -8,109 +8,32 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
-export const getFamily = /* GraphQL */ `query GetFamily($id: String) {
-  getFamily(id: $id) {
-    id
-    name
-    users {
-      id
-      name
-      email
-      family {
-        id
-        name
-        __typename
-      }
-      accounts {
-        id
-        name
-        description
-        type
-        overAllTotal
-        __typename
-      }
-      __typename
-    }
-    categories {
-      id
-      name
-      type
-      subCategories
-      isDefault
-      __typename
-    }
-    __typename
-  }
-}
-` as GeneratedQuery<APITypes.GetFamilyQueryVariables, APITypes.GetFamilyQuery>;
-export const getUser = /* GraphQL */ `query GetUser($id: String) {
-  getUser(id: $id) {
-    id
-    name
-    email
-    family {
-      id
-      name
-      users {
-        id
-        name
-        email
-        __typename
-      }
-      categories {
-        id
-        name
-        type
-        subCategories
-        isDefault
-        __typename
-      }
-      __typename
-    }
-    accounts {
-      id
-      name
-      description
-      type
-      owner {
-        id
-        name
-        email
-        __typename
-      }
-      overAllTotal
-      __typename
-    }
-    __typename
-  }
-}
-` as GeneratedQuery<APITypes.GetUserQueryVariables, APITypes.GetUserQuery>;
 export const getAccount = /* GraphQL */ `query GetAccount($id: String) {
   getAccount(id: $id) {
+    description
     id
     name
-    description
-    type
+    overAllTotal
     owner {
-      id
-      name
+      accounts {
+        description
+        id
+        name
+        overAllTotal
+        type
+        __typename
+      }
       email
       family {
         id
         name
         __typename
       }
-      accounts {
-        id
-        name
-        description
-        type
-        overAllTotal
-        __typename
-      }
+      id
+      name
       __typename
     }
-    overAllTotal
+    type
     __typename
   }
 }
@@ -118,76 +41,106 @@ export const getAccount = /* GraphQL */ `query GetAccount($id: String) {
   APITypes.GetAccountQueryVariables,
   APITypes.GetAccountQuery
 >;
-export const getMovements = /* GraphQL */ `query GetMovements($input: getMovementsInput) {
-  getMovements(input: $input) {
-    items {
-      id
-      description
-      amount
-      type
-      category {
-        id
-        name
-        type
-        subCategories
-        isDefault
-        __typename
-      }
-      subCategory
-      date
-      bill
-      source {
-        id
-        name
+export const getAccountsByUserGroups = /* GraphQL */ `query GetAccountsByUserGroups($ids: [String]) {
+  getAccountsByUserGroups(ids: $ids) {
+    description
+    id
+    name
+    overAllTotal
+    owner {
+      accounts {
         description
-        type
+        id
+        name
         overAllTotal
+        type
         __typename
       }
-      note
+      email
+      family {
+        id
+        name
+        __typename
+      }
+      id
+      name
       __typename
     }
-    nextToken
-    count
+    type
     __typename
   }
 }
 ` as GeneratedQuery<
-  APITypes.GetMovementsQueryVariables,
-  APITypes.GetMovementsQuery
+  APITypes.GetAccountsByUserGroupsQueryVariables,
+  APITypes.GetAccountsByUserGroupsQuery
 >;
-export const getMovement = /* GraphQL */ `query GetMovement($id: String) {
-  getMovement(id: $id) {
+export const getFamily = /* GraphQL */ `query GetFamily($id: String) {
+  getFamily(id: $id) {
+    categories {
+      id
+      isDefault
+      name
+      subCategories
+      type
+      __typename
+    }
     id
-    description
-    amount
-    type
-    category {
+    name
+    users {
+      accounts {
+        description
+        id
+        name
+        overAllTotal
+        type
+        __typename
+      }
+      email
+      family {
+        id
+        name
+        __typename
+      }
       id
       name
-      type
-      subCategories
+      __typename
+    }
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.GetFamilyQueryVariables, APITypes.GetFamilyQuery>;
+export const getMovement = /* GraphQL */ `query GetMovement($id: String) {
+  getMovement(id: $id) {
+    amount
+    bill
+    category {
+      id
       isDefault
+      name
+      subCategories
+      type
+      __typename
+    }
+    date
+    description
+    id
+    note
+    source {
+      description
+      id
+      name
+      overAllTotal
+      owner {
+        email
+        id
+        name
+        __typename
+      }
+      type
       __typename
     }
     subCategory
-    date
-    bill
-    source {
-      id
-      name
-      description
-      type
-      owner {
-        id
-        name
-        email
-        __typename
-      }
-      overAllTotal
-      __typename
-    }
-    note
+    type
     __typename
   }
 }
@@ -195,3 +148,83 @@ export const getMovement = /* GraphQL */ `query GetMovement($id: String) {
   APITypes.GetMovementQueryVariables,
   APITypes.GetMovementQuery
 >;
+export const getMovements = /* GraphQL */ `query GetMovements($input: getMovementsInput) {
+  getMovements(input: $input) {
+    count
+    items {
+      amount
+      bill
+      category {
+        id
+        isDefault
+        name
+        subCategories
+        type
+        __typename
+      }
+      date
+      description
+      id
+      note
+      source {
+        description
+        id
+        name
+        overAllTotal
+        type
+        __typename
+      }
+      subCategory
+      type
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetMovementsQueryVariables,
+  APITypes.GetMovementsQuery
+>;
+export const getUser = /* GraphQL */ `query GetUser($id: String) {
+  getUser(id: $id) {
+    accounts {
+      description
+      id
+      name
+      overAllTotal
+      owner {
+        email
+        id
+        name
+        __typename
+      }
+      type
+      __typename
+    }
+    email
+    family {
+      categories {
+        id
+        isDefault
+        name
+        subCategories
+        type
+        __typename
+      }
+      id
+      name
+      users {
+        email
+        id
+        name
+        __typename
+      }
+      __typename
+    }
+    id
+    name
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.GetUserQueryVariables, APITypes.GetUserQuery>;

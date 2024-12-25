@@ -12,10 +12,11 @@ import { getCurrentUser, signOut } from 'aws-amplify/auth';
 import { useRouter } from 'next/navigation';
 import { useFinanzasStore } from '../store';
 import { client } from '../amplify/data/resource';
-import { getUser } from '../graphql/queries';
+import { getAccountsByUserGroups, getUser } from '../graphql/queries';
 import AssignUserFamily from '../components/widgets/newUserFamily';
 import { Dialog } from 'primereact/dialog';
 import CreateAccountForm from '../components/forms/createAccount';
+import { useMountEffect } from 'primereact/hooks';
 
 const getCurrentUserInfo = async () => {
     const { username } = await getCurrentUser();
@@ -28,14 +29,25 @@ const getCurrentUserInfo = async () => {
     return res?.data?.getUser;
 };
 
+const getAccountsInfo = async (ids) => {
+    const res = await client.graphql({
+        query: getAccountsByUserGroups,
+        variables: {
+            ids
+        }
+    });
+
+    return res?.data?.getAccountsByUserGroups;
+};
+
 const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElement> }, ref) => {
     const router = useRouter(); // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { user, setUser, setFamily, family } = useFinanzasStore((state) => state);
+    const { user, setUser, setFamily, family, setAccounts } = useFinanzasStore((state) => state);
 
     const [showCreateFamily, setShowCreateFamily] = useState(false);
     const [showCreateAccount, setShowCreateAccount] = useState(false);
 
-    useEffect(() => {
+    useMountEffect(() => {
         const setUserInfoInStore = async () => {
             const userInfo = await getCurrentUserInfo();
             setUser(userInfo);
@@ -46,7 +58,20 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
             }
         };
         setUserInfoInStore();
-    }, [setUser, setFamily]);
+    });
+
+    useEffect(() => {
+        const setAccountsInfo = async () => {
+            const users = family?.users?.map((user) => user.id) || [];
+
+            if (users.length) {
+                const accounts = await getAccountsInfo(users);
+                setAccounts(accounts);
+            }
+        };
+
+        setAccountsInfo();
+    }, [family, setAccounts, user]);
 
     const btnRef1 = useRef(null);
     const btnRef2 = useRef(null);

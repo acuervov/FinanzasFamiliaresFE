@@ -58,7 +58,6 @@ const CreateAccountForm = (props: Props) => {
             });
             const user = _.get(res, 'data.createAccount.owner');
             setUser(user);
-            setFamily(user.family);
 
             props.onSuccess();
         } catch (err) {
