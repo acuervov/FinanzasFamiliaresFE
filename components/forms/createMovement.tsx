@@ -15,13 +15,13 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import useAccounts from '../../hooks/useAccounts';
 
 const movementSchema = Yup.object().shape({
-    description: Yup.string().required(),
-    amount: Yup.number().required(),
-    date: Yup.date().required(),
-    type: Yup.string().required(),
-    categoryId: Yup.string().required(),
+    description: Yup.string().required('La descripción es un campo obligatorio'),
+    amount: Yup.number().required('El monto es un campo obligatorio'),
+    date: Yup.date().required('La fecha es un campo obligatorio'),
+    type: Yup.string().required('El tipo es un campo obligatorio'),
+    categoryId: Yup.string().required('La categoria es un campo obligatorio'),
     subCategory: Yup.string(),
-    sourceId: Yup.string().required(),
+    sourceId: Yup.string().required('La fuente es un campo obligatorio'),
     bill: Yup.string(),
     note: Yup.string()
 });
@@ -137,7 +137,7 @@ const CreateMovementForm = (props: Props) => {
                 </div>
             </div>
             <div className="field">
-                <label htmlFor="sourceId">Fuente del movimiento</label>
+                <label htmlFor="sourceId">Fuente/destino del movimiento</label>
                 <Dropdown value={movement.sourceId} onChange={(e) => updateField(e.value, 'sourceId')} options={groupedAccountsOptions} optionLabel="label" optionGroupLabel="label" optionGroupChildren="items" />
                 <span className="text-red-500">{errors.sourceId}</span>
             </div>
