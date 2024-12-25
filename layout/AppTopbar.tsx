@@ -18,6 +18,7 @@ import { Dialog } from 'primereact/dialog';
 import CreateAccountForm from '../components/forms/createAccount';
 import { useMountEffect } from 'primereact/hooks';
 import useAccounts from '../hooks/useAccounts';
+import CreateCategoryForm from '../components/forms/createCategory';
 
 const getCurrentUserInfo = async () => {
     const { username } = await getCurrentUser();
@@ -36,17 +37,19 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
 
     const [showCreateFamily, setShowCreateFamily] = useState(false);
     const [showCreateAccount, setShowCreateAccount] = useState(false);
+    const [showCreateCategory, setShowCreateCategory] = useState(false);
+
+    const setUserInfoInStore = async () => {
+        const userInfo = await getCurrentUserInfo();
+        setUser(userInfo);
+        if (userInfo.family) {
+            setFamily(userInfo.family);
+        } else {
+            setShowCreateFamily(true);
+        }
+    };
 
     useMountEffect(() => {
-        const setUserInfoInStore = async () => {
-            const userInfo = await getCurrentUserInfo();
-            setUser(userInfo);
-            if (userInfo.family) {
-                setFamily(userInfo.family);
-            } else {
-                setShowCreateFamily(true);
-            }
-        };
         setUserInfoInStore();
     });
 
@@ -72,6 +75,14 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
             <AssignUserFamily visible={showCreateFamily} onHide={() => setShowCreateFamily(false)} />
             <Dialog visible={showCreateAccount} header="Cree una nueva cuenta" className="sm:w-10 lg:w-4" modal onHide={() => setShowCreateAccount(false)}>
                 <CreateAccountForm onSuccess={() => setShowCreateAccount(false)} />
+            </Dialog>
+            <Dialog visible={showCreateCategory} header="Cree una nueva categoria" className="sm:w-10 lg:w-4" modal onHide={() => setShowCreateCategory(false)}>
+                <CreateCategoryForm
+                    onSuccess={() => {
+                        setUserInfoInStore();
+                        setShowCreateCategory(false);
+                    }}
+                />
             </Dialog>
             <div className="topbar-left">
                 <button ref={menubuttonRef} type="button" className="menu-button p-link" onClick={onMenuToggle}>
@@ -109,6 +120,15 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
                                     <i className="pi pi-wallet mr-3"></i>
                                     <span className="flex flex-column">
                                         <span className="font-semibold">Crear cuenta nueva</span>
+                                    </span>
+                                    <Ripple />
+                                </a>
+                            </li>
+                            <li>
+                                <a onClick={() => setShowCreateCategory(true)} className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
+                                    <i className="pi pi-server mr-3"></i>
+                                    <span className="flex flex-column">
+                                        <span className="font-semibold">Crear categoria nueva</span>
                                     </span>
                                     <Ripple />
                                 </a>
