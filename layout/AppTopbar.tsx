@@ -17,6 +17,7 @@ import AssignUserFamily from '../components/widgets/newUserFamily';
 import { Dialog } from 'primereact/dialog';
 import CreateAccountForm from '../components/forms/createAccount';
 import { useMountEffect } from 'primereact/hooks';
+import useAccounts from '../hooks/useAccounts';
 
 const getCurrentUserInfo = async () => {
     const { username } = await getCurrentUser();
@@ -27,17 +28,6 @@ const getCurrentUserInfo = async () => {
         }
     });
     return res?.data?.getUser;
-};
-
-const getAccountsInfo = async (ids) => {
-    const res = await client.graphql({
-        query: getAccountsByUserGroups,
-        variables: {
-            ids
-        }
-    });
-
-    return res?.data?.getAccountsByUserGroups;
 };
 
 const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElement> }, ref) => {
@@ -60,18 +50,7 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
         setUserInfoInStore();
     });
 
-    useEffect(() => {
-        const setAccountsInfo = async () => {
-            const users = family?.users?.map((user) => user.id) || [];
-
-            if (users.length) {
-                const accounts = await getAccountsInfo(users);
-                setAccounts(accounts);
-            }
-        };
-
-        setAccountsInfo();
-    }, [family, setAccounts, user]);
+    useAccounts();
 
     const btnRef1 = useRef(null);
     const btnRef2 = useRef(null);

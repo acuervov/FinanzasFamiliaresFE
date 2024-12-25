@@ -15,8 +15,12 @@ import { Skeleton } from 'primereact/skeleton';
 import { useFinanzasStore } from '../../../../store';
 import useGetBalance from '../../../../hooks/useGetBalance';
 import numbro from 'numbro';
+import { Dialog } from 'primereact/dialog';
+import CreateMovementForm from '../../../../components/forms/createMovement';
 
 const Banking = () => {
+    const [showMovementForm, setShowMovementForm] = useState(false);
+
     const [barOptions, setBarOptions] = useState({});
     const [barData, setBarData] = useState({});
     const { layoutConfig } = useContext(LayoutContext);
@@ -253,9 +257,7 @@ const Banking = () => {
                             </div>
                         </div>
                         <div className="mx-auto sm:mx-0">
-                            <Button icon="pi pi-calendar" rounded severity="secondary" outlined className="mr-1 sm:mr-3" />
-
-                            <Button icon="pi pi-plus" iconPos="right" label="Add Quick Action" severity="secondary" rounded />
+                            <Button icon="pi pi-plus" iconPos="right" label="Añadir movimiento" severity="secondary" rounded onClick={() => setShowMovementForm(true)} />
                         </div>
                     </div>
 
@@ -506,6 +508,9 @@ const Banking = () => {
                     </div>
                 </div>
             )}
+            <Dialog id="CreateMovementForm" visible={showMovementForm} header="Cree un nuevo movimiento" className="sm:w-10 lg:w-4" modal onHide={() => setShowMovementForm(false)}>
+                <CreateMovementForm onSuccess={() => {}} />
+            </Dialog>
         </div>
     );
 };
