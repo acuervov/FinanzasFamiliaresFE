@@ -13,13 +13,17 @@ import { Ripple } from 'primereact/ripple';
 import { ChartData, ChartOptions } from 'chart.js';
 import { Skeleton } from 'primereact/skeleton';
 import { useFinanzasStore } from '../../../../store';
+import useGetBalance from '../../../../hooks/useGetBalance';
+import numbro from 'numbro';
 
 const Banking = () => {
     const [barOptions, setBarOptions] = useState({});
     const [barData, setBarData] = useState({});
     const { layoutConfig } = useContext(LayoutContext);
 
-    const family = useFinanzasStore((state) => state.family);
+    const { family, accounts } = useFinanzasStore((state) => state);
+
+    const { totalBalance } = useGetBalance(accounts);
 
     const [hoveredIndex, setHoveredIndex] = useState(-1);
 
@@ -243,15 +247,9 @@ const Banking = () => {
                 <div className="grid">
                     <div className="col-12 flex align-items-center justify-content-between flex-wrap gap-5">
                         <div className="mx-auto sm:mx-0">
-                            <span className="block text-xl font-semibold mb-2">Total Balance</span>
+                            <span className="block text-xl font-semibold mb-2">Balance total</span>
                             <div className="flex align-items-center">
-                                <span className="font-semibold text-2xl">
-                                    $57,401
-                                    <span className="text-color-secondary text-base">.26</span>
-                                </span>
-                                <span className="text-green-700 border-round font-semibold ml-4 p-2 white-space-nowrap" style={{ backgroundColor: 'rgba(77, 182, 172, 0.1)' }}>
-                                    +$401 Today
-                                </span>
+                                <span className="font-semibold text-2xl">{numbro(totalBalance).formatCurrency().toUpperCase()}</span>
                             </div>
                         </div>
                         <div className="mx-auto sm:mx-0">
