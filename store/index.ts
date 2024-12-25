@@ -1,5 +1,6 @@
 import { create, StateCreator } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import _ from 'lodash';
 
 type FishSlice = {
     fishes: number;
@@ -20,7 +21,7 @@ type FinanzasStore = FishSlice & UserSlice & FamilySlice;
 
 const createUserSlice: StateCreator<FinanzasStore, [['zustand/devtools', never]], [], UserSlice> = (set) => ({
     user: {},
-    setUser: (user) => set((state) => ({ user: user }), undefined, 'finanzas:user/setUser')
+    setUser: (user) => set((state) => ({ user: _.cloneDeep(user) }), undefined, 'finanzas:user/setUser')
 });
 
 const createFamilySlice: StateCreator<FinanzasStore, [['zustand/devtools', never]], [], FamilySlice> = (set) => ({

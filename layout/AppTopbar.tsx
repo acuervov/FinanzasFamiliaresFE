@@ -14,6 +14,8 @@ import { useFinanzasStore } from '../store';
 import { client } from '../amplify/data/resource';
 import { getUser } from '../graphql/queries';
 import AssignUserFamily from '../components/widgets/newUserFamily';
+import { Dialog } from 'primereact/dialog';
+import CreateAccountForm from '../components/forms/createAccount';
 
 const getCurrentUserInfo = async () => {
     const { username } = await getCurrentUser();
@@ -23,7 +25,6 @@ const getCurrentUserInfo = async () => {
             id: username
         }
     });
-
     return res?.data?.getUser;
 };
 
@@ -31,7 +32,8 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
     const router = useRouter(); // eslint-disable-next-line react-hooks/rules-of-hooks
     const { user, setUser, setFamily, family } = useFinanzasStore((state) => state);
 
-    const [displayBasic, setDisplayBasic] = useState(false);
+    const [showCreateFamily, setShowCreateFamily] = useState(false);
+    const [showCreateAccount, setShowCreateAccount] = useState(false);
 
     useEffect(() => {
         const setUserInfoInStore = async () => {
@@ -40,7 +42,7 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
             if (userInfo.family) {
                 setFamily(userInfo.family);
             } else {
-                setDisplayBasic(true);
+                setShowCreateFamily(true);
             }
         };
         setUserInfoInStore();
@@ -63,7 +65,10 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
 
     return (
         <div className="layout-topbar">
-            <AssignUserFamily visible={displayBasic} onHide={() => setDisplayBasic(false)} />
+            <AssignUserFamily visible={showCreateFamily} onHide={() => setShowCreateFamily(false)} />
+            <Dialog visible={showCreateAccount} header="Cree una nueva cuenta" className="sm:w-10 lg:w-4" modal onHide={() => setShowCreateAccount(false)}>
+                <CreateAccountForm onSuccess={() => setShowCreateAccount(false)} />
+            </Dialog>
             <div className="topbar-left">
                 <button ref={menubuttonRef} type="button" className="menu-button p-link" onClick={onMenuToggle}>
                     <i className="pi pi-chevron-left"></i>
@@ -96,50 +101,12 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
                         </StyleClass>
                         <ul className="list-none p-3 m-0 border-round shadow-2 absolute surface-overlay hidden origin-top w-full sm:w-19rem mt-2 right-0 z-5 top-auto">
                             <li>
-                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
-                                    <i className="pi pi-shopping-cart mr-3"></i>
+                                <a onClick={() => setShowCreateAccount(true)} className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
+                                    <i className="pi pi-wallet mr-3"></i>
                                     <span className="flex flex-column">
-                                        <span className="font-semibold">New Order</span>
-                                        <span className="text-color-secondary">
-                                            You have <strong>3</strong> new orders.
-                                        </span>
+                                        <span className="font-semibold">Crear cuenta nueva</span>
                                     </span>
                                     <Ripple />
-                                </a>
-                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
-                                    <i className="pi pi-check-square mr-3"></i>
-                                    <span className="flex flex-column">
-                                        <span className="font-semibold">Withdrawn Completed</span>
-                                        <span className="text-color-secondary">Funds are on their way.</span>
-                                    </span>
-                                    <Ripple />
-                                </a>
-                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
-                                    <i className="pi pi-chart-line mr-3"></i>
-                                    <span className="flex flex-column">
-                                        <span className="font-semibold">Monthly Reports</span>
-                                        <span className="text-color-secondary">Monthly Reports are ready.</span>
-                                    </span>
-                                    <Ripple />
-                                </a>
-                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
-                                    <i className="pi pi-comments mr-3"></i>
-                                    <span className="flex flex-column">
-                                        <span className="font-semibold">Comments</span>
-                                        <span className="text-color-secondary">
-                                            <strong>2</strong> new comments.
-                                        </span>
-                                    </span>
-                                    <Ripple />
-                                </a>
-                                <a className="p-ripple flex p-2 border-round align-items-center hover:surface-hover transition-colors transition-duration-150 cursor-pointer">
-                                    <i className="pi pi-exclamation-circle mr-3"></i>
-                                    <span className="flex flex-column">
-                                        <span className="font-semibold">Chargeback Request</span>
-                                        <span className="text-color-secondary">
-                                            <strong>1</strong> to review.
-                                        </span>
-                                    </span>
                                 </a>
                             </li>
                         </ul>
