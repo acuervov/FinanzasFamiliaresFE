@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { client } from '../amplify/data/resource';
 import { getAccountsByUserGroups } from '../graphql/queries';
 import { useFinanzasStore } from '../store';
@@ -10,30 +10,46 @@ const getAccountsInfo = async (ids) => {
             ids
         }
     });
-
+    console.log();
     return res?.data?.getAccountsByUserGroups;
 };
 
-export default function useAccounts() {
+export default function useAccounts(loadAccounts = false) {
     const { user, accounts, family, setAccounts } = useFinanzasStore((state) => state);
 
-    useEffect(() => {
-        setAccountsInfo();
-    }, [family, user]);
-
-    const setAccountsInfo = async () => {
+    const setAccountsInfo = useCallback(async () => {
         const users = family?.users?.map((user) => user.id) || [];
 
         if (users.length) {
             const accounts = await getAccountsInfo(users);
             setAccounts(accounts);
         }
-    };
+    }, [family, setAccounts]);
 
-    const groupedAccountsOptions = family?.users?.map((user) => {
-        const userAccounts = accounts?.filter((account) => account?.owner?.id === user.id).map((account) => ({ label: account.name, value: account.id }));
-        return { label: user.name, code: user.id, items: userAccounts };
-    });
+    useEffect(() => {
+        if (loadAccounts) {
+            setAccountsInfo();
+        }
+    }, [loadAccounts, family, user, setAccountsInfo]);
 
-    return { groupedAccountsOptions, setAccountsInfo };
+    const groupedAccountsOptions = useMemo(
+        () =>
+            family?.users?.map((user) => {
+                const userAccounts = accounts?.filter((account) => account?.owner?.id === user.id).map((account) => ({ label: account.name, value: account.id }));
+                return { label: user.name, code: user.id, items: userAccounts };
+            }),
+        [family, accounts]
+    );
+
+    const savingsAccounts = useMemo(() => accounts.filter((account) => account.type === 'savings'), [accounts]);
+
+    const savingsAllTotal = useMemo(
+        () =>
+            savingsAccounts.reduce((total, current) => {
+                return (total += current.overAllTotal);
+            }, 0),
+        [savingsAccounts]
+    );
+
+    return { groupedAccountsOptions, setAccountsInfo, savingsAllTotal };
 }

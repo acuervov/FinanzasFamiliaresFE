@@ -53,7 +53,7 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
         setUserInfoInStore();
     });
 
-    useAccounts();
+    useAccounts(true);
 
     const btnRef1 = useRef(null);
     const btnRef2 = useRef(null);

@@ -1,29 +1,27 @@
 import { Button } from '@aws-amplify/ui-react';
+import { useMemo } from 'react';
 
-const Metrics = ({ incomeData, purchaseData }) => {
-    const metrics = [
-        {
-            title: 'Gastos',
-            profit: '+8%',
-            total: purchaseData.currentMonthTotalPurchase,
-            description: 'vs last week',
-            image: 'banking-3'
-        },
-        {
-            title: 'Ingresos',
-            profit: '+8%',
-            total: incomeData.currentMonthTotalIncome,
-            description: 'vs last week',
-            image: 'banking-2'
-        },
-        {
-            title: 'Ahorros',
-            profit: '+8%',
-            total: 0,
-            description: 'vs last week',
-            image: 'banking-1'
-        }
-    ];
+const Metrics = ({ incomeData, purchaseData, savingsData }) => {
+    const metrics = useMemo(
+        () => [
+            {
+                title: 'Gastos',
+                total: purchaseData.currentMonthTotalPurchase,
+                image: 'banking-3'
+            },
+            {
+                title: 'Ingresos',
+                total: incomeData.currentMonthTotalIncome,
+                image: 'banking-2'
+            },
+            {
+                title: 'Ahorros',
+                total: savingsData.savingsAllTotal,
+                image: 'banking-1'
+            }
+        ],
+        [incomeData, purchaseData, savingsData]
+    );
     return (
         <>
             {metrics.map((metric, index) => (

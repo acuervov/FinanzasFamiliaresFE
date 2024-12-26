@@ -19,6 +19,7 @@ import { Dialog } from 'primereact/dialog';
 import CreateMovementForm from '../../../../components/forms/createMovement';
 import Metrics from './components/metrics';
 import useMovements from '../../../../hooks/useMovements';
+import useAccounts from '../../../../hooks/useAccounts';
 
 const Banking = () => {
     const [showMovementForm, setShowMovementForm] = useState(false);
@@ -227,7 +228,7 @@ const Banking = () => {
     }, [layoutConfig]);
 
     const { incomeData, purchaseData, currentMonthAllTotal } = useMovements();
-
+    const { savingsAllTotal } = useAccounts();
     return (
         <div className="layout-dashboard">
             {family.id ? (
@@ -252,7 +253,7 @@ const Banking = () => {
                             <Button icon="pi pi-plus" iconPos="right" label="Añadir movimiento" severity="secondary" rounded onClick={() => setShowMovementForm(true)} />
                         </div>
                     </div>
-                    <Metrics incomeData={incomeData} purchaseData={purchaseData} />
+                    <Metrics incomeData={incomeData} purchaseData={purchaseData} savingsData={{ savingsAllTotal }} />
 
                     <div className="h-full col-12 xl:col-8">
                         <div className="card">
