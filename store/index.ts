@@ -17,7 +17,12 @@ type AccountsSlice = {
     setAccounts: (accounts: any) => void;
 };
 
-type FinanzasStore = UserSlice & FamilySlice & AccountsSlice;
+type MovementsSlice = {
+    movements: any;
+    setMovements: (movements: any) => void;
+};
+
+type FinanzasStore = UserSlice & FamilySlice & AccountsSlice & MovementsSlice;
 
 const createUserSlice: StateCreator<FinanzasStore, [['zustand/devtools', never]], [], UserSlice> = (set) => ({
     user: {},
@@ -34,10 +39,16 @@ const createAccountsSlice: StateCreator<FinanzasStore, [['zustand/devtools', nev
     setAccounts: (accounts) => set((state) => ({ accounts: [...accounts] }), undefined, 'finanzas:accounts/setAccounts')
 });
 
+const createMovementsSlice: StateCreator<FinanzasStore, [['zustand/devtools', never]], [], MovementsSlice> = (set) => ({
+    movements: [],
+    setMovements: (movements) => set((state) => ({ movements: [...movements] }), undefined, 'finanzas:movements/setMovements')
+});
+
 export const useFinanzasStore = create<FinanzasStore>()(
     devtools((...args) => ({
         ...createUserSlice(...args),
         ...createFamilySlice(...args),
-        ...createAccountsSlice(...args)
+        ...createAccountsSlice(...args),
+        ...createMovementsSlice(...args)
     }))
 );

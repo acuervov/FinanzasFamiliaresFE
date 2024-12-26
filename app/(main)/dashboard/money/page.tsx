@@ -17,6 +17,8 @@ import useGetBalance from '../../../../hooks/useGetBalance';
 import numbro from 'numbro';
 import { Dialog } from 'primereact/dialog';
 import CreateMovementForm from '../../../../components/forms/createMovement';
+import Metrics from './components/metrics';
+import useMovements from '../../../../hooks/useMovements';
 
 const Banking = () => {
     const [showMovementForm, setShowMovementForm] = useState(false);
@@ -145,27 +147,6 @@ const Banking = () => {
         }
     ];
 
-    const metrics = [
-        {
-            title: 'Main Account',
-            profit: '+8%',
-            description: 'vs last week',
-            image: 'banking-1'
-        },
-        {
-            title: 'Investment Account',
-            profit: '+8%',
-            description: 'vs last week',
-            image: 'banking-2'
-        },
-        {
-            title: 'Expenses Account',
-            profit: '+8%',
-            description: 'vs last week',
-            image: 'banking-3'
-        }
-    ];
-
     const initChart = () => {
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color') || '#495057';
@@ -245,6 +226,8 @@ const Banking = () => {
         initChart();
     }, [layoutConfig]);
 
+    const { incomeData, purchaseData } = useMovements();
+
     return (
         <div className="layout-dashboard">
             {family.id ? (
@@ -260,33 +243,7 @@ const Banking = () => {
                             <Button icon="pi pi-plus" iconPos="right" label="Añadir movimiento" severity="secondary" rounded onClick={() => setShowMovementForm(true)} />
                         </div>
                     </div>
-
-                    {metrics.map((metric, index) => (
-                        <div key={metric.title} className="col-12 md:col-4">
-                            <div className="card flex w-full relative h-14rem overflow-hidden" onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave}>
-                                <div className="flex w-full justify-content-between p-1">
-                                    <div>
-                                        <span className="block white-space-nowrap font-semibold">{metric.title}</span>
-                                        <span className="block font-semibold text-xl mt-2 white-space-nowrap">
-                                            $12,345
-                                            <span className="text-color-secondary text-sm">.67</span>
-                                        </span>
-                                    </div>
-                                    <div className="text-right">
-                                        <span className="block white-space-nowrap">
-                                            {metric.profit}
-                                            <i className="pi pi-arrow-up text-green-500"></i>
-                                        </span>
-                                        <span className="block text-color-secondary mt-2 white-space-nowrap">vs last week</span>
-                                    </div>
-                                </div>
-                                <img src={`/demo/images/dashboard/${metric.image}.svg`} className="absolute w-full bottom-0 left-0" alt="metric.image" />
-                                {hoveredIndex === index && (
-                                    <Button label="View Details" icon="pi pi-eye" iconPos="right" rounded severity="secondary" className="p-ripple fadeindown font-semibold absolute" style={{ borderRadius: '50px', left: '36%', bottom: '10%' }} />
-                                )}
-                            </div>
-                        </div>
-                    ))}
+                    <Metrics incomeData={incomeData} purchaseData={purchaseData} />
 
                     <div className="h-full col-12 xl:col-8">
                         <div className="card">
