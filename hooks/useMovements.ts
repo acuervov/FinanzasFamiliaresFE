@@ -50,5 +50,7 @@ export default function useMovements() {
         [currentMonthPurchaseMovements]
     );
 
-    return { incomeData: { currentMonthIncomeMovements, currentMonthTotalIncome }, purchaseData: { currentMonthPurchaseMovements, currentMonthTotalPurchase } };
+    const currentMonthAllTotal = useMemo(() => currentMonthTotalIncome - currentMonthTotalPurchase, [currentMonthTotalIncome, currentMonthTotalPurchase]);
+
+    return { incomeData: { currentMonthIncomeMovements, currentMonthTotalIncome }, purchaseData: { currentMonthPurchaseMovements, currentMonthTotalPurchase }, currentMonthAllTotal };
 }

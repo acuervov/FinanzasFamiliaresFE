@@ -226,19 +226,28 @@ const Banking = () => {
         initChart();
     }, [layoutConfig]);
 
-    const { incomeData, purchaseData } = useMovements();
+    const { incomeData, purchaseData, currentMonthAllTotal } = useMovements();
 
     return (
         <div className="layout-dashboard">
             {family.id ? (
                 <div className="grid">
                     <div className="col-12 flex align-items-center justify-content-between flex-wrap gap-5">
-                        <div className="mx-auto sm:mx-0">
-                            <span className="block text-xl font-semibold mb-2">Balance total</span>
-                            <div className="flex align-items-center">
-                                <span className="font-semibold text-2xl">{numbro(totalBalance).formatCurrency().toUpperCase()}</span>
+                        <div className="flex justify-content-start align-items-center gap-4">
+                            <div className="mx-auto sm:mx-0">
+                                <span className="block text-xl font-semibold mb-2">Balance mensual</span>
+                                <div className="flex align-items-center">
+                                    <span className="font-semibold text-2xl">{numbro(currentMonthAllTotal).formatCurrency().toUpperCase()}</span>
+                                </div>
+                            </div>
+                            <div className="mx-auto sm:mx-0">
+                                <span className="block text-xl font-semibold mb-2">Balance total</span>
+                                <div className="flex align-items-center">
+                                    <span className="font-semibold text-2xl">{numbro(totalBalance).formatCurrency().toUpperCase()}</span>
+                                </div>
                             </div>
                         </div>
+
                         <div className="mx-auto sm:mx-0">
                             <Button icon="pi pi-plus" iconPos="right" label="Añadir movimiento" severity="secondary" rounded onClick={() => setShowMovementForm(true)} />
                         </div>
