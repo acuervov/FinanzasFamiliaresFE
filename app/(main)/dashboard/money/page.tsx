@@ -238,13 +238,13 @@ const Banking = () => {
                             <div className="mx-auto sm:mx-0">
                                 <span className="block text-xl font-semibold mb-2">Balance mensual</span>
                                 <div className="flex align-items-center">
-                                    <span className="font-semibold text-2xl">{numbro(currentMonthAllTotal).formatCurrency().toUpperCase()}</span>
+                                    <span className="font-semibold text-2xl">{numbro(currentMonthAllTotal).formatCurrency({ mantissa: 1, optionalMantissa: true, average: true }).toUpperCase()}</span>
                                 </div>
                             </div>
                             <div className="mx-auto sm:mx-0">
                                 <span className="block text-xl font-semibold mb-2">Balance total</span>
                                 <div className="flex align-items-center">
-                                    <span className="font-semibold text-2xl">{numbro(totalBalance).formatCurrency().toUpperCase()}</span>
+                                    <span className="font-semibold text-2xl">{numbro(totalBalance).formatCurrency({ mantissa: 1, optionalMantissa: true, average: true }).toUpperCase()}</span>
                                 </div>
                             </div>
                         </div>

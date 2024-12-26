@@ -1,4 +1,5 @@
 import { Button } from '@aws-amplify/ui-react';
+import numbro from 'numbro';
 import { useMemo } from 'react';
 
 const Metrics = ({ incomeData, purchaseData, savingsData }) => {
@@ -30,7 +31,7 @@ const Metrics = ({ incomeData, purchaseData, savingsData }) => {
                         <div className="flex w-full justify-content-between p-1">
                             <div>
                                 <span className="block white-space-nowrap font-semibold">{metric.title}</span>
-                                <span className="block font-semibold text-xl mt-2 white-space-nowrap">{metric.total}</span>
+                                <span className="block font-semibold text-xl mt-2 white-space-nowrap">{numbro(metric.total).formatCurrency({ mantissa: 1, optionalMantissa: true, average: true }).toUpperCase()}</span>
                             </div>
                         </div>
                         <img src={`/demo/images/dashboard/${metric.image}.svg`} className="absolute w-full bottom-0 left-0" alt="metric.image" />
