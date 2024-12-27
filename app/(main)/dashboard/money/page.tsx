@@ -20,6 +20,7 @@ import CreateMovementForm from '../../../../components/forms/createMovement';
 import Metrics from './components/metrics';
 import useMovements from '../../../../hooks/useMovements';
 import useAccounts from '../../../../hooks/useAccounts';
+import RecentTransactions from './components/recentTransactions';
 
 const Banking = () => {
     const [showMovementForm, setShowMovementForm] = useState(false);
@@ -57,49 +58,6 @@ const Banking = () => {
         },
         {
             label: 'Hide'
-        }
-    ];
-
-    const transactions = [
-        {
-            title: 'Apple iCloud Subscription',
-            date: '12 Aug, 19:18',
-            badge: 'Entertainment',
-            received: false,
-            amount: '-$25.00',
-            icon: 'pi pi-apple'
-        },
-        {
-            title: 'Car Insurance',
-            date: '11 Aug, 15:50',
-            badge: 'Personal',
-            received: false,
-            amount: '-$350.00',
-            icon: 'pi pi-car'
-        },
-        {
-            title: 'Money Transfer',
-            date: '11 Aug, 07:02',
-            badge: 'Transfer',
-            received: true,
-            amount: '+$900.00',
-            icon: 'pi pi-money-bill'
-        },
-        {
-            title: 'Credit Card Payment',
-            date: '9 Aug, 21:33',
-            badge: 'Personal',
-            received: false,
-            amount: '-$3558.70',
-            icon: 'pi pi-credit-card'
-        },
-        {
-            title: 'Divident Payment',
-            date: '8 Aug, 17:51',
-            badge: 'Investment',
-            received: true,
-            amount: '+$105.90',
-            icon: 'pi pi-microsoft'
         }
     ];
 
@@ -227,7 +185,7 @@ const Banking = () => {
         initChart();
     }, [layoutConfig]);
 
-    const { incomeData, purchaseData, currentMonthAllTotal } = useMovements();
+    const { incomeData, purchaseData, currentMonthAllTotal, orderedMonthMovements } = useMovements(true);
     const { savingsAllTotal } = useAccounts();
     return (
         <div className="layout-dashboard">
@@ -255,46 +213,7 @@ const Banking = () => {
                     </div>
                     <Metrics incomeData={incomeData} purchaseData={purchaseData} savingsData={{ savingsAllTotal }} />
 
-                    <div className="h-full col-12 xl:col-8">
-                        <div className="card">
-                            <div className="flex flex-column md:flex-row md:justify-content-between align-items-center mb-2">
-                                <h4 className="white-space-nowrap">Recent Transactions</h4>
-                                <Button label="See All Transactions" text />
-                                <Ripple />
-                            </div>
-
-                            <DataTable headerColumnGroup="none" value={transactions} rows={5} responsiveLayout="scroll">
-                                <Column
-                                    body={(transaction) => (
-                                        <span className="white-space-nowrap flex w-3rem h-3rem align-items-center justify-content-center border-round-xl" style={{ backgroundColor: 'rgba(77, 182, 172, 0.1)' }}>
-                                            <i className={`text-2xl text-color ${transaction.icon}`}></i>
-                                        </span>
-                                    )}
-                                />
-                                <Column
-                                    body={(transaction) => (
-                                        <>
-                                            <span className="white-space-nowrap block font-semibold">{transaction.title}</span>
-                                            <span className="block text-color-secondary font-sm font-bold">{transaction.date}</span>
-                                        </>
-                                    )}
-                                />
-                                <Column body={(transaction) => <span className="white-space-nowrap p-2 surface-ground font-semibold">{transaction.badge}</span>} />
-                                <Column body={(transaction) => <span className={`white-space-nowrap block font-semibold text-lg text-right ${transaction.received ? 'text-green-700' : ''}`}>{transaction.amount}</span>} />
-                                <Column
-                                    body={() => (
-                                        <>
-                                            <Button text severity="secondary" onClick={showMenu}>
-                                                <i className="pi pi-ellipsis-v"></i>
-                                            </Button>
-                                            <Menu ref={menu} model={items} popup={true}></Menu>
-                                        </>
-                                    )}
-                                />
-                            </DataTable>
-                        </div>
-                    </div>
-
+                    <RecentTransactions transactions={orderedMonthMovements.slice(0, 5)} />
                     <div className="h-full col-12 xl:col-4">
                         <Card className="h-full">
                             <h4 className="white-space-nowrap mb-2">Expenses</h4>

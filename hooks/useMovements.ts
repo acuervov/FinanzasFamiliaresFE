@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { client } from '../amplify/data/resource';
 import { getMovements } from '../graphql/queries';
 import { useFinanzasStore } from '../store';
@@ -15,22 +15,22 @@ const fetchMovements = async (query) => {
     return res?.data?.getMovements;
 };
 
-export default function useMovements() {
-    const startOfMonth = moment().startOf('month').toDate();
-    const endOfMonth = moment().endOf('month').toDate();
+export default function useMovements(loadMovements = false) {
+    const startOfMonth = useMemo(() => moment().startOf('month').toDate(), []);
+    const endOfMonth = useMemo(() => moment().endOf('month').toDate(), []);
 
     const { family, setMovements, movements } = useFinanzasStore((state) => state);
 
-    useEffect(() => {
-        updateMovementsInfo();
-    }, [family]);
+    const updateMovementsInfo = useCallback(async () => {
+        const movements = (await fetchMovements({ familyId: family?.id, startDate: startOfMonth, endDate: endOfMonth }))?.items;
+        setMovements(movements);
+    }, [setMovements, family, startOfMonth, endOfMonth]);
 
-    const updateMovementsInfo = async () => {
-        if (family.id) {
-            const movements = (await fetchMovements({ familyId: family?.id, startDate: startOfMonth, endDate: endOfMonth }))?.items;
-            setMovements(movements);
+    useEffect(() => {
+        if (loadMovements && family.id) {
+            updateMovementsInfo();
         }
-    };
+    }, [family, updateMovementsInfo, loadMovements]);
 
     const currentMonthIncomeMovements = useMemo(() => movements.filter((movement) => movement.type === 'income'), [movements]);
     const currentMonthTotalIncome = useMemo(
@@ -52,5 +52,13 @@ export default function useMovements() {
 
     const currentMonthAllTotal = useMemo(() => currentMonthTotalIncome - currentMonthTotalPurchase, [currentMonthTotalIncome, currentMonthTotalPurchase]);
 
-    return { incomeData: { currentMonthIncomeMovements, currentMonthTotalIncome }, purchaseData: { currentMonthPurchaseMovements, currentMonthTotalPurchase }, currentMonthAllTotal };
+    const orderedMonthMovements = useMemo(
+        () =>
+            movements.sort(function (left, right) {
+                return moment.utc(right.date).diff(moment.utc(left.date));
+            }),
+        [movements]
+    );
+
+    return { incomeData: { currentMonthIncomeMovements, currentMonthTotalIncome }, purchaseData: { currentMonthPurchaseMovements, currentMonthTotalPurchase }, currentMonthAllTotal, orderedMonthMovements, updateMovementsInfo };
 }

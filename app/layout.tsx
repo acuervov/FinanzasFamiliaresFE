@@ -8,10 +8,14 @@ import '../styles/layout/layout.scss';
 import '../styles/demo/Demos.scss';
 import { Amplify, ResourcesConfig } from 'aws-amplify';
 import { awsConfig } from '../amplify/config';
+import moment from 'moment';
+import 'moment/locale/es-mx';
+
 
 Amplify.configure(awsConfig as ResourcesConfig, { ssr: true });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+    moment.locale('es-mx');
     return (
         <html lang="en" suppressHydrationWarning>
             <head>

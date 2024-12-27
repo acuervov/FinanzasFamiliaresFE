@@ -10,9 +10,10 @@ import { InputNumber } from 'primereact/inputnumber';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { movementTypeOptions } from '../../data/movementTypeOptions';
-import useGetCategoryOptions from '../../hooks/useGetCategoryOptions';
+import useCategories from '../../hooks/useCategories';
 import { InputTextarea } from 'primereact/inputtextarea';
 import useAccounts from '../../hooks/useAccounts';
+import useMovements from '../../hooks/useMovements';
 
 const movementSchema = Yup.object().shape({
     description: Yup.string().required('La descripción es un campo obligatorio'),
@@ -37,8 +38,8 @@ const CreateMovementForm = (props: Props) => {
     const inputRef = useRef(null);
 
     const { id: familyId } = useFinanzasStore((state) => state.family);
-    const { family } = useFinanzasStore((state) => state);
-    const { categoryByType, getSubCategoriesByCategory } = useGetCategoryOptions(family?.categories);
+    const { updateMovementsInfo } = useMovements();
+    const { categoryByType, getSubCategoriesByCategory } = useCategories();
     const { groupedAccountsOptions, setAccountsInfo } = useAccounts();
     const [loading, setLoading] = useState(false);
     const [movement, setMovement] = useState(initialMovement);
@@ -66,7 +67,8 @@ const CreateMovementForm = (props: Props) => {
                 }
             });
 
-            setAccountsInfo();
+            await setAccountsInfo();
+            await updateMovementsInfo();
             setMovement(initialMovement);
             inputRef.current.focus();
 
@@ -99,7 +101,7 @@ const CreateMovementForm = (props: Props) => {
                 </div>
                 <div className="field col">
                     <label htmlFor="date">Fecha</label>
-                    <Calendar id="date" key="date" value={movement.date} onChange={(e) => updateField(e.value, 'date')} className={errors.date ? 'p-invalid' : ''} />
+                    <Calendar id="date" key="date" value={movement.date} onChange={(e) => updateField(e.value, 'date')} showTime hourFormat="24" className={errors.date ? 'p-invalid' : ''} />
                     <span className="text-red-500">{errors.date}</span>
                 </div>
             </div>
