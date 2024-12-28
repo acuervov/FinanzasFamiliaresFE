@@ -185,7 +185,7 @@ const Banking = () => {
         initChart();
     }, [layoutConfig]);
 
-    const { incomeData, purchaseData, currentMonthAllTotal, orderedMonthMovements } = useMovements(true);
+    const { incomeData, purchaseData, currentMonthAllTotal, orderedMonthMovements } = useMovements(false);
     const { savingsAllTotal } = useAccounts();
     return (
         <div className="layout-dashboard">

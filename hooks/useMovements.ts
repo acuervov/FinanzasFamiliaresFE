@@ -21,10 +21,13 @@ export default function useMovements(loadMovements = false) {
 
     const { family, setMovements, movements } = useFinanzasStore((state) => state);
 
-    const updateMovementsInfo = useCallback(async () => {
-        const movements = (await fetchMovements({ familyId: family?.id, startDate: startOfMonth, endDate: endOfMonth }))?.items;
-        setMovements(movements);
-    }, [setMovements, family, startOfMonth, endOfMonth]);
+    const updateMovementsInfo = useCallback(
+        async (query = { familyId: family?.id, startDate: startOfMonth, endDate: endOfMonth }) => {
+            const movements = (await fetchMovements(query))?.items;
+            setMovements(movements);
+        },
+        [setMovements, family, startOfMonth, endOfMonth]
+    );
 
     useEffect(() => {
         if (loadMovements && family.id) {
@@ -60,5 +63,5 @@ export default function useMovements(loadMovements = false) {
         [movements]
     );
 
-    return { incomeData: { currentMonthIncomeMovements, currentMonthTotalIncome }, purchaseData: { currentMonthPurchaseMovements, currentMonthTotalPurchase }, currentMonthAllTotal, orderedMonthMovements, updateMovementsInfo };
+    return { incomeData: { currentMonthIncomeMovements, currentMonthTotalIncome }, purchaseData: { currentMonthPurchaseMovements, currentMonthTotalPurchase }, currentMonthAllTotal, orderedMonthMovements, updateMovementsInfo, fetchMovements };
 }

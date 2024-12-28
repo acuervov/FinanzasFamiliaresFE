@@ -19,6 +19,7 @@ import CreateAccountForm from '../components/forms/createAccount';
 import { useMountEffect } from 'primereact/hooks';
 import useAccounts from '../hooks/useAccounts';
 import CreateCategoryForm from '../components/forms/createCategory';
+import useMovements from '../hooks/useMovements';
 
 const getCurrentUserInfo = async () => {
     const { username } = await getCurrentUser();
@@ -54,6 +55,7 @@ const AppTopbar = forwardRef((props: { sidebarRef: React.RefObject<HTMLDivElemen
     });
 
     useAccounts(true);
+    useMovements(true);
 
     const btnRef1 = useRef(null);
     const btnRef2 = useRef(null);
