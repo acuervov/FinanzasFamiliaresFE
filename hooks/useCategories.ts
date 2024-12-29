@@ -16,5 +16,5 @@ export default function useCategory() {
         return categories.find((category) => category.id === id);
     };
 
-    return { categoryByType, getSubCategoriesByCategory, categoryById };
+    return { categoryByType, getSubCategoriesByCategory, categoryById, categories };
 }

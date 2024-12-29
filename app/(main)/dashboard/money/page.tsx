@@ -29,7 +29,7 @@ const Banking = () => {
     const [barData, setBarData] = useState({});
     const { layoutConfig } = useContext(LayoutContext);
 
-    const { family, accounts } = useFinanzasStore((state) => state);
+    const { family, accounts, movements } = useFinanzasStore((state) => state);
 
     const { totalBalance } = useGetBalance(accounts);
 
@@ -185,7 +185,7 @@ const Banking = () => {
         initChart();
     }, [layoutConfig]);
 
-    const { incomeData, purchaseData, currentMonthAllTotal, orderedMonthMovements } = useMovements(false);
+    const { incomeData, purchaseData, currentMonthAllTotal } = useMovements(false);
     const { savingsAllTotal } = useAccounts();
     return (
         <div className="layout-dashboard">
@@ -213,7 +213,7 @@ const Banking = () => {
                     </div>
                     <Metrics incomeData={incomeData} purchaseData={purchaseData} savingsData={{ savingsAllTotal }} />
 
-                    <RecentTransactions transactions={orderedMonthMovements.slice(0, 5)} />
+                    <RecentTransactions transactions={movements.slice(0, 5)} />
                     <div className="h-full col-12 xl:col-4">
                         <Card className="h-full">
                             <h4 className="white-space-nowrap mb-2">Expenses</h4>
