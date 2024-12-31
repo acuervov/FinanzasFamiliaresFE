@@ -1,6 +1,6 @@
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { movementTypeOptions } from '../../../../../data/movementTypeOptions';
 import numbro from 'numbro';
 import _ from 'lodash';
@@ -11,23 +11,21 @@ import { Dropdown } from 'primereact/dropdown';
 import useCategory from '../../../../../hooks/useCategories';
 
 FilterService.register('custom_category', (value, filters) => {
-    console.log('value', value, 'filters', filters);
     return filters ? filters === value.id : true;
 });
 
-const TransactionsList = ({ transactions, preview = true }) => {
+const TransactionsList = ({ transactions, preview = true, loading = false }) => {
     const { categories } = useCategory();
 
     const getAmountColor = useCallback((type) => {
         return movementTypeOptions.find((item) => item.value === type)?.color;
     }, []);
 
-    const [filters, setFilters] = useState({
+    const [filters] = useState({
         category: { value: null, matchMode: FilterMatchMode.CUSTOM }
     });
 
     const categoryRowFilterTemplate = (options) => {
-        console.log('options', options);
         return (
             <Dropdown
                 value={options.value}
@@ -44,7 +42,7 @@ const TransactionsList = ({ transactions, preview = true }) => {
     };
 
     return (
-        <DataTable dataKey="id" value={transactions} paginator={!preview} rows={preview ? 5 : 10} filters={filters}>
+        <DataTable dataKey="id" value={transactions} paginator={!preview} rows={preview ? 5 : 10} filters={filters} loading={loading}>
             <Column
                 header="Descripción"
                 field="date"

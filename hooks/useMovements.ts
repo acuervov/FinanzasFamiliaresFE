@@ -16,17 +16,21 @@ const fetchMovements = async (query) => {
 };
 
 export default function useMovements(loadMovements = false) {
-    const startOfMonth = useMemo(() => moment().startOf('month').toDate(), []);
-    const endOfMonth = useMemo(() => moment().endOf('month').toDate(), []);
-
     const { family, setMovements, movements } = useFinanzasStore((state) => state);
 
+    const getMonthBoundaries = useCallback((date = {}) => {
+        const startOfMonth = moment(date).startOf('month').toDate();
+        const endOfMonth = moment(date).endOf('month').toDate();
+
+        return { startOfMonth, endOfMonth };
+    }, []);
+
     const updateMovementsInfo = useCallback(
-        async (query = { familyId: family?.id, startDate: startOfMonth, endDate: endOfMonth }) => {
+        async (query = { familyId: family?.id, startDate: getMonthBoundaries().startOfMonth, endDate: getMonthBoundaries().endOfMonth }) => {
             const movements = (await fetchMovements(query))?.items;
             setMovements(movements);
         },
-        [setMovements, family, startOfMonth, endOfMonth]
+        [setMovements, family, getMonthBoundaries]
     );
 
     useEffect(() => {
@@ -63,5 +67,13 @@ export default function useMovements(loadMovements = false) {
         [movements]
     );
 
-    return { incomeData: { currentMonthIncomeMovements, currentMonthTotalIncome }, purchaseData: { currentMonthPurchaseMovements, currentMonthTotalPurchase }, currentMonthAllTotal, orderedMonthMovements, updateMovementsInfo, fetchMovements };
+    return {
+        incomeData: { currentMonthIncomeMovements, currentMonthTotalIncome },
+        purchaseData: { currentMonthPurchaseMovements, currentMonthTotalPurchase },
+        currentMonthAllTotal,
+        orderedMonthMovements,
+        updateMovementsInfo,
+        fetchMovements,
+        getMonthBoundaries
+    };
 }
