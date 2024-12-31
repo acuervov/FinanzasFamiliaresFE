@@ -8,14 +8,14 @@ const AppMenu = () => {
             icon: 'pi pi-home',
             items: [
                 {
-                    label: 'E-Commerce',
+                    label: 'Panel',
                     icon: 'pi pi-fw pi-home',
-                    to: '/'
+                    to: '/dashboard/money'
                 },
                 {
-                    label: 'Banking',
+                    label: 'Transacciones',
                     icon: 'pi pi-fw pi-image',
-                    to: '/dashboard-banking'
+                    to: '/dashboard/money/transactions'
                 }
             ]
         },
