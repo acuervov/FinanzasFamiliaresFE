@@ -89,11 +89,11 @@ const LandingPage: Page = () => {
                         <ul className="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row border-top-1 surface-border lg:border-top-none">
                             <li>
                                 <a
-                                    href="#contact"
+                                    href="/dashboard/money"
                                     onClick={toggleMenuItemClick}
                                     className="p-ripple flex px-6 p-3 lg:px-3 lg:py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 lg:text-white text-lg white-space-nowrap"
                                 >
-                                    <span>CONTACT</span>
+                                    <span>PANEL</span>
                                     <Ripple />
                                 </a>
                             </li>

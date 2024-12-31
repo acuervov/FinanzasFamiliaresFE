@@ -228,7 +228,7 @@ const AppConfig = (props: AppConfigProps) => {
 
     return (
         <div id="layout-config">
-            <a
+            {/* <a
                 className="layout-config-button"
                 onClick={() =>
                     setLayoutState((prevState) => ({
@@ -238,8 +238,8 @@ const AppConfig = (props: AppConfigProps) => {
                 }
             >
                 <i className="pi pi-cog"></i>
-            </a>
-
+            </a> */}
+{/* 
             <Sidebar
                 visible={layoutState.configSidebarVisible}
                 position="right"
@@ -352,7 +352,7 @@ const AppConfig = (props: AppConfigProps) => {
                     <h5>Ripple Effect</h5>
                     <InputSwitch checked={layoutConfig.ripple} onChange={(e) => changeRipple(e)} />
                 </div>
-            </Sidebar>
+            </Sidebar> */}
         </div>
     );
 };

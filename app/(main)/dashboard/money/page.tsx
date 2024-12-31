@@ -214,7 +214,7 @@ const Banking = () => {
                     <Metrics incomeData={incomeData} purchaseData={purchaseData} savingsData={{ savingsAllTotal }} />
 
                     <RecentTransactions transactions={movements.slice(0, 5)} />
-                    <div className="h-full col-12 xl:col-4">
+                    {/* <div className="h-full col-12 xl:col-4">
                         <Card className="h-full">
                             <h4 className="white-space-nowrap mb-2">Expenses</h4>
                             {expenses.map((expense) => (
@@ -375,7 +375,7 @@ const Banking = () => {
                             <h4>Savings</h4>
                             <Chart type="bar" data={barData} options={barOptions} height="470"></Chart>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             ) : (
                 <div className="border-round border-1 surface-border p-4 surface-card">

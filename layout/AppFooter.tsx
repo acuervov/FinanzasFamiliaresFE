@@ -12,10 +12,10 @@ const AppFooter = () => {
     return (
         <div className="layout-footer">
             <div className="footer-logo-container">
-                <img src={`/layout/images/logo-${layoutConfig.colorScheme === 'light' ? 'dark' : 'white'}.svg`} alt="diamond-layout" />
-                <span className="footer-app-name">DIAMOND</span>
+                <img src={`/layout/images/logonegro.png`} alt="Logo" />
+                <span className="footer-app-name">Cuervo Inc</span>
             </div>
-            <span className="footer-copyright">&#169; Your Organization - 2023</span>
+            <span className="footer-copyright">&#169; Cuervo Inc - 2024</span>
         </div>
     );
 };
