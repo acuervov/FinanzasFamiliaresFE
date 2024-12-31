@@ -1,16 +1,20 @@
+
+
+console.log("ENV", process.env.NEXT_PUBLIC_ENV)
+
 export const awsConfig = {
     API: {
         GraphQL: {
-            endpoint: 'https://xg5aatkdwjhifi6uzfw2is4rrm.appsync-api.us-east-1.amazonaws.com/graphql',
-            region: 'us-east-1',
+            endpoint: process.env.NEXT_PUBLIC_AWS_GRAPHQL_ENDPOINT,
+            region: process.env.NEXT_PUBLIC_AWS_REGION,
             defaultAuthMode: 'userPool'
         }
     },
     Auth: {
         Cognito: {
-            userPoolId: 'us-east-1_CLRGl20UZ',
-            userPoolClientId: '7ut03ojvljo4dn1b77obgrjifq',
-            identityPoolId: 'us-east-1:eb9f2eca-6f9e-46ff-9f36-b4833c9db06b'
+            userPoolId: process.env.NEXT_PUBLIC_AWS_COGNITO_USERPOOL_ID,
+            userPoolClientId: process.env.NEXT_PUBLIC_AWS_COGNITO_POOLCLIENT_ID,
+            identityPoolId: process.env.NEXT_PUBLIC_AWS_COGNITO_IDENTITYPOOL_ID
         }
     }
 };
