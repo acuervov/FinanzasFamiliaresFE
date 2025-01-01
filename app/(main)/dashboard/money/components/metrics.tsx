@@ -17,7 +17,7 @@ const Metrics = ({ incomeData, purchaseData, savingsData }) => {
             },
             {
                 title: 'Ahorros',
-                total: savingsData.savingsAllTotal,
+                total: savingsData.investmentsAllTotal,
                 image: 'banking-1'
             }
         ],

@@ -41,15 +41,15 @@ export default function useAccounts(loadAccounts = false) {
         [family, accounts]
     );
 
-    const savingsAccounts = useMemo(() => accounts.filter((account) => account.type === 'savings'), [accounts]);
+    const investmentsAccounts = useMemo(() => accounts.filter((account) => account.type === 'investment'), [accounts]);
 
-    const savingsAllTotal = useMemo(
+    const investmentsAllTotal = useMemo(
         () =>
-            savingsAccounts.reduce((total, current) => {
+            investmentsAccounts.reduce((total, current) => {
                 return (total += current.overAllTotal);
             }, 0),
-        [savingsAccounts]
+        [investmentsAccounts]
     );
 
-    return { groupedAccountsOptions, setAccountsInfo, savingsAllTotal };
+    return { groupedAccountsOptions, setAccountsInfo, investmentsAllTotal };
 }

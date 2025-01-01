@@ -186,7 +186,7 @@ const Banking = () => {
     }, [layoutConfig]);
 
     const { incomeData, purchaseData, currentMonthAllTotal } = useMovements(false);
-    const { savingsAllTotal } = useAccounts();
+    const { investmentsAllTotal } = useAccounts();
     return (
         <div className="layout-dashboard">
             {family.id ? (
@@ -211,7 +211,7 @@ const Banking = () => {
                             <Button icon="pi pi-plus" iconPos="right" label="Añadir movimiento" severity="secondary" rounded onClick={() => setShowMovementForm(true)} />
                         </div>
                     </div>
-                    <Metrics incomeData={incomeData} purchaseData={purchaseData} savingsData={{ savingsAllTotal }} />
+                    <Metrics incomeData={incomeData} purchaseData={purchaseData} savingsData={{ investmentsAllTotal }} />
 
                     <RecentTransactions transactions={movements.slice(0, 5)} />
                     {/* <div className="h-full col-12 xl:col-4">
