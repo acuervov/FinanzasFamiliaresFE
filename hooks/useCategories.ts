@@ -1,10 +1,17 @@
+import _ from 'lodash';
 import { useFinanzasStore } from '../store';
 
 export default function useCategory() {
     const { categories } = useFinanzasStore((state) => state.family);
 
     const categoryByType = (type) => {
-        return categories.filter((category) => category.type === type);
+        const unorderCategories = categories
+            .filter((category) => category.type === type)
+            ?.sort((a, b) => {
+                return a.name - b.name;
+            });
+
+        return _.orderBy(unorderCategories, ['name'], ['asc']);
     };
 
     const getSubCategoriesByCategory = (categoryId) => {
