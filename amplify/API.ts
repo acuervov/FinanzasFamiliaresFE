@@ -67,6 +67,7 @@ export type CreateMovementInput = {
   familyId: string,
   note?: string | null,
   sourceId: string,
+  endingId?: string | null,
   subCategory?: string | null,
   type: string,
 };
