@@ -11,7 +11,6 @@ import { awsConfig } from '../amplify/config';
 import moment from 'moment';
 import 'moment/locale/es-mx';
 
-
 Amplify.configure(awsConfig as ResourcesConfig, { ssr: true });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -19,6 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
+                <title>Finanzas Familiares</title>
+                <link rel="icon" href={`/favicon.ico`} type="image/x-icon"></link>
                 <link id="theme-link" href={`/theme/theme-light/blue/theme.css`} rel="stylesheet"></link>
             </head>
             <body>
