@@ -186,13 +186,19 @@ const Banking = () => {
     }, [layoutConfig]);
 
     const { incomeData, purchaseData, currentMonthAllTotal } = useMovements(false);
-    const { investmentsAllTotal } = useAccounts();
+    const { investmentsAllTotal, normalAccountsAllTotal } = useAccounts();
     return (
         <div className="layout-dashboard">
             {family.id ? (
                 <div className="grid">
                     <div className="col-12 flex align-items-center justify-content-between flex-wrap gap-5">
                         <div className="flex justify-content-start align-items-center gap-4">
+                            <div className="mx-auto sm:mx-0">
+                                <span className="block text-xl font-semibold mb-2">Balance parcial</span>
+                                <div className="flex align-items-center">
+                                    <span className="font-semibold text-2xl">{numbro(normalAccountsAllTotal).formatCurrency({ mantissa: 1, optionalMantissa: true, average: true }).toUpperCase()}</span>
+                                </div>
+                            </div>
                             <div className="mx-auto sm:mx-0">
                                 <span className="block text-xl font-semibold mb-2">Balance mensual</span>
                                 <div className="flex align-items-center">

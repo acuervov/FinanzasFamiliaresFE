@@ -51,5 +51,14 @@ export default function useAccounts(loadAccounts = false) {
         [investmentsAccounts]
     );
 
-    return { groupedAccountsOptions, setAccountsInfo, investmentsAllTotal };
+    const normalAccounts = useMemo(() => accounts.filter((account) => account.type !== 'investment'), [accounts])
+    const normalAccountsAllTotal = useMemo(
+        () =>
+            normalAccounts.reduce((total, current) => {
+                return (total += current.overAllTotal);
+            }, 0),
+        [normalAccounts]
+    );
+
+    return { groupedAccountsOptions, setAccountsInfo, investmentsAllTotal, normalAccountsAllTotal };
 }
