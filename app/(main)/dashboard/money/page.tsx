@@ -20,6 +20,7 @@ import CreateMovementForm from '../../../../components/forms/createMovement';
 import Metrics from './components/metrics';
 import useMovements from '../../../../hooks/useMovements';
 import useAccounts from '../../../../hooks/useAccounts';
+import CategoryExpenses from './components/categoryExpenses';
 import RecentTransactions from './components/recentTransactions';
 
 const Banking = () => {
@@ -58,51 +59,6 @@ const Banking = () => {
         },
         {
             label: 'Hide'
-        }
-    ];
-
-    const expenses = [
-        {
-            image: 'banking-4',
-            title: 'Food',
-            value: '79',
-            amount: '$702.00',
-            background: 'linear-gradient(-120deg, rgba(77, 182, 172, 1), rgba(77, 182, 172, 0.3) 70%)'
-        },
-        {
-            image: 'banking-5',
-            title: 'Electronics',
-            value: '62',
-            amount: '$421.60',
-            background: 'linear-gradient(-120deg, rgba(77, 182, 172, 1), rgba(77, 182, 172, 0.3) 70%)'
-        },
-        {
-            image: 'banking-6',
-            title: 'Utilities',
-            value: '45',
-            amount: '$388.51',
-            background: 'linear-gradient(-120deg, rgba(250, 183, 16, 1), rgba(250, 183, 16, 0.3) 70%)'
-        },
-        {
-            image: 'banking-7',
-            title: 'Clothing',
-            value: '41',
-            amount: '$295.72',
-            background: 'linear-gradient(-120deg, rgba(250, 183, 16, 1), rgba(250, 183, 16, 0.3) 70%)'
-        },
-        {
-            image: 'banking-8',
-            title: 'Travel',
-            value: '35',
-            amount: '$170.05',
-            background: 'linear-gradient(-120deg, rgba(198, 55, 55, 1), rgba(198, 55, 55, 0.3) 70%)'
-        },
-        {
-            image: 'banking-9',
-            title: 'Subscriptions',
-            value: '23',
-            amount: '$96.80',
-            background: 'linear-gradient(-120deg, rgba(198, 55, 55, 1), rgba(198, 55, 55, 0.3) 70%)'
         }
     ];
 
@@ -220,41 +176,8 @@ const Banking = () => {
                     <Metrics incomeData={incomeData} purchaseData={purchaseData} savingsData={{ investmentsAllTotal }} />
 
                     <RecentTransactions transactions={movements.slice(0, 5)} />
-                    {/* <div className="h-full col-12 xl:col-4">
-                        <Card className="h-full">
-                            <h4 className="white-space-nowrap mb-2">Expenses</h4>
-                            {expenses.map((expense) => (
-                                <div key={expense.title} className="flex gap-3 w-full mt-4 align-items-center">
-                                    <img src={`/demo/images/dashboard/${expense.image}.svg`} alt={expense.title} className="w-3rem h-3rem" />
-                                    <div className="w-full">
-                                        <div className="flex flex-wrap w-full justify-content-between align-items-center">
-                                            <span className="font-semibold">{expense.title}</span>
-                                            <div className="flex">
-                                                <span className="font-semibold text-color-secondary pr-2 border-right-2 surface-border text-sm">{expense.value}%</span>
-                                                <span className="font-semibold ml-2 text-sm">{expense.amount}</span>
-                                            </div>
-                                        </div>
-                                        <div
-                                            className="border-round w-full overflow-hidden mt-2"
-                                            style={{
-                                                height: '7px',
-                                                backgroundColor: 'var(--surface-border)'
-                                            }}
-                                        >
-                                            <div
-                                                className="border-left-round h-full"
-                                                style={{
-                                                    background: expense.background,
-                                                    width: expense.value + '%'
-                                                }}
-                                            ></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </Card>
-                    </div>
-
+                    <CategoryExpenses allTotal={incomeData.currentMonthTotalIncome} movements={movements} />
+                    {/* 
                     <div className="col-12 xl:col-6">
                         <div className="card h-full">
                             <div className="flex align-items-center">
