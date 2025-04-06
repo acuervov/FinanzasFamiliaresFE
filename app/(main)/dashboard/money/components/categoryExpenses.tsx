@@ -4,13 +4,21 @@ import { useMemo } from 'react';
 import _ from 'lodash';
 import numbro from 'numbro';
 
+interface CategoryExpensesItem {
+    id: string;
+    title: string;
+    value: number;
+    amount: number;
+    background: string;
+}
+
 const CategoryExpenses = ({ allTotal = 0, movements }) => {
     const { categoryByType } = useCategories();
 
     const expenses = useMemo(() => {
         const categories = categoryByType('purchase');
 
-        const categoriesMap = categories.reduce((previous, current) => {
+        const categoriesMap: [CategoryExpensesItem] = categories.reduce((previous, current) => {
             previous[current.id] = {
                 id: current.id,
                 image: 'banking-4',
