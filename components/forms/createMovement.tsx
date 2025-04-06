@@ -106,7 +106,7 @@ const CreateMovementForm = (props: Props) => {
                 </div>
                 <div className="field col">
                     <label htmlFor="date">Fecha</label>
-                    <Calendar id="date" key="date" value={movement.date} onChange={(e) => updateField(e.value, 'date')} showTime hourFormat="24" className={errors.date ? 'p-invalid' : ''} />
+                    <Calendar id="date" key="date" value={movement.date} onChange={(e) => updateField(e.value, 'date')} showTime hourFormat="24" className={errors.date ? 'p-invalid' : ''} stepMinute={5} />
                     <span className="text-red-500">{errors.date}</span>
                 </div>
             </div>
