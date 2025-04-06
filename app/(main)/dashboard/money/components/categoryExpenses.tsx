@@ -44,7 +44,11 @@ const CategoryExpenses = ({ allTotal = 0, movements }) => {
 
         const categoriesWithPercentage = Object.values(categoriesMap).map((item) => {
             if (_.isObject(item)) {
-                return { ...item, value: (item?.amount / allTotal) * 100 };
+                if (allTotal) {
+                    return { ...item, value: (item?.amount / allTotal) * 100 };
+                } else {
+                    return { ...item, value: 0 };
+                }
             }
         });
 

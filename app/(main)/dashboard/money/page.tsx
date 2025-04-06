@@ -176,7 +176,7 @@ const Banking = () => {
                     <Metrics incomeData={incomeData} purchaseData={purchaseData} savingsData={{ investmentsAllTotal }} />
 
                     <RecentTransactions transactions={movements.slice(0, 5)} />
-                    <CategoryExpenses allTotal={incomeData.currentMonthTotalIncome} movements={movements} />
+                    <CategoryExpenses allTotal={purchaseData.currentMonthTotalPurchase} movements={movements} />
                     {/* 
                     <div className="col-12 xl:col-6">
                         <div className="card h-full">
