@@ -3,7 +3,7 @@ import { Button } from 'primereact/button';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as Yup from 'yup';
 import { client } from '../../amplify/data/resource';
-import { createMovement } from '../../graphql/mutations';
+import { createMovement, updateMovement } from '../../graphql/mutations';
 import _ from 'lodash';
 import { useFinanzasStore } from '../../store';
 import { InputNumber } from 'primereact/inputnumber';
@@ -14,6 +14,7 @@ import useCategories from '../../hooks/useCategories';
 import { InputTextarea } from 'primereact/inputtextarea';
 import useAccounts from '../../hooks/useAccounts';
 import useMovements from '../../hooks/useMovements';
+import { useSearchParams } from 'next/navigation';
 
 const movementSchema = Yup.object().shape({
     description: Yup.string().required('La descripción es un campo obligatorio'),
@@ -37,13 +38,15 @@ const initialErrors = { description: '', amount: '', date: '', type: '', categor
 
 const CreateMovementForm = (props: Props) => {
     const inputRef = useRef(null);
+    const searchParams = useSearchParams();
 
     const { id: familyId } = useFinanzasStore((state) => state.family);
-    const { updateMovementsInfo } = useMovements();
+    const { updateMovementsInfo, getMovementById } = useMovements();
     const { categoryByType, getSubCategoriesByCategory } = useCategories();
     const { groupedAccountsOptions, setAccountsInfo } = useAccounts();
     const [loading, setLoading] = useState(false);
     const [movement, setMovement] = useState(initialMovement);
+    const [isEdit, setIsEdit] = useState(false);
 
     const [errors, setErrors] = useState(initialErrors);
 
@@ -63,7 +66,7 @@ const CreateMovementForm = (props: Props) => {
             await movementSchema.validate(movement, { abortEarly: false });
             const movementData = { ...movement, familyId };
             await client.graphql({
-                query: createMovement,
+                query: isEdit ? updateMovement : createMovement,
                 variables: {
                     input: {
                         ...movementData
@@ -90,6 +93,22 @@ const CreateMovementForm = (props: Props) => {
             setLoading(false);
         }
     };
+
+    const formatInfo = (data) => {
+        const pickedData: any = _.pick(data, ['amount', 'bill', 'categoryId', 'date', 'description', 'endingId', 'familyId', 'note', 'sourceId', 'subCategory', 'type', 'id']);
+        return { ...pickedData, date: new Date(data.date), categoryId: data.category.id, sourceId: data.source.id };
+    };
+
+    useEffect(() => {
+        const getMovementInfo = async () => {
+            const info = await getMovementById(searchParams.get('movementDetail'));
+            setMovement(formatInfo(info));
+        };
+        if (searchParams.get('movementDetail')) {
+            setIsEdit(true);
+            getMovementInfo();
+        }
+    }, [searchParams, getMovementById]);
 
     return (
         <form className="p-fluid">
@@ -147,13 +166,13 @@ const CreateMovementForm = (props: Props) => {
 
             <div className="field">
                 <label htmlFor="sourceId">{<span>{movement.type === 'income' ? 'Destino' : 'Fuente'}</span>} del movimiento</label>
-                <Dropdown value={movement.sourceId} onChange={(e) => updateField(e.value, 'sourceId')} options={groupedAccountsOptions} optionLabel="label" optionGroupLabel="label" optionGroupChildren="items" />
+                <Dropdown value={movement.sourceId} onChange={(e) => updateField(e.value, 'sourceId')} options={groupedAccountsOptions} optionLabel="label" optionGroupLabel="label" optionGroupChildren="items" disabled={isEdit} />
                 <span className="text-red-500">{errors.sourceId}</span>
             </div>
             {movement.type === 'transfer' && (
                 <div className="field">
                     <label htmlFor="sourceId">Destino del movimiento</label>
-                    <Dropdown value={movement.endingId} onChange={(e) => updateField(e.value, 'endingId')} options={groupedAccountsOptions} optionLabel="label" optionGroupLabel="label" optionGroupChildren="items" />
+                    <Dropdown value={movement.endingId} onChange={(e) => updateField(e.value, 'endingId')} options={groupedAccountsOptions} optionLabel="label" optionGroupLabel="label" optionGroupChildren="items" disabled={isEdit} />
                     <span className="text-red-500">{errors.endingId}</span>
                 </div>
             )}
@@ -167,7 +186,7 @@ const CreateMovementForm = (props: Props) => {
                 <InputTextarea id="note" value={movement.note} onChange={(e) => updateField(e.target.value, 'note')} className={errors.note ? 'p-invalid' : ''} />
                 <span className="text-red-500">{errors.note}</span>
             </div>
-            <Button label="Crear" onClick={handleCreateNew} loading={loading}></Button>
+            <Button label={isEdit ? 'Editar' : 'Crear'} onClick={handleCreateNew} loading={loading}></Button>
         </form>
     );
 };

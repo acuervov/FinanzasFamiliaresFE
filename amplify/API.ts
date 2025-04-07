@@ -64,10 +64,10 @@ export type CreateMovementInput = {
   categoryId: string,
   date: string,
   description: string,
+  endingId?: string | null,
   familyId: string,
   note?: string | null,
   sourceId: string,
-  endingId?: string | null,
   subCategory?: string | null,
   type: string,
 };
@@ -84,6 +84,21 @@ export type Movement = {
   source: Account,
   subCategory?: string | null,
   type: string,
+};
+
+export type updateMovemenInput = {
+  amount: number,
+  bill?: string | null,
+  categoryId: string,
+  date: string,
+  description: string,
+  endingId?: string | null,
+  familyId: string,
+  note?: string | null,
+  sourceId: string,
+  subCategory?: string | null,
+  type: string,
+  id: string,
 };
 
 export type CreateUserInput = {
@@ -209,6 +224,46 @@ export type CreateMovementMutationVariables = {
 
 export type CreateMovementMutation = {
   createMovement?:  {
+    __typename: "Movement",
+    amount: number,
+    bill?: string | null,
+    category:  {
+      __typename: "Category",
+      id: string,
+      isDefault: boolean,
+      name: string,
+      subCategories?: Array< string | null > | null,
+      type: string,
+    },
+    date: string,
+    description: string,
+    id: string,
+    note?: string | null,
+    source:  {
+      __typename: "Account",
+      description?: string | null,
+      id: string,
+      name: string,
+      overAllTotal: number,
+      owner:  {
+        __typename: "User",
+        email?: string | null,
+        id: string,
+        name: string,
+      },
+      type: string,
+    },
+    subCategory?: string | null,
+    type: string,
+  } | null,
+};
+
+export type UpdateMovementMutationVariables = {
+  input?: updateMovemenInput | null,
+};
+
+export type UpdateMovementMutation = {
+  updateMovement?:  {
     __typename: "Movement",
     amount: number,
     bill?: string | null,

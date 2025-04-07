@@ -9,6 +9,7 @@ import { Button } from 'primereact/button';
 import { FilterMatchMode, FilterService } from 'primereact/api';
 import { Dropdown } from 'primereact/dropdown';
 import useCategory from '../../../../../hooks/useCategories';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 FilterService.register('custom_category', (value, filters) => {
     return filters ? filters === value.id : true;
@@ -16,6 +17,8 @@ FilterService.register('custom_category', (value, filters) => {
 
 const TransactionsList = ({ transactions, preview = true, loading = false }) => {
     const { categories } = useCategory();
+    const searchParams = useSearchParams();
+    const router = useRouter();
 
     const getAmountColor = useCallback((type) => {
         return movementTypeOptions.find((item) => item.value === type)?.color;
@@ -41,6 +44,16 @@ const TransactionsList = ({ transactions, preview = true, loading = false }) => 
         );
     };
 
+    const createDetailQueryAndUpdate = useCallback(
+        (id: string) => {
+            const params = new URLSearchParams(searchParams.toString());
+            params.set('movementDetail', id);
+
+            const query = params.toString();
+            router.push(`/dashboard/money/transactions?${query}`);
+        },
+        [searchParams, router]
+    );
     return (
         <DataTable dataKey="id" value={transactions} paginator={!preview} rows={preview ? 5 : 10} filters={filters} loading={loading}>
             <Column
@@ -80,13 +93,13 @@ const TransactionsList = ({ transactions, preview = true, loading = false }) => 
             />
             {!preview && (
                 <Column
-                    body={() => (
+                    body={(transaction) => (
                         <>
                             <Button
                                 text
                                 severity="secondary"
                                 onClick={() => {
-                                    console.log('show detail');
+                                    createDetailQueryAndUpdate(transaction.id);
                                 }}
                             >
                                 <i

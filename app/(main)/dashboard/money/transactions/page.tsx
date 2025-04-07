@@ -8,6 +8,8 @@ import { Dropdown } from 'primereact/dropdown';
 import moment from 'moment';
 import { useRouter, useSearchParams } from 'next/navigation';
 import _ from 'lodash';
+import { Dialog } from 'primereact/dialog';
+import CreateMovementForm from '../../../../../components/forms/createMovement';
 
 const Transactions = () => {
     const searchParams = useSearchParams();
@@ -19,6 +21,8 @@ const Transactions = () => {
 
     const [month, setMonth] = useState(moment().format('MMMM'));
     const [year, setYear] = useState(moment().year());
+
+    const [showMovementForm, setShowMovementForm] = useState(false);
 
     const yearOptions = useMemo(() => {
         const currentYear = moment().year();
@@ -74,30 +78,49 @@ const Transactions = () => {
             });
             setLoading(false);
         };
-        if (searchParams.size) {
+        if (searchParams.size && searchParams.get('endDate') && searchParams.get('startDate')) {
             fetchMovements();
         }
     }, [searchParams, updateMovementsInfo, family]);
 
+    useEffect(() => {
+        if (searchParams.get('movementDetail')) {
+            setShowMovementForm(true);
+        }
+    }, [searchParams]);
+
+    const closeEditMovementForm = () => {
+        setShowMovementForm(false);
+        const params = new URLSearchParams(searchParams.toString());
+        params.delete('movementDetail');
+        const query = params.toString();
+        router.push(`/dashboard/money/transactions?${query}`);
+    };
+
     return (
-        <div className="card">
-            <div className="surface-section px-4 pb-8 pt-2 md:px-6 lg:px-8">
-                <div className="font-bold text-5xl text-900 mb-3">Lista de transacciones</div>
-                <div className="p-fluid">
-                    <div className="formgrid grid gap-5">
-                        <div className="field w-2 d-flex flex-column">
-                            <label htmlFor="month">Mes</label>
-                            <Dropdown id="month" type="text" value={month} onChange={updateMonthQuery} options={monthOptions} />
-                        </div>
-                        <div className="field w-1 d-flex flex-column">
-                            <label htmlFor="year">Año</label>
-                            <Dropdown id="year" type="text" value={year} onChange={updateYearQuery} options={yearOptions} />
+        <>
+            <div className="card">
+                <div className="surface-section px-4 pb-8 pt-2 md:px-6 lg:px-8">
+                    <div className="font-bold text-5xl text-900 mb-3">Lista de transacciones</div>
+                    <div className="p-fluid">
+                        <div className="formgrid grid gap-5">
+                            <div className="field w-2 d-flex flex-column">
+                                <label htmlFor="month">Mes</label>
+                                <Dropdown id="month" type="text" value={month} onChange={updateMonthQuery} options={monthOptions} />
+                            </div>
+                            <div className="field w-1 d-flex flex-column">
+                                <label htmlFor="year">Año</label>
+                                <Dropdown id="year" type="text" value={year} onChange={updateYearQuery} options={yearOptions} />
+                            </div>
                         </div>
                     </div>
+                    <TransactionsList transactions={movements} preview={false} loading={loading} />
                 </div>
-                <TransactionsList transactions={movements} preview={false} loading={loading} />
             </div>
-        </div>
+            <Dialog id="CreateMovementForm" visible={showMovementForm} header="Edite un movimiento" className="sm:w-10 lg:w-4" modal onHide={closeEditMovementForm}>
+                <CreateMovementForm onSuccess={() => {}} />
+            </Dialog>
+        </>
     );
 };
 

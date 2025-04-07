@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { client } from '../amplify/data/resource';
-import { getMovements } from '../graphql/queries';
+import { getMovement, getMovements } from '../graphql/queries';
 import { useFinanzasStore } from '../store';
 import moment from 'moment';
 
@@ -13,6 +13,17 @@ const fetchMovements = async (query) => {
     console.log();
 
     return res?.data?.getMovements;
+};
+
+const fetchMovementById = async (id) => {
+    const res = await client.graphql({
+        query: getMovement,
+        variables: { id }
+    });
+
+    console.log();
+
+    return res?.data?.getMovement;
 };
 
 export default function useMovements(loadMovements = false) {
@@ -67,6 +78,18 @@ export default function useMovements(loadMovements = false) {
         [movements]
     );
 
+    const getMovementById = useCallback(
+        async (id: string) => {
+            let movement = movements.find((item) => item.id === id);
+            if (movement) {
+                return movement;
+            } else {
+                movement = await fetchMovementById(id);
+                return movement;
+            }
+        },
+        [movements]
+    );
     return {
         incomeData: { currentMonthIncomeMovements, currentMonthTotalIncome },
         purchaseData: { currentMonthPurchaseMovements, currentMonthTotalPurchase },
@@ -74,6 +97,7 @@ export default function useMovements(loadMovements = false) {
         orderedMonthMovements,
         updateMovementsInfo,
         fetchMovements,
-        getMonthBoundaries
+        getMonthBoundaries,
+        getMovementById
     };
 }
