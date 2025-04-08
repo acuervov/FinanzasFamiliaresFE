@@ -22,6 +22,7 @@ import useMovements from '../../../../hooks/useMovements';
 import useAccounts from '../../../../hooks/useAccounts';
 import CategoryExpenses from './components/categoryExpenses';
 import RecentTransactions from './components/recentTransactions';
+import AccountsTable from './components/accountsTable';
 
 const Banking = () => {
     const [showMovementForm, setShowMovementForm] = useState(false);
@@ -177,134 +178,7 @@ const Banking = () => {
 
                     <RecentTransactions transactions={movements.slice(0, 5)} />
                     <CategoryExpenses allTotal={purchaseData.currentMonthTotalPurchase} movements={movements} />
-                    {/* 
-                    <div className="col-12 xl:col-6">
-                        <div className="card h-full">
-                            <div className="flex align-items-center">
-                                <h4 className="white-space-nowrap mr-3 mb-0">Cards</h4>
-                                <span className="w-2rem h-2rem flex justify-content-center align-items-center border-circle text-green-700 font-semibold" style={{ backgroundColor: 'rgba(77, 182, 172, 0.1)' }}>
-                                    2
-                                </span>
-                            </div>
-
-                            <div className="grid flex-column sm:flex-row grid-nogutter border-round-xl mt-4">
-                                <div className="col-12 sm:col-6 p-4 border-round-top-xl sm:border-noround-right sm:border-round-left-xl justify-content-between" style={{ backgroundColor: 'rgba(77, 182, 172, 0.1)' }}>
-                                    <span className="block text-xl font-semibold">Total Credit</span>
-                                    <span className="block text-3xl font-semibold mt-3">
-                                        $12,345
-                                        <span className="text-xl font-semibold" style={{ color: 'rgba(77, 182, 172, 0.7)' }}>
-                                            .67
-                                        </span>
-                                    </span>
-                                </div>
-                                <div className="col-12 sm:col-6 p-4 border-round-bottom-xl sm:border-noround-left sm:border-round-right-xl flex align-items-center justify-content-center sm:justify-content-end" style={{ backgroundColor: '#4DB6AC' }}>
-                                    <Button label="View Details" icon="pi pi-eye font-semibold" iconPos="right" rounded severity="success" text className="p-ripple surface-section font-semibold" style={{ color: '#4DB6AC' }} />
-                                </div>
-                            </div>
-
-                            <div className="grid grid-nogutter flex-column md:flex-row mt-4 gap-4">
-                                <div className="col">
-                                    <div
-                                        className="card flex flex-column justify-content-between h-17rem bg-no-repeat bg-cover border-round-2xl shadow-none relative p-4 overflow-hidden"
-                                        style={{
-                                            backgroundImage: "url('/demo/images/dashboard/card-1.svg')"
-                                        }}
-                                    >
-                                        <div className="flex w-full align-items-center">
-                                            <img src={`/demo/images/dashboard/mastercard.svg`} alt="mastercard" className="w-4rem mr-2" />
-                                            <span className="text-2xl font-semibold white-space-nowrap">Personal Card</span>
-                                            <img src={`/demo/images/dashboard/chip.svg`} alt="mastercard" className="w-3rem ml-auto" />
-                                        </div>
-                                        <div className="flex justify-content-between">
-                                            <span className="font-semibold white-space-nowrap">1234 1234 1234 1234</span>
-                                            <span className="font-semibold">
-                                                <span className="font-normal">Exp </span>12/23
-                                            </span>
-                                        </div>
-                                        <div className="flex justify-content-between align-items-center mb-6">
-                                            <span className="font-semibold">Limit</span>
-                                            <div>
-                                                <span className="font-bold px-2 border-right-2" style={{ color: '#4DB6AC', borderColor: '#4DB6AC' }}>
-                                                    100%
-                                                </span>
-                                                <span className="font-bold ml-2"> $300.00 / $123.00</span>
-                                            </div>
-                                        </div>
-
-                                        <span
-                                            className="h-3rem w-8 absolute bottom-0 left-0"
-                                            style={{
-                                                borderBottomLeftRadius: '1rem',
-                                                backgroundColor: 'rgba(77, 182, 172, 1)'
-                                            }}
-                                        ></span>
-                                        <span
-                                            className="h-3rem w-4 absolute bottom-0 left-0"
-                                            style={{
-                                                borderBottomRightRadius: '1rem',
-                                                backgroundColor: 'rgba(77, 182, 172, 0.3)'
-                                            }}
-                                        ></span>
-                                    </div>
-                                </div>
-
-                                <div className="col">
-                                    <div
-                                        className="card flex flex-column justify-content-between h-17rem bg-no-repeat bg-cover border-round-2xl shadow-none relative p-4 overflow-hidden"
-                                        style={{
-                                            backgroundImage: "url('/demo/images/dashboard/card-2.svg')"
-                                        }}
-                                    >
-                                        <div className="flex w-full align-items-center">
-                                            <img src={`/demo/images/dashboard/mastercard.svg`} alt="mastercard" className="w-4rem mr-2" />
-                                            <span className="text-2xl font-semibold white-space-nowrap">Business Card</span>
-                                            <img src={`/demo/images/dashboard/chip.svg`} alt="mastercard" className="w-3rem ml-auto" />
-                                        </div>
-                                        <div className="flex justify-content-between">
-                                            <span className="font-semibold white-space-nowrap">1234 1234 1234 1234</span>
-                                            <span className="font-semibold">
-                                                <span className="font-normal">Exp </span>12/23
-                                            </span>
-                                        </div>
-                                        <div className="flex justify-content-between align-items-center mb-6">
-                                            <span className="font-semibold">Limit</span>
-                                            <div>
-                                                <span className="font-bold px-2 border-right-2" style={{ color: '#4DB6AC', borderColor: '#4DB6AC' }}>
-                                                    100%
-                                                </span>
-                                                <span className="font-bold ml-2"> $300.00 / $123.00</span>
-                                            </div>
-                                        </div>
-                                        <span
-                                            className="h-3rem w-4 absolute bottom-0 left-0"
-                                            style={{
-                                                borderBottomLeftRadius: '1rem',
-                                                backgroundColor: '#FAB710'
-                                            }}
-                                        ></span>
-                                        <span
-                                            className="h-3rem w-8 absolute bottom-0 right-0"
-                                            style={{
-                                                borderBottomRightRadius: '1rem',
-                                                backgroundColor: 'rgba(250, 183, 16, 0.3)'
-                                            }}
-                                        ></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <a className="p-ripple w-full border-1 border-dashed surface-border h-4rem border-round-xl mt-4 flex justify-content-center align-items-center cursor-pointer select-none">
-                                <i className="pi pi-plus-circle text-xl mr-2 text-color-secondary"></i>
-                                <span className="text-xl text-color-secondary">Add New Card</span>
-                                <Ripple />
-                            </a>
-                        </div>
-                    </div>
-                    <div className="col-12 xl:col-6">
-                        <div className="card">
-                            <h4>Savings</h4>
-                            <Chart type="bar" data={barData} options={barOptions} height="470"></Chart>
-                        </div>
-                    </div> */}
+                    <AccountsTable />
                 </div>
             ) : (
                 <div className="border-round border-1 surface-border p-4 surface-card">
