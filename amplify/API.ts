@@ -8,6 +8,7 @@ export type CreateAccountInput = {
   overAllTotal: number,
   type: string,
   userId: string,
+  id?: string | null,
 };
 
 export type Account = {
@@ -86,21 +87,6 @@ export type Movement = {
   type: string,
 };
 
-export type updateMovemenInput = {
-  amount: number,
-  bill?: string | null,
-  categoryId: string,
-  date: string,
-  description: string,
-  endingId?: string | null,
-  familyId: string,
-  note?: string | null,
-  sourceId: string,
-  subCategory?: string | null,
-  type: string,
-  id: string,
-};
-
 export type CreateUserInput = {
   email?: string | null,
   familyId?: string | null,
@@ -110,6 +96,21 @@ export type CreateUserInput = {
 export type linkUserToFamilyInput = {
   familyId: string,
   userId: string,
+};
+
+export type updateMovemenInput = {
+  amount: number,
+  bill?: string | null,
+  categoryId: string,
+  date: string,
+  description: string,
+  endingId?: string | null,
+  familyId: string,
+  id: string,
+  note?: string | null,
+  sourceId: string,
+  subCategory?: string | null,
+  type: string,
 };
 
 export type getMovementsInput = {
@@ -258,46 +259,6 @@ export type CreateMovementMutation = {
   } | null,
 };
 
-export type UpdateMovementMutationVariables = {
-  input?: updateMovemenInput | null,
-};
-
-export type UpdateMovementMutation = {
-  updateMovement?:  {
-    __typename: "Movement",
-    amount: number,
-    bill?: string | null,
-    category:  {
-      __typename: "Category",
-      id: string,
-      isDefault: boolean,
-      name: string,
-      subCategories?: Array< string | null > | null,
-      type: string,
-    },
-    date: string,
-    description: string,
-    id: string,
-    note?: string | null,
-    source:  {
-      __typename: "Account",
-      description?: string | null,
-      id: string,
-      name: string,
-      overAllTotal: number,
-      owner:  {
-        __typename: "User",
-        email?: string | null,
-        id: string,
-        name: string,
-      },
-      type: string,
-    },
-    subCategory?: string | null,
-    type: string,
-  } | null,
-};
-
 export type CreateUserMutationVariables = {
   input?: CreateUserInput | null,
 };
@@ -387,6 +348,46 @@ export type LinkUserToFamilyMutation = {
     } | null,
     id: string,
     name: string,
+  } | null,
+};
+
+export type UpdateMovementMutationVariables = {
+  input?: updateMovemenInput | null,
+};
+
+export type UpdateMovementMutation = {
+  updateMovement?:  {
+    __typename: "Movement",
+    amount: number,
+    bill?: string | null,
+    category:  {
+      __typename: "Category",
+      id: string,
+      isDefault: boolean,
+      name: string,
+      subCategories?: Array< string | null > | null,
+      type: string,
+    },
+    date: string,
+    description: string,
+    id: string,
+    note?: string | null,
+    source:  {
+      __typename: "Account",
+      description?: string | null,
+      id: string,
+      name: string,
+      overAllTotal: number,
+      owner:  {
+        __typename: "User",
+        email?: string | null,
+        id: string,
+        name: string,
+      },
+      type: string,
+    },
+    subCategory?: string | null,
+    type: string,
   } | null,
 };
 

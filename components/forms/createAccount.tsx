@@ -1,6 +1,6 @@
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { client } from '../../amplify/data/resource';
 import { createAccount } from '../../graphql/mutations';
@@ -9,6 +9,8 @@ import { useFinanzasStore } from '../../store';
 import { InputNumber } from 'primereact/inputnumber';
 import { Dropdown } from 'primereact/dropdown';
 import { accountTypeOptions } from '../../data/accountTypeOptions';
+import { useSearchParams } from 'next/navigation';
+import useAccounts from '../../hooks/useAccounts';
 
 const accountSchema = Yup.object().shape({
     name: Yup.string().required('El nombre de la cuenta es obligatorio'),
@@ -23,9 +25,19 @@ interface Props {
 
 const initialErrors = { name: '', description: '', overAllTotal: '', type: '' };
 
+type account = {
+    name: string;
+    description: string;
+    overAllTotal: number;
+    type: string;
+    userId?: string;
+};
+
 const CreateAccountForm = (props: Props) => {
     const { id: userId } = useFinanzasStore((state) => state.user);
-    const { setUser, setFamily } = useFinanzasStore((state) => state);
+    const { setUser } = useFinanzasStore((state) => state);
+    const searchParams = useSearchParams();
+    const { getAccountById } = useAccounts();
 
     const [loading, setLoading] = useState(false);
     const [account, setAccount] = useState({
@@ -34,6 +46,7 @@ const CreateAccountForm = (props: Props) => {
         overAllTotal: 0,
         type: ''
     });
+    const [isEdit, setIsEdit] = useState(false);
 
     const [errors, setErrors] = useState(initialErrors);
 
@@ -47,12 +60,15 @@ const CreateAccountForm = (props: Props) => {
 
         try {
             await accountSchema.validate(account, { abortEarly: false });
-            const accountData = { ...account, userId };
+            const accountData = account as account;
+            if (!accountData?.userId) {
+                accountData['userId'] = userId;
+            }
             const res = await client.graphql({
                 query: createAccount,
                 variables: {
                     input: {
-                        ...accountData
+                        ...(accountData as Required<account>)
                     }
                 }
             });
@@ -73,6 +89,20 @@ const CreateAccountForm = (props: Props) => {
             setLoading(false);
         }
     };
+
+    const formatData = (data) => {
+        const pickedData = _.pick(data, ['description', 'name', 'overAllTotal', 'type', 'id']);
+        return { ...pickedData, userId: data.owner.id };
+    };
+    useEffect(() => {
+        const accountDetail = searchParams.get('accountDetail');
+        if (accountDetail) {
+            setIsEdit(true);
+            const accountData = getAccountById(accountDetail);
+            setAccount(formatData(accountData));
+        }
+    }, [searchParams, getAccountById]);
+
     return (
         <div className="p-fluid">
             <div className="field">
@@ -92,10 +122,10 @@ const CreateAccountForm = (props: Props) => {
             </div>
             <div className="field">
                 <label htmlFor="type">Tipo de cuenta</label>
-                <Dropdown id="type" type="text" value={account.type} onChange={(e) => updateField(e.value, 'type')} className={errors.type ? 'p-invalid' : ''} options={accountTypeOptions} />
+                <Dropdown id="type" type="text" value={account.type} onChange={(e) => updateField(e.value, 'type')} className={errors.type ? 'p-invalid' : ''} options={accountTypeOptions} disabled={isEdit} />
                 <span className="text-red-500">{errors.type}</span>
             </div>
-            <Button label="Crear" onClick={handleCreateNewAccount} loading={loading}></Button>
+            <Button label={isEdit ? 'Editar' : 'Crear'} onClick={handleCreateNewAccount} loading={loading}></Button>
         </div>
     );
 };

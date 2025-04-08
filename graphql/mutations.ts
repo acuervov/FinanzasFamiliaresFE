@@ -132,45 +132,6 @@ export const createMovement = /* GraphQL */ `mutation CreateMovement($input: Cre
   APITypes.CreateMovementMutationVariables,
   APITypes.CreateMovementMutation
 >;
-export const updateMovement = /* GraphQL */ `mutation UpdateMovement($input: updateMovemenInput) {
-  updateMovement(input: $input) {
-    amount
-    bill
-    category {
-      id
-      isDefault
-      name
-      subCategories
-      type
-      __typename
-    }
-    date
-    description
-    id
-    note
-    source {
-      description
-      id
-      name
-      overAllTotal
-      owner {
-        email
-        id
-        name
-        __typename
-      }
-      type
-      __typename
-    }
-    subCategory
-    type
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.UpdateMovementMutationVariables,
-  APITypes.UpdateMovementMutation
->;
 export const createUser = /* GraphQL */ `mutation CreateUser($input: CreateUserInput) {
   createUser(input: $input) {
     accounts {
@@ -260,4 +221,43 @@ export const linkUserToFamily = /* GraphQL */ `mutation LinkUserToFamily($input:
 ` as GeneratedMutation<
   APITypes.LinkUserToFamilyMutationVariables,
   APITypes.LinkUserToFamilyMutation
+>;
+export const updateMovement = /* GraphQL */ `mutation UpdateMovement($input: updateMovemenInput) {
+  updateMovement(input: $input) {
+    amount
+    bill
+    category {
+      id
+      isDefault
+      name
+      subCategories
+      type
+      __typename
+    }
+    date
+    description
+    id
+    note
+    source {
+      description
+      id
+      name
+      overAllTotal
+      owner {
+        email
+        id
+        name
+        __typename
+      }
+      type
+      __typename
+    }
+    subCategory
+    type
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateMovementMutationVariables,
+  APITypes.UpdateMovementMutation
 >;

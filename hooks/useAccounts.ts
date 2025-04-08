@@ -51,7 +51,7 @@ export default function useAccounts(loadAccounts = false) {
         [investmentsAccounts]
     );
 
-    const normalAccounts = useMemo(() => accounts.filter((account) => account.type !== 'investment'), [accounts])
+    const normalAccounts = useMemo(() => accounts.filter((account) => account.type !== 'investment'), [accounts]);
     const normalAccountsAllTotal = useMemo(
         () =>
             normalAccounts.reduce((total, current) => {
@@ -60,5 +60,12 @@ export default function useAccounts(loadAccounts = false) {
         [normalAccounts]
     );
 
-    return { groupedAccountsOptions, setAccountsInfo, investmentsAllTotal, normalAccountsAllTotal };
+    const getAccountById = useCallback(
+        (id) => {
+            return accounts.find((item) => item.id === id);
+        },
+        [accounts]
+    );
+
+    return { groupedAccountsOptions, setAccountsInfo, investmentsAllTotal, normalAccountsAllTotal, getAccountById };
 }
