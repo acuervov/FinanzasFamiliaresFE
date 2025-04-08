@@ -103,8 +103,7 @@ const TransactionsList = ({ transactions, preview = true, loading = false }) => 
                                 }}
                             >
                                 <i
-                                    className="pi pi-search-plus
-"
+                                    className="pi pi-pencil"
                                 ></i>
                             </Button>
                         </>

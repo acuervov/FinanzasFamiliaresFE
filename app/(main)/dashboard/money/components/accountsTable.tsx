@@ -62,7 +62,7 @@ const AccountsTable = () => {
     );
 
     const editBodyTemplate = (data) => {
-        return data.children ? <></> : <Button icon="pi pi-pencil" onClick={() => createDetailQueryAndUpdate(data.key)} />;
+        return data.children ? <></> : <Button icon="pi pi-pencil" text onClick={() => createDetailQueryAndUpdate(data.key)} />;
     };
 
     useEffect(() => {
