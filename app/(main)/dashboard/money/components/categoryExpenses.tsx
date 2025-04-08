@@ -1,8 +1,9 @@
 import { Card } from 'primereact/card';
 import useCategories from '../../../../../hooks/useCategories';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import _ from 'lodash';
 import numbro from 'numbro';
+import { Button } from 'primereact/button';
 
 interface CategoryExpensesItem {
     id: string;
@@ -12,11 +13,17 @@ interface CategoryExpensesItem {
     background: string;
 }
 
+const nonExpandedTotalElements = 7;
+
 const CategoryExpenses = ({ allTotal = 0, movements }) => {
     const { categoryByType } = useCategories();
+    const [expand, setExpand] = useState(false);
 
     const expenses = useMemo(() => {
-        const categories = categoryByType('purchase');
+        let categories = categoryByType('purchase');
+        if (!expand) {
+            categories = categories.slice(0, nonExpandedTotalElements);
+        }
 
         const categoriesMap: [CategoryExpensesItem] = categories.reduce((previous, current) => {
             previous[current.id] = {
@@ -57,12 +64,21 @@ const CategoryExpenses = ({ allTotal = 0, movements }) => {
         });
 
         return sortedCategories;
-    }, [categoryByType, movements, allTotal]);
+    }, [categoryByType, movements, allTotal, expand]);
 
     return (
         <div className="h-full col-12 xl:col-4">
             <Card className="h-full">
-                <h4 className="white-space-nowrap mb-2">Gastos</h4>
+                <div className="flex justify-content-between">
+                    <h4 className="white-space-nowrap mb-2">Gastos</h4>
+                    <Button
+                        text
+                        label={`Ver ${expand ? 'menos' : 'mas'}`}
+                        onClick={() => {
+                            setExpand(!expand);
+                        }}
+                    />
+                </div>
                 {expenses.map((expense) => (
                     <div key={expense.id} className="flex gap-3 w-full mt-4 align-items-center">
                         <div className="w-full">
