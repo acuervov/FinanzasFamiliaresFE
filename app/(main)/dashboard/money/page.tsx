@@ -1,16 +1,8 @@
 'use client';
 
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Button } from 'primereact/button';
-import { Chart } from 'primereact/chart';
-import { Card } from 'primereact/card';
-import { Column } from 'primereact/column';
-import { DataTable } from 'primereact/datatable';
-import { Menu } from 'primereact/menu';
-import { LayoutContext } from '../../../../layout/context/layoutcontext';
-import { Ripple } from 'primereact/ripple';
-import { ChartData, ChartOptions } from 'chart.js';
 import { Skeleton } from 'primereact/skeleton';
 import { useFinanzasStore } from '../../../../store';
 import useGetBalance from '../../../../hooks/useGetBalance';
@@ -27,120 +19,9 @@ import AccountsTable from './components/accountsTable';
 const Banking = () => {
     const [showMovementForm, setShowMovementForm] = useState(false);
 
-    const [barOptions, setBarOptions] = useState({});
-    const [barData, setBarData] = useState({});
-    const { layoutConfig } = useContext(LayoutContext);
-
     const { family, accounts, movements } = useFinanzasStore((state) => state);
 
     const { totalBalance } = useGetBalance(accounts);
-
-    const [hoveredIndex, setHoveredIndex] = useState(-1);
-
-    const menu = useRef(null);
-    const handleMouseEnter = (index: number) => {
-        setHoveredIndex(index);
-    };
-    const showMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-        if (menu.current) {
-            menu.current.show(event);
-        }
-    };
-
-    const handleMouseLeave = () => {
-        setHoveredIndex(-1);
-    };
-
-    const items = [
-        {
-            label: 'View Details'
-        },
-        {
-            label: 'Print Receipt'
-        },
-        {
-            label: 'Hide'
-        }
-    ];
-
-    const initChart = () => {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const textColor = documentStyle.getPropertyValue('--text-color') || '#495057';
-        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary') || '#6c757d';
-        const surfaceBorder = documentStyle.getPropertyValue('--surface-border') || '#dee2e6';
-
-        const barData: ChartData = {
-            labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL'],
-            datasets: [
-                {
-                    label: 'Revenue',
-                    backgroundColor: documentStyle.getPropertyValue('--primary-500') || '#2196f3',
-                    barThickness: 12,
-                    borderRadius: 12,
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                },
-                {
-                    label: 'Expenses',
-                    backgroundColor: '#FAB918',
-                    barThickness: 12,
-                    borderRadius: 12,
-                    data: [35, 19, 40, 61, 16, 55, 30]
-                }
-            ]
-        };
-
-        const barOptions: ChartOptions = {
-            animation: {
-                duration: 0
-            },
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: textColor,
-                        usePointStyle: true,
-                        font: {
-                            weight: '700'
-                        },
-                        padding: 28
-                    },
-                    position: 'top'
-                }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: textColorSecondary,
-                        font: {
-                            weight: '500'
-                        }
-                    },
-                    grid: {
-                        display: false
-                    }
-                },
-                y: {
-                    ticks: {
-                        callback(value) {
-                            return '$' + value + 'k';
-                        },
-                        color: textColorSecondary
-                    },
-                    grid: {
-                        color: surfaceBorder
-                    }
-                }
-            }
-        };
-
-        setBarData(barData);
-        setBarOptions(barOptions);
-    };
-
-    useEffect(() => {
-        initChart();
-    }, [layoutConfig]);
 
     const { incomeData, purchaseData, currentMonthAllTotal } = useMovements(false);
     const { investmentsAllTotal, normalAccountsAllTotal } = useAccounts();
