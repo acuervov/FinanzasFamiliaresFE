@@ -20,10 +20,7 @@ const CategoryExpenses = ({ allTotal = 0, movements }) => {
     const [expand, setExpand] = useState(false);
 
     const expenses = useMemo(() => {
-        let categories = categoryByType('purchase');
-        if (!expand) {
-            categories = categories.slice(0, nonExpandedTotalElements);
-        }
+        const categories = categoryByType('purchase');
 
         const categoriesMap: [CategoryExpensesItem] = categories.reduce((previous, current) => {
             previous[current.id] = {
@@ -63,7 +60,7 @@ const CategoryExpenses = ({ allTotal = 0, movements }) => {
             return b.value - a.value;
         });
 
-        return sortedCategories;
+        return expand ? sortedCategories : sortedCategories.slice(0, nonExpandedTotalElements);
     }, [categoryByType, movements, allTotal, expand]);
 
     return (
