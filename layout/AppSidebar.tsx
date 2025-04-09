@@ -78,7 +78,7 @@ const AppSidebar = (props: { sidebarRef: React.RefObject<HTMLDivElement> }) => {
                 <div className="sidebar-header">
                     <Link href="/" className="logo">
                         <div className="logo-image">
-                            <img src="/layout/images/logonegro.png" alt="logo" className="w-full" />
+                            <img src="/layout/images/logoblanco.png" alt="logo" className="w-full" />
                         </div>
                         <span className="app-name">DIAMOND</span>
                     </Link>
